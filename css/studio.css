@@ -241,3 +241,8 @@ main, .top, .foot { position: relative; z-index: 1; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; }
 }
+
+/* Plakietki Google Play w kartach */
+.card-play { position: relative; z-index: 6; display: inline-block; margin: 14px 0 0; line-height: 0; }
+.card-play img { height: 52px; width: auto; display: block; }
+.card-play:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; border-radius: 10px; }

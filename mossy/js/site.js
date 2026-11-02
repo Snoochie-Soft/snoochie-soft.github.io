@@ -7,7 +7,7 @@
  *                       to PLAY_URL.
  * When Mossy is live in the store, change the one line below to `true` and push.
  */
-const APP_LIVE = false;
+const APP_LIVE = true;
 const PLAY_URL = "https://play.google.com/store/apps/details?id=com.mossyapp.mossy";
 
 (function () {
@@ -16,9 +16,8 @@ const PLAY_URL = "https://play.google.com/store/apps/details?id=com.mossyapp.mos
   if (APP_LIVE) {
     document.querySelectorAll("[data-cta]").forEach(function (box) {
       box.innerHTML =
-        '<a class="btn btn-live" href="' + PLAY_URL + '" rel="noopener">' +
-        '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6 3.6v16.8c0 .8.9 1.3 1.6.9l14-8.4c.6-.4.6-1.3 0-1.7l-14-8.4C6.9 2.3 6 2.8 6 3.6z"/></svg>' +
-        "Get it on Google Play</a>";
+        '<a class="play-badge" href="' + PLAY_URL + '" rel="noopener">' +
+        '<img src="/img/badges/play-en.png" width="188" height="56" style="height:56px;width:auto;display:block" alt="Get it on Google Play"></a>';
     });
   }
 })();

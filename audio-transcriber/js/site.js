@@ -8,23 +8,26 @@
  *                       and the pre-launch "tell me when it is out" mail links disappear.
  * When the app is live in the store, change the one line below to `true` and push.
  */
-const APP_LIVE = false;
+const APP_LIVE = true;
 const PLAY_URL = "https://play.google.com/store/apps/details?id=pl.snoochiesoft.audiotranscriber";
 
 (function () {
   "use strict";
 
   if (APP_LIVE) {
-    var icon =
-      '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
-      '<path fill="currentColor" d="M7 4.2v15.6c0 .8.9 1.3 1.6.8l12.3-7.8c.6-.4.6-1.3 0-1.7L8.6 3.4C7.9 2.9 7 3.4 7 4.2z"/></svg>';
+    var lang = (document.documentElement.lang || "en").toLowerCase();
+    var badge = { pl: "pl", de: "de", es: "es-419", fr: "fr", "pt-br": "pt-br" }[lang] || "en";
     document.querySelectorAll("[data-cta]").forEach(function (box) {
       var a = document.createElement("a");
-      a.className = "btn btn-live";
+      a.className = "play-badge";
       a.href = PLAY_URL;
       a.rel = "noopener";
-      a.innerHTML = icon + "<span></span>";
-      a.lastChild.textContent = box.getAttribute("data-live") || "Google Play";
+      var img = document.createElement("img");
+      img.src = "/img/badges/play-" + badge + ".png";
+      img.width = 188; img.height = 56;
+      img.style.cssText = "height:56px;width:auto;display:block";
+      img.alt = box.getAttribute("data-live") || "Google Play";
+      a.appendChild(img);
       box.replaceChildren(a);
     });
     // The "tell me when it is out" mail links only make sense before launch.
