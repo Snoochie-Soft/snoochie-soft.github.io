@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Offline Audio Transcriber for Android: speech to text, no upload</title>
+  <meta name="description" content="Turn recordings, MP3 and video files into text on your Android phone. Offline transcription in 24 languages, no account, nothing uploaded.">
+  <link rel="canonical" href="https://snoochie-soft.github.io/audio-transcriber/">
+  <link rel="alternate" hreflang="en" href="https://snoochie-soft.github.io/audio-transcriber/">
+  <link rel="alternate" hreflang="pl" href="https://snoochie-soft.github.io/audio-transcriber/pl/">
+  <link rel="alternate" hreflang="de" href="https://snoochie-soft.github.io/audio-transcriber/de/">
+  <link rel="alternate" hreflang="fr" href="https://snoochie-soft.github.io/audio-transcriber/fr/">
+  <link rel="alternate" hreflang="es" href="https://snoochie-soft.github.io/audio-transcriber/es/">
+  <link rel="alternate" hreflang="pt-BR" href="https://snoochie-soft.github.io/audio-transcriber/pt-br/">
+  <link rel="alternate" hreflang="x-default" href="https://snoochie-soft.github.io/audio-transcriber/">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111319" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="preload" href="fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/literata-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/site.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Offline Audio Transcriber">
+  <meta property="og:title" content="Offline Audio Transcriber for Android: speech to text, no upload">
+  <meta property="og:description" content="Turn recordings, MP3 and video files into text on your Android phone. Offline transcription in 24 languages, no account, nothing uploaded.">
+  <meta property="og:url" content="https://snoochie-soft.github.io/audio-transcriber/">
+  <meta property="og:image" content="https://snoochie-soft.github.io/audio-transcriber/img/og/og-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Offline Audio Transcriber: speech to text that stays on your Android phone">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="pl_PL">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:locale:alternate" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Offline Audio Transcriber for Android: speech to text, no upload">
+  <meta name="twitter:description" content="Turn recordings, MP3 and video files into text on your Android phone. Offline transcription in 24 languages, no account, nothing uploaded.">
+  <meta name="twitter:image" content="https://snoochie-soft.github.io/audio-transcriber/img/og/og-en.png">
+  <meta name="twitter:image:alt" content="Offline Audio Transcriber: speech to text that stays on your Android phone">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Offline Audio Transcriber","operatingSystem":"Android","applicationCategory":"ProductivityApplication","description":"Turn recordings, MP3 and video files into text on your Android phone. Offline transcription in 24 languages, no account, nothing uploaded.","inLanguage":"en","url":"https://snoochie-soft.github.io/audio-transcriber/","image":"https://snoochie-soft.github.io/audio-transcriber/img/icon-512.png","publisher":{"@type":"Organization","name":"Snoochie Soft","email":"SnoochieSoft@proton.me","address":{"@type":"PostalAddress","addressLocality":"Bydgoszcz","addressCountry":"PL"}},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","description":"Free to install. Optional in-app purchases: minute packs and Pro."}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"en","mainEntity":[{"@type":"Question","name":"Are my recordings uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Recordings, transcripts and notes stay in the app’s private storage on your phone. The app goes online only to download the speech model, to show ads and for purchases through Google Play."}},{"@type":"Question","name":"Does it work without internet?","acceptedAnswer":{"@type":"Answer","text":"Yes, once the speech model is downloaded. Transcription itself needs no connection. Watching an ad for extra minutes and buying something do need one."}},{"@type":"Question","name":"How long does transcription take?","acceptedAnswer":{"@type":"Answer","text":"On a Samsung Galaxy S23 Ultra, a one-hour recording took about 8 minutes in our own test. Older and cheaper phones are slower. You can leave the app; the job continues in the background with a progress notification."}},{"@type":"Question","name":"How accurate is it?","acceptedAnswer":{"@type":"Answer","text":"It depends on the audio: quality, accents and background noise all matter. We do not publish accuracy figures. Check important transcripts before you rely on them; you can fix any word in the app while listening."}},{"@type":"Question","name":"What is free, and what costs money?","acceptedAnswer":{"@type":"Answer","text":"The first 2 minutes of every recording are free. For more, watch a short ad (+3 minutes), buy a minute pack that never expires, or get Pro for unlimited minutes."}},{"@type":"Question","name":"How big is the download?","acceptedAnswer":{"@type":"Answer","text":"The speech model is a one-time download of 671 MB. The app shows the size before it starts. Use Wi-Fi if your mobile data is limited."}},{"@type":"Question","name":"How do I delete my data?","acceptedAnswer":{"@type":"Answer","text":"Delete recordings in the app, or uninstall the app to remove everything it stored. The speech models can be deleted in Settings."}}]}</script>
+  <script src="js/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="img/icon-96.png" width="36" height="36" alt="">Offline Audio Transcriber</a>
+    <nav class="nav" aria-label="Sections"><a href="#how">How it works</a><a href="#languages">Languages</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
+    <details class="lang">
+      <summary aria-label="Language: English"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm-8.5 9h17M12 3c2.4 2.5 3.6 5.5 3.6 9s-1.2 6.5-3.6 9c-2.4-2.5-3.6-5.5-3.6-9S9.6 5.5 12 3Z"/></svg><span>EN</span></summary>
+      <ul><li><a href="./" hreflang="en" lang="en" aria-current="true">English</a></li><li><a href="pl/" hreflang="pl" lang="pl">Polski</a></li><li><a href="de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="fr/" hreflang="fr" lang="fr">Français</a></li><li><a href="es/" hreflang="es" lang="es">Español</a></li><li><a href="pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li></ul>
+    </details>
+  </div>
+</header>
+<main id="main">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <h1>Speech to text that <span class="hl sweep">stays on your phone</span></h1>
+        <p class="lede">Offline Audio Transcriber turns voice notes, lectures, interviews and any MP3 or video file into text on your Android phone. No account, no upload, and no internet needed once the speech model is on the phone.</p>
+        <div class="cta">
+      <div data-cta data-live="Get it on Google Play"><span class="btn btn-soon" aria-disabled="true"><span class="dot" aria-hidden="true"></span>Coming soon on Google Play</span></div>
+      <p class="cta-note"><a data-soon-only href="mailto:SnoochieSoft@proton.me?subject=Offline%20Audio%20Transcriber%3A%20tell%20me%20when%20it%20is%20on%20Google%20Play">Tell me when it’s out</a></p>
+    </div>
+        <dl class="facts"><div><dt>Account</dt><dd>Not needed</dd></div><div><dt>Speech model</dt><dd>671 MB, downloaded once</dd></div><div><dt>Free</dt><dd>2 min of every recording</dd></div></dl>
+      </div>
+      <div class="phone"><img src="img/screens/en/01.webp" width="720" height="1400" alt="The transcript screen: timestamped lines, the word being played is highlighted, player controls at the bottom." fetchpriority="high"></div>
+    </div>
+    <div class="playback" aria-hidden="true"><div class="wrap"><div class="track">
+      <i class="ink-yellow" style="flex:9"></i><i class="ink-blue" style="flex:12"></i><i class="ink-yellow" style="flex:5"></i><i class="ink-pink" style="flex:8"></i><i class="ink-blue" style="flex:10"></i><i class="ink-yellow" style="flex:7"></i><i class="ink-green" style="flex:11"></i><i class="ink-pink" style="flex:6"></i><i class="ink-blue" style="flex:9"></i><i class="ink-yellow" style="flex:8"></i>
+      <span class="playhead"></span>
+    </div></div></div>
+  </section>
+
+  <section class="section" id="how" aria-labelledby="how-h">
+    <div class="wrap">
+      <h2 id="how-h">How offline transcription works</h2>
+      <p class="intro">Three steps, all on the phone. The only download is the speech model, once.</p>
+      <ol class="steps" role="list">
+        <li class="step">
+          <span class="step-n" aria-hidden="true"><span>1</span></span>
+          <div class="step-body"><h3>Record, or open a file you already have</h3><p>Use the built-in recorder, or import audio and video files, including voice messages saved from chat apps.</p><ul><li class="chip">MP3</li><li class="chip">M4A</li><li class="chip">WAV</li><li class="chip">OGG</li><li class="chip">MP4</li><li class="chip">and other audio and video files</li></ul></div>
+          <div class="phone"><img src="img/screens/en/02.webp" width="720" height="1400" alt="The recorder: running time, live waveform and how much of the free part is left." loading="lazy" decoding="async"></div>
+        </li>
+        <li class="step">
+          <span class="step-n" aria-hidden="true"><span>2</span></span>
+          <div class="step-body"><h3>The phone does the transcription</h3><p>The speech model runs on the phone’s processor, so the audio never leaves it. Long jobs keep running in the background with a progress notification.</p></div>
+          <figure class="speed" style="margin:0">
+            <div class="row"><div class="label"><span>One-hour recording</span><span>60:00</span></div><div class="bar audio"></div></div>
+            <div class="row"><div class="label"><span>Time to transcribe</span><span>~8:00</span></div><div class="bar work"></div></div>
+            <figcaption><small>Our own test on a Samsung Galaxy S23 Ultra. Older and cheaper phones are slower.</small></figcaption>
+          </figure>
+        </li>
+        <li class="step">
+          <span class="step-n" aria-hidden="true"><span>3</span></span>
+          <div class="step-body"><h3>Read, fix and export</h3><p>The transcript has timestamps and follows the audio as it plays. Tap a word to jump to that moment, fix mistakes, search the text and sort recordings into folders.</p><ul><li class="chip">TXT</li><li class="chip">SRT</li><li class="chip">VTT</li><li class="chip">Copy</li><li class="chip">Share</li></ul></div>
+          <div class="phone"><img src="img/screens/en/03.webp" width="720" height="1400" alt="The recordings list with search, folders, durations and the first line of each transcript." loading="lazy" decoding="async"></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section band" id="privacy" aria-labelledby="priv-h">
+    <div class="wrap">
+      <h2 id="priv-h">What stays on the phone, and the three times it goes online</h2>
+      <p class="intro">There is no account and no server of ours in the picture. You can check every line below in the privacy policy.</p>
+      <div class="split">
+        <div><h3>Stays on the phone</h3><ul class="stay"><li>Your recordings and imported files</li><li>Transcripts and your edits</li><li>Notes, folders and search</li></ul></div>
+        <div><h3>Goes online, and why</h3><ul class="online"><li><span class="tag ink-yellow"><span>Model</span></span><p>Downloading the speech model, once.<small>From huggingface.co and github.com.</small></p></li><li><span class="tag ink-pink"><span>Ads</span></span><p>Showing ads, including the optional ad that adds 3 minutes.<small>Google AdMob. In the EEA, UK and Switzerland you choose in Google’s consent form.</small></p></li><li><span class="tag ink-blue"><span>Purchases</span></span><p>Buying minute packs or Pro.<small>Google Play. We never see your payment details.</small></p></li></ul></div>
+      </div>
+      <p class="after">No analytics, no crash reporting, nothing sold. Details in the <a href="privacy/">privacy policy</a>.</p>
+    </div>
+  </section>
+
+  <section class="section" id="languages" aria-labelledby="lang-h">
+    <div class="wrap">
+      <h2 id="lang-h">Speech to text in 24 European languages</h2>
+      <p class="intro">The main model, NVIDIA Parakeet TDT 0.6B v3, understands these languages:</p>
+      <ul class="langs"><li>Bulgarian</li><li>Croatian</li><li>Czech</li><li>Danish</li><li>Dutch</li><li><span class="hl">English</span></li><li>Estonian</li><li>Finnish</li><li>French</li><li>German</li><li>Greek</li><li>Hungarian</li><li>Italian</li><li>Latvian</li><li>Lithuanian</li><li>Maltese</li><li>Polish</li><li>Portuguese</li><li>Romanian</li><li>Slovak</li><li>Slovenian</li><li>Spanish</li><li>Swedish</li><li>Ukrainian</li></ul>
+      <p class="note">An optional second model adds more languages. It runs on the same phone and is slower.</p>
+    </div>
+  </section>
+
+  <section class="section" id="pricing" aria-labelledby="price-h">
+    <div class="wrap">
+      <h2 id="price-h">What it costs, before you start</h2>
+      <p class="intro">Installing is free. You pay only for minutes beyond the free part, and you see what a recording needs before you transcribe it.</p>
+      <div class="price-grid">
+        <div>
+          <figure class="cost" style="margin:0">
+            <figcaption class="cost-cap">Example: a 10-minute recording</figcaption>
+            <div class="cost-track">
+              <div><div class="seg ink-yellow"></div><p class="lbl"><b>0:00–2:00</b>Free. The first 2 minutes of every recording.</p></div>
+              <div><div class="seg ink-green"></div><p class="lbl"><b>2:00–10:00</b>Your minutes: from short ads or minute packs.</p></div>
+            </div>
+            <div class="cost-pro"><div class="seg"></div><p class="lbl">With Pro, the whole recording is covered, however long.</p></div>
+          </figure>
+          <dl class="ledger"><div><dt><i class="ink-yellow" aria-hidden="true"></i>Free part</dt><dd>The first 2 minutes of every recording. No ad needed.</dd></div><div><dt><i class="ink-green" aria-hidden="true"></i>A short ad</dt><dd>Watch one to add 3 minutes. If an ad fails to load, nothing is blocked.</dd></div><div><dt><i class="ink-green" aria-hidden="true"></i>Minute packs</dt><dd>60, 180 or 600 minutes. They never expire.</dd></div><div><dt><i class="ink-violet" aria-hidden="true"></i>Pro</dt><dd>Unlimited minutes. Monthly, yearly, or a one-time purchase.</dd></div></dl>
+          <p class="fine">Prices are shown by Google Play in your currency before you confirm. Subscriptions renew until you cancel them in Google Play. If a recording needs more minutes than you have, the app transcribes the free part and tells you exactly how many minutes are missing.</p>
+        </div>
+        <div class="phone"><img src="img/screens/en/04.webp" width="720" height="1400" alt="A recording longer than the free part: the bar shows the free part in yellow and, in grey, what would need minutes from your balance." loading="lazy" decoding="async"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <h2 id="faq-h">Questions people ask first</h2>
+      <div class="faq"><details><summary>Are my recordings uploaded anywhere?</summary><div class="a"><p>No. Recordings, transcripts and notes stay in the app’s private storage on your phone. The app goes online only to download the speech model, to show ads and for purchases through Google Play.</p></div></details><details><summary>Does it work without internet?</summary><div class="a"><p>Yes, once the speech model is downloaded. Transcription itself needs no connection. Watching an ad for extra minutes and buying something do need one.</p></div></details><details><summary>How long does transcription take?</summary><div class="a"><p>On a Samsung Galaxy S23 Ultra, a one-hour recording took about 8 minutes in our own test. Older and cheaper phones are slower. You can leave the app; the job continues in the background with a progress notification.</p></div></details><details><summary>How accurate is it?</summary><div class="a"><p>It depends on the audio: quality, accents and background noise all matter. We do not publish accuracy figures. Check important transcripts before you rely on them; you can fix any word in the app while listening.</p></div></details><details><summary>What is free, and what costs money?</summary><div class="a"><p>The first 2 minutes of every recording are free. For more, watch a short ad (+3 minutes), buy a minute pack that never expires, or get Pro for unlimited minutes.</p></div></details><details><summary>How big is the download?</summary><div class="a"><p>The speech model is a one-time download of 671 MB. The app shows the size before it starts. Use Wi-Fi if your mobile data is limited.</p></div></details><details><summary>How do I delete my data?</summary><div class="a"><p>Delete recordings in the app, or uninstall the app to remove everything it stored. The speech models can be deleted in Settings.</p></div></details></div>
+      <p class="more"><a href="support/">More answers and contact on the support page</a></p>
+    </div>
+  </section>
+
+  <section class="close" aria-labelledby="close-h">
+    <div class="wrap">
+      <img src="img/icon-96.png" width="88" height="88" alt="" loading="lazy">
+      <div><h2 id="close-h">Try it on your next recording</h2><p class="cta-note" style="margin-top:10px">No account to create. The first 2 minutes of every recording are free.</p></div>
+      <div class="cta">
+      <div data-cta data-live="Get it on Google Play"><span class="btn btn-soon" aria-disabled="true"><span class="dot" aria-hidden="true"></span>Coming soon on Google Play</span></div>
+      <p class="cta-note"><a data-soon-only href="mailto:SnoochieSoft@proton.me?subject=Offline%20Audio%20Transcriber%3A%20tell%20me%20when%20it%20is%20on%20Google%20Play">Tell me when it’s out</a></p>
+    </div>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="who">
+      <p><strong>Offline Audio Transcriber</strong></p>
+      <p>Made by Snoochie Soft, Bydgoszcz, Poland.</p>
+      <p><a href="mailto:SnoochieSoft@proton.me">SnoochieSoft@proton.me</a></p>
+    </div>
+    <nav aria-labelledby="f-pages"><h2 id="f-pages">Pages</h2><ul><li><a href="./" aria-current="page">Home</a></li><li><a href="support/">Support</a></li><li><a href="privacy/">Privacy policy</a></li><li><a href="terms/">Terms of use</a></li><li><a href="licenses/">Licenses</a></li></ul></nav>
+    <nav aria-labelledby="f-langs"><h2 id="f-langs">Language</h2><ul><li><a href="./" hreflang="en" lang="en" aria-current="page">English</a></li><li><a href="pl/" hreflang="pl" lang="pl">Polski</a></li><li><a href="de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="fr/" hreflang="fr" lang="fr">Français</a></li><li><a href="es/" hreflang="es" lang="es">Español</a></li><li><a href="pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li></ul></nav>
+  </div>
+</footer>
+</body>
+</html>
