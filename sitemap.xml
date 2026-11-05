@@ -2,26 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://snoochie-soft.github.io/</loc>
-    <lastmod>2026-10-13</lastmod>
+    <lastmod>2026-11-05</lastmod>
   </url>
   <url>
     <loc>https://snoochie-soft.github.io/szybciej-sie-nie-da/</loc>
-    <lastmod>2026-10-13</lastmod>
+    <lastmod>2026-11-05</lastmod>
   </url>
   <url>
     <loc>https://snoochie-soft.github.io/mossy/</loc>
-    <lastmod>2026-10-13</lastmod>
-  </url>
-  <url>
-    <loc>https://snoochie-soft.github.io/mossy/privacy/</loc>
-    <lastmod>2026-10-13</lastmod>
+    <lastmod>2026-11-05</lastmod>
   </url>
   <url>
     <loc>https://snoochie-soft.github.io/fakechat/</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://snoochie-soft.github.io/loopclass/</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://snoochie-soft.github.io/audio-transcriber/</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://snoochie-soft.github.io/christian-pray/</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://snoochie-soft.github.io/mossy/privacy/</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://snoochie-soft.github.io/mossy/terms/</loc>
+    <lastmod>2026-11-05</lastmod>
   </url>
   <url>
     <loc>https://snoochie-soft.github.io/fakechat/privacy/</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://snoochie-soft.github.io/fakechat/terms/</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://snoochie-soft.github.io/loopclass/privacy/</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://snoochie-soft.github.io/loopclass/terms/</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://snoochie-soft.github.io/szybciej-sie-nie-da/terms/</loc>
+    <lastmod>2026-11-05</lastmod>
   </url>
 </urlset>

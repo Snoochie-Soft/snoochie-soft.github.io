@@ -1,0 +1,340 @@
+{
+  "meta": {
+    "lang": "en",
+    "ogLocale": "en_US",
+    "nameNative": "English",
+    "short": "EN"
+  },
+  "site": {
+    "studio": "Snoochie Soft",
+    "brandSub": "Independent Android studio",
+    "tagline": "Small apps, made properly.",
+    "homeLabel": "Snoochie Soft, home",
+    "skip": "Skip to content",
+    "navLabel": "Main",
+    "nav": { "catalogue": "Catalogue", "rules": "House rules", "contact": "Contact" },
+    "langButton": "Language",
+    "langMenu": "Choose a language",
+    "theme": { "auto": "Theme: automatic (follows your device)", "light": "Theme: light", "dark": "Theme: dark", "autoShort": "Auto", "lightShort": "Light", "darkShort": "Dark" },
+    "playAlt": "Get {name} on Google Play",
+    "appPage": "App page",
+    "appPageLabel": "{name}, app page",
+    "inPolish": "in Polish",
+    "footer": {
+      "releases": "Releases",
+      "releasesLabel": "App pages and legal pages",
+      "language": "Language",
+      "contact": "Contact",
+      "place": "Bydgoszcz, Poland",
+      "copyright": "© 2026 Snoochie Soft",
+      "line": "Android apps on Google Play"
+    },
+    "legal": {
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "regulamin": "Terms on Google Sites",
+      "deletion": "Delete account and data",
+      "support": "Support",
+      "licenses": "Licences"
+    }
+  },
+  "home": {
+    "title": "Snoochie Soft: small Android apps, made properly",
+    "description": "Snoochie Soft is a tiny independent studio publishing Android apps on Google Play: Szybciej Się Nie Da, Mossy, Fake Chat Maker, Loopclass, Offline Audio Transcriber and Christian Pray Everyday.",
+    "ogAlt": "Snoochie Soft: small apps, made properly. Six numbered app covers, SNS-001 to SNS-006, on a chartreuse ground.",
+    "h1": "Small apps, made properly.",
+    "lede": "A tiny independent studio putting out Android apps on Google Play, one numbered release at a time.",
+    "deskLabel": "Selected app",
+    "flipToCover": "Show cover",
+    "flipToScreens": "Show screens",
+    "sideA": "Side A · what it does",
+    "sideB": "Side B · how it behaves",
+    "tracksLabel": "Track list",
+    "credits": "{no} · Android · Google Play",
+    "madeBy": "Made by Snoochie Soft",
+    "crateTitle": "All apps",
+    "crateHint": "Pick an app to see its screens. Arrow keys move through the list.",
+    "sleeveLabel": "{no}, {name}. Show its screens",
+    "onDesk": "Selected",
+    "deskStatus": "{no}, {name}, selected",
+    "rackLabel": "All apps",
+    "ribbonLabel": "Catalogue numbers",
+    "ribbonTitle": "Catalogue",
+    "prev": "Scroll to earlier apps",
+    "next": "Scroll to later apps",
+    "nextSlotTitle": "Next release",
+    "nextSlotText": "Number reserved",
+    "nextSlotLabel": "{no}, reserved for the next release",
+    "catTitle": "The catalogue",
+    "catSub": "Every app gets the next number and keeps it. The sheet grows as releases come out, and the next line is already ruled.",
+    "catCols": { "no": "No.", "release": "Release", "kind": "What it is", "links": "Links" },
+    "catOpen": "Reserved for the next release.",
+    "rulesTitle": "House rules",
+    "rulesSub": "Three promises we press into our releases. Each app page lists the ones it keeps, in its own words.",
+    "rules": [
+      { "h": "No account", "p": "Open the app and use it. No sign-up wall and nothing to log in to before you can try it." },
+      { "h": "Works offline", "p": "Notes, games and recordings stay on your phone and keep working on a plane, on a train or with the Wi-Fi off." },
+      { "h": "Honest pricing", "p": "What an app costs is shown before you pay. No surprise walls, no guilt trips, no shaming." }
+    ],
+    "contactTitle": "Write to the studio",
+    "contactText": "Bug reports, partnerships, press, or a feature you are missing. One inbox, read by the people who build the apps.",
+    "contactAddressLabel": "E-mail address",
+    "contactMailto": "Write an e-mail",
+    "contactCopy": "Copy address",
+    "contactCopied": "Address copied.",
+    "contactPlace": "Snoochie Soft, Bydgoszcz, Poland"
+  },
+  "app": {
+    "sideA": "Side A",
+    "sideAName": "What it does",
+    "sideB": "Side B",
+    "sideBName": "How it behaves",
+    "sideAHeading": "Side A: what it does",
+    "sideBHeading": "Side B: how it behaves",
+    "privacyNear": "Read the privacy policy",
+    "screensTitle": "Three screens from the app",
+    "notesTitle": "Liner notes",
+    "smallPrint": "Small print",
+    "creditsTitle": "Credits",
+    "creditRows": { "no": "Catalogue no.", "platform": "Platform", "package": "Package", "studio": "Studio", "languages": "App language" },
+    "platform": "Android, on Google Play",
+    "legalTitle": "Legal and support",
+    "legalNone": "The privacy policy and terms are linked in the Google Play listing. They will be added to this page when they are hosted here.",
+    "otherLanguages": "This page is also available in",
+    "relatedTitle": "More apps from the studio",
+    "relatedLabel": "Other releases",
+    "stampsLabel": "Pressed into this release",
+    "backToCatalogue": "Back to the catalogue"
+  },
+  "apps": {
+    "ssnd": {
+      "name": "Szybciej Się Nie Da",
+      "short": "Szybciej",
+      "spine": "Szybciej",
+      "storeName": "Angielski bez gramatyki 50 dni",
+      "kind": "English words for Polish speakers",
+      "line": "English without grammar for Polish speakers: the 500 most common words in 50 days, 10 a day.",
+      "title": "Szybciej Się Nie Da: 500 English words in 50 days, for Polish speakers",
+      "description": "An Android app that teaches Polish speakers the 500 most common English words, 10 a day for 50 days, without grammar rules. App UI in Polish, no account, works offline.",
+      "languageNote": "The app is in Polish: it is made for Polish speakers learning English.",
+      "appLanguage": "Polish",
+      "sticker": "No account",
+      "stamps": ["No account", "Works offline", "14 days without ads"],
+      "sideA": [
+        "The 500 most common English words, 10 new ones a day for 50 days",
+        "Every word with a recorded voice and an example sentence",
+        "Reviews come back just as you start to forget a word",
+        "Six ways to practise: flashcards, quiz, matching pairs, listening, typing and a hands-free voice mode",
+        "A streak with one grace day, XP, levels and badges"
+      ],
+      "sideB": [
+        "No account needed. Google sign-in only if you want to sync devices",
+        "Works offline",
+        "No ads for the first 14 days, then ads only with your consent",
+        "All 500 words are free. Premium adds pace (20 or 30 a day), the wider dictionary and no ads",
+        "Dark mode, larger text, screen reader support and vibration as an extra cue"
+      ],
+      "notes": [
+        "Why 500 words: counted on 735 million words of film and TV dialogue, the 500 most common words make up 79.5% of what is said. The first 100 alone cover 64%.",
+        "The sources and the method are in the app, on a screen of their own."
+      ],
+      "fine": "Prices are shown in Google Play before you buy. Monthly and yearly Premium start with 7 days free; there is also a one-time purchase.",
+      "screens": [
+        { "caption": "Flashcard", "alt": "Flashcard in the app: the English word “of”, labelled as a preposition in Polish, with a Listen button." },
+        { "caption": "Quiz", "alt": "Quiz: the English word “be” with four Polish translations to choose from; the correct one, “być”, is marked and earns 10 XP." },
+        { "caption": "Progress", "alt": "Statistics screen: the share of everyday speech you already recognise, level and XP, the streak of days in a row and the number of words learned." }
+      ]
+    },
+    "mossy": {
+      "name": "Mossy",
+      "short": "Mossy",
+      "storeName": "Mossy: ADHD Games for Adults",
+      "kind": "Cosy games for focus and calm",
+      "line": "Your brain isn't broken. It just has 47 tabs open. Sixteen cosy mini-games for adults with ADHD, 1 to 3 minutes a round.",
+      "title": "Mossy: cosy ADHD games for adults. Offline, no ads",
+      "description": "Mossy is 16 tiny, cosy games for focus and calm, made for adult ADHD brains. 1 to 3 minutes a round, 6 games free forever, works offline, no ads, no account, no subscription.",
+      "appLanguage": "English",
+      "sticker": "Offline · no ads",
+      "stamps": ["Works offline", "No ads", "No account"],
+      "sideA": [
+        "16 tiny games, 1 to 3 minutes a round",
+        "Learn any game in about 10 seconds",
+        "Games adapt quietly, so they stay just challenging enough",
+        "Today's Mix: three games picked for you each day",
+        "Music generated as you play, so it never loops the same ten notes",
+        "A little forest garden grows as you play"
+      ],
+      "sideB": [
+        "6 games free, forever. Try each locked game once, free",
+        "Full Unlock: all 16 games for one payment, no subscription",
+        "Works offline. No ads, no account, no tracking",
+        "No streaks to lose and no shame screens",
+        "Reduced motion, colour-blind mode and adjustable haptics"
+      ],
+      "notes": [
+        "Moss doesn't die when you forget it. It just waits. Show up when you can; your garden will still be there.",
+        "Your scores, badges and garden are saved only on your phone. The one outside party is Google Play, which handles the Full Unlock purchase."
+      ],
+      "fine": "Mossy is a set of games for focus and relaxation. It isn't a medical device and doesn't diagnose, treat or cure any condition.",
+      "screens": [
+        { "caption": "The forest", "alt": "Mossy home screen: Mo floats above two wooden shelves in a night forest. Each shelf holds potted plants labelled Tab Storm, Time Blind, Pour Decisions, Impulse Gate, Squirrel! and Where Did I Put It?" },
+        { "caption": "Time Blind", "alt": "Time Blind: Hold for 3 s. A round orb fills with blue as you hold it, showing 1.7 s." },
+        { "caption": "Brain Dump Sorter", "alt": "Brain Dump Sorter: floating thoughts such as Feed the cat, Doctor at 3 and Reply today drift down to three drawers: Now, Later and Let go." }
+      ]
+    },
+    "fakechat": {
+      "name": "Fake Chat Maker & Text Message",
+      "short": "Fake Chat Maker",
+      "spine": "Fake Chat",
+      "storeName": "Fake Chat Maker & Text Message",
+      "kind": "Fake chats for jokes and stories",
+      "line": "Write a fake text conversation for a joke or a story, style it and save it as a picture. Made for fun only.",
+      "title": "Fake Chat Maker & Text Message: fake chats for jokes and stories",
+      "description": "Make a fake text conversation, style it and save it as a picture. Three chat styles, your own background, no account, works offline. For fun only. Android app by Snoochie Soft.",
+      "appLanguage": "English",
+      "sticker": "No account · works offline",
+      "stamps": ["No account", "Works offline", "No message limits"],
+      "sideA": [
+        "Write both sides of a chat. Tap a bubble to edit it, long press to switch the sender",
+        "Change the time and the delivered or read ticks",
+        "Drag to reorder messages, undo and redo any change",
+        "Three chat styles and your own background: colour, gradient or a photo",
+        "Save the chat as a picture and share it, or back it up to a file"
+      ],
+      "sideB": [
+        "No account, no sign-in, works offline",
+        "No limit on chats or messages in the free version",
+        "Ads never appear while you type or edit",
+        "One small purchase removes the ads and the watermark for good",
+        "Sends no real messages and connects to no messaging service"
+      ],
+      "notes": [
+        "Good for a prank on your friends, a story post, or a mock-up for a video, a school project or a presentation."
+      ],
+      "fine": "For fun and creative storytelling only. Not affiliated with, endorsed by or connected to any messaging app or company. Please do not use screenshots to deceive, harass or harm anyone.",
+      "screens": [
+        { "caption": "Write", "alt": "Chat editor with a conversation with Mom: her messages in purple, the replies in orange, Me and Them buttons and a message field at the bottom." },
+        { "caption": "Style", "alt": "Style panel: three chat styles, Ink, Riso and Mono, a grid of background colours and a row of avatar colours." },
+        { "caption": "Your chats", "alt": "Your fakes: four saved chats shown as cards, Mom, Sam, Coach Dana and Landlord, with a New fake button at the bottom." }
+      ]
+    },
+    "loopclass": {
+      "name": "Loopclass",
+      "short": "Loopclass",
+      "storeName": "Loopclass: Class Schedule App",
+      "kind": "School timetable, homework and grades",
+      "line": "Your timetable, homework, exams and grades in one planner, with widgets and reminders. Works without an account and without internet.",
+      "title": "Loopclass: class schedule, homework and grades planner for Android",
+      "description": "Loopclass keeps your school timetable, homework, exams and grades in one planner, with widgets and reminders. No account, works offline, optional backup to your own Google Drive.",
+      "appLanguage": "47 languages",
+      "sticker": "No account · offline",
+      "stamps": ["No account", "Works offline", "No subscription"],
+      "sideA": [
+        "A weekly timetable with rooms, teachers and A/B weeks",
+        "Homework and exams with several reminders each",
+        "Grades with weights, averages and GPA: percent, letters A–F or the Polish 1–6 scale",
+        "Home screen widgets: your next class with a countdown, and your open tasks",
+        "Today's ring closes when every task due today is done"
+      ],
+      "sideB": [
+        "No account and no internet needed",
+        "Optional backup to your own private Google Drive folder",
+        "No server of ours: your planner stays on your device",
+        "Every planner feature is free, with one small banner ad",
+        "A one-time Premium purchase removes the ad. No subscription"
+      ],
+      "notes": [
+        "Overdue tasks get a calm label, never a red counter. Every effect has its own switch, plus Minimum and Maximum presets.",
+        "Reminders are scheduled again after a restart, and class times stay put when you change time zones."
+      ],
+      "fine": "Made for high school and college students (13+). Ads are served by Google AdMob.",
+      "screens": [
+        { "caption": "Week", "alt": "Week view for Tuesday 13 October: Mathematics done, Biology marked Now, then History and English with times and rooms, and a Problem set 4 task due at 6 PM." },
+        { "caption": "Today, dark theme", "alt": "Today in the dark theme: the current Biology class, the next classes and a Due soon list with an essay overdue by two days." },
+        { "caption": "Tasks", "alt": "Tasks: an essay to catch up on and upcoming items, including a high priority physics exam in 3 days." }
+      ]
+    },
+    "transcriber": {
+      "name": "Offline Audio Transcriber",
+      "short": "Audio Transcriber",
+      "spine": "Audio",
+      "storeName": "Offline Audio Transcriber",
+      "kind": "Speech to text on your phone",
+      "line": "Turn voice notes, lectures, interviews and any MP3 or video file into text on your Android phone. Nothing is uploaded.",
+      "title": "Offline Audio Transcriber for Android: speech to text, no upload",
+      "description": "Turn recordings, MP3 and video files into text on your Android phone. Offline transcription in 24 languages, no account, nothing uploaded.",
+      "appLanguage": "English and other languages",
+      "sticker": "Offline · nothing uploaded",
+      "stamps": ["No account", "Nothing uploaded", "Works offline"],
+      "sideA": [
+        "Record, or import MP3, M4A, WAV, OGG, MP4 and other audio and video files",
+        "A timestamped transcript that follows the audio. Tap a word to jump there",
+        "Fix mistakes, search the text and sort recordings into folders",
+        "Export TXT, SRT or VTT, copy or share",
+        "24 European languages with the main model; an optional second model adds more"
+      ],
+      "sideB": [
+        "No account and no server of ours",
+        "Works offline once the 671 MB speech model is on the phone",
+        "Goes online only for the model download, ads and Google Play purchases",
+        "The first 2 minutes of every recording are free; a short ad adds 3 minutes",
+        "Minute packs never expire; Pro gives unlimited minutes"
+      ],
+      "notes": [
+        "On a Samsung Galaxy S23 Ultra a one-hour recording took about 8 minutes in our own test. Older and cheaper phones are slower, and long jobs keep running in the background.",
+        "No analytics, no crash reporting, nothing sold."
+      ],
+      "fine": "Accuracy depends on audio quality, accents and background noise. Check important transcripts before you rely on them. The main speech model, NVIDIA Parakeet TDT 0.6B v3, is licensed under CC BY 4.0.",
+      "screens": [
+        { "caption": "Transcript", "alt": "The transcript screen: timestamped lines, the word being played is highlighted, player controls at the bottom." },
+        { "caption": "Recorder", "alt": "The recorder: running time, live waveform and how much of the free part is left." },
+        { "caption": "Recordings", "alt": "The recordings list with search, folders, durations and the first line of each transcript." }
+      ]
+    },
+    "christianpray": {
+      "name": "Christian Pray Everyday",
+      "short": "Christian Pray",
+      "spine": "Pray",
+      "storeName": "Christian Pray Everyday: Bible",
+      "kind": "Daily Bible verse and prayer",
+      "line": "A daily Bible verse read aloud, 25 recorded prayers and 215 Bible stories. A quiet place to begin and end your day.",
+      "title": "Christian Pray Everyday: daily Bible verse, prayers and stories",
+      "description": "A daily Bible verse read aloud, 25 recorded prayers and 215 Bible stories, with the church year and a home screen widget. Android app by Snoochie Soft.",
+      "appLanguage": "English",
+      "sticker": "No ads",
+      "stamps": ["No ads", "Verse of the day free"],
+      "sideA": [
+        "One verse each day, read aloud, with a painted picture behind it",
+        "More than 13,000 verses and four natural voices to choose from",
+        "25 recorded prayers: press play and pray along",
+        "215 Bible stories, from Creation to Paul's last journey",
+        "Scripture for more than 1,100 topics, from grief to grace",
+        "The church year, feast by feast (US calendar), and a verse widget"
+      ],
+      "sideB": [
+        "The verse of the day is free to hear, no subscription needed",
+        "66 stories free to read, three free to hear",
+        "Premium: weekly, monthly or yearly, renewing until you cancel it in Google Play",
+        "Saved verses, prayers and your streak live in your own Google account backup, not on our servers",
+        "No ads"
+      ],
+      "notes": [
+        "Everything is set in one calm book that hangs in the sky, page by page.",
+        "Premium members can share one prayer intention a day. Every intention is read by a person before anyone else sees it."
+      ],
+      "fine": "Premium opens every voice, every story and every topic. Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period.",
+      "screens": [
+        { "caption": "Today", "alt": "Today screen for Friday, September 25: a painted picture of a spilled clay jar of grain above the verse Matthew 13:24, with Listen, save and share buttons." },
+        { "caption": "Verses", "alt": "Verse 4 of 13,111: Proverbs 31:25, “Strength and dignity are her clothing”, over a city at dusk, with Previous, share and Next buttons." },
+        { "caption": "Prayers", "alt": "Pray screen: 25 prayers read aloud, a weekly tracker with 5 prayers said and 3 minutes in prayer, and cards for Our Father, Hail Mary, Glory Be and the Apostles Creed." }
+      ]
+    }
+  },
+  "notFound": {
+    "title": "Page not found · Snoochie Soft",
+    "h1": "This page is not in the catalogue.",
+    "p": "The page you are looking for does not exist or has moved. The catalogue has every release.",
+    "home": "Go to the catalogue",
+    "listTitle": "Releases"
+  }
+}

@@ -1,0 +1,355 @@
+{
+  "site": {
+    "origin": "https://snoochie-soft.github.io",
+    "email": "SnoochieSoft@proton.me",
+    "studioMark": "apple-touch-icon.png",
+    "nextNo": "SNS-007"
+  },
+  "languages": {
+    "en": {
+      "hreflang": "en",
+      "dir": "",
+      "native": "English"
+    },
+    "pl": {
+      "hreflang": "pl",
+      "dir": "pl",
+      "native": "Polski"
+    },
+    "de": {
+      "hreflang": "de",
+      "dir": "de",
+      "native": "Deutsch"
+    },
+    "es": {
+      "hreflang": "es",
+      "dir": "es",
+      "native": "Español"
+    },
+    "ja": {
+      "hreflang": "ja",
+      "dir": "ja",
+      "native": "日本語"
+    },
+    "pt-BR": {
+      "hreflang": "pt-BR",
+      "dir": "pt-br",
+      "native": "Português (Brasil)"
+    },
+    "fr": {
+      "hreflang": "fr",
+      "dir": "fr",
+      "native": "Français"
+    },
+    "ko": {
+      "hreflang": "ko",
+      "dir": "ko",
+      "native": "한국어"
+    },
+    "id": {
+      "hreflang": "id",
+      "dir": "id",
+      "native": "Bahasa Indonesia"
+    }
+  },
+  "playBadge": {
+    "en": "img/badges/play-en.png",
+    "pl": "img/badges/play-pl.png",
+    "de": "img/badges/play-de.png",
+    "es": "img/badges/play-es-419.png",
+    "fr": "img/badges/play-fr.png",
+    "pt-BR": "img/badges/play-pt-br.png"
+  },
+  "apps": [
+    {
+      "id": "ssnd",
+      "no": "SNS-001",
+      "slug": "szybciej-sie-nie-da",
+      "package": "pl.snoochiesoft.szybciej",
+      "play": "https://play.google.com/store/apps/details?id=pl.snoochiesoft.szybciej",
+      "icon": "szybciej-sie-nie-da/img/icon-192.png",
+      "category": "EducationalApplication",
+      "inLanguage": "pl",
+      "contentRating": "PEGI 3",
+      "colors": {
+        "c1": "#1f5a2b",
+        "c2": "#e9ffb0",
+        "c3": "#c9f23a"
+      },
+      "motif": "days",
+      "screens": [
+        {
+          "src": "szybciej-sie-nie-da/img/fiszka-przod.webp",
+          "w": 600,
+          "h": 1157
+        },
+        {
+          "src": "szybciej-sie-nie-da/img/quiz.webp",
+          "w": 600,
+          "h": 1157
+        },
+        {
+          "src": "szybciej-sie-nie-da/img/statystyki.webp",
+          "w": 600,
+          "h": 1333
+        }
+      ],
+      "legal": [
+        {
+          "key": "privacy",
+          "href": "https://sites.google.com/view/szybciejsienieda/polityka-prywatnosci",
+          "hreflang": "pl"
+        },
+        {
+          "key": "terms",
+          "href": "szybciej-sie-nie-da/terms/",
+          "hreflang": "pl"
+        },
+        {
+          "key": "regulamin",
+          "href": "https://sites.google.com/view/szybciejsienieda/regulamin",
+          "hreflang": "pl"
+        },
+        {
+          "key": "deletion",
+          "href": "https://sites.google.com/view/szybciejsienieda/usuwanie-konta",
+          "hreflang": "pl"
+        }
+      ]
+    },
+    {
+      "id": "mossy",
+      "no": "SNS-002",
+      "slug": "mossy",
+      "package": "com.mossyapp.mossy",
+      "play": "https://play.google.com/store/apps/details?id=com.mossyapp.mossy",
+      "icon": "mossy/img/icon-192.png",
+      "category": "GameApplication",
+      "inLanguage": "en",
+      "colors": {
+        "c1": "#46205c",
+        "c2": "#ffe3f0",
+        "c3": "#8fd34a"
+      },
+      "motif": "tabs",
+      "screens": [
+        {
+          "src": "mossy/img/shots/hub.webp",
+          "w": 640,
+          "h": 1156
+        },
+        {
+          "src": "mossy/img/shots/time-blind-holding.webp",
+          "w": 392,
+          "h": 700
+        },
+        {
+          "src": "mossy/img/shots/new-brain-paper.webp",
+          "w": 392,
+          "h": 700
+        }
+      ],
+      "legal": [
+        {
+          "key": "privacy",
+          "href": "mossy/privacy/"
+        },
+        {
+          "key": "terms",
+          "href": "mossy/terms/"
+        }
+      ]
+    },
+    {
+      "id": "fakechat",
+      "no": "SNS-003",
+      "slug": "fakechat",
+      "package": "pl.snoochiesoft.fakechat",
+      "play": "https://play.google.com/store/apps/details?id=pl.snoochiesoft.fakechat",
+      "icon": "fakechat/img/icon-192.png",
+      "category": "EntertainmentApplication",
+      "colors": {
+        "c1": "#c8341c",
+        "c2": "#fff4ee",
+        "c3": "#b9a8ff"
+      },
+      "motif": "bubbles",
+      "screens": [
+        {
+          "src": "fakechat/img/screen-editor.webp",
+          "w": 600,
+          "h": 1067
+        },
+        {
+          "src": "fakechat/img/screen-style.webp",
+          "w": 600,
+          "h": 1067
+        },
+        {
+          "src": "fakechat/img/screen-home.webp",
+          "w": 600,
+          "h": 1067
+        }
+      ],
+      "legal": [
+        {
+          "key": "privacy",
+          "href": "fakechat/privacy/"
+        },
+        {
+          "key": "terms",
+          "href": "fakechat/terms/"
+        }
+      ]
+    },
+    {
+      "id": "loopclass",
+      "no": "SNS-004",
+      "slug": "loopclass",
+      "package": "app.loopclass.planner",
+      "play": "https://play.google.com/store/apps/details?id=app.loopclass.planner",
+      "icon": "loopclass/img/icon-192.png",
+      "category": "EducationalApplication",
+      "colors": {
+        "c1": "#ffc21a",
+        "c2": "#1d1a2b",
+        "c3": "#1d1a2b"
+      },
+      "motif": "week",
+      "screens": [
+        {
+          "src": "loopclass/img/screen-week.webp",
+          "w": 600,
+          "h": 1200
+        },
+        {
+          "src": "loopclass/img/screen-today-dark.webp",
+          "w": 600,
+          "h": 1200
+        },
+        {
+          "src": "loopclass/img/screen-tasks.webp",
+          "w": 600,
+          "h": 1200
+        }
+      ],
+      "legal": [
+        {
+          "key": "privacy",
+          "href": "loopclass/privacy/"
+        },
+        {
+          "key": "terms",
+          "href": "loopclass/terms/"
+        }
+      ]
+    },
+    {
+      "id": "transcriber",
+      "no": "SNS-005",
+      "slug": "audio-transcriber",
+      "package": "pl.snoochiesoft.audiotranscriber",
+      "play": "https://play.google.com/store/apps/details?id=pl.snoochiesoft.audiotranscriber",
+      "icon": "audio-transcriber/img/icon-192.png",
+      "category": "ProductivityApplication",
+      "colors": {
+        "c1": "#17191f",
+        "c2": "#ffffff",
+        "c3": "#ffde4a"
+      },
+      "motif": "wave",
+      "screens": [
+        {
+          "src": "audio-transcriber/img/screens/en/01.webp",
+          "w": 720,
+          "h": 1400
+        },
+        {
+          "src": "audio-transcriber/img/screens/en/02.webp",
+          "w": 720,
+          "h": 1400
+        },
+        {
+          "src": "audio-transcriber/img/screens/en/03.webp",
+          "w": 720,
+          "h": 1400
+        }
+      ],
+      "legal": [
+        {
+          "key": "support",
+          "href": "audio-transcriber/support/"
+        },
+        {
+          "key": "privacy",
+          "href": "audio-transcriber/privacy/"
+        },
+        {
+          "key": "terms",
+          "href": "audio-transcriber/terms/"
+        },
+        {
+          "key": "licenses",
+          "href": "audio-transcriber/licenses/"
+        }
+      ],
+      "legacyAlternates": {
+        "pl": "audio-transcriber/pl/",
+        "de": "audio-transcriber/de/",
+        "fr": "audio-transcriber/fr/",
+        "es": "audio-transcriber/es/",
+        "pt-BR": "audio-transcriber/pt-br/"
+      }
+    },
+    {
+      "id": "christianpray",
+      "no": "SNS-006",
+      "slug": "christian-pray",
+      "package": "pl.snoochiesoft.christianpray",
+      "play": "https://play.google.com/store/apps/details?id=pl.snoochiesoft.christianpray",
+      "icon": "christian-pray/img/icon-192.png",
+      "colors": {
+        "c1": "#5ec8ef",
+        "c2": "#14233f",
+        "c3": "#ffe14a"
+      },
+      "motif": "dawn",
+      "screens": [
+        {
+          "src": "christian-pray/img/screen-today.webp",
+          "w": 600,
+          "h": 1200
+        },
+        {
+          "src": "christian-pray/img/screen-verses.webp",
+          "w": 600,
+          "h": 1200
+        },
+        {
+          "src": "christian-pray/img/screen-prayers.webp",
+          "w": 600,
+          "h": 1200
+        }
+      ],
+      "legal": [
+        {
+          "key": "privacy",
+          "href": "https://chili-logic.com/privacy-policy#android"
+        },
+        {
+          "key": "terms",
+          "href": "https://chili-logic.com/terms-of-use"
+        }
+      ]
+    }
+  ],
+  "sitemapExtra": [
+    "mossy/privacy/",
+    "mossy/terms/",
+    "fakechat/privacy/",
+    "fakechat/terms/",
+    "loopclass/privacy/",
+    "loopclass/terms/",
+    "szybciej-sie-nie-da/terms/"
+  ]
+}

@@ -1,170 +1,392 @@
 <!doctype html>
-<html lang="pl">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Snoochie Soft — małe aplikacje, zrobione porządnie</title>
-<meta name="description" content="Snoochie Soft to małe, niezależne studio aplikacji na Androida. Szybciej Się Nie Da: angielski bez gramatyki w 50 dni. Mossy: przytulne minigry dla dorosłych z ADHD.">
+<title>Snoochie Soft: small Android apps, made properly</title>
+<meta name="description" content="Snoochie Soft is a tiny independent studio publishing Android apps on Google Play: Szybciej Się Nie Da, Mossy, Fake Chat Maker, Loopclass, Offline Audio Transcriber and Christian Pray Everyday.">
 <link rel="canonical" href="https://snoochie-soft.github.io/">
-<meta name="theme-color" content="#F3EFE6" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
+<link rel="alternate" hreflang="en" href="https://snoochie-soft.github.io/">
+<link rel="alternate" hreflang="x-default" href="https://snoochie-soft.github.io/">
 <meta name="color-scheme" content="light dark">
-
-<meta property="og:type" content="website">
-<meta property="og:locale" content="pl_PL">
-<meta property="og:locale:alternate" content="en_US">
-<meta property="og:site_name" content="Snoochie Soft">
-<meta property="og:title" content="Snoochie Soft — małe aplikacje, zrobione porządnie">
-<meta property="og:description" content="Szybciej Się Nie Da: angielski bez gramatyki w 50 dni. Mossy: przytulne minigry dla dorosłych z ADHD. Android, bez konta.">
-<meta property="og:url" content="https://snoochie-soft.github.io/">
-<meta property="og:image" content="https://snoochie-soft.github.io/img/og.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Snoochie Soft. Małe aplikacje, zrobione porządnie. Ikony aplikacji Szybciej Się Nie Da i Mossy.">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://snoochie-soft.github.io/img/og.jpg">
-
+<meta name="theme-color" content="#d4f03c" media="(prefers-color-scheme: light)" data-light="#d4f03c" data-dark="#1b1e16">
+<meta name="theme-color" content="#1b1e16" media="(prefers-color-scheme: dark)" data-light="#d4f03c" data-dark="#1b1e16">
+<script>(function(){try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t);document.querySelectorAll('meta[name="theme-color"]').forEach(function(m){m.setAttribute("content",m.getAttribute("data-"+t))})}}catch(e){}})();</script>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/manrope-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/studio.css">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Snoochie Soft",
-  "url": "https://snoochie-soft.github.io/",
-  "email": "SnoochieSoft@proton.me",
-  "logo": "https://snoochie-soft.github.io/apple-touch-icon.png"
-}
-</script>
+<link rel="preload" href="fonts/unbounded-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/label.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Snoochie Soft">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Snoochie Soft: small Android apps, made properly">
+<meta property="og:description" content="Snoochie Soft is a tiny independent studio publishing Android apps on Google Play: Szybciej Się Nie Da, Mossy, Fake Chat Maker, Loopclass, Offline Audio Transcriber and Christian Pray Everyday.">
+<meta property="og:url" content="https://snoochie-soft.github.io/">
+<meta property="og:image" content="https://snoochie-soft.github.io/img/og/home-en.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Snoochie Soft: small apps, made properly. Six numbered app covers, SNS-001 to SNS-006, on a chartreuse ground.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://snoochie-soft.github.io/img/og/home-en.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Snoochie Soft","url":"https://snoochie-soft.github.io/","email":"SnoochieSoft@proton.me","logo":"https://snoochie-soft.github.io/apple-touch-icon.png","address":{"@type":"PostalAddress","addressLocality":"Bydgoszcz","addressCountry":"PL"}}</script>
+<script src="js/label.js" defer></script>
 </head>
-<body>
-<a class="skip" href="#aplikacje">Przejdź do treści</a>
-
-<header class="top wrap">
-  <a class="brand" href="./" aria-label="Snoochie Soft, strona główna">
-    <span class="brand-mark" aria-hidden="true">S<i></i></span>
-    <span>Snoochie Soft</span>
+<body class="home">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="brand" href="./" aria-label="Snoochie Soft, home">
+    <img src="apple-touch-icon.png" alt="" width="40" height="40">
+    <span><b>Snoochie Soft</b><small>Independent Android studio</small></span>
   </a>
-  <a class="top-link" href="#kontakt">Kontakt</a>
+  <nav class="mainnav" aria-label="Main">
+    <a href="#catalogue">Catalogue</a>
+    <a href="#rules">House rules</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="theme" type="button" data-theme-toggle data-auto="Theme: automatic (follows your device)" data-light="Theme: light" data-dark="Theme: dark" data-auto-short="Auto" data-light-short="Light" data-dark-short="Dark" aria-label="Theme: automatic (follows your device)" title="Theme: automatic (follows your device)" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="auto"><circle cx="12" cy="12" r="9"/><path d="M12 3v18a9 9 0 0 0 0-18z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="dark"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><span class="theme-label" aria-hidden="true">Auto</span></button>
+  
 </header>
-
-<main>
-
-<section class="apps wrap" id="aplikacje" aria-labelledby="apps-h">
-  <h1 id="apps-h" class="pitch">Małe aplikacje, zrobione porządnie. <span lang="en">Small apps, made properly.</span></h1>
-
-  <div class="cards">
-    <article class="card card-ssnd">
-      <div class="card-copy">
-        <img class="card-icon" src="szybciej-sie-nie-da/img/icon-96.png" width="96" height="96" alt="">
-        <p class="card-kicker">Nauka angielskiego · Android</p>
-        <h2><a class="card-link" href="szybciej-sie-nie-da/">Szybciej Się Nie&nbsp;Da</a></h2>
-        <p class="card-line">Angielski bez gramatyki: 500 najczęstszych słów w&nbsp;50&nbsp;dni. Po 10 dziennie, bez zakładania konta.</p>
-        <a class="card-play" href="https://play.google.com/store/apps/details?id=pl.snoochiesoft.szybciej" rel="noopener"><img src="img/badges/play-pl.png" width="188" height="56" alt="Pobierz z Google Play" loading="lazy"></a>
-        <span class="card-go" aria-hidden="true">Zobacz aplikację</span>
+<main id="main">
+  <section class="front" aria-labelledby="h1">
+    <div class="intro">
+      <h1 id="h1">Small apps, made properly.</h1>
+      <p class="lede">A tiny independent studio putting out Android apps on Google Play, one numbered release at a time.</p>
+      <p class="vh" id="deskStatus" role="status"></p>
+      <div class="now" id="now">
+        <h2 class="now-title">Szybciej Się Nie Da</h2>
+        <p class="meta"><span class="catno">SNS-001</span><span>English words for Polish speakers</span></p>
+        <p class="line">English without grammar for Polish speakers: the 500 most common words in 50 days, 10 a day.</p>
+        <div class="actions">
+          <a class="play" href="https://play.google.com/store/apps/details?id=pl.snoochiesoft.szybciej" rel="noopener"><img src="img/badges/play-en.png" alt="Get Szybciej Się Nie Da on Google Play" width="188" height="56"></a>
+          <a class="pagelink" href="szybciej-sie-nie-da/" aria-label="Szybciej Się Nie Da, app page">App page<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><button class="flipbtn" type="button" id="flip" aria-controls="sleeve3d" hidden title="Show cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12a8 8 0 0 1 14-5.3M20 4v5h-5M20 12a8 8 0 0 1-14 5.3M4 20v-5h5"/></svg><span class="vh" id="flipLabel" data-cover="Show cover" data-screens="Show screens">Show cover</span></button>
+        </div>
       </div>
-      <div class="card-art" aria-hidden="true">
-        <div class="ssnd-sticker"><b>50</b>dni</div>
-        <figure class="ssnd-phone"><img src="szybciej-sie-nie-da/img/fiszka-przod.webp" width="600" height="1157" alt="" loading="eager"></figure>
-      </div>
-    </article>
+    </div>
 
-    <article class="card card-mossy">
-      <div class="card-copy">
-        <img class="card-icon" src="mossy/img/icon-192.webp" width="96" height="96" alt="">
-        <p class="card-kicker">Gry na skupienie i spokój · Android</p>
-        <h2><a class="card-link" href="mossy/">Mossy</a></h2>
-        <p class="card-line"><span lang="en" class="mossy-tag">Your brain isn't broken. It just has 47&nbsp;tabs open.</span> 16 przytulnych minigier dla dorosłych z ADHD. Offline, bez reklam, bez konta. Po angielsku.</p>
-        <a class="card-play" href="https://play.google.com/store/apps/details?id=com.mossyapp.mossy" rel="noopener"><img src="img/badges/play-pl.png" width="188" height="56" alt="Pobierz z Google Play" loading="lazy"></a>
-        <span class="card-go" aria-hidden="true">Zobacz aplikację</span>
+    <div class="crate" role="region" aria-labelledby="crateTitle">
+      <div class="crate-head">
+        <h2 id="crateTitle">All apps</h2>
+        <p>Pick an app to see its screens. Arrow keys move through the list.</p>
       </div>
-      <div class="card-art" aria-hidden="true">
-        <img class="mossy-bg" src="mossy/img/forest-night.webp" width="820" height="1458" alt="">
-        <span class="fly" style="--x:18%;--y:30%;--d:-1s"></span>
-        <span class="fly" style="--x:72%;--y:18%;--d:-3s"></span>
-        <span class="fly" style="--x:40%;--y:62%;--d:-5s"></span>
-        <span class="fly" style="--x:86%;--y:48%;--d:-2s"></span>
-        <img class="mossy-mo" src="mossy/img/mo/mo-happy.webp" width="420" height="411" alt="">
+      <div class="crate-box" aria-hidden="true"></div>
+      <div class="rack" id="rack" role="group" aria-label="All apps">
+      <a class="slv" href="szybciej-sie-nie-da/" data-i="0" data-label="SNS-001, Szybciej Się Nie Da. Show its screens" aria-label="SNS-001, Szybciej Się Nie Da, app page" style="--c1:#1f5a2b;--c3:#c9f23a">
+        <img class="peek" src="szybciej-sie-nie-da/img/fiszka-przod.webp" alt="" width="600" height="1157" loading="lazy" decoding="async">
+        <span class="body"><span class="spine" aria-hidden="true">SNS-001 · Szybciej</span><div class="cover" style="--c1:#1f5a2b;--c2:#e9ffb0">
+    <div class="art"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect x="40" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="73" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="106" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="139" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="172" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="205" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="238" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="271" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="304" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="337" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="40" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="73" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="106" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="139" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="172" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="205" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="238" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="271" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="304" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="337" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="40" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="73" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="106" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="139" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="172" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="205" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="238" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="271" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="304" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="337" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="40" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="73" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="106" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="139" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="172" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="205" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="238" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="271" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="304" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="337" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="40" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="73" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="106" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="139" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="172" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="205" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="238" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="271" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="304" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="337" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><text x="34" y="300" font-family="Unbounded" font-weight="900" font-size="118" fill="#e9ffb0" letter-spacing="-8">500</text></svg></div>
+    <span class="cno">SNS-001</span>
+    <img class="ico" src="szybciej-sie-nie-da/img/icon-192.png" alt="" width="64" height="64" loading="lazy">
+    
+    <p class="ttl">Szybciej</p>
+  </div></span>
+        <span class="tag" aria-hidden="true">Selected</span>
+      </a>
+      <a class="slv" href="mossy/" data-i="1" data-label="SNS-002, Mossy. Show its screens" aria-label="SNS-002, Mossy, app page" style="--c1:#46205c;--c3:#8fd34a">
+        <img class="peek" src="mossy/img/shots/hub.webp" alt="" width="640" height="1156" loading="lazy" decoding="async">
+        <span class="body"><span class="spine" aria-hidden="true">SNS-002 · Mossy</span><div class="cover" style="--c1:#46205c;--c2:#ffe3f0">
+    <div class="art"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><path d="M36 102v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M78 102v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.48"/><path d="M120 102v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.61"/><path d="M162 102v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.74"/><path d="M204 102v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.87"/><path d="M246 102v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M288 102v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.48"/><path d="M330 102v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.61"/><path d="M36 132v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.74"/><path d="M78 132v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.87"/><path d="M120 132v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M162 132v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.48"/><path d="M204 132v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.61"/><path d="M246 132v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.74"/><path d="M288 132v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.87"/><path d="M330 132v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M36 162v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.48"/><path d="M78 162v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.61"/><path d="M120 162v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.74"/><path d="M162 162v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.87"/><path d="M204 162v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M246 162v-14q0-6 6-6h22q6 0 6 6v14z" fill="#ff7fb0" opacity="1"/><path d="M288 162v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.61"/><path d="M330 162v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.74"/><path d="M36 192v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.87"/><path d="M78 192v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M120 192v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.48"/><path d="M162 192v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.61"/><path d="M204 192v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.74"/><path d="M246 192v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.87"/><path d="M288 192v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M330 192v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.48"/><path d="M36 222v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.61"/><path d="M78 222v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.74"/><path d="M120 222v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.87"/><path d="M162 222v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M204 222v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.48"/><path d="M246 222v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.61"/><path d="M288 222v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.74"/><path d="M330 222v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.87"/><path d="M36 252v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M78 252v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.48"/><path d="M120 252v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.61"/><path d="M162 252v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.74"/><path d="M204 252v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.87"/><path d="M246 252v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M288 252v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.48"/><circle cx="320" cy="330" r="70" fill="#8fd34a" opacity=".9"/><circle cx="296" cy="318" r="9" fill="#2a1236"/><circle cx="338" cy="318" r="9" fill="#2a1236"/><path d="M300 344q18 14 36 0" stroke="#2a1236" stroke-width="6" fill="none" stroke-linecap="round"/></svg></div>
+    <span class="cno">SNS-002</span>
+    <img class="ico" src="mossy/img/icon-192.png" alt="" width="64" height="64" loading="lazy">
+    
+    <p class="ttl">Mossy</p>
+  </div></span>
+        <span class="tag" aria-hidden="true">Selected</span>
+      </a>
+      <a class="slv" href="fakechat/" data-i="2" data-label="SNS-003, Fake Chat Maker &amp; Text Message. Show its screens" aria-label="SNS-003, Fake Chat Maker &amp; Text Message, app page" style="--c1:#c8341c;--c3:#b9a8ff">
+        <img class="peek" src="fakechat/img/screen-editor.webp" alt="" width="600" height="1067" loading="lazy" decoding="async">
+        <span class="body"><span class="spine" aria-hidden="true">SNS-003 · Fake Chat</span><div class="cover" style="--c1:#c8341c;--c2:#fff4ee">
+    <div class="art"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect x="40" y="88" width="230" height="96" rx="26" fill="#b9a8ff"/><path d="M70 184l-6 34 40-34z" fill="#b9a8ff"/><rect x="64" y="118" width="150" height="12" rx="6" fill="#2b1f6b" opacity=".6"/><rect x="64" y="142" width="100" height="12" rx="6" fill="#2b1f6b" opacity=".6"/><rect x="150" y="206" width="214" height="80" rx="24" fill="#fff4ee"/><path d="M330 286l10 30-40-30z" fill="#fff4ee"/><rect x="174" y="234" width="120" height="12" rx="6" fill="#c8341c"/><rect x="174" y="256" width="70" height="10" rx="5" fill="#c8341c" opacity=".5"/></svg></div>
+    <span class="cno">SNS-003</span>
+    <img class="ico" src="fakechat/img/icon-192.png" alt="" width="64" height="64" loading="lazy">
+    
+    <p class="ttl">Fake Chat Maker</p>
+  </div></span>
+        <span class="tag" aria-hidden="true">Selected</span>
+      </a>
+      <a class="slv" href="loopclass/" data-i="3" data-label="SNS-004, Loopclass. Show its screens" aria-label="SNS-004, Loopclass, app page" style="--c1:#ffc21a;--c3:#1d1a2b">
+        <img class="peek" src="loopclass/img/screen-week.webp" alt="" width="600" height="1200" loading="lazy" decoding="async">
+        <span class="body"><span class="spine" aria-hidden="true">SNS-004 · Loopclass</span><div class="cover" style="--c1:#ffc21a;--c2:#1d1a2b">
+    <div class="art"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><text x="44" y="90" font-family="Martian Mono" font-size="12" fill="#1d1a2b" opacity=".7">M</text><rect x="38" y="102" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="38" y="136" width="38" height="26" rx="6" fill="#2f6fe0" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="38" y="170" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="38" y="204" width="38" height="26" rx="6" fill="#9a4ad0" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="38" y="238" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><text x="90" y="90" font-family="Martian Mono" font-size="12" fill="#1d1a2b" opacity=".7">T</text><rect x="84" y="102" width="38" height="26" rx="6" fill="#2f6fe0" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="84" y="136" width="38" height="26" rx="6" fill="#3a9a4a" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="84" y="170" width="38" height="26" rx="6" fill="#9a4ad0" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="84" y="204" width="38" height="26" rx="6" fill="#1d1a2b" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="84" y="238" width="38" height="26" rx="6" fill="#e2513a" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><text x="136" y="90" font-family="Martian Mono" font-size="12" fill="#1d1a2b" opacity=".7">W</text><rect x="130" y="102" width="38" height="26" rx="6" fill="#3a9a4a" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="130" y="136" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="130" y="170" width="38" height="26" rx="6" fill="#1d1a2b" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="130" y="204" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="130" y="238" width="38" height="26" rx="6" fill="#2f6fe0" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><text x="182" y="90" font-family="Martian Mono" font-size="12" fill="#1d1a2b" opacity=".7">T</text><rect x="176" y="102" width="38" height="26" rx="6" fill="#9a4ad0" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="176" y="136" width="38" height="26" rx="6" fill="#1d1a2b" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="176" y="170" width="38" height="26" rx="6" fill="#e2513a" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="176" y="204" width="38" height="26" rx="6" fill="#2f6fe0" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="176" y="238" width="38" height="26" rx="6" fill="#3a9a4a" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><text x="228" y="90" font-family="Martian Mono" font-size="12" fill="#1d1a2b" opacity=".7">F</text><rect x="222" y="102" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="222" y="136" width="38" height="26" rx="6" fill="#e2513a" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="222" y="170" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="222" y="204" width="38" height="26" rx="6" fill="#3a9a4a" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="222" y="238" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><text x="274" y="90" font-family="Martian Mono" font-size="12" fill="#1d1a2b" opacity=".7">S</text><rect x="268" y="102" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="268" y="136" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="268" y="170" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="268" y="204" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="268" y="238" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><text x="320" y="90" font-family="Martian Mono" font-size="12" fill="#1d1a2b" opacity=".7">S</text><rect x="314" y="102" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="314" y="136" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="314" y="170" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="314" y="204" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="314" y="238" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/></svg></div>
+    <span class="cno">SNS-004</span>
+    <img class="ico" src="loopclass/img/icon-192.png" alt="" width="64" height="64" loading="lazy">
+    
+    <p class="ttl">Loopclass</p>
+  </div></span>
+        <span class="tag" aria-hidden="true">Selected</span>
+      </a>
+      <a class="slv" href="audio-transcriber/" data-i="4" data-label="SNS-005, Offline Audio Transcriber. Show its screens" aria-label="SNS-005, Offline Audio Transcriber, app page" style="--c1:#17191f;--c3:#ffde4a">
+        <img class="peek" src="audio-transcriber/img/screens/en/01.webp" alt="" width="720" height="1400" loading="lazy" decoding="async">
+        <span class="body"><span class="spine" aria-hidden="true">SNS-005 · Audio</span><div class="cover" style="--c1:#17191f;--c2:#ffffff">
+    <div class="art"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect x="36" y="194.0" width="4" height="12.0" rx="2" fill="#ffffff" opacity=".9"/><rect x="43.5" y="152.3" width="4" height="95.4" rx="2" fill="#ffffff" opacity=".9"/><rect x="51" y="182.6" width="4" height="34.9" rx="2" fill="#ffffff" opacity=".9"/><rect x="58.5" y="152.1" width="4" height="95.8" rx="2" fill="#ffffff" opacity=".9"/><rect x="66" y="171.7" width="4" height="56.6" rx="2" fill="#ffffff" opacity=".9"/><rect x="73.5" y="165.6" width="4" height="68.9" rx="2" fill="#ffffff" opacity=".9"/><rect x="81" y="162.0" width="4" height="76.0" rx="2" fill="#ffffff" opacity=".9"/><rect x="88.5" y="169.4" width="4" height="61.3" rx="2" fill="#ffffff" opacity=".9"/><rect x="96" y="153.9" width="4" height="92.1" rx="2" fill="#ffffff" opacity=".9"/><rect x="103.5" y="174.6" width="4" height="50.8" rx="2" fill="#ffffff" opacity=".9"/><rect x="111" y="159.4" width="4" height="81.3" rx="2" fill="#ffffff" opacity=".9"/><rect x="118.5" y="180.8" width="4" height="38.4" rx="2" fill="#ffffff" opacity=".9"/><rect x="126" y="155.5" width="4" height="89.0" rx="2" fill="#ffffff" opacity=".9"/><rect x="133.5" y="179.7" width="4" height="40.6" rx="2" fill="#ffffff" opacity=".9"/><rect x="141" y="154.0" width="4" height="92.0" rx="2" fill="#ffffff" opacity=".9"/><rect x="148.5" y="179.9" width="4" height="40.1" rx="2" fill="#ffffff" opacity=".9"/><rect x="156" y="154.7" width="4" height="90.5" rx="2" fill="#ffffff" opacity=".9"/><rect x="163.5" y="169.5" width="4" height="61.0" rx="2" fill="#ffffff" opacity=".9"/><rect x="171" y="157.5" width="4" height="85.0" rx="2" fill="#ffffff" opacity=".9"/><rect x="178.5" y="160.4" width="4" height="79.1" rx="2" fill="#ffffff" opacity=".9"/><rect x="186" y="173.5" width="4" height="53.0" rx="2" fill="#ffffff" opacity=".9"/><rect x="193.5" y="153.2" width="4" height="93.7" rx="2" fill="#ffffff" opacity=".9"/><path d="M206 200h18m-8-8l8 8-8 8" stroke="#ffde4a" stroke-width="3" fill="none"/><rect x="240" y="150" width="124" height="14" rx="7" fill="#ffffff"/><rect x="232" y="186" width="140" height="30" rx="6" fill="#ffde4a" transform="rotate(-4 302 201)"/><rect x="244" y="194" width="92" height="12" rx="6" fill="#17191f" transform="rotate(-4 302 201)"/><rect x="240" y="236" width="100" height="14" rx="7" fill="#ffffff"/></svg></div>
+    <span class="cno">SNS-005</span>
+    <img class="ico" src="audio-transcriber/img/icon-192.png" alt="" width="64" height="64" loading="lazy">
+    
+    <p class="ttl">Audio Transcriber</p>
+  </div></span>
+        <span class="tag" aria-hidden="true">Selected</span>
+      </a>
+      <a class="slv" href="christian-pray/" data-i="5" data-label="SNS-006, Christian Pray Everyday. Show its screens" aria-label="SNS-006, Christian Pray Everyday, app page" style="--c1:#5ec8ef;--c3:#ffe14a">
+        <img class="peek" src="christian-pray/img/screen-today.webp" alt="" width="600" height="1200" loading="lazy" decoding="async">
+        <span class="body"><span class="spine" aria-hidden="true">SNS-006 · Pray</span><div class="cover" style="--c1:#5ec8ef;--c2:#14233f">
+    <div class="art"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><circle cx="200" cy="190" r="118" fill="#ffe14a" opacity=".95"/><circle cx="200" cy="190" r="88" fill="#fff6b8" opacity=".7"/><rect x="0" y="184" width="400" height="216" fill="#5ec8ef"/><rect x="0" y="188" width="400" height="10" fill="#58b847" opacity="0.65"/><rect x="0" y="206" width="400" height="10" fill="#58b847" opacity="0.74"/><rect x="0" y="224" width="400" height="10" fill="#58b847" opacity="0.83"/><rect x="0" y="242" width="400" height="10" fill="#58b847" opacity="0.92"/><rect x="0" y="182" width="400" height="8" fill="#3f9a3a"/></svg></div>
+    <span class="cno">SNS-006</span>
+    <img class="ico" src="christian-pray/img/icon-192.png" alt="" width="64" height="64" loading="lazy">
+    
+    <p class="ttl">Christian Pray</p>
+  </div></span>
+        <span class="tag" aria-hidden="true">Selected</span>
+      </a>
+      <div class="slv empty" role="note" aria-label="SNS-007, reserved for the next release"><span class="body"><span class="mono">SNS-007</span><b>Next release</b><span>Number reserved</span></span></div>
       </div>
-    </article>
+      <div class="lip">
+        <span class="lip-t" aria-hidden="true">Catalogue</span>
+        <nav class="scrub" aria-label="Catalogue numbers">
+          <ol id="scrubList"><li><a href="szybciej-sie-nie-da/" data-i="0" data-label="SNS-001, Szybciej Się Nie Da. Show its screens" aria-label="SNS-001, Szybciej Się Nie Da, app page">SNS-001</a></li><li><a href="mossy/" data-i="1" data-label="SNS-002, Mossy. Show its screens" aria-label="SNS-002, Mossy, app page">SNS-002</a></li><li><a href="fakechat/" data-i="2" data-label="SNS-003, Fake Chat Maker &amp; Text Message. Show its screens" aria-label="SNS-003, Fake Chat Maker &amp; Text Message, app page">SNS-003</a></li><li><a href="loopclass/" data-i="3" data-label="SNS-004, Loopclass. Show its screens" aria-label="SNS-004, Loopclass, app page">SNS-004</a></li><li><a href="audio-transcriber/" data-i="4" data-label="SNS-005, Offline Audio Transcriber. Show its screens" aria-label="SNS-005, Offline Audio Transcriber, app page">SNS-005</a></li><li><a href="christian-pray/" data-i="5" data-label="SNS-006, Christian Pray Everyday. Show its screens" aria-label="SNS-006, Christian Pray Everyday, app page">SNS-006</a></li><li><span class="open" role="img" aria-label="SNS-007, reserved for the next release">SNS-007</span></li></ol>
+          <div class="rail" aria-hidden="true"></div>
+          <div class="win" id="win" aria-hidden="true"></div>
+        </nav>
+        <div class="arrows" id="arrows" hidden>
+          <button type="button" id="prev" aria-label="Scroll to earlier apps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button type="button" id="next" aria-label="Scroll to later apps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
 
-    <article class="card card-fakechat">
-      <div class="card-copy">
-        <img class="card-icon" src="fakechat/img/icon-96.png" width="96" height="96" alt="">
-        <p class="card-kicker">Żarty i opowieści · Android</p>
-        <h2><a class="card-link" href="fakechat/">Fake Chat Maker &amp; Text&nbsp;Message</a></h2>
-        <p class="card-line">Zrób fałszywą rozmowę na żart albo do opowieści. Trzy style czatu, własne tło, zapis jako obrazek. Bez konta, działa offline. Po angielsku.</p>
-        <a class="card-play" href="https://play.google.com/store/apps/details?id=pl.snoochiesoft.fakechat" rel="noopener"><img src="img/badges/play-pl.png" width="188" height="56" alt="Pobierz z Google Play" loading="lazy"></a>
-        <span class="card-go" aria-hidden="true">Zobacz aplikację</span>
+    <div class="stage" role="region" aria-label="Selected app">
+      <div class="sleeve3d back" id="sleeve3d">
+        <div class="face front" id="faceFront" aria-hidden="true"><div class="cover" style="--c1:#1f5a2b;--c2:#e9ffb0">
+    <div class="art"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect x="40" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="73" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="106" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="139" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="172" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="205" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="238" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="271" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="304" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="337" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="40" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="73" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="106" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="139" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="172" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="205" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="238" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="271" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="304" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="337" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="40" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="73" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="106" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="139" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="172" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="205" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="238" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="271" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="304" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="337" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="40" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="73" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="106" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="139" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="172" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="205" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="238" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="271" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="304" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="337" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="40" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="73" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="106" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="139" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="172" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="205" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="238" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="271" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="304" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="337" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><text x="34" y="300" font-family="Unbounded" font-weight="900" font-size="118" fill="#e9ffb0" letter-spacing="-8">500</text></svg></div>
+    <span class="cno">SNS-001</span>
+    <img class="ico" src="szybciej-sie-nie-da/img/icon-192.png" alt="" width="64" height="64">
+    <span class="sticker"><span>No account</span></span>
+    <p class="ttl">Szybciej Się Nie Da<small>English words for Polish speakers</small></p>
+  </div></div>
+        <div class="face rear" id="faceRear"><div class="notes">
+        <div class="notes-head"><img src="szybciej-sie-nie-da/img/icon-192.png" alt="" width="44" height="44"><div><p class="notes-name">Szybciej Się Nie Da</p><span class="mono">SNS-001</span></div></div>
+        <p class="side">Side A · what it does</p>
+        <ol class="tracks"><li><span>A1</span><span>The 500 most common English words, 10 new ones a day for 50 days</span></li><li><span>A2</span><span>Every word with a recorded voice and an example sentence</span></li><li><span>A3</span><span>Reviews come back just as you start to forget a word</span></li></ol>
+        <p class="side">Side B · how it behaves</p>
+        <ol class="tracks"><li><span>B1</span><span>No account</span></li><li><span>B2</span><span>Works offline</span></li><li><span>B3</span><span>14 days without ads</span></li></ol>
+        <p class="credits">SNS-001 · Android · Google Play<br>Made by Snoochie Soft</p>
       </div>
-    </article>
-
-    <article class="card card-loopclass">
-      <div class="card-copy">
-        <img class="card-icon" src="loopclass/img/icon-96.png" width="96" height="96" alt="">
-        <p class="card-kicker">Plan lekcji i nauka · Android</p>
-        <h2><a class="card-link" href="loopclass/">Loopclass</a></h2>
-        <p class="card-line">Plan lekcji, zadania domowe, sprawdziany i oceny w jednej apce. Widżety, przypomnienia i kopia na Twoim Dysku Google. Bez konta, offline.</p>
-        <a class="card-play" href="https://play.google.com/store/apps/details?id=app.loopclass.planner" rel="noopener"><img src="img/badges/play-pl.png" width="188" height="56" alt="Pobierz z Google Play" loading="lazy"></a>
-        <span class="card-go" aria-hidden="true">Zobacz aplikację</span>
+      <div class="phones"><figure><img src="szybciej-sie-nie-da/img/fiszka-przod.webp" width="600" height="1157" alt="Flashcard in the app: the English word “of”, labelled as a preposition in Polish, with a Listen button." decoding="async"><figcaption>Flashcard</figcaption></figure><figure><img src="szybciej-sie-nie-da/img/quiz.webp" width="600" height="1157" alt="Quiz: the English word “be” with four Polish translations to choose from; the correct one, “być”, is marked and earns 10 XP." decoding="async"><figcaption>Quiz</figcaption></figure><figure><img src="szybciej-sie-nie-da/img/statystyki.webp" width="600" height="1333" alt="Statistics screen: the share of everyday speech you already recognise, level and XP, the streak of days in a row and the number of words learned." decoding="async"><figcaption>Progress</figcaption></figure></div></div>
       </div>
-    </article>
-
-    <article class="card card-transcriber">
-      <div class="card-copy">
-        <img class="card-icon" src="audio-transcriber/img/icon-96.png" width="96" height="96" alt="">
-        <p class="card-kicker">Notatki głosowe · Android</p>
-        <h2><a class="card-link" href="audio-transcriber/">Offline Audio Transcriber</a></h2>
-        <p class="card-line">Zamień nagranie na tekst na telefonie. Offline, bez wysyłania plików i bez konta.</p>
-        <a class="card-play" href="https://play.google.com/store/apps/details?id=pl.snoochiesoft.audiotranscriber" rel="noopener"><img src="img/badges/play-pl.png" width="188" height="56" alt="Pobierz z Google Play" loading="lazy"></a>
-        <span class="card-go" aria-hidden="true">Zobacz aplikację</span>
+    </div>
+  </section>
+<template id="desk-0" data-status="SNS-001, Szybciej Się Nie Da, selected"><div data-slot="now"><h2 class="now-title">Szybciej Się Nie Da</h2>
+        <p class="meta"><span class="catno">SNS-001</span><span>English words for Polish speakers</span></p>
+        <p class="line">English without grammar for Polish speakers: the 500 most common words in 50 days, 10 a day.</p>
+        <div class="actions">
+          <a class="play" href="https://play.google.com/store/apps/details?id=pl.snoochiesoft.szybciej" rel="noopener"><img src="img/badges/play-en.png" alt="Get Szybciej Się Nie Da on Google Play" width="188" height="56" loading="lazy"></a>
+          <a class="pagelink" href="szybciej-sie-nie-da/" aria-label="Szybciej Się Nie Da, app page">App page<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div></div><div data-slot="front"><div class="cover" style="--c1:#1f5a2b;--c2:#e9ffb0">
+    <div class="art"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect x="40" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="73" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="106" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="139" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="172" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="205" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="238" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="271" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="304" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="337" y="96" width="22" height="22" rx="4" fill="#c9f23a" stroke="#c9f23a" stroke-width="2" opacity="1"/><rect x="40" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="73" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="106" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="139" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="172" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="205" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="238" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="271" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="304" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="337" y="129" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="40" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="73" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="106" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="139" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="172" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="205" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="238" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="271" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="304" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="337" y="162" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="40" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="73" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="106" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="139" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="172" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="205" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="238" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="271" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="304" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="337" y="195" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="40" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="73" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="106" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="139" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="172" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="205" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="238" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="271" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="304" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><rect x="337" y="228" width="22" height="22" rx="4" fill="none" stroke="#c9f23a" stroke-width="2" opacity="0.55"/><text x="34" y="300" font-family="Unbounded" font-weight="900" font-size="118" fill="#e9ffb0" letter-spacing="-8">500</text></svg></div>
+    <span class="cno">SNS-001</span>
+    <img class="ico" src="szybciej-sie-nie-da/img/icon-192.png" alt="" width="64" height="64" loading="lazy">
+    <span class="sticker"><span>No account</span></span>
+    <p class="ttl">Szybciej Się Nie Da<small>English words for Polish speakers</small></p>
+  </div></div><div data-slot="rear"><div class="notes">
+        <div class="notes-head"><img src="szybciej-sie-nie-da/img/icon-192.png" alt="" width="44" height="44" loading="lazy"><div><p class="notes-name">Szybciej Się Nie Da</p><span class="mono">SNS-001</span></div></div>
+        <p class="side">Side A · what it does</p>
+        <ol class="tracks"><li><span>A1</span><span>The 500 most common English words, 10 new ones a day for 50 days</span></li><li><span>A2</span><span>Every word with a recorded voice and an example sentence</span></li><li><span>A3</span><span>Reviews come back just as you start to forget a word</span></li></ol>
+        <p class="side">Side B · how it behaves</p>
+        <ol class="tracks"><li><span>B1</span><span>No account</span></li><li><span>B2</span><span>Works offline</span></li><li><span>B3</span><span>14 days without ads</span></li></ol>
+        <p class="credits">SNS-001 · Android · Google Play<br>Made by Snoochie Soft</p>
       </div>
-    </article>
-  </div>
-</section>
+      <div class="phones"><figure><img src="szybciej-sie-nie-da/img/fiszka-przod.webp" width="600" height="1157" alt="Flashcard in the app: the English word “of”, labelled as a preposition in Polish, with a Listen button." loading="lazy" decoding="async"><figcaption>Flashcard</figcaption></figure><figure><img src="szybciej-sie-nie-da/img/quiz.webp" width="600" height="1157" alt="Quiz: the English word “be” with four Polish translations to choose from; the correct one, “być”, is marked and earns 10 XP." loading="lazy" decoding="async"><figcaption>Quiz</figcaption></figure><figure><img src="szybciej-sie-nie-da/img/statystyki.webp" width="600" height="1333" alt="Statistics screen: the share of everyday speech you already recognise, level and XP, the streak of days in a row and the number of words learned." loading="lazy" decoding="async"><figcaption>Progress</figcaption></figure></div></div></template>
+<template id="desk-1" data-status="SNS-002, Mossy, selected"><div data-slot="now"><h2 class="now-title">Mossy</h2>
+        <p class="meta"><span class="catno">SNS-002</span><span>Cosy games for focus and calm</span></p>
+        <p class="line">Your brain isn&#39;t broken. It just has 47 tabs open. Sixteen cosy mini-games for adults with ADHD, 1 to 3 minutes a round.</p>
+        <div class="actions">
+          <a class="play" href="https://play.google.com/store/apps/details?id=com.mossyapp.mossy" rel="noopener"><img src="img/badges/play-en.png" alt="Get Mossy on Google Play" width="188" height="56" loading="lazy"></a>
+          <a class="pagelink" href="mossy/" aria-label="Mossy, app page">App page<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div></div><div data-slot="front"><div class="cover" style="--c1:#46205c;--c2:#ffe3f0">
+    <div class="art"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><path d="M36 102v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M78 102v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.48"/><path d="M120 102v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.61"/><path d="M162 102v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.74"/><path d="M204 102v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.87"/><path d="M246 102v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M288 102v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.48"/><path d="M330 102v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.61"/><path d="M36 132v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.74"/><path d="M78 132v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.87"/><path d="M120 132v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M162 132v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.48"/><path d="M204 132v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.61"/><path d="M246 132v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.74"/><path d="M288 132v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.87"/><path d="M330 132v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M36 162v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.48"/><path d="M78 162v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.61"/><path d="M120 162v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.74"/><path d="M162 162v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.87"/><path d="M204 162v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M246 162v-14q0-6 6-6h22q6 0 6 6v14z" fill="#ff7fb0" opacity="1"/><path d="M288 162v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.61"/><path d="M330 162v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.74"/><path d="M36 192v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.87"/><path d="M78 192v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M120 192v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.48"/><path d="M162 192v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.61"/><path d="M204 192v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.74"/><path d="M246 192v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.87"/><path d="M288 192v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M330 192v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.48"/><path d="M36 222v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.61"/><path d="M78 222v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.74"/><path d="M120 222v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.87"/><path d="M162 222v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M204 222v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.48"/><path d="M246 222v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.61"/><path d="M288 222v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.74"/><path d="M330 222v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.87"/><path d="M36 252v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M78 252v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.48"/><path d="M120 252v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.61"/><path d="M162 252v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.74"/><path d="M204 252v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.87"/><path d="M246 252v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.35"/><path d="M288 252v-14q0-6 6-6h22q6 0 6 6v14z" fill="#8fd34a" opacity="0.48"/><circle cx="320" cy="330" r="70" fill="#8fd34a" opacity=".9"/><circle cx="296" cy="318" r="9" fill="#2a1236"/><circle cx="338" cy="318" r="9" fill="#2a1236"/><path d="M300 344q18 14 36 0" stroke="#2a1236" stroke-width="6" fill="none" stroke-linecap="round"/></svg></div>
+    <span class="cno">SNS-002</span>
+    <img class="ico" src="mossy/img/icon-192.png" alt="" width="64" height="64" loading="lazy">
+    <span class="sticker"><span>Offline · no ads</span></span>
+    <p class="ttl">Mossy<small>Cosy games for focus and calm</small></p>
+  </div></div><div data-slot="rear"><div class="notes">
+        <div class="notes-head"><img src="mossy/img/icon-192.png" alt="" width="44" height="44" loading="lazy"><div><p class="notes-name">Mossy</p><span class="mono">SNS-002</span></div></div>
+        <p class="side">Side A · what it does</p>
+        <ol class="tracks"><li><span>A1</span><span>16 tiny games, 1 to 3 minutes a round</span></li><li><span>A2</span><span>Learn any game in about 10 seconds</span></li><li><span>A3</span><span>Games adapt quietly, so they stay just challenging enough</span></li></ol>
+        <p class="side">Side B · how it behaves</p>
+        <ol class="tracks"><li><span>B1</span><span>Works offline</span></li><li><span>B2</span><span>No ads</span></li><li><span>B3</span><span>No account</span></li></ol>
+        <p class="credits">SNS-002 · Android · Google Play<br>Made by Snoochie Soft</p>
+      </div>
+      <div class="phones"><figure><img src="mossy/img/shots/hub.webp" width="640" height="1156" alt="Mossy home screen: Mo floats above two wooden shelves in a night forest. Each shelf holds potted plants labelled Tab Storm, Time Blind, Pour Decisions, Impulse Gate, Squirrel! and Where Did I Put It?" loading="lazy" decoding="async"><figcaption>The forest</figcaption></figure><figure><img src="mossy/img/shots/time-blind-holding.webp" width="392" height="700" alt="Time Blind: Hold for 3 s. A round orb fills with blue as you hold it, showing 1.7 s." loading="lazy" decoding="async"><figcaption>Time Blind</figcaption></figure><figure><img src="mossy/img/shots/new-brain-paper.webp" width="392" height="700" alt="Brain Dump Sorter: floating thoughts such as Feed the cat, Doctor at 3 and Reply today drift down to three drawers: Now, Later and Let go." loading="lazy" decoding="async"><figcaption>Brain Dump Sorter</figcaption></figure></div></div></template>
+<template id="desk-2" data-status="SNS-003, Fake Chat Maker &amp; Text Message, selected"><div data-slot="now"><h2 class="now-title">Fake Chat Maker &amp; Text Message</h2>
+        <p class="meta"><span class="catno">SNS-003</span><span>Fake chats for jokes and stories</span></p>
+        <p class="line">Write a fake text conversation for a joke or a story, style it and save it as a picture. Made for fun only.</p>
+        <div class="actions">
+          <a class="play" href="https://play.google.com/store/apps/details?id=pl.snoochiesoft.fakechat" rel="noopener"><img src="img/badges/play-en.png" alt="Get Fake Chat Maker &amp; Text Message on Google Play" width="188" height="56" loading="lazy"></a>
+          <a class="pagelink" href="fakechat/" aria-label="Fake Chat Maker &amp; Text Message, app page">App page<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div></div><div data-slot="front"><div class="cover" style="--c1:#c8341c;--c2:#fff4ee">
+    <div class="art"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect x="40" y="88" width="230" height="96" rx="26" fill="#b9a8ff"/><path d="M70 184l-6 34 40-34z" fill="#b9a8ff"/><rect x="64" y="118" width="150" height="12" rx="6" fill="#2b1f6b" opacity=".6"/><rect x="64" y="142" width="100" height="12" rx="6" fill="#2b1f6b" opacity=".6"/><rect x="150" y="206" width="214" height="80" rx="24" fill="#fff4ee"/><path d="M330 286l10 30-40-30z" fill="#fff4ee"/><rect x="174" y="234" width="120" height="12" rx="6" fill="#c8341c"/><rect x="174" y="256" width="70" height="10" rx="5" fill="#c8341c" opacity=".5"/></svg></div>
+    <span class="cno">SNS-003</span>
+    <img class="ico" src="fakechat/img/icon-192.png" alt="" width="64" height="64" loading="lazy">
+    <span class="sticker"><span>No account · works offline</span></span>
+    <p class="ttl">Fake Chat Maker &amp; Text Message<small>Fake chats for jokes and stories</small></p>
+  </div></div><div data-slot="rear"><div class="notes">
+        <div class="notes-head"><img src="fakechat/img/icon-192.png" alt="" width="44" height="44" loading="lazy"><div><p class="notes-name">Fake Chat Maker &amp; Text Message</p><span class="mono">SNS-003</span></div></div>
+        <p class="side">Side A · what it does</p>
+        <ol class="tracks"><li><span>A1</span><span>Write both sides of a chat. Tap a bubble to edit it, long press to switch the sender</span></li><li><span>A2</span><span>Change the time and the delivered or read ticks</span></li><li><span>A3</span><span>Drag to reorder messages, undo and redo any change</span></li></ol>
+        <p class="side">Side B · how it behaves</p>
+        <ol class="tracks"><li><span>B1</span><span>No account</span></li><li><span>B2</span><span>Works offline</span></li><li><span>B3</span><span>No message limits</span></li></ol>
+        <p class="credits">SNS-003 · Android · Google Play<br>Made by Snoochie Soft</p>
+      </div>
+      <div class="phones"><figure><img src="fakechat/img/screen-editor.webp" width="600" height="1067" alt="Chat editor with a conversation with Mom: her messages in purple, the replies in orange, Me and Them buttons and a message field at the bottom." loading="lazy" decoding="async"><figcaption>Write</figcaption></figure><figure><img src="fakechat/img/screen-style.webp" width="600" height="1067" alt="Style panel: three chat styles, Ink, Riso and Mono, a grid of background colours and a row of avatar colours." loading="lazy" decoding="async"><figcaption>Style</figcaption></figure><figure><img src="fakechat/img/screen-home.webp" width="600" height="1067" alt="Your fakes: four saved chats shown as cards, Mom, Sam, Coach Dana and Landlord, with a New fake button at the bottom." loading="lazy" decoding="async"><figcaption>Your chats</figcaption></figure></div></div></template>
+<template id="desk-3" data-status="SNS-004, Loopclass, selected"><div data-slot="now"><h2 class="now-title">Loopclass</h2>
+        <p class="meta"><span class="catno">SNS-004</span><span>School timetable, homework and grades</span></p>
+        <p class="line">Your timetable, homework, exams and grades in one planner, with widgets and reminders. Works without an account and without internet.</p>
+        <div class="actions">
+          <a class="play" href="https://play.google.com/store/apps/details?id=app.loopclass.planner" rel="noopener"><img src="img/badges/play-en.png" alt="Get Loopclass on Google Play" width="188" height="56" loading="lazy"></a>
+          <a class="pagelink" href="loopclass/" aria-label="Loopclass, app page">App page<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div></div><div data-slot="front"><div class="cover" style="--c1:#ffc21a;--c2:#1d1a2b">
+    <div class="art"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><text x="44" y="90" font-family="Martian Mono" font-size="12" fill="#1d1a2b" opacity=".7">M</text><rect x="38" y="102" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="38" y="136" width="38" height="26" rx="6" fill="#2f6fe0" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="38" y="170" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="38" y="204" width="38" height="26" rx="6" fill="#9a4ad0" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="38" y="238" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><text x="90" y="90" font-family="Martian Mono" font-size="12" fill="#1d1a2b" opacity=".7">T</text><rect x="84" y="102" width="38" height="26" rx="6" fill="#2f6fe0" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="84" y="136" width="38" height="26" rx="6" fill="#3a9a4a" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="84" y="170" width="38" height="26" rx="6" fill="#9a4ad0" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="84" y="204" width="38" height="26" rx="6" fill="#1d1a2b" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="84" y="238" width="38" height="26" rx="6" fill="#e2513a" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><text x="136" y="90" font-family="Martian Mono" font-size="12" fill="#1d1a2b" opacity=".7">W</text><rect x="130" y="102" width="38" height="26" rx="6" fill="#3a9a4a" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="130" y="136" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="130" y="170" width="38" height="26" rx="6" fill="#1d1a2b" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="130" y="204" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="130" y="238" width="38" height="26" rx="6" fill="#2f6fe0" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><text x="182" y="90" font-family="Martian Mono" font-size="12" fill="#1d1a2b" opacity=".7">T</text><rect x="176" y="102" width="38" height="26" rx="6" fill="#9a4ad0" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="176" y="136" width="38" height="26" rx="6" fill="#1d1a2b" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="176" y="170" width="38" height="26" rx="6" fill="#e2513a" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="176" y="204" width="38" height="26" rx="6" fill="#2f6fe0" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="176" y="238" width="38" height="26" rx="6" fill="#3a9a4a" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><text x="228" y="90" font-family="Martian Mono" font-size="12" fill="#1d1a2b" opacity=".7">F</text><rect x="222" y="102" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="222" y="136" width="38" height="26" rx="6" fill="#e2513a" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="222" y="170" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="222" y="204" width="38" height="26" rx="6" fill="#3a9a4a" stroke="#1d1a2b" stroke-opacity=".25" opacity="0.9"/><rect x="222" y="238" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><text x="274" y="90" font-family="Martian Mono" font-size="12" fill="#1d1a2b" opacity=".7">S</text><rect x="268" y="102" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="268" y="136" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="268" y="170" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="268" y="204" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="268" y="238" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><text x="320" y="90" font-family="Martian Mono" font-size="12" fill="#1d1a2b" opacity=".7">S</text><rect x="314" y="102" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="314" y="136" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="314" y="170" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="314" y="204" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/><rect x="314" y="238" width="38" height="26" rx="6" fill="none" stroke="#1d1a2b" stroke-opacity=".25" opacity="1"/></svg></div>
+    <span class="cno">SNS-004</span>
+    <img class="ico" src="loopclass/img/icon-192.png" alt="" width="64" height="64" loading="lazy">
+    <span class="sticker"><span>No account · offline</span></span>
+    <p class="ttl">Loopclass<small>School timetable, homework and grades</small></p>
+  </div></div><div data-slot="rear"><div class="notes">
+        <div class="notes-head"><img src="loopclass/img/icon-192.png" alt="" width="44" height="44" loading="lazy"><div><p class="notes-name">Loopclass</p><span class="mono">SNS-004</span></div></div>
+        <p class="side">Side A · what it does</p>
+        <ol class="tracks"><li><span>A1</span><span>A weekly timetable with rooms, teachers and A/B weeks</span></li><li><span>A2</span><span>Homework and exams with several reminders each</span></li><li><span>A3</span><span>Grades with weights, averages and GPA: percent, letters A–F or the Polish 1–6 scale</span></li></ol>
+        <p class="side">Side B · how it behaves</p>
+        <ol class="tracks"><li><span>B1</span><span>No account</span></li><li><span>B2</span><span>Works offline</span></li><li><span>B3</span><span>No subscription</span></li></ol>
+        <p class="credits">SNS-004 · Android · Google Play<br>Made by Snoochie Soft</p>
+      </div>
+      <div class="phones"><figure><img src="loopclass/img/screen-week.webp" width="600" height="1200" alt="Week view for Tuesday 13 October: Mathematics done, Biology marked Now, then History and English with times and rooms, and a Problem set 4 task due at 6 PM." loading="lazy" decoding="async"><figcaption>Week</figcaption></figure><figure><img src="loopclass/img/screen-today-dark.webp" width="600" height="1200" alt="Today in the dark theme: the current Biology class, the next classes and a Due soon list with an essay overdue by two days." loading="lazy" decoding="async"><figcaption>Today, dark theme</figcaption></figure><figure><img src="loopclass/img/screen-tasks.webp" width="600" height="1200" alt="Tasks: an essay to catch up on and upcoming items, including a high priority physics exam in 3 days." loading="lazy" decoding="async"><figcaption>Tasks</figcaption></figure></div></div></template>
+<template id="desk-4" data-status="SNS-005, Offline Audio Transcriber, selected"><div data-slot="now"><h2 class="now-title">Offline Audio Transcriber</h2>
+        <p class="meta"><span class="catno">SNS-005</span><span>Speech to text on your phone</span></p>
+        <p class="line">Turn voice notes, lectures, interviews and any MP3 or video file into text on your Android phone. Nothing is uploaded.</p>
+        <div class="actions">
+          <a class="play" href="https://play.google.com/store/apps/details?id=pl.snoochiesoft.audiotranscriber" rel="noopener"><img src="img/badges/play-en.png" alt="Get Offline Audio Transcriber on Google Play" width="188" height="56" loading="lazy"></a>
+          <a class="pagelink" href="audio-transcriber/" aria-label="Offline Audio Transcriber, app page">App page<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div></div><div data-slot="front"><div class="cover" style="--c1:#17191f;--c2:#ffffff">
+    <div class="art"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect x="36" y="194.0" width="4" height="12.0" rx="2" fill="#ffffff" opacity=".9"/><rect x="43.5" y="152.3" width="4" height="95.4" rx="2" fill="#ffffff" opacity=".9"/><rect x="51" y="182.6" width="4" height="34.9" rx="2" fill="#ffffff" opacity=".9"/><rect x="58.5" y="152.1" width="4" height="95.8" rx="2" fill="#ffffff" opacity=".9"/><rect x="66" y="171.7" width="4" height="56.6" rx="2" fill="#ffffff" opacity=".9"/><rect x="73.5" y="165.6" width="4" height="68.9" rx="2" fill="#ffffff" opacity=".9"/><rect x="81" y="162.0" width="4" height="76.0" rx="2" fill="#ffffff" opacity=".9"/><rect x="88.5" y="169.4" width="4" height="61.3" rx="2" fill="#ffffff" opacity=".9"/><rect x="96" y="153.9" width="4" height="92.1" rx="2" fill="#ffffff" opacity=".9"/><rect x="103.5" y="174.6" width="4" height="50.8" rx="2" fill="#ffffff" opacity=".9"/><rect x="111" y="159.4" width="4" height="81.3" rx="2" fill="#ffffff" opacity=".9"/><rect x="118.5" y="180.8" width="4" height="38.4" rx="2" fill="#ffffff" opacity=".9"/><rect x="126" y="155.5" width="4" height="89.0" rx="2" fill="#ffffff" opacity=".9"/><rect x="133.5" y="179.7" width="4" height="40.6" rx="2" fill="#ffffff" opacity=".9"/><rect x="141" y="154.0" width="4" height="92.0" rx="2" fill="#ffffff" opacity=".9"/><rect x="148.5" y="179.9" width="4" height="40.1" rx="2" fill="#ffffff" opacity=".9"/><rect x="156" y="154.7" width="4" height="90.5" rx="2" fill="#ffffff" opacity=".9"/><rect x="163.5" y="169.5" width="4" height="61.0" rx="2" fill="#ffffff" opacity=".9"/><rect x="171" y="157.5" width="4" height="85.0" rx="2" fill="#ffffff" opacity=".9"/><rect x="178.5" y="160.4" width="4" height="79.1" rx="2" fill="#ffffff" opacity=".9"/><rect x="186" y="173.5" width="4" height="53.0" rx="2" fill="#ffffff" opacity=".9"/><rect x="193.5" y="153.2" width="4" height="93.7" rx="2" fill="#ffffff" opacity=".9"/><path d="M206 200h18m-8-8l8 8-8 8" stroke="#ffde4a" stroke-width="3" fill="none"/><rect x="240" y="150" width="124" height="14" rx="7" fill="#ffffff"/><rect x="232" y="186" width="140" height="30" rx="6" fill="#ffde4a" transform="rotate(-4 302 201)"/><rect x="244" y="194" width="92" height="12" rx="6" fill="#17191f" transform="rotate(-4 302 201)"/><rect x="240" y="236" width="100" height="14" rx="7" fill="#ffffff"/></svg></div>
+    <span class="cno">SNS-005</span>
+    <img class="ico" src="audio-transcriber/img/icon-192.png" alt="" width="64" height="64" loading="lazy">
+    <span class="sticker"><span>Offline · nothing uploaded</span></span>
+    <p class="ttl">Offline Audio Transcriber<small>Speech to text on your phone</small></p>
+  </div></div><div data-slot="rear"><div class="notes">
+        <div class="notes-head"><img src="audio-transcriber/img/icon-192.png" alt="" width="44" height="44" loading="lazy"><div><p class="notes-name">Offline Audio Transcriber</p><span class="mono">SNS-005</span></div></div>
+        <p class="side">Side A · what it does</p>
+        <ol class="tracks"><li><span>A1</span><span>Record, or import MP3, M4A, WAV, OGG, MP4 and other audio and video files</span></li><li><span>A2</span><span>A timestamped transcript that follows the audio. Tap a word to jump there</span></li><li><span>A3</span><span>Fix mistakes, search the text and sort recordings into folders</span></li></ol>
+        <p class="side">Side B · how it behaves</p>
+        <ol class="tracks"><li><span>B1</span><span>No account</span></li><li><span>B2</span><span>Nothing uploaded</span></li><li><span>B3</span><span>Works offline</span></li></ol>
+        <p class="credits">SNS-005 · Android · Google Play<br>Made by Snoochie Soft</p>
+      </div>
+      <div class="phones"><figure><img src="audio-transcriber/img/screens/en/01.webp" width="720" height="1400" alt="The transcript screen: timestamped lines, the word being played is highlighted, player controls at the bottom." loading="lazy" decoding="async"><figcaption>Transcript</figcaption></figure><figure><img src="audio-transcriber/img/screens/en/02.webp" width="720" height="1400" alt="The recorder: running time, live waveform and how much of the free part is left." loading="lazy" decoding="async"><figcaption>Recorder</figcaption></figure><figure><img src="audio-transcriber/img/screens/en/03.webp" width="720" height="1400" alt="The recordings list with search, folders, durations and the first line of each transcript." loading="lazy" decoding="async"><figcaption>Recordings</figcaption></figure></div></div></template>
+<template id="desk-5" data-status="SNS-006, Christian Pray Everyday, selected"><div data-slot="now"><h2 class="now-title">Christian Pray Everyday</h2>
+        <p class="meta"><span class="catno">SNS-006</span><span>Daily Bible verse and prayer</span></p>
+        <p class="line">A daily Bible verse read aloud, 25 recorded prayers and 215 Bible stories. A quiet place to begin and end your day.</p>
+        <div class="actions">
+          <a class="play" href="https://play.google.com/store/apps/details?id=pl.snoochiesoft.christianpray" rel="noopener"><img src="img/badges/play-en.png" alt="Get Christian Pray Everyday on Google Play" width="188" height="56" loading="lazy"></a>
+          <a class="pagelink" href="christian-pray/" aria-label="Christian Pray Everyday, app page">App page<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div></div><div data-slot="front"><div class="cover" style="--c1:#5ec8ef;--c2:#14233f">
+    <div class="art"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><circle cx="200" cy="190" r="118" fill="#ffe14a" opacity=".95"/><circle cx="200" cy="190" r="88" fill="#fff6b8" opacity=".7"/><rect x="0" y="184" width="400" height="216" fill="#5ec8ef"/><rect x="0" y="188" width="400" height="10" fill="#58b847" opacity="0.65"/><rect x="0" y="206" width="400" height="10" fill="#58b847" opacity="0.74"/><rect x="0" y="224" width="400" height="10" fill="#58b847" opacity="0.83"/><rect x="0" y="242" width="400" height="10" fill="#58b847" opacity="0.92"/><rect x="0" y="182" width="400" height="8" fill="#3f9a3a"/></svg></div>
+    <span class="cno">SNS-006</span>
+    <img class="ico" src="christian-pray/img/icon-192.png" alt="" width="64" height="64" loading="lazy">
+    <span class="sticker"><span>No ads</span></span>
+    <p class="ttl">Christian Pray Everyday<small>Daily Bible verse and prayer</small></p>
+  </div></div><div data-slot="rear"><div class="notes">
+        <div class="notes-head"><img src="christian-pray/img/icon-192.png" alt="" width="44" height="44" loading="lazy"><div><p class="notes-name">Christian Pray Everyday</p><span class="mono">SNS-006</span></div></div>
+        <p class="side">Side A · what it does</p>
+        <ol class="tracks"><li><span>A1</span><span>One verse each day, read aloud, with a painted picture behind it</span></li><li><span>A2</span><span>More than 13,000 verses and four natural voices to choose from</span></li><li><span>A3</span><span>25 recorded prayers: press play and pray along</span></li></ol>
+        <p class="side">Side B · how it behaves</p>
+        <ol class="tracks"><li><span>B1</span><span>No ads</span></li><li><span>B2</span><span>Verse of the day free</span></li></ol>
+        <p class="credits">SNS-006 · Android · Google Play<br>Made by Snoochie Soft</p>
+      </div>
+      <div class="phones"><figure><img src="christian-pray/img/screen-today.webp" width="600" height="1200" alt="Today screen for Friday, September 25: a painted picture of a spilled clay jar of grain above the verse Matthew 13:24, with Listen, save and share buttons." loading="lazy" decoding="async"><figcaption>Today</figcaption></figure><figure><img src="christian-pray/img/screen-verses.webp" width="600" height="1200" alt="Verse 4 of 13,111: Proverbs 31:25, “Strength and dignity are her clothing”, over a city at dusk, with Previous, share and Next buttons." loading="lazy" decoding="async"><figcaption>Verses</figcaption></figure><figure><img src="christian-pray/img/screen-prayers.webp" width="600" height="1200" alt="Pray screen: 25 prayers read aloud, a weekly tracker with 5 prayers said and 3 minutes in prayer, and cards for Our Father, Hail Mary, Glory Be and the Apostles Creed." loading="lazy" decoding="async"><figcaption>Prayers</figcaption></figure></div></div></template>
 
-<section class="about wrap" aria-labelledby="about-h">
-  <h2 id="about-h" class="label">O studiu</h2>
-  <div class="about-body">
-    <p class="about-big">Snoochie Soft to małe, niezależne studio. Robimy aplikacje na Androida, które szanują Twój czas i&nbsp;Twoją uwagę.</p>
-    <p class="about-en" lang="en">A tiny independent studio making Android apps that respect your time and your attention.</p>
-    <ol class="tenets">
-      <li><b>Bez konta</b><span>Instalujesz i od razu działa. Żadnej rejestracji na start.</span></li>
-      <li><b>Offline</b><span>Najważniejsze rzeczy działają bez internetu.</span></li>
-      <li><b>Uczciwie</b><span>Jasne ceny i zero zawstydzania, że dziś Ci się nie chciało.</span></li>
+  <section class="block sheet-wrap" id="catalogue" aria-labelledby="catTitle">
+    <h2 id="catTitle">The catalogue</h2>
+    <p class="sub">Every app gets the next number and keeps it. The sheet grows as releases come out, and the next line is already ruled.</p>
+    <ol class="sheet">
+      <li>
+        <span class="n">SNS-001</span>
+        <img class="i" src="szybciej-sie-nie-da/img/icon-192.png" alt="" width="56" height="56" loading="lazy">
+        <h3><a href="szybciej-sie-nie-da/">Szybciej Się Nie Da</a></h3>
+        <p class="k">English words for Polish speakers</p>
+        <p class="l"><a href="https://play.google.com/store/apps/details?id=pl.snoochiesoft.szybciej" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 4.5v15l13-7.5z"/></svg>Google Play</a><a href="https://sites.google.com/view/szybciejsienieda/polityka-prywatnosci" hreflang="pl" rel="noopener">Privacy</a> <span class="note">(in Polish)</span><a href="szybciej-sie-nie-da/terms/" hreflang="pl">Terms</a> <span class="note">(in Polish)</span></p>
+      </li>
+      <li>
+        <span class="n">SNS-002</span>
+        <img class="i" src="mossy/img/icon-192.png" alt="" width="56" height="56" loading="lazy">
+        <h3><a href="mossy/">Mossy</a></h3>
+        <p class="k">Cosy games for focus and calm</p>
+        <p class="l"><a href="https://play.google.com/store/apps/details?id=com.mossyapp.mossy" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 4.5v15l13-7.5z"/></svg>Google Play</a><a href="mossy/privacy/">Privacy</a><a href="mossy/terms/">Terms</a></p>
+      </li>
+      <li>
+        <span class="n">SNS-003</span>
+        <img class="i" src="fakechat/img/icon-192.png" alt="" width="56" height="56" loading="lazy">
+        <h3><a href="fakechat/">Fake Chat Maker &amp; Text Message</a></h3>
+        <p class="k">Fake chats for jokes and stories</p>
+        <p class="l"><a href="https://play.google.com/store/apps/details?id=pl.snoochiesoft.fakechat" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 4.5v15l13-7.5z"/></svg>Google Play</a><a href="fakechat/privacy/">Privacy</a><a href="fakechat/terms/">Terms</a></p>
+      </li>
+      <li>
+        <span class="n">SNS-004</span>
+        <img class="i" src="loopclass/img/icon-192.png" alt="" width="56" height="56" loading="lazy">
+        <h3><a href="loopclass/">Loopclass</a></h3>
+        <p class="k">School timetable, homework and grades</p>
+        <p class="l"><a href="https://play.google.com/store/apps/details?id=app.loopclass.planner" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 4.5v15l13-7.5z"/></svg>Google Play</a><a href="loopclass/privacy/">Privacy</a><a href="loopclass/terms/">Terms</a></p>
+      </li>
+      <li>
+        <span class="n">SNS-005</span>
+        <img class="i" src="audio-transcriber/img/icon-192.png" alt="" width="56" height="56" loading="lazy">
+        <h3><a href="audio-transcriber/">Offline Audio Transcriber</a></h3>
+        <p class="k">Speech to text on your phone</p>
+        <p class="l"><a href="https://play.google.com/store/apps/details?id=pl.snoochiesoft.audiotranscriber" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 4.5v15l13-7.5z"/></svg>Google Play</a><a href="audio-transcriber/privacy/">Privacy</a><a href="audio-transcriber/terms/">Terms</a></p>
+      </li>
+      <li>
+        <span class="n">SNS-006</span>
+        <img class="i" src="christian-pray/img/icon-192.png" alt="" width="56" height="56" loading="lazy">
+        <h3><a href="christian-pray/">Christian Pray Everyday</a></h3>
+        <p class="k">Daily Bible verse and prayer</p>
+        <p class="l"><a href="https://play.google.com/store/apps/details?id=pl.snoochiesoft.christianpray" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 4.5v15l13-7.5z"/></svg>Google Play</a><a href="https://chili-logic.com/privacy-policy#android" rel="noopener">Privacy</a><a href="https://chili-logic.com/terms-of-use" rel="noopener">Terms</a></p>
+      </li>
+      <li class="open"><span class="n">SNS-007</span><p>Reserved for the next release.</p></li>
     </ol>
-  </div>
-</section>
+  </section>
 
-<section class="contact wrap" id="kontakt" aria-labelledby="contact-h">
-  <h2 id="contact-h" class="label">Kontakt <span lang="en">/ Contact</span></h2>
-  <div class="contact-body">
-    <p class="contact-lead">Pytanie, błąd, pomysł? Napisz, odpisujemy. <span lang="en">Questions in English are welcome too.</span></p>
-    <p class="mail"><a href="mailto:SnoochieSoft@proton.me">SnoochieSoft@proton.me</a></p>
-    <button class="copy" type="button" data-copy="SnoochieSoft@proton.me" hidden>Kopiuj adres</button>
-    <p class="copy-status" role="status" aria-live="polite"></p>
-  </div>
-</section>
+  <section class="rules" id="rules" aria-labelledby="rulesTitle">
+    <h2 id="rulesTitle">House rules</h2>
+    <p class="sub">Three promises we press into our releases. Each app page lists the ones it keeps, in its own words.</p>
+    <ol><li><h3>No account</h3><p>Open the app and use it. No sign-up wall and nothing to log in to before you can try it.</p></li><li><h3>Works offline</h3><p>Notes, games and recordings stay on your phone and keep working on a plane, on a train or with the Wi-Fi off.</p></li><li><h3>Honest pricing</h3><p>What an app costs is shown before you pay. No surprise walls, no guilt trips, no shaming.</p></li></ol>
+  </section>
 
+  <section class="contact" id="contact" aria-labelledby="contactTitle">
+    <h2 id="contactTitle">Write to the studio</h2>
+    <p>Bug reports, partnerships, press, or a feature you are missing. One inbox, read by the people who build the apps.</p>
+    <p class="mail"><span class="vh">E-mail address: </span><span id="addr">SnoochieSoft@proton.me</span></p>
+    <p class="place">Snoochie Soft, Bydgoszcz, Poland</p>
+    <div class="mail-actions">
+      <a class="btn" href="mailto:SnoochieSoft@proton.me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Write an e-mail</a>
+      <button class="btn ghost" type="button" id="copyAddr" data-done="Address copied." hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>Copy address</button>
+      <span class="copy-status" id="copyStatus" role="status"></span>
+    </div>
+  </section>
 </main>
-
 <footer class="foot">
-  <div class="wrap foot-in">
-    <p class="foot-name">Snoochie Soft</p>
-    <ul class="foot-links">
-      <li><a href="szybciej-sie-nie-da/">Szybciej Się Nie Da</a></li>
-      <li><a href="mossy/">Mossy</a></li>
-      <li><a href="mossy/privacy/" lang="en">Mossy: Privacy Policy</a></li>
-    </ul>
-    <p class="foot-meta">© 2026 Snoochie Soft · <a href="mailto:SnoochieSoft@proton.me">SnoochieSoft@proton.me</a></p>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <a class="brand" href="./" aria-label="Snoochie Soft, home">
+        <img src="apple-touch-icon.png" alt="" width="40" height="40" loading="lazy">
+        <span><b>Snoochie Soft</b><small>Small apps, made properly.</small></span>
+      </a>
+      <p>SnoochieSoft@proton.me<br>Bydgoszcz, Poland</p>
+    </div>
+    <nav class="foot-rel" aria-label="App pages and legal pages"><h2>Releases</h2><ul><li><span class="no">SNS-001</span><a class="nm" href="szybciej-sie-nie-da/">Szybciej Się Nie Da</a><span class="lg"><a href="https://sites.google.com/view/szybciejsienieda/polityka-prywatnosci" hreflang="pl" rel="noopener">Privacy</a> <span class="note">(in Polish)</span> <a href="szybciej-sie-nie-da/terms/" hreflang="pl">Terms</a> <span class="note">(in Polish)</span></span></li><li><span class="no">SNS-002</span><a class="nm" href="mossy/">Mossy</a><span class="lg"><a href="mossy/privacy/">Privacy</a> <a href="mossy/terms/">Terms</a></span></li><li><span class="no">SNS-003</span><a class="nm" href="fakechat/">Fake Chat Maker &amp; Text Message</a><span class="lg"><a href="fakechat/privacy/">Privacy</a> <a href="fakechat/terms/">Terms</a></span></li><li><span class="no">SNS-004</span><a class="nm" href="loopclass/">Loopclass</a><span class="lg"><a href="loopclass/privacy/">Privacy</a> <a href="loopclass/terms/">Terms</a></span></li><li><span class="no">SNS-005</span><a class="nm" href="audio-transcriber/">Offline Audio Transcriber</a><span class="lg"><a href="audio-transcriber/privacy/">Privacy</a> <a href="audio-transcriber/terms/">Terms</a></span></li><li><span class="no">SNS-006</span><a class="nm" href="christian-pray/">Christian Pray Everyday</a><span class="lg"><a href="https://chili-logic.com/privacy-policy#android" rel="noopener">Privacy</a> <a href="https://chili-logic.com/terms-of-use" rel="noopener">Terms</a></span></li></ul></nav>
+    
+  </div>
+  <div class="foot-bar">
+    <a href="mailto:SnoochieSoft@proton.me">Contact</a>
+    <span>Android apps on Google Play</span>
+    <span class="mono">© 2026 Snoochie Soft</span>
   </div>
 </footer>
-
-<script src="js/studio.js" defer></script>
 </body>
 </html>
