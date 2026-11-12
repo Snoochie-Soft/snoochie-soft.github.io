@@ -1,0 +1,18 @@
+# Snoochie Soft
+
+> Snoochie Soft is a tiny independent studio publishing small Android apps on Google Play. The site is in English; app pages are also available in Polish, German, Spanish, Japanese, Brazilian Portuguese, French, Korean and Indonesian under /pl/, /de/, /es/, /ja/, /pt-br/, /fr/, /ko/ and /id/.
+
+## Apps
+
+- [Szybciej Się Nie Da](https://snoochie-soft.github.io/szybciej-sie-nie-da/): flashcards, quiz and statistics app (Polish).
+- [Mossy](https://snoochie-soft.github.io/mossy/): offline games.
+- [Fake Chat Maker](https://snoochie-soft.github.io/fakechat/): chat screenshot maker.
+- [Loopclass](https://snoochie-soft.github.io/loopclass/): student planner.
+- [Offline Audio Transcriber](https://snoochie-soft.github.io/audio-transcriber/): audio transcription.
+- [Christian Pray Everyday](https://snoochie-soft.github.io/christian-pray/): prayer app.
+- [Pug Bubble Dig](https://snoochie-soft.github.io/pug-bubble-dig/): game.
+
+## Contact
+
+- E-mail: SnoochieSoft@proton.me
+- [Studio home page](https://snoochie-soft.github.io/)
