@@ -138,6 +138,8 @@ ${ogImage ? `<meta property="og:type" content="website">
 <meta name="twitter:image" content="${abs(ctx, ogImage)}">` : ""}
 ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ""}
 <script src="${href(ctx, "js/label.js")}" defer></script>
+<script defer src="https://stats.spokojnasiec.pl/script.js" data-website-id="ae07d2b8-0454-4175-944a-c2b7a6d87c9f" data-domains="snoochie-soft.github.io"></script>
+<script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||!window.umami)return;var h=a.getAttribute("href")||"";if(h.indexOf("play.google.com")>-1){var m=h.match(/id=([^&]+)/);window.umami.track("google-play",{app:m?m[1]:"",strona:location.pathname})}});</script>
 </head>`;
 }
 
