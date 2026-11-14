@@ -284,7 +284,7 @@
         "On a Samsung Galaxy S23 Ultra a one-hour recording took about 8 minutes in our own test. Older and cheaper phones are slower, and long jobs keep running in the background.",
         "No analytics, no crash reporting, nothing sold."
       ],
-      "fine": "Accuracy depends on audio quality, accents and background noise. Check important transcripts before you rely on them. The main speech model, NVIDIA Parakeet TDT 0.6B v3, is licensed under CC BY 4.0.",
+      "fine": "Accuracy depends on audio quality, accents and background noise. Check important transcripts before you rely on them.",
       "screens": [
         { "caption": "Transcript", "alt": "The transcript screen: timestamped lines, the word being played is highlighted, player controls at the bottom." },
         { "caption": "Recorder", "alt": "The recorder: running time, live waveform and how much of the free part is left." },
