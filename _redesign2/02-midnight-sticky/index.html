@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Midnight Sticky - Snoochie Soft redesign B2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a111f;--bg2:#111a2e;--ink:#eaf0ff;--mut:#9aa8c7;--line:rgba(234,240,255,.13);--c:#c9f23a;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html,body{overflow-x:clip}
+body{font:400 18px/1.6 Onest,system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+header{position:fixed;inset:0 0 auto 0;z-index:50;background:linear-gradient(var(--bg),transparent);}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:72px}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.03em}
+header nav{display:flex;gap:4px;padding:4px;border-radius:99px;background:rgba(17,26,46,.8);backdrop-filter:blur(12px);border:1px solid var(--line)}
+header nav a{padding:8px 16px;border-radius:99px;font-weight:500;font-size:15px;color:var(--mut)}
+header nav a:hover{color:var(--ink)}
+header nav a.go{background:var(--ink);color:var(--bg)}
+.hero{min-height:86vh;display:grid;place-items:center;text-align:center;padding-block:130px 40px}
+.hero .eb{display:inline-block;color:var(--mut);font-size:15px;margin-bottom:22px;letter-spacing:.04em}
+.hero h1{font:800 clamp(48px,8.6vw,134px)/.95 Onest;letter-spacing:-.06em;margin-bottom:24px}
+.hero h1 span{color:var(--c);transition:color .6s}
+.hero p{color:var(--mut);max-width:50ch;margin:0 auto 32px;font-size:clamp(18px,1.5vw,21px)}
+.btn{display:inline-flex;padding:16px 28px;border-radius:99px;background:var(--ink);color:var(--bg);font-weight:700;transition:translate .4s var(--ease)}
+.btn:hover{translate:0 -3px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,5vw,80px);position:relative}
+.chap{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:70px 0}
+.chap .no{display:flex;gap:12px;align-items:center;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--cc);margin-bottom:16px}
+.chap .no img{width:46px;border-radius:24%}
+.chap h2{font:800 clamp(38px,5vw,76px)/.96 Onest;letter-spacing:-.055em;margin-bottom:14px}
+.chap .k{font-weight:600;font-size:21px;margin-bottom:10px}
+.chap p{color:var(--mut);max-width:40ch;margin-bottom:22px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.tags span{padding:6px 14px;border-radius:99px;border:1px solid var(--line);font-size:14px}
+.badge{height:52px;width:auto}
+.side{position:relative}
+.stk{position:sticky;top:0;height:100vh;display:grid;place-items:center}
+.glow{position:absolute;width:min(46vw,560px);aspect-ratio:1;border-radius:50%;background:var(--c);filter:blur(110px);opacity:.32;transition:background .8s}
+.ph{position:relative;height:min(78vh,740px);aspect-ratio:9/19;border-radius:40px;border:8px solid #04070d;background:#04070d;overflow:hidden;box-shadow:0 50px 120px rgba(0,0,0,.7),0 0 0 1.5px rgba(255,255,255,.16);will-change:transform}
+.ph::before{content:"";position:absolute;top:9px;left:50%;width:30%;height:16px;margin-left:-15%;border-radius:10px;background:#04070d;z-index:4}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s}
+.ph img.on{opacity:1}
+.dots{position:absolute;right:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px;z-index:3}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--line);transition:.4s;cursor:pointer}
+.dots i.on{background:var(--c);transform:scale(1.7)}
+.rules{padding-block:clamp(70px,8vw,120px)}
+.rules h2{font:800 clamp(38px,5.4vw,80px)/1 Onest;letter-spacing:-.055em;margin-bottom:34px}
+.rg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rg div{padding:30px;border-radius:28px;background:var(--bg2);border:1px solid var(--line);transition:translate .5s var(--ease),border-color .5s}
+.rg div:hover{translate:0 -6px;border-color:var(--c)}
+.rg i{font:700 14px Onest;color:var(--c);font-style:normal}
+.rg b{display:block;font:800 26px Onest;letter-spacing:-.03em;margin:44px 0 6px}
+.rg p{color:var(--mut)}
+.contact{background:var(--c);color:#0a111f;border-radius:44px;padding:clamp(36px,7vw,90px);margin-bottom:40px;transition:background .6s}
+.contact h2{font:800 clamp(34px,5.6vw,86px)/.96 Onest;letter-spacing:-.055em;margin-bottom:20px}
+.contact a.m{font:800 clamp(20px,3.2vw,44px) Onest;letter-spacing:-.03em;border-bottom:3px solid #0a111f;word-break:break-all}
+footer{padding:0 0 40px;color:var(--mut);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+@media(max-width:860px){.split{grid-template-columns:1fr}.side{order:-1}.stk{height:56vh;top:70px;z-index:2;background:linear-gradient(var(--bg) 70%,transparent)}.ph{height:50vh}.chap{min-height:70vh}.dots{display:none}.rg{grid-template-columns:1fr}header nav a:not(.go){display:none}.glow{width:80vw}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#">Snoochie Soft</a><nav><a href="#apps">Apps</a><a href="#rules">House rules</a><a class="go" href="#contact">Contact</a></nav></div></header>
+
+<main>
+<section class="wrap hero">
+  <div><span class="eb">Seven Android apps · one small studio in Poland</span><h1>Small apps,<br><span>made properly.</span></h1><p>No accounts. Works offline. Honest pricing. Scroll and watch each app come to life on the phone.</p><a class="btn" href="#apps">Meet the apps ↓</a></div>
+</section>
+
+<section class="wrap split" id="apps">
+  <div id="chaps"></div>
+  <div class="side"><div class="stk"><div class="glow"></div><div class="ph" id="ph"></div><div class="dots" id="dots"></div></div></div>
+</section>
+
+<section class="wrap rules" id="rules"><h2>House rules.</h2><div class="rg" id="rg"></div></section>
+<section class="wrap"><div class="contact" id="contact"><h2>Got a question?<br>Write to us.</h2><a class="m" id="mail"></a></div></section>
+</main>
+<footer><div class="wrap"><span>© 2026 Snoochie Soft · Bydgoszcz, Poland</span><span>Privacy · Terms · Support</span></div></footer>
+
+<script src="../../_redesign/vendor/gsap.min.js"></script><script src="../../_redesign/vendor/ScrollTrigger.min.js"></script><script src="../../_redesign/vendor/lenis.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../../_redesign/shared/common.js"></script>
+<script>
+const N=APPS.length,ph=document.getElementById('ph');
+document.getElementById('chaps').innerHTML=APPS.map(a=>`<article class="chap" style="--cc:${a.c1}"><div class="no"><img src="${a.icon}" alt="">${a.no} · ${a.cat}</div><h2>${a.name}</h2><div class="k">${a.kind}</div><p>${a.line}</p><div class="tags">${a.tags.map(t=>`<span>${t}</span>`).join('')}</div><a href="${a.play}">${badge()}</a></article>`).join('');
+ph.innerHTML=APPS.map((a,i)=>a.shots.map((s,k)=>`<img data-a="${i}" data-k="${k}" src="${s}" alt="">`).join('')).join('');
+document.getElementById('dots').innerHTML=APPS.map((a,i)=>`<i data-i="${i}"></i>`).join('');
+document.getElementById('rg').innerHTML=RULES.map((r,i)=>`<div><i>0${i+1}</i><b>${r[0]}</b><p>${r[1]}</p></div>`).join('');
+const m=document.getElementById('mail');m.textContent=EMAIL;m.href='mailto:'+EMAIL;
+const imgs=[...ph.querySelectorAll('img')],dots=[...document.querySelectorAll('.dots i')];
+let cur=-1,k=0,tm;
+function show(){imgs.forEach(im=>im.classList.toggle('on',+im.dataset.a===cur&&+im.dataset.k===k))}
+function setActive(i){if(i===cur)return;cur=i;k=0;const c=APPS[i].c1;document.documentElement.style.setProperty('--c',c);dots.forEach((d,x)=>d.classList.toggle('on',x===i));show();clearInterval(tm);tm=setInterval(()=>{k=(k+1)%3;show()},2400);
+  if(!RM)gsap.fromTo(ph,{rotate:i%2?-4:4,scale:.94},{rotate:0,scale:1,duration:1,ease:'expo.out'})}
+const l=initSmooth();
+dots.forEach(d=>d.addEventListener('click',()=>{const el_=document.querySelectorAll('.chap')[+d.dataset.i];l?l.scrollTo(el_,{duration:1.2}):el_.scrollIntoView({behavior:'smooth'})}));
+document.querySelectorAll('.chap').forEach((c,i)=>ScrollTrigger.create({trigger:c,start:'top 55%',end:'bottom 55%',onToggle:s=>{if(s.isActive)setActive(i)}}));
+setActive(0);
+if(!RM){
+  gsap.from('.hero .eb,.hero h1,.hero p,.hero .btn',{y:50,opacity:0,duration:1.1,ease:'expo.out',stagger:.08,delay:.1});
+  document.querySelectorAll('.chap').forEach(c=>gsap.from(c.children,{y:44,opacity:0,duration:1,ease:'expo.out',stagger:.07,scrollTrigger:{trigger:c,start:'top 65%'}}));
+  gsap.from('.ph',{y:120,opacity:0,duration:1.4,ease:'expo.out',scrollTrigger:{trigger:'.split',start:'top 80%'}});
+  gsap.from('.rules h2,.rg div',{y:50,opacity:0,duration:1,ease:'expo.out',stagger:.08,scrollTrigger:{trigger:'.rules',start:'top 80%'}});
+  gsap.from('.contact',{y:80,opacity:0,scale:.96,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.contact',start:'top 88%'}});
+}
+</script>
+</body>
+</html>

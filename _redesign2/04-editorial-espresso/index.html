@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Editorial Espresso - Snoochie Soft redesign B4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1b130f;--bg2:#251a14;--ink:#f6ebdd;--mut:#b9a691;--line:rgba(246,235,221,.16);--gold:#e8b86a;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html,body{overflow-x:clip}
+body{font:400 18px/1.65 'Schibsted Grotesk',system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.sf{font-family:'DM Serif Display',Georgia,serif;font-weight:400}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+.mast{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;background:rgba(27,19,15,.9);backdrop-filter:blur(12px)}
+.mast .wrap{display:flex;justify-content:space-between;align-items:center;height:64px;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.mast b{font:400 24px 'DM Serif Display';letter-spacing:0;text-transform:none;color:var(--ink)}
+.mast nav{display:flex;gap:26px}.mast nav a:hover{color:var(--gold)}
+.cover{padding-block:clamp(60px,8vw,110px) clamp(40px,5vw,70px);text-align:center;border-bottom:1px solid var(--line)}
+.cover .iss{color:var(--gold);font-size:14px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:26px}
+.cover h1{font:400 clamp(60px,12vw,190px)/.9 'DM Serif Display';letter-spacing:-.03em;margin-bottom:28px}
+.cover h1 em{color:var(--gold)}
+.cover p{max-width:46ch;margin:0 auto;color:var(--mut);font-size:clamp(18px,1.5vw,21px)}
+.toc{display:flex;gap:10px 22px;justify-content:center;flex-wrap:wrap;margin-top:34px;font-size:15px;color:var(--mut)}
+.toc a{border-bottom:1px solid var(--line);padding-bottom:2px;transition:.3s}.toc a:hover{color:var(--gold);border-color:var(--gold)}
+.spread{display:grid;grid-template-columns:repeat(12,1fr);gap:0 clamp(14px,2vw,28px);padding-block:clamp(60px,8vw,120px);border-bottom:1px solid var(--line);align-items:center}
+.spread .num{grid-column:1/-1;font:400 clamp(110px,22vw,320px)/.78 'DM Serif Display';color:transparent;-webkit-text-stroke:1.5px var(--line);margin-bottom:-.18em;pointer-events:none;user-select:none}
+.spread .tx{grid-column:1/6;position:relative;z-index:2}
+.spread .ph{grid-column:6/-1;position:relative}
+.spread:nth-of-type(even) .tx{grid-column:8/-1;grid-row:2}
+.spread:nth-of-type(even) .ph{grid-column:1/8;grid-row:2}
+.spread:nth-of-type(even) .num{text-align:right}
+.lab{display:flex;gap:12px;align-items:center;color:var(--ac);font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:16px}
+.lab img{width:44px;border-radius:24%}
+.spread h2{font:400 clamp(40px,5.4vw,84px)/.98 'DM Serif Display';letter-spacing:-.02em;margin-bottom:18px}
+.spread .k{font:italic 400 clamp(22px,2vw,30px)/1.25 'DM Serif Display';color:var(--ink);margin-bottom:14px}
+.spread p{color:var(--mut);max-width:40ch;margin-bottom:22px}
+.facts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.facts span{padding:6px 14px;border-radius:99px;border:1px solid var(--line);font-size:14px;color:var(--ink)}
+.badge{height:52px;width:auto}
+.ph .frame{position:relative;border-radius:200px 200px 24px 24px;overflow:hidden;aspect-ratio:5/4.2;background:color-mix(in srgb,var(--ac) 22%,#1b130f);border:1px solid var(--line)}
+.ph .frame .bg{position:absolute;inset:0;background:radial-gradient(70% 80% at 50% 100%,color-mix(in srgb,var(--ac) 50%,transparent),transparent)}
+.ph .s{position:absolute;bottom:-9%;aspect-ratio:9/19;border-radius:26px;border:5px solid #0f0a07;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.ph .s img{width:100%;height:100%;object-fit:cover}
+.ph .s1{left:6%;width:30%;transform:rotate(-6deg)}
+.ph .s2{left:35%;width:34%;bottom:-3%;z-index:2}
+.ph .s3{right:6%;width:30%;transform:rotate(6deg)}
+.rules{padding-block:clamp(70px,9vw,130px);text-align:center;border-bottom:1px solid var(--line)}
+.rules .q{font:italic 400 clamp(32px,5vw,74px)/1.1 'DM Serif Display';max-width:20ch;margin:0 auto 40px}
+.rules .q span{color:var(--gold)}
+.rl{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);text-align:left}
+.rl div{padding:28px 28px 8px 0;border-right:1px solid var(--line);padding-left:28px}
+.rl div:first-child{padding-left:0}.rl div:last-child{border:0}
+.rl i{font:400 16px 'DM Serif Display';color:var(--gold);font-style:normal}
+.rl b{display:block;font:400 28px 'DM Serif Display';margin:10px 0 4px}
+.rl p{color:var(--mut)}
+.contact{padding-block:clamp(70px,9vw,130px);text-align:center}
+.contact h2{font:400 clamp(44px,7vw,110px)/.95 'DM Serif Display';letter-spacing:-.02em;margin-bottom:24px}
+.contact a.m{font:italic 400 clamp(22px,3.2vw,44px) 'DM Serif Display';color:var(--gold);border-bottom:1px solid var(--gold);word-break:break-all}
+footer{padding:0 0 40px;color:var(--mut);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:26px}
+@media(max-width:860px){.spread .tx,.spread:nth-of-type(even) .tx{grid-column:1/-1;grid-row:auto}.spread .ph,.spread:nth-of-type(even) .ph{grid-column:1/-1;grid-row:auto;margin-top:36px}.rl{grid-template-columns:1fr}.rl div{border-right:0;border-bottom:1px solid var(--line);padding:22px 0}.mast nav{display:none}}
+</style>
+</head>
+<body>
+<div class="mast"><div class="wrap"><span>Issue No. 7 · 2026</span><b>Snoochie Soft</b><nav><a href="#rules">House rules</a><a href="#contact">Contact</a></nav></div></div>
+<main>
+<section class="wrap cover">
+  <div class="iss">The Small Apps Quarterly</div>
+  <h1>Small apps,<br><em>made properly.</em></h1>
+  <p>Seven Android apps from one small studio in Poland. No accounts, works offline, honest pricing. Read on.</p>
+  <div class="toc" id="toc"></div>
+</section>
+<div class="wrap" id="spreads"></div>
+<section class="wrap rules" id="rules"><div class="q">“<span>No account.</span> Works offline. Honest pricing.”</div><div class="rl" id="rl"></div></section>
+<section class="wrap contact" id="contact"><h2>Write to the editors.</h2><a class="m" id="mail"></a></section>
+</main>
+<footer><div class="wrap"><span>© 2026 Snoochie Soft · Bydgoszcz, Poland</span><span>Privacy · Terms · Support</span></div></footer>
+
+<script src="../../_redesign/vendor/gsap.min.js"></script><script src="../../_redesign/vendor/ScrollTrigger.min.js"></script><script src="../../_redesign/vendor/lenis.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../../_redesign/shared/common.js"></script>
+<script>
+document.getElementById('toc').innerHTML=APPS.map(a=>`<a href="#${a.id}">${a.no.slice(-3)} ${a.short}</a>`).join('');
+document.getElementById('spreads').innerHTML=APPS.map(a=>`<section class="spread" id="${a.id}" style="--ac:${a.c1}"><div class="num">${a.no.slice(-3)}</div><div class="tx"><div class="lab"><img src="${a.icon}" alt="">${a.cat}</div><h2>${a.name}</h2><div class="k">${a.kind}</div><p>${a.line}</p><div class="facts">${a.tags.map(t=>`<span>${t}</span>`).join('')}</div><a href="${a.play}">${badge()}</a></div><div class="ph"><div class="frame"><div class="bg"></div><div class="s s1"><img src="${a.shots[1]}" alt=""></div><div class="s s3"><img src="${a.shots[2]}" alt=""></div><div class="s s2"><img src="${a.shots[0]}" alt=""></div></div></div></section>`).join('');
+document.getElementById('rl').innerHTML=RULES.map((r,i)=>`<div><i>No. ${i+1}</i><b>${r[0]}</b><p>${r[1]}</p></div>`).join('');
+const m=document.getElementById('mail');m.textContent=EMAIL;m.href='mailto:'+EMAIL;
+const l=initSmooth();
+document.querySelectorAll('.toc a').forEach(a=>a.addEventListener('click',e=>{if(l){e.preventDefault();l.scrollTo(a.getAttribute('href'),{duration:1.4})}}));
+if(!RM){
+  gsap.from('.cover>*',{y:50,opacity:0,duration:1.2,ease:'expo.out',stagger:.09,delay:.1});
+  gsap.utils.toArray('.spread').forEach((s,i)=>{
+    gsap.from(s.querySelector('.num'),{yPercent:30,opacity:0,duration:1.4,ease:'expo.out',scrollTrigger:{trigger:s,start:'top 80%'}});
+    gsap.from(s.querySelectorAll('.tx>*'),{y:46,opacity:0,duration:1,ease:'expo.out',stagger:.07,scrollTrigger:{trigger:s,start:'top 62%'}});
+    gsap.fromTo(s.querySelector('.frame'),{clipPath:'inset(100% 0 0 0 round 200px 200px 24px 24px)'},{clipPath:'inset(0% 0 0 0 round 200px 200px 24px 24px)',duration:1.5,ease:'expo.inOut',scrollTrigger:{trigger:s,start:'top 62%'}});
+    gsap.from(s.querySelectorAll('.s'),{y:140,opacity:0,duration:1.2,ease:'expo.out',stagger:.1,delay:.5,scrollTrigger:{trigger:s,start:'top 62%'}});
+    gsap.to(s.querySelector('.s2'),{yPercent:-10,ease:'none',scrollTrigger:{trigger:s,scrub:true}});
+    gsap.to(s.querySelector('.num'),{x:i%2?-60:60,ease:'none',scrollTrigger:{trigger:s,scrub:true}});
+  });
+  gsap.from('.rules .q,.rl div',{y:50,opacity:0,duration:1,ease:'expo.out',stagger:.08,scrollTrigger:{trigger:'.rules',start:'top 78%'}});
+  gsap.from('.contact>*',{y:50,opacity:0,duration:1.2,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.contact',start:'top 80%'}});
+}
+</script>
+</body>
+</html>

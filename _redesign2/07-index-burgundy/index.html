@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Index Burgundy - Snoochie Soft redesign B7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#2a0d17;--bg2:#3a1422;--ink:#fbeee4;--mut:#cba9a8;--line:rgba(251,238,228,.2);--ro:#ff7a8a;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html,body{overflow-x:clip}
+body{font:400 18px/1.6 Epilogue,system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
+.wrap{max-width:1320px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+header{position:sticky;top:0;z-index:40;background:rgba(42,13,23,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+.logo{font:900 20px Epilogue;letter-spacing:-.04em;text-transform:uppercase}
+header nav{display:flex;gap:26px;font-weight:600;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+header nav a:hover{color:var(--ro)}
+.hero{padding-block:clamp(60px,8vw,110px) clamp(34px,4vw,54px)}
+.hero .eb{color:var(--ro);font-weight:800;font-size:14px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:20px}
+.hero h1{font:900 clamp(50px,9vw,144px)/.92 Epilogue;letter-spacing:-.06em;max-width:13ch;margin-bottom:22px}
+.hero h1 span{color:var(--ro)}
+.hero p{color:var(--mut);max-width:46ch;font-size:clamp(18px,1.5vw,21px)}
+.idx{border-top:2px solid var(--ink);margin-bottom:clamp(60px,8vw,110px)}
+.it{border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.it::before{content:"";position:absolute;inset:0;background:var(--ro);transform:scaleY(0);transform-origin:bottom;transition:transform .55s var(--ease);z-index:0}
+.it:hover::before,.it.open::before{transform:scaleY(1)}
+.hd{position:relative;z-index:1;display:grid;grid-template-columns:70px 1fr auto 64px;gap:clamp(8px,2vw,30px);align-items:center;width:100%;padding:clamp(14px,2vw,26px) 0;transition:color .4s,padding .5s var(--ease)}
+.it:hover .hd,.it.open .hd{color:#2a0d17;padding-left:18px;padding-right:18px}
+.hd .n{font-weight:800;font-size:14px;letter-spacing:.14em}
+.hd .nm{font:900 clamp(30px,5.3vw,86px)/.98 Epilogue;letter-spacing:-.055em;text-transform:uppercase}
+.hd .ct{font-weight:600;font-size:14px;letter-spacing:.16em;text-transform:uppercase;opacity:.75}
+.hd .pl{justify-self:end;width:46px;height:46px;border-radius:50%;border:2px solid currentColor;display:grid;place-items:center;font-size:28px;font-weight:400;line-height:1;transition:rotate .5s var(--ease)}
+.it.open .pl{rotate:45deg}
+.pv{position:fixed;z-index:60;width:150px;aspect-ratio:1;border-radius:24%;overflow:hidden;pointer-events:none;opacity:0;box-shadow:0 20px 50px rgba(0,0,0,.5);left:0;top:0;translate:-50% -50%}
+.pv img{width:100%;height:100%;object-fit:cover}
+.pn{height:0;overflow:hidden;position:relative;z-index:1;color:#2a0d17}
+.pi{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(20px,4vw,60px);align-items:center;padding:clamp(10px,2vw,24px) 18px clamp(28px,3.4vw,50px)}
+.pi .k{font-weight:800;font-size:clamp(20px,2vw,28px);letter-spacing:-.02em;margin-bottom:10px}
+.pi p{max-width:38ch;margin-bottom:18px;font-weight:500}
+.pi .tg{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.pi .tg span{padding:5px 13px;border-radius:99px;border:2px solid #2a0d17;font-weight:600;font-size:14px}
+.badge{height:50px;width:auto}
+.pi .sh{display:flex;gap:14px;justify-content:center;align-items:flex-end;height:min(52vh,440px)}
+.pi .sh div{height:100%;aspect-ratio:9/19;border-radius:24px;border:5px solid #1b0710;overflow:hidden;box-shadow:0 24px 46px rgba(0,0,0,.4)}
+.pi .sh div:nth-child(2){height:106%;margin-bottom:-4%}
+.pi .sh img{width:100%;height:100%;object-fit:cover}
+.rules h2{font:900 clamp(38px,5.4vw,84px)/1 Epilogue;letter-spacing:-.055em;text-transform:uppercase;margin-bottom:30px}
+.rg{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink)}
+.rg div{padding:26px 26px 30px 0;border-right:1px solid var(--line);padding-left:26px}
+.rg div:first-child{padding-left:0}.rg div:last-child{border:0}
+.rg i{font:800 14px Epilogue;color:var(--ro);font-style:normal;letter-spacing:.14em}
+.rg b{display:block;font:900 clamp(24px,2.6vw,36px) Epilogue;letter-spacing:-.04em;text-transform:uppercase;margin:34px 0 8px}
+.rg p{color:var(--mut)}
+.contact{padding-block:clamp(70px,9vw,130px)}
+.contact h2{font:900 clamp(40px,7.6vw,124px)/.92 Epilogue;letter-spacing:-.06em;text-transform:uppercase;margin-bottom:24px}
+.contact a.m{font:800 clamp(20px,3.2vw,44px) Epilogue;letter-spacing:-.03em;color:var(--ro);border-bottom:3px solid var(--ro);word-break:break-all}
+footer{padding:26px 0 40px;color:var(--mut);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+@media(max-width:860px){.hd{grid-template-columns:36px 1fr 40px}.hd .ct{display:none}.hd .pl{width:36px;height:36px;font-size:22px}.pi{grid-template-columns:1fr}.pi .sh{height:340px}.rg{grid-template-columns:1fr}.rg div{border-right:0;border-bottom:1px solid var(--line);padding:22px 0}header nav{display:none}}
+@media(hover:none){.pv{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#">Snoochie Soft</a><nav><a href="#idx">Index</a><a href="#rules">House rules</a><a href="#contact">Contact</a></nav></div></header>
+<main>
+<section class="wrap hero"><div class="eb">Seven Android apps · one small studio in Poland</div><h1>Small apps, <span>made properly.</span></h1><p>No accounts. Works offline. Honest pricing. The whole catalogue is one list: open a row to see the app.</p></section>
+<section class="wrap"><div class="idx" id="idx"></div></section>
+<section class="wrap rules" id="rules"><h2>House rules</h2><div class="rg" id="rg"></div></section>
+<section class="wrap contact" id="contact"><h2>Got a question?<br>Write to us.</h2><a class="m" id="mail"></a></section>
+</main>
+<footer><div class="wrap"><span>© 2026 Snoochie Soft · Bydgoszcz, Poland</span><span>Privacy · Terms · Support</span></div></footer>
+<div class="pv" id="pv"><img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></div>
+
+<script src="../../_redesign/vendor/gsap.min.js"></script><script src="../../_redesign/vendor/ScrollTrigger.min.js"></script><script src="../../_redesign/vendor/lenis.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../../_redesign/shared/common.js"></script>
+<script>
+const idx=document.getElementById('idx'),pv=document.getElementById('pv'),pvi=pv.querySelector('img');
+idx.innerHTML=APPS.map((a,i)=>`<article class="it" data-i="${i}"><button class="hd" aria-expanded="false"><span class="n">${a.no.slice(-3)}</span><span class="nm">${a.name}</span><span class="ct">${a.cat}</span><span class="pl">+</span></button><div class="pn"><div class="pi"><div><div class="k">${a.kind}</div><p>${a.line}</p><div class="tg">${a.tags.map(t=>`<span>${t}</span>`).join('')}</div><a href="${a.play}">${badge()}</a></div><div class="sh">${a.shots.map(s=>`<div><img src="${s}" alt=""></div>`).join('')}</div></div></div></article>`).join('');
+document.getElementById('rg').innerHTML=RULES.map((r,i)=>`<div><i>0${i+1}</i><b>${r[0]}</b><p>${r[1]}</p></div>`).join('');
+const m=document.getElementById('mail');m.textContent=EMAIL;m.href='mailto:'+EMAIL;
+const l=initSmooth(),items=[...idx.children];
+function setOpen(it,on){const pn=it.querySelector('.pn');it.classList.toggle('open',on);it.querySelector('.hd').setAttribute('aria-expanded',on);
+  if(RM){pn.style.height=on?'auto':0;return}
+  if(on){gsap.to(pn,{height:'auto',duration:.9,ease:'expo.out',onUpdate:()=>ScrollTrigger.update(),onComplete:()=>ScrollTrigger.refresh()});
+    gsap.fromTo(pn.querySelectorAll('.pi>div:first-child>*'),{y:30,opacity:0},{y:0,opacity:1,duration:.8,ease:'expo.out',stagger:.06,delay:.15});
+    gsap.fromTo(pn.querySelectorAll('.sh div'),{y:90,opacity:0,rotate:(k)=>[-6,0,6][k]},{y:0,opacity:1,rotate:0,duration:1,ease:'expo.out',stagger:.09,delay:.12})}
+  else gsap.to(pn,{height:0,duration:.6,ease:'expo.inOut',onComplete:()=>ScrollTrigger.refresh()})}
+idx.addEventListener('click',e=>{const b=e.target.closest('.hd');if(!b)return;const it=b.parentElement,was=it.classList.contains('open');gsap.to(pv,{opacity:0,duration:.2,overwrite:'auto'});items.forEach(x=>{if(x!==it&&x.classList.contains('open'))setOpen(x,false)});setOpen(it,!was)});
+/* floating icon preview follows the cursor over closed rows */
+const qx=gsap.quickTo(pv,'left',{duration:.5,ease:'power3'}),qy=gsap.quickTo(pv,'top',{duration:.5,ease:'power3'});
+idx.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;qx(e.clientX+110);qy(e.clientY)});
+idx.addEventListener('pointerover',e=>{const it=e.target.closest('.it');if(it&&!it.classList.contains('open')){pvi.src=APPS[+it.dataset.i].icon;gsap.to(pv,{opacity:1,scale:1,rotate:-6,duration:.4,overwrite:'auto'})}else gsap.to(pv,{opacity:0,duration:.2,overwrite:'auto'})});
+idx.addEventListener('pointerleave',()=>gsap.to(pv,{opacity:0,scale:.8,duration:.3}));
+setOpen(items[0],true);
+if(!RM){
+  gsap.from('.hero .eb,.hero h1,.hero p',{y:50,opacity:0,duration:1.2,ease:'expo.out',stagger:.09,delay:.1});
+  gsap.from('.it',{yPercent:60,opacity:0,duration:1.2,ease:'expo.out',stagger:.07,delay:.35});
+  gsap.from('.rules h2,.rg div',{y:50,opacity:0,duration:1,ease:'expo.out',stagger:.08,scrollTrigger:{trigger:'.rules',start:'top 80%'}});
+  gsap.from('.contact>*',{y:60,opacity:0,duration:1.2,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.contact',start:'top 82%'}});
+}
+</script>
+</body>
+</html>

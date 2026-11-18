@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Aubergine Track - Snoochie Soft redesign B1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#170f1f;--bg2:#21162c;--ink:#f6eefa;--mut:#b4a5c0;--line:rgba(246,238,250,.14);--c:#c9f23a;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html,body{overflow-x:clip}
+body{font:400 18px/1.6 'Hanken Grotesk',system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.d{font-family:Sora,sans-serif;letter-spacing:-.04em}
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+header{position:sticky;top:0;z-index:50;background:rgba(23,15,31,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:66px}
+.logo{font:800 20px Sora;letter-spacing:-.04em;display:flex;gap:10px;align-items:center}
+.logo i{width:24px;height:24px;border-radius:50%;background:var(--c);transition:background .5s}
+header nav{display:flex;gap:6px}
+header nav a{padding:8px 15px;border-radius:99px;font-weight:500;color:var(--mut);transition:.3s}
+header nav a:hover{background:var(--bg2);color:var(--ink)}
+header nav a.go{background:var(--ink);color:var(--bg)}
+.hero{padding-block:clamp(70px,10vw,140px) clamp(50px,6vw,80px)}
+.hero .eb{display:inline-block;padding:7px 15px;border-radius:99px;border:1px solid var(--line);color:var(--mut);font-size:15px;margin-bottom:26px}
+.hero h1{font:800 clamp(52px,9.4vw,150px)/.94 Sora;letter-spacing:-.06em;max-width:11ch;margin-bottom:26px}
+.hero h1 span{color:var(--mut)}
+.hero p{color:var(--mut);max-width:48ch;font-size:clamp(18px,1.5vw,21px);margin-bottom:34px}
+.chips{display:flex;gap:12px;flex-wrap:wrap}
+.chip{display:flex;gap:10px;align-items:center;padding:8px 18px 8px 8px;border-radius:99px;background:var(--bg2);border:1px solid var(--line);font-weight:500;cursor:pointer;transition:translate .45s var(--ease),border-color .3s}
+.chip img{width:34px;border-radius:24%}
+.chip:hover{translate:0 -4px;border-color:var(--cc)}
+.pin{position:relative;height:100vh;min-height:640px;overflow:hidden;background:var(--bgc,var(--bg));transition:background .6s}
+.track{display:flex;height:100%;width:max-content;will-change:transform}
+.panel{flex:none;width:100vw;height:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(20px,4vw,70px);align-items:center;padding:78px clamp(18px,6vw,110px) 90px}
+.tx .no{display:flex;gap:12px;align-items:center;font-weight:600;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--c);margin-bottom:16px}
+.tx .no img{width:46px;border-radius:24%}
+.tx h2{font:800 clamp(38px,5.2vw,80px)/.95 Sora;letter-spacing:-.055em;margin-bottom:14px}
+.tx .k{font-weight:600;font-size:20px;margin-bottom:8px}
+.tx p{color:var(--mut);max-width:40ch;margin-bottom:22px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.tags span{padding:6px 14px;border-radius:99px;border:1px solid var(--line);font-size:14px}
+.badge{height:52px;width:auto}
+.vis{position:relative;height:min(68vh,620px);border-radius:40px;background:radial-gradient(90% 80% at 50% 70%,color-mix(in srgb,var(--c) 34%,transparent),transparent 70%),color-mix(in srgb,var(--c) 10%,#00000030);border:1px solid var(--line);overflow:hidden}
+.vis .p{position:absolute;height:84%;aspect-ratio:9/19;border-radius:30px;border:6px solid #120b19;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.5)}
+.vis .p img{width:100%;height:100%;object-fit:cover}
+.vis .p.a{left:5%;top:14%;transform:rotate(-7deg)}
+.vis .p.b{left:50%;top:6%;margin-left:-14%;z-index:2}
+.vis .p.c3{right:5%;top:16%;transform:rotate(8deg)}
+.hud{position:absolute;left:0;right:0;bottom:0;padding:0 clamp(18px,6vw,110px) 26px;display:flex;align-items:center;gap:22px;z-index:5}
+.hud .cnt{font:800 18px Sora;letter-spacing:-.03em;min-width:64px}
+.hud .bar{flex:1;height:3px;background:var(--line);border-radius:3px;overflow:hidden}
+.hud .bar b{display:block;height:100%;width:0;background:var(--c);transition:background .5s}
+.hud .hint{color:var(--mut);font-size:14px}
+.rules{padding-block:clamp(80px,9vw,130px)}
+.rules h2{font:800 clamp(38px,5.4vw,80px)/1 Sora;letter-spacing:-.055em;margin-bottom:34px}
+.rg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rg div{padding:30px;border-radius:28px;background:var(--bg2);border:1px solid var(--line);transition:translate .5s var(--ease),border-color .5s}
+.rg div:hover{translate:0 -6px;border-color:var(--ink)}
+.rg i{font:800 14px Sora;color:var(--c);font-style:normal}
+.rg b{display:block;font:800 26px Sora;letter-spacing:-.04em;margin:44px 0 6px}
+.rg p{color:var(--mut)}
+.contact{background:var(--ink);color:#170f1f;border-radius:44px;padding:clamp(36px,7vw,90px);margin-bottom:40px}
+.contact h2{font:800 clamp(34px,5.6vw,86px)/.96 Sora;letter-spacing:-.055em;margin-bottom:20px}
+.contact a.m{font:800 clamp(20px,3.2vw,44px) Sora;letter-spacing:-.04em;border-bottom:3px solid #170f1f;word-break:break-all}
+footer{padding:0 0 40px;color:var(--mut);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+@media(max-width:860px){.pin{height:auto;overflow:visible}.track{flex-direction:column;width:auto}.panel{width:auto;height:auto;grid-template-columns:1fr;padding:60px 18px}.vis{height:420px}.hud{display:none}.rg{grid-template-columns:1fr}header nav a:not(.go){display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#"><i></i>Snoochie Soft</a><nav><a href="#track">Apps</a><a href="#rules">House rules</a><a class="go" href="#contact">Contact</a></nav></div></header>
+
+<main>
+<section class="wrap hero">
+  <span class="eb">Seven Android apps · one small studio in Poland</span>
+  <h1>Small apps, <span>made properly.</span></h1>
+  <p>No accounts. Works offline. Honest pricing. Pick an app below, or just keep scrolling and we will walk you through all seven.</p>
+  <div class="chips" id="chips"></div>
+</section>
+
+<section class="pin" id="track"><div class="track" id="tr"></div>
+  <div class="hud"><span class="cnt d" id="cnt">01 / 07</span><div class="bar"><b id="bar"></b></div><span class="hint">Scroll to move sideways →</span></div>
+</section>
+
+<section class="wrap rules" id="rules"><h2>House rules.</h2><div class="rg" id="rg"></div></section>
+<section class="wrap"><div class="contact" id="contact"><h2>Got a question?<br>Write to us.</h2><a class="m" id="mail"></a></div></section>
+</main>
+<footer><div class="wrap"><span>© 2026 Snoochie Soft · Bydgoszcz, Poland</span><span>Privacy · Terms · Support</span></div></footer>
+
+<script src="../../_redesign/vendor/gsap.min.js"></script><script src="../../_redesign/vendor/ScrollTrigger.min.js"></script><script src="../../_redesign/vendor/lenis.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../../_redesign/shared/common.js"></script>
+<script>
+const N=APPS.length,tr=document.getElementById('tr'),pin=document.getElementById('track');
+document.getElementById('chips').innerHTML=APPS.map((a,i)=>`<a class="chip" data-i="${i}" style="--cc:${a.c1}"><img src="${a.icon}" alt="">${a.short}</a>`).join('');
+tr.innerHTML=APPS.map(a=>`<article class="panel" style="--c:${a.c1}"><div class="tx"><div class="no"><img src="${a.icon}" alt="">${a.no} · ${a.cat}</div><h2>${a.name}</h2><div class="k">${a.kind}</div><p>${a.line}</p><div class="tags">${a.tags.map(t=>`<span>${t}</span>`).join('')}</div><a href="${a.play}">${badge()}</a></div><div class="vis"><div class="p a"><img src="${a.shots[1]}" alt=""></div><div class="p c3"><img src="${a.shots[2]}" alt=""></div><div class="p b"><img src="${a.shots[0]}" alt=""></div></div></article>`).join('');
+document.getElementById('rg').innerHTML=RULES.map((r,i)=>`<div><i>0${i+1}</i><b>${r[0]}</b><p>${r[1]}</p></div>`).join('');
+const m=document.getElementById('mail');m.textContent=EMAIL;m.href='mailto:'+EMAIL;
+const l=initSmooth();
+const wide=matchMedia('(min-width:861px)').matches;
+const dist=()=>tr.scrollWidth-innerWidth;
+let cur=-1;
+function setActive(i){if(i===cur)return;cur=i;const c=APPS[i].c1;document.documentElement.style.setProperty('--c',c);pin.style.setProperty('--bgc',`color-mix(in srgb,${c} 9%,#170f1f)`);document.getElementById('cnt').textContent=String(i+1).padStart(2,'0')+' / 0'+N}
+if(wide&&!RM){
+  const tw=gsap.to(tr,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:pin,start:'top top',end:()=>'+='+dist(),pin:true,scrub:.8,invalidateOnRefresh:true,onUpdate:s=>{setActive(Math.min(N-1,Math.round(s.progress*(N-1))));document.getElementById('bar').style.width=(s.progress*100)+'%'}}});
+  gsap.utils.toArray('.panel').forEach((p,i)=>{
+    const vis=p.querySelectorAll('.p');
+    vis.forEach((v,k)=>gsap.fromTo(v,{x:[-140,-60,140][k]*0+(k===1?90:-90)*(k?1:0)+(k===0?-60:0)},{x:(k===1?-90:90),ease:'none',scrollTrigger:{trigger:p,containerAnimation:tw,start:'left right',end:'right left',scrub:true}}));
+    gsap.from(p.querySelectorAll('.tx>*'),{y:40,opacity:0,duration:1,ease:'expo.out',stagger:.07,scrollTrigger:{trigger:p,containerAnimation:tw,start:'left 75%'}});
+  });
+  document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{const i=+c.dataset.i,st=ScrollTrigger.getAll().find(s=>s.pin===pin);const y=st.start+(st.end-st.start)*i/(N-1);l?l.scrollTo(y,{duration:1.6}):scrollTo({top:y,behavior:'smooth'})}));
+}else{document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>tr.children[+c.dataset.i].scrollIntoView({behavior:'smooth'})));setActive(0)}
+setActive(0);
+if(!RM){
+  gsap.from('.hero .eb,.hero h1,.hero p,.chip',{y:50,opacity:0,duration:1.1,ease:'expo.out',stagger:.07,delay:.1});
+  gsap.from('.rules h2,.rg div',{y:50,opacity:0,duration:1,ease:'expo.out',stagger:.08,scrollTrigger:{trigger:'.rules',start:'top 80%'}});
+  gsap.from('.contact',{y:80,opacity:0,scale:.96,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.contact',start:'top 88%'}});
+}
+</script>
+</body>
+</html>

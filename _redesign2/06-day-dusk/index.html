@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Day Dusk - Snoochie Soft redesign B6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&family=Young+Serif&display=swap" rel="stylesheet">
+<style>
+:root{--s1:#1d2a4d;--s2:#3a2a52;--ink:#f6f1ff;--mut:#c0b6d6;--line:rgba(246,241,255,.18);--glass:rgba(255,255,255,.07);--c:#ffcf70;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html,body{overflow-x:clip}
+body{font:400 18px/1.6 'Red Hat Display',system-ui,sans-serif;color:var(--ink);background:#14122a}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.sky{position:fixed;inset:0;z-index:-2;background:linear-gradient(180deg,var(--s1),var(--s2));}
+.stars{position:fixed;inset:0;z-index:-1;opacity:0;background-image:radial-gradient(1.5px 1.5px at 12% 18%,#fff,transparent),radial-gradient(1px 1px at 28% 62%,#fff,transparent),radial-gradient(1.5px 1.5px at 44% 30%,#fff,transparent),radial-gradient(1px 1px at 63% 12%,#fff,transparent),radial-gradient(1.5px 1.5px at 78% 48%,#fff,transparent),radial-gradient(1px 1px at 90% 22%,#fff,transparent),radial-gradient(1px 1px at 8% 80%,#fff,transparent),radial-gradient(1.5px 1.5px at 55% 85%,#fff,transparent)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+.se{font-family:'Young Serif',Georgia,serif;font-weight:400}
+header{position:fixed;inset:0 0 auto 0;z-index:50}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:72px}
+.logo{font:900 20px 'Red Hat Display';letter-spacing:-.02em}
+header nav{display:flex;gap:4px;padding:4px;border-radius:99px;background:rgba(20,18,42,.6);backdrop-filter:blur(12px);border:1px solid var(--line)}
+header nav a{padding:8px 16px;border-radius:99px;font-weight:500;font-size:15px;color:var(--mut)}
+header nav a:hover{color:var(--ink)}
+header nav a.go{background:var(--ink);color:#14122a;font-weight:700}
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding-block:120px 60px}
+.hero .eb{color:var(--c);font-weight:700;font-size:14px;letter-spacing:.24em;text-transform:uppercase;margin-bottom:22px}
+.hero h1{font:400 clamp(52px,9.4vw,148px)/.96 'Young Serif';letter-spacing:-.03em;margin-bottom:24px}
+.hero p{color:var(--mut);max-width:48ch;margin:0 auto 30px;font-size:clamp(18px,1.5vw,21px)}
+.scrollhint{display:inline-flex;gap:10px;align-items:center;color:var(--ink);font-weight:700}
+.scrollhint i{width:2px;height:34px;background:linear-gradient(var(--c),transparent);animation:dr 2s infinite}
+@keyframes dr{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.day{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,5vw,80px);position:relative}
+.clk{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center}
+.clk .t{font:400 clamp(70px,10vw,150px)/.9 'Young Serif';letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.clk .lb{font-weight:700;font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:var(--c);margin-top:12px;min-height:1.6em}
+.arc{width:min(100%,380px);margin-top:34px;overflow:visible}
+.arc path{fill:none;stroke:var(--line);stroke-width:2;stroke-dasharray:3 7}
+.arc line{stroke:var(--line);stroke-width:2}
+.arc circle{fill:var(--c);filter:drop-shadow(0 0 14px var(--c))}
+.pr{margin-top:22px;width:min(100%,380px);height:3px;background:var(--line);border-radius:3px;overflow:hidden}
+.pr b{display:block;height:100%;width:0;background:var(--c)}
+.ch{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:70px 0}
+.card{display:grid;grid-template-columns:1fr .85fr;gap:clamp(16px,2.5vw,36px);align-items:center;padding:clamp(22px,3vw,40px);border-radius:36px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(16px)}
+.card .at{display:inline-flex;gap:10px;align-items:center;font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--cc);margin-bottom:14px}
+.card .at img{width:40px;border-radius:24%}
+.card h2{font:400 clamp(34px,4vw,58px)/1 'Young Serif';letter-spacing:-.02em;margin-bottom:10px}
+.card .k{font-weight:700;font-size:19px;margin-bottom:8px}
+.card p{color:var(--mut);margin-bottom:18px;max-width:38ch}
+.card .tg{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.card .tg span{padding:5px 13px;border-radius:99px;border:1px solid var(--line);font-size:14px}
+.badge{height:50px;width:auto}
+.card .vis{position:relative;aspect-ratio:9/16;max-height:560px;justify-self:center;width:100%}
+.card .vis .ph{position:absolute;aspect-ratio:9/19;border-radius:28px;border:5px solid #0c0a1a;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.card .vis .ph img{width:100%;height:100%;object-fit:cover}
+.card .vis .a{height:86%;left:0;top:7%;z-index:2}
+.card .vis .b{height:70%;right:0;top:0;transform:rotate(6deg);opacity:.9}
+.rules{padding-block:clamp(80px,9vw,130px)}
+.rules h2{font:400 clamp(38px,5.4vw,80px)/1 'Young Serif';letter-spacing:-.03em;margin-bottom:34px}
+.rg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rg div{padding:30px;border-radius:30px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(12px);transition:translate .5s var(--ease),border-color .5s}
+.rg div:hover{translate:0 -6px;border-color:var(--c)}
+.rg i{font:400 16px 'Young Serif';color:var(--c);font-style:normal}
+.rg b{display:block;font:400 26px 'Young Serif';margin:44px 0 6px}
+.rg p{color:var(--mut)}
+.contact{background:var(--ink);color:#14122a;border-radius:44px;padding:clamp(36px,7vw,90px);margin-bottom:40px}
+.contact h2{font:400 clamp(34px,5.6vw,86px)/1 'Young Serif';letter-spacing:-.03em;margin-bottom:20px}
+.contact a.m{font:400 clamp(20px,3.2vw,44px) 'Young Serif';border-bottom:3px solid #14122a;word-break:break-all}
+footer{padding:0 0 40px;color:var(--mut);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+@media(max-width:900px){.day{grid-template-columns:1fr}.clk{height:auto;position:fixed;top:64px;left:0;right:0;z-index:20;flex-direction:row;align-items:center;gap:14px;padding:10px 18px;background:rgba(20,18,42,.7);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.clk .t{font-size:34px}.clk .lb{margin:0}.arc,.pr{display:none}.ch{min-height:80vh;padding:60px 0}.card{grid-template-columns:1fr}.card .vis{max-height:420px;aspect-ratio:1}.rg{grid-template-columns:1fr}header nav a:not(.go){display:none}}
+</style>
+</head>
+<body>
+<div class="sky" id="sky"></div><div class="stars" id="stars"></div>
+<header><div class="wrap"><a class="logo" href="#">Snoochie Soft</a><nav><a href="#day">A day</a><a href="#rules">House rules</a><a class="go" href="#contact">Contact</a></nav></div></header>
+<main>
+<section class="wrap hero"><div><div class="eb">Seven Android apps · one small studio in Poland</div><h1>Small apps,<br>made properly.</h1><p>No accounts. Works offline. Honest pricing. Here is a day you could spend with them, hour by hour.</p><span class="scrollhint"><i></i>Scroll through the day</span></div></section>
+
+<section class="wrap day" id="day">
+  <div class="clk"><div class="t" id="t">07:30</div><div class="lb" id="lb">Getting ready</div>
+    <svg class="arc" viewBox="0 0 380 150"><path d="M10 140 A180 130 0 0 1 370 140"/><line x1="0" y1="140" x2="380" y2="140"/><circle id="sun" r="9" cx="10" cy="140"/></svg>
+    <div class="pr"><b id="pb"></b></div></div>
+  <div id="chs"></div>
+</section>
+
+<section class="wrap rules" id="rules"><h2>House rules.</h2><div class="rg" id="rg"></div></section>
+<section class="wrap"><div class="contact" id="contact"><h2>Got a question?<br>Write to us.</h2><a class="m" id="mail"></a></div></section>
+</main>
+<footer><div class="wrap"><span>© 2026 Snoochie Soft · Bydgoszcz, Poland</span><span>Privacy · Terms · Support</span></div></footer>
+
+<script src="../../_redesign/vendor/gsap.min.js"></script><script src="../../_redesign/vendor/ScrollTrigger.min.js"></script><script src="../../_redesign/vendor/lenis.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../../_redesign/shared/common.js"></script>
+<script>
+/* the order of the day is an editorial suggestion, taken from each app's own description */
+const DAY=[
+ {h:7.5,lb:'Getting ready',i:3,sky:['#27305a','#6a4a6e']},
+ {h:9,lb:'Study time',i:0,sky:['#1d3a6a','#3d5f8f']},
+ {h:12.25,lb:'Lunch break',i:4,sky:['#174a7a','#2f7aa8']},
+ {h:15.5,lb:'Slow down',i:1,sky:['#1d3f5a','#3b6a68']},
+ {h:18.5,lb:'Evening',i:2,sky:['#3a2757','#a24a5c']},
+ {h:20.75,lb:'After dinner',i:6,sky:['#241a4a','#52306b']},
+ {h:22.25,lb:'Before sleep',i:5,sky:['#0c0b22','#1b1440']}];
+const N=DAY.length,chs=document.getElementById('chs');
+chs.innerHTML=DAY.map(d=>{const a=APPS[d.i];return `<article class="ch" style="--cc:${a.c1}"><div class="card"><div><div class="at"><img src="${a.icon}" alt="">${a.no} · ${a.cat}</div><h2>${a.name}</h2><div class="k">${a.kind}</div><p>${a.line}</p><div class="tg">${a.tags.map(t=>`<span>${t}</span>`).join('')}</div><a href="${a.play}">${badge()}</a></div><div class="vis"><div class="ph b"><img src="${a.shots[1]}" alt=""></div><div class="ph a"><img src="${a.shots[0]}" alt=""></div></div></div></article>`}).join('');
+document.getElementById('rg').innerHTML=RULES.map((r,i)=>`<div><i>0${i+1}</i><b>${r[0]}</b><p>${r[1]}</p></div>`).join('');
+const m=document.getElementById('mail');m.textContent=EMAIL;m.href='mailto:'+EMAIL;
+const l=initSmooth(),sky=document.getElementById('sky'),stars=document.getElementById('stars'),tEl=document.getElementById('t'),lb=document.getElementById('lb'),sun=document.getElementById('sun'),pb=document.getElementById('pb');
+const fmt=h=>{const H=Math.floor(h),M=Math.round((h-H)*60);return String(M===60?H+1:H).padStart(2,'0')+':'+String(M===60?0:M).padStart(2,'0')};
+const H0=DAY[0].h,H1=DAY[N-1].h;
+function place(p){const h=H0+(H1-H0)*p;tEl.textContent=fmt(h);pb.style.width=(p*100)+'%';
+  const ang=Math.PI*(1-p),cx=190+180*Math.cos(ang),cy=140-130*Math.sin(ang);sun.setAttribute('cx',cx);sun.setAttribute('cy',cy);}
+place(0);
+let cur=-1;
+function setCh(i){if(i===cur)return;cur=i;lb.textContent=DAY[i].lb;const a=APPS[DAY[i].i];document.documentElement.style.setProperty('--c',a.c1);
+  if(RM){sky.style.setProperty('--s1',DAY[i].sky[0]);sky.style.setProperty('--s2',DAY[i].sky[1]);return}
+  gsap.to(document.documentElement,{'--s1':DAY[i].sky[0],'--s2':DAY[i].sky[1],duration:1.4,ease:'power2.out'});
+  gsap.to(stars,{opacity:i>=5?(i===6?.95:.45):0,duration:1.4})}
+document.documentElement.style.setProperty('--s1',DAY[0].sky[0]);document.documentElement.style.setProperty('--s2',DAY[0].sky[1]);
+const els=[...chs.children];
+ScrollTrigger.create({trigger:chs,start:'top top',end:'bottom bottom',onUpdate:s=>{place(Math.min(1,Math.max(0,((s.progress*N)-0.5)/(N-1))))}});
+els.forEach((c,i)=>ScrollTrigger.create({trigger:c,start:'top 55%',end:'bottom 55%',onToggle:s=>{if(s.isActive)setCh(i)}}));
+setCh(0);
+if(!RM){
+  gsap.from('.hero .eb,.hero h1,.hero p,.scrollhint',{y:50,opacity:0,duration:1.2,ease:'expo.out',stagger:.09,delay:.1});
+  els.forEach(c=>{gsap.from(c.querySelector('.card'),{y:80,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:c,start:'top 65%'}});
+    gsap.from(c.querySelectorAll('.ph'),{y:90,rotate:-6,opacity:0,duration:1.3,ease:'expo.out',stagger:.12,scrollTrigger:{trigger:c,start:'top 60%'}});
+    gsap.to(c.querySelector('.ph.b'),{yPercent:-8,ease:'none',scrollTrigger:{trigger:c,scrub:true}})});
+  gsap.from('.rules h2,.rg div',{y:50,opacity:0,duration:1,ease:'expo.out',stagger:.08,scrollTrigger:{trigger:'.rules',start:'top 80%'}});
+  gsap.from('.contact',{y:80,opacity:0,scale:.96,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.contact',start:'top 88%'}});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Swipe Teal - Snoochie Soft redesign B8</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06201f;--bg2:#0d3433;--ink:#eafaf5;--mut:#9ec5bd;--line:rgba(234,250,245,.16);--sa:#f7c978;--c:#f7c978;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html,body{overflow-x:clip}
+body{font:300 18px/1.6 Lexend,system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+img{display:block;max-width:100%;-webkit-user-drag:none;user-select:none}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+header{position:sticky;top:0;z-index:40;background:rgba(6,32,31,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:66px}
+.logo{font:800 20px Lexend;letter-spacing:-.04em}
+header nav{display:flex;gap:4px}
+header nav a{padding:8px 15px;border-radius:99px;font-weight:400;color:var(--mut);transition:.3s}
+header nav a:hover{background:var(--bg2);color:var(--ink)}
+header nav a.go{background:var(--sa);color:#06201f;font-weight:500}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center;min-height:calc(100vh - 66px);padding-block:30px 60px}
+.hero .eb{display:inline-block;color:var(--sa);font-weight:500;font-size:14px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:22px}
+.hero h1{font:600 clamp(46px,6.8vw,104px)/1 Lexend;letter-spacing:-.05em;margin-bottom:22px}
+.hero h1 span{color:var(--sa)}
+.hero p{color:var(--mut);max-width:42ch;font-size:clamp(17px,1.4vw,20px);margin-bottom:34px}
+.ctl{display:flex;gap:14px;align-items:center}
+.ctl button{width:60px;height:60px;border-radius:50%;border:1px solid var(--line);background:var(--bg2);font-size:24px;transition:background .3s,color .3s,scale .4s var(--ease)}
+.ctl button:hover{background:var(--sa);color:#06201f;scale:1.08}
+.ctl .cn{font:600 18px Lexend;margin-left:10px;min-width:70px;font-variant-numeric:tabular-nums}
+.tip{margin-top:20px;color:var(--mut);font-size:15px}
+.deck{position:relative;height:min(76vh,680px);display:grid;place-items:center;perspective:1400px;touch-action:pan-y}
+.cd{position:absolute;width:min(400px,86vw);height:min(640px,72vh);border-radius:34px;border:1px solid var(--line);background:linear-gradient(160deg,color-mix(in srgb,var(--cc) 30%,#0d3433),#0a2a29 62%);overflow:hidden;cursor:grab;user-select:none;box-shadow:0 40px 80px rgba(0,0,0,.45);will-change:transform;display:flex;flex-direction:column;padding:26px 26px 0}
+.cd.drag{cursor:grabbing}
+.cd .hd{display:flex;gap:12px;align-items:center;margin-bottom:14px}
+.cd .hd img{width:46px;border-radius:24%}
+.cd .hd small{color:var(--cc);font-weight:500;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+.cd h2{font:600 clamp(28px,3vw,38px)/1.02 Lexend;letter-spacing:-.04em;margin-bottom:8px}
+.cd .k{font-weight:500;margin-bottom:6px}
+.cd p{color:var(--mut);font-size:15px;line-height:1.5;margin-bottom:12px}
+.cd .tg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.cd .tg span{padding:4px 11px;border-radius:99px;border:1px solid var(--line);font-size:12.5px}
+.cd .badge{height:40px;width:auto}
+.cd .vs{position:relative;flex:1;min-height:0;margin-top:14px}
+.cd .vs div{position:absolute;bottom:-30px;aspect-ratio:9/19;border-radius:22px;border:4px solid #041514;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.5)}
+.cd .vs img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+.cd .v1{height:88%;left:6%;transform:rotate(-7deg)}
+.cd .v2{height:96%;left:50%;margin-left:-14%;z-index:2}
+.cd .v3{height:88%;right:6%;transform:rotate(7deg)}
+.rules{padding-block:clamp(70px,8vw,120px)}
+.rules h2{font:600 clamp(38px,5.4vw,80px)/1 Lexend;letter-spacing:-.05em;margin-bottom:32px}
+.rg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rg div{padding:30px;border-radius:28px;background:var(--bg2);border:1px solid var(--line);transition:translate .5s var(--ease),border-color .5s}
+.rg div:hover{translate:0 -6px;border-color:var(--sa)}
+.rg i{font:500 14px Lexend;color:var(--sa);font-style:normal}
+.rg b{display:block;font:600 26px Lexend;letter-spacing:-.04em;margin:42px 0 6px}
+.rg p{color:var(--mut)}
+.contact{background:var(--sa);color:#06201f;border-radius:44px;padding:clamp(36px,7vw,90px);margin-bottom:40px}
+.contact h2{font:600 clamp(34px,5.6vw,86px)/1 Lexend;letter-spacing:-.05em;margin-bottom:20px}
+.contact a.m{font:600 clamp(20px,3.2vw,44px) Lexend;letter-spacing:-.03em;border-bottom:3px solid #06201f;word-break:break-all}
+footer{padding:0 0 40px;color:var(--mut);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+@media(max-width:860px){.hero{grid-template-columns:1fr;min-height:0}.deck{height:min(74vh,660px);order:2}.rg{grid-template-columns:1fr}header nav a:not(.go){display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#">Snoochie Soft</a><nav><a href="#rules">House rules</a><a class="go" href="#contact">Contact</a></nav></div></header>
+<main>
+<section class="wrap hero">
+  <div><span class="eb">Seven Android apps · one small studio in Poland</span><h1>Small apps, <span>made properly.</span></h1><p>No accounts. Works offline. Honest pricing. Swipe through the deck, one app at a time.</p>
+    <div class="ctl"><button id="pv" aria-label="Previous app">←</button><button id="nx" aria-label="Next app">→</button><span class="cn" id="cn">01 / 07</span></div><div class="tip">Drag the top card, or use the arrow keys.</div></div>
+  <div class="deck" id="deck"></div>
+</section>
+<section class="wrap rules" id="rules"><h2>House rules.</h2><div class="rg" id="rg"></div></section>
+<section class="wrap"><div class="contact" id="contact"><h2>Got a question?<br>Write to us.</h2><a class="m" id="mail"></a></div></section>
+</main>
+<footer><div class="wrap"><span>© 2026 Snoochie Soft · Bydgoszcz, Poland</span><span>Privacy · Terms · Support</span></div></footer>
+
+<script src="../../_redesign/vendor/gsap.min.js"></script><script src="../../_redesign/vendor/ScrollTrigger.min.js"></script><script src="../../_redesign/vendor/lenis.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../../_redesign/shared/common.js"></script>
+<script>
+const N=APPS.length,deck=document.getElementById('deck'),cn=document.getElementById('cn');
+deck.innerHTML=APPS.map((a,i)=>`<article class="cd" data-i="${i}" style="--cc:${a.c1}"><div class="hd"><img src="${a.icon}" alt="" draggable="false"><small>${a.no} · ${a.cat}</small></div><h2>${a.name}</h2><div class="k">${a.kind}</div><p>${a.line}</p><div class="tg">${a.tags.map(t=>`<span>${t}</span>`).join('')}</div><a href="${a.play}" draggable="false">${badge()}</a><div class="vs"><div class="v1"><img src="${a.shots[1]}" alt="" draggable="false"></div><div class="v3"><img src="${a.shots[2]}" alt="" draggable="false"></div><div class="v2"><img src="${a.shots[0]}" alt="" draggable="false"></div></div></article>`).join('');
+document.getElementById('rg').innerHTML=RULES.map((r,i)=>`<div><i>0${i+1}</i><b>${r[0]}</b><p>${r[1]}</p></div>`).join('');
+const m=document.getElementById('mail');m.textContent=EMAIL;m.href='mailto:'+EMAIL;
+const l=initSmooth();
+let order=[...deck.children],busy=false;
+function slot(k){return {x:0,y:k*22,scale:1-k*.055,rotate:k===0?0:(k%2?2.2:-2.2)*Math.min(k,2),opacity:k>3?0:1,zIndex:100-k}}
+function layout(animate=true){order.forEach((c,k)=>{const s=slot(k);if(animate&&!RM)gsap.to(c,{...s,duration:.8,ease:'expo.out',overwrite:'auto'});else gsap.set(c,s)});
+  const top=APPS[+order[0].dataset.i];cn.textContent=String(+order[0].dataset.i+1).padStart(2,'0')+' / 0'+N;document.documentElement.style.setProperty('--c',top.c1);}
+layout(false);
+function fly(card,dir,done){busy=true;gsap.to(card,{x:dir*innerWidth*.7,rotate:dir*22,opacity:0,duration:.6,ease:'power3.in',onComplete:done})}
+function next(dir=1){if(busy)return;const c=order[0];fly(c,dir,()=>{order.push(order.shift());const e=slot(N-1);gsap.set(c,{x:0,rotate:e.rotate,y:e.y,scale:e.scale,opacity:0,zIndex:e.zIndex});busy=false;layout()})}
+  function prev(){if(busy)return;busy=true;const c=order[order.length-1];order.unshift(order.pop());gsap.set(c,{x:-innerWidth*.6,rotate:-18,opacity:0,zIndex:120,y:0,scale:1});
+  gsap.to(c,{x:0,rotate:0,opacity:1,duration:.8,ease:'expo.out',onComplete:()=>{busy=false}});order.forEach((x,k)=>{if(x!==c){const s=slot(k);gsap.to(x,{...s,duration:.8,ease:'expo.out',overwrite:'auto'})}});
+  cn.textContent=String(+c.dataset.i+1).padStart(2,'0')+' / 0'+N;document.documentElement.style.setProperty('--c',APPS[+c.dataset.i].c1)}
+document.getElementById('nx').onclick=()=>next(1);document.getElementById('pv').onclick=prev;
+addEventListener('keydown',e=>{if(e.key==='ArrowRight')next(1);if(e.key==='ArrowLeft')prev()});
+/* drag the top card */
+let d=null;
+deck.addEventListener('pointerdown',e=>{const c=e.target.closest('.cd');if(!c||c!==order[0]||busy)return;d={c,x0:e.clientX,y0:e.clientY,t0:performance.now(),dx:0,moved:false,id:e.pointerId}});
+addEventListener('pointermove',e=>{if(!d)return;const dx=e.clientX-d.x0;if(!d.moved&&Math.abs(dx)>6){d.moved=true;d.c.classList.add('drag');try{d.c.setPointerCapture(d.id)}catch(_){}}
+  if(d.moved){d.dx=dx;gsap.set(d.c,{x:dx,rotate:dx/18,y:Math.abs(dx)*.02})}});
+function end(){if(!d)return;const{c,dx,t0,moved}=d;d=null;c.classList.remove('drag');if(!moved)return;
+  const v=Math.abs(dx)/(performance.now()-t0);
+  if(Math.abs(dx)>110||v>.6)next(dx>0?1:-1);else gsap.to(c,{x:0,rotate:0,y:0,duration:.9,ease:'elastic.out(1,.55)'})}
+addEventListener('pointerup',end);addEventListener('pointercancel',end);
+deck.addEventListener('click',e=>{if(e.target.closest('a')&&deckMoved)e.preventDefault()},true);
+let deckMoved=false;deck.addEventListener('pointerdown',()=>deckMoved=false);addEventListener('pointermove',()=>{if(d&&d.moved)deckMoved=true});
+if(!RM){
+  gsap.from('.hero .eb,.hero h1,.hero p,.ctl,.tip',{y:50,opacity:0,duration:1.1,ease:'expo.out',stagger:.08,delay:.1});
+  gsap.from(order,{y:160,opacity:0,rotate:(i)=>i%2?10:-10,duration:1.3,ease:'expo.out',stagger:.07,delay:.3,clearProps:'none'});
+  gsap.from('.rules h2,.rg div',{y:50,opacity:0,duration:1,ease:'expo.out',stagger:.08,scrollTrigger:{trigger:'.rules',start:'top 80%'}});
+  gsap.from('.contact',{y:80,opacity:0,scale:.96,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.contact',start:'top 88%'}});
+}
+</script>
+</body>
+</html>

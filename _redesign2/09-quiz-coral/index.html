@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Quiz Coral - Snoochie Soft redesign B9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0f17;--bg2:#171a25;--ink:#f4f2ee;--mut:#a6a9b8;--line:rgba(244,242,238,.15);--co:#ff6b57;--dk:#14101a;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html,body{overflow-x:clip}
+body{font:400 18px/1.6 Rubik,system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+header{position:sticky;top:0;z-index:40;background:rgba(13,15,23,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:66px}
+.logo{font:900 21px Rubik;letter-spacing:-.04em;display:flex;gap:10px;align-items:center}
+.logo i{width:22px;height:22px;border-radius:50%;background:var(--co)}
+header nav{display:flex;gap:4px}
+header nav a{padding:8px 15px;border-radius:99px;font-weight:500;color:var(--mut);transition:.3s}
+header nav a:hover{background:var(--bg2);color:var(--ink)}
+header nav a.go{background:var(--co);color:var(--dk);font-weight:600}
+.hero{padding-block:clamp(50px,7vw,96px) 30px}
+.hero .eb{color:var(--co);font-weight:600;font-size:14px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px}
+.hero h1{font:900 clamp(44px,7.6vw,118px)/.96 Rubik;letter-spacing:-.05em;max-width:14ch;margin-bottom:18px}
+.hero h1 span{color:var(--co)}
+.hero p{color:var(--mut);max-width:50ch;font-size:clamp(17px,1.4vw,20px)}
+.stage{position:relative;background:var(--co);color:var(--dk);border-radius:44px;min-height:min(72vh,640px);padding:clamp(24px,4vw,56px);overflow:hidden;margin-bottom:26px;display:flex;flex-direction:column}
+.stage .bar{display:flex;gap:10px;align-items:center;font-weight:600;font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:clamp(20px,3vw,40px)}
+.stage .bar .tr{flex:1;max-width:240px;height:6px;border-radius:6px;background:rgba(20,16,26,.18);overflow:hidden}
+.stage .bar .tr b{display:block;height:100%;width:0;background:var(--dk);border-radius:6px}
+.body{flex:1;display:flex;flex-direction:column;justify-content:center}
+.q{font:900 clamp(34px,5.6vw,86px)/.98 Rubik;letter-spacing:-.05em;margin-bottom:clamp(24px,3.4vw,46px);max-width:16ch}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.op{display:flex;gap:16px;align-items:center;padding:20px 24px;border-radius:22px;border:2px solid var(--dk);font-weight:600;font-size:clamp(17px,1.6vw,22px);transition:background .3s,color .3s,translate .45s var(--ease)}
+.op i{font:800 14px Rubik;font-style:normal;opacity:.6;min-width:22px}
+.op s{margin-left:auto;text-decoration:none;font-size:24px;transition:translate .4s var(--ease)}
+.op:hover{background:var(--dk);color:var(--co);translate:0 -3px}
+.op:hover s{translate:6px 0}
+.op small{display:block;font-weight:400;font-size:14px;opacity:.7}
+.res{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(20px,4vw,60px);align-items:center;flex:1}
+.res .mt{font-weight:600;font-size:14px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;display:flex;gap:12px;align-items:center}
+.res .mt img{width:48px;border-radius:24%}
+.res h2{font:900 clamp(38px,5.6vw,88px)/.95 Rubik;letter-spacing:-.05em;margin-bottom:14px}
+.res .k{font-weight:600;font-size:21px;margin-bottom:8px}
+.res p{max-width:38ch;margin-bottom:18px;font-weight:500}
+.res .tg{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.res .tg span{padding:5px 14px;border-radius:99px;border:2px solid var(--dk);font-weight:500;font-size:14px}
+.res .row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.badge{height:52px;width:auto}
+.again{padding:14px 22px;border-radius:99px;border:2px solid var(--dk);font-weight:600;transition:background .3s,color .3s}
+.again:hover{background:var(--dk);color:var(--co)}
+.res .vis{position:relative;height:min(52vh,460px);border-radius:32px;background:var(--dk);overflow:hidden}
+.res .vis .ph{position:absolute;bottom:-34px;aspect-ratio:9/19;height:82%;border-radius:26px;border:5px solid #07050a;overflow:hidden;box-shadow:0 26px 50px rgba(0,0,0,.55)}
+.res .vis .ph img{width:100%;height:100%;object-fit:cover}
+.res .vis .a{left:5%;transform:rotate(-7deg)}
+.res .vis .b{left:50%;margin-left:-14.5%;height:92%;z-index:2;bottom:-18px}
+.res .vis .c{right:5%;transform:rotate(7deg)}
+.dot{position:absolute;width:12px;height:12px;border-radius:50%;pointer-events:none;z-index:6}
+.all{padding:30px 0 clamp(60px,7vw,100px)}
+.all h3{font:800 20px Rubik;letter-spacing:-.02em;margin-bottom:16px;color:var(--mut)}
+.all .ic{display:flex;gap:14px;flex-wrap:wrap}
+.all button{display:flex;gap:10px;align-items:center;padding:8px 18px 8px 8px;border-radius:99px;background:var(--bg2);border:1px solid var(--line);font-weight:500;transition:translate .4s var(--ease),border-color .3s}
+.all button img{width:36px;border-radius:24%}
+.all button:hover{translate:0 -4px;border-color:var(--co)}
+.rules{padding-bottom:clamp(70px,8vw,120px)}
+.rules h2{font:900 clamp(38px,5.4vw,80px)/1 Rubik;letter-spacing:-.05em;margin-bottom:30px}
+.rg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rg div{padding:28px;border-radius:26px;background:var(--bg2);border:1px solid var(--line);transition:translate .5s var(--ease),border-color .5s}
+.rg div:hover{translate:0 -6px;border-color:var(--co)}
+.rg i{font:800 14px Rubik;color:var(--co);font-style:normal}
+.rg b{display:block;font:800 26px Rubik;letter-spacing:-.03em;margin:40px 0 6px}
+.rg p{color:var(--mut)}
+.contact{background:var(--ink);color:var(--dk);border-radius:44px;padding:clamp(36px,7vw,90px);margin-bottom:40px}
+.contact h2{font:900 clamp(34px,5.6vw,86px)/.96 Rubik;letter-spacing:-.05em;margin-bottom:20px}
+.contact a.m{font:800 clamp(20px,3.2vw,44px) Rubik;letter-spacing:-.03em;border-bottom:3px solid var(--co);word-break:break-all}
+footer{padding:0 0 40px;color:var(--mut);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+@media(max-width:860px){.opts{grid-template-columns:1fr}.res{grid-template-columns:1fr}.res .vis{height:340px}.rg{grid-template-columns:1fr}header nav a:not(.go){display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#"><i></i>Snoochie Soft</a><nav><a href="#apps">All apps</a><a href="#rules">House rules</a><a class="go" href="#contact">Contact</a></nav></div></header>
+<main>
+<section class="wrap hero"><div class="eb">Seven Android apps · one small studio in Poland</div><h1>Small apps, <span>made properly.</span></h1><p>No accounts. Works offline. Honest pricing. Not sure which one is for you? Answer one or two quick questions.</p></section>
+<section class="wrap"><div class="stage" id="stage"><div class="bar"><span id="st">Step 1 of 2</span><div class="tr"><b id="pb"></b></div></div><div class="body" id="body"></div></div></section>
+<section class="wrap all" id="apps"><h3>Or jump straight to one</h3><div class="ic" id="ic"></div></section>
+<section class="wrap rules" id="rules"><h2>House rules.</h2><div class="rg" id="rg"></div></section>
+<section class="wrap"><div class="contact" id="contact"><h2>Got a question?<br>Write to us.</h2><a class="m" id="mail"></a></div></section>
+</main>
+<footer><div class="wrap"><span>© 2026 Snoochie Soft · Bydgoszcz, Poland</span><span>Privacy · Terms · Support</span></div></footer>
+
+<script src="../../_redesign/vendor/gsap.min.js"></script><script src="../../_redesign/vendor/ScrollTrigger.min.js"></script><script src="../../_redesign/vendor/lenis.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../../_redesign/shared/common.js"></script>
+<script>
+/* the matching below is an editorial shortcut built from each app's own description */
+const TREE={q:'What brings you here?',o:[
+ {t:'Learn English words',r:0},
+ {t:'Play a game',n:{q:'What kind of game?',o:[{t:'Tiny and calm, 1 to 3 minutes',r:1},{t:'Dig for treasure with a pug',r:6}]}},
+ {t:'Get organised',n:{q:'What needs organising?',o:[{t:'School timetable and grades',r:3},{t:'Voice notes turned into text',r:4}]}},
+ {t:'Make something funny',r:2},
+ {t:'Take a quiet moment',r:5}]};
+const body=document.getElementById('body'),st=document.getElementById('st'),pb=document.getElementById('pb');
+document.getElementById('ic').innerHTML=APPS.map((a,i)=>`<button data-r="${i}"><img src="${a.icon}" alt="">${a.short}</button>`).join('');
+document.getElementById('rg').innerHTML=RULES.map((r,i)=>`<div><i>0${i+1}</i><b>${r[0]}</b><p>${r[1]}</p></div>`).join('');
+const m=document.getElementById('mail');m.textContent=EMAIL;m.href='mailto:'+EMAIL;
+const l=initSmooth();
+function swap(html,dir,after){const go=()=>{body.innerHTML=html;after&&after();if(!RM)gsap.from(body.children,{x:dir*70,opacity:0,duration:.8,ease:'expo.out',stagger:.07})};
+  if(RM||!body.children.length){go();return}
+  gsap.to(body.children,{x:-dir*70,opacity:0,duration:.35,ease:'power2.in',stagger:.03,onComplete:go})}
+function ask(node,step,total){st.textContent=`Step ${step} of ${total}`;gsap.to(pb,{width:(step/total*100)+'%',duration:.7,ease:'expo.out'});
+  swap(`<div class="q">${node.q}</div><div class="opts">${node.o.map((o,i)=>`<button class="op" data-i="${i}"><i>${i+1}</i>${o.t}<s>→</s></button>`).join('')}</div>`,1,()=>{
+    body.querySelectorAll('.op').forEach((b,i)=>b.onclick=()=>{const o=node.o[i];if(o.n)ask(o.n,2,2);else result(o.r)})})}
+function burst(box){if(RM)return;const r=box.getBoundingClientRect();for(let i=0;i<22;i++){const d=document.createElement('i');d.className='dot';d.style.background=i%2?'#14101a':'#fff';d.style.left=(r.width*.5)+'px';d.style.top=(r.height*.5)+'px';box.appendChild(d);
+  gsap.to(d,{x:gsap.utils.random(-r.width*.45,r.width*.45),y:gsap.utils.random(-r.height*.4,r.height*.4),scale:gsap.utils.random(.4,1.6),opacity:0,duration:1.4,ease:'expo.out',onComplete:()=>d.remove()})}}
+function result(i){const a=APPS[i];st.textContent='Your match';gsap.to(pb,{width:'100%',duration:.7,ease:'expo.out'});
+  swap(`<div class="res"><div><div class="mt"><img src="${a.icon}" alt="">${a.no} · ${a.cat}</div><h2>${a.name}</h2><div class="k">${a.kind}</div><p>${a.line}</p><div class="tg">${a.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="row"><a href="${a.play}">${badge()}</a><button class="again" id="again">Start over</button></div></div><div class="vis"><div class="ph a"><img src="${a.shots[1]}" alt=""></div><div class="ph c"><img src="${a.shots[2]}" alt=""></div><div class="ph b"><img src="${a.shots[0]}" alt=""></div></div></div>`,1,()=>{
+    document.getElementById('again').onclick=()=>ask(TREE,1,2);
+    if(!RM){gsap.from('.res .ph',{y:200,opacity:0,rotate:(k)=>[-12,0,12][k],duration:1.2,ease:'expo.out',stagger:.1,delay:.2});burst(document.querySelector('.res .vis'))}})}
+document.getElementById('ic').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;result(+b.dataset.r);const s=document.getElementById('stage');l?l.scrollTo(s,{offset:-90,duration:1.2}):s.scrollIntoView({behavior:'smooth'})});
+ask(TREE,1,2);
+if(!RM){
+  gsap.from('.hero .eb,.hero h1,.hero p',{y:50,opacity:0,duration:1.2,ease:'expo.out',stagger:.09,delay:.1});
+  gsap.from('.stage',{y:80,opacity:0,scale:.97,duration:1.3,ease:'expo.out',delay:.35});
+  gsap.from('.all h3,.all button',{y:30,opacity:0,duration:.9,ease:'expo.out',stagger:.05,scrollTrigger:{trigger:'.all',start:'top 90%'}});
+  gsap.from('.rules h2,.rg div',{y:50,opacity:0,duration:1,ease:'expo.out',stagger:.08,scrollTrigger:{trigger:'.rules',start:'top 80%'}});
+  gsap.from('.contact',{y:80,opacity:0,scale:.96,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.contact',start:'top 88%'}});
+}
+</script>
+</body>
+</html>
