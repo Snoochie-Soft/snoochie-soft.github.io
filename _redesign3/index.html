@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Redesign Snoochie Soft - 9 propozycji (seria C)</title>
+<style>
+:root{--bg:#0b0b10;--ink:#f1f1ee;--mut:#9d9da8;--line:rgba(255,255,255,.12);--ac:#c9f23a}
+*{box-sizing:border-box;margin:0}
+body{font:400 17px/1.55 system-ui,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink)}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.w{max-width:1320px;margin:0 auto;padding:0 clamp(16px,4vw,44px)}
+header{padding:70px 0 30px}
+header p.k{color:var(--ac);font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:13px;margin-bottom:14px}
+header h1{font-size:clamp(40px,6.4vw,96px);line-height:.95;letter-spacing:-.045em;margin-bottom:20px}
+header p{color:var(--mut);max-width:66ch}
+header p+p{margin-top:12px}
+header .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+header .back{display:inline-block;padding:10px 18px;border:1px solid var(--line);border-radius:99px;font-size:15px;transition:border-color .3s}
+header .back:hover{border-color:var(--ac)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:30px 0 60px}
+.c{display:block;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#12121a;transition:translate .5s cubic-bezier(.16,1,.3,1),border-color .3s}
+.c:hover{translate:0 -6px;border-color:var(--ac)}
+.c .im{aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line)}
+.c .im img{width:100%;height:100%;object-fit:cover;object-position:top;transition:scale 1.2s cubic-bezier(.16,1,.3,1)}
+.c:hover .im img{scale:1.05}
+.c .b{padding:20px 22px 24px}
+.c .n{color:var(--ac);font-weight:700;font-size:13px;letter-spacing:.14em}
+.c h2{font-size:26px;letter-spacing:-.03em;margin:4px 0 8px}
+.c p{color:var(--mut);font-size:15px}
+.c .t{margin-top:12px;font-size:12.5px;color:#c5c5cc}
+.c .k2{display:inline-block;margin-top:10px;border:1px solid var(--line);border-radius:99px;padding:1px 10px;font-size:12px;color:#c5c5cc}
+.r{border-top:1px solid var(--line);padding:50px 0 80px}
+.r h3{font-size:30px;letter-spacing:-.03em;margin-bottom:18px}
+.r ul{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 40px;color:#c8c8d0;font-size:15.5px;list-style:none;padding:0}
+.r li::before{content:"→ ";color:var(--ac)}
+@media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.grid{grid-template-columns:1fr}.r ul{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="w">
+<header><p class="k">Snoochie Soft · redesign · seria C</p><h1>9 mocków z nowych inspiracji</h1><p>Trzecia seria, tym razem naprawdę różne szkielety: tryb do wyboru na ekranie startowym, zjazd szybem kopalni, indeks z kursorem z półtonów, nieskończona mozaika, jedna 3D kula, pigułka-slajdshow, demo czatu w telefonie, maskotka Mo i tarcza 50 dni. Inspiracje z nowych przykładów ze stron gsap.com/showcase, godly.website (obecnie recent.design) i hoverstat.es. Pełny wow: tu są WebGL, fizyka i canvas.</p><p>Część mocków to strona główna studia (01, 03, 04, 05, 06), a część to szkic podstrony jednej aplikacji (02 Pug Bubble Dig, 07 Fake Chat Maker, 08 Mossy, 09 Szybciej Się Nie Da), bo każda aplikacja dostanie własną podstronę. Nic z produkcyjnej strony nie zostało ruszone.</p><p>Kolejność aplikacji, podział na „Calm” i „Play” oraz podpisy typu „Day 26” to redakcyjne pomysły na prezentację, nie fakty o produktach. Wszystkie teksty w mockach są angielskie, tak jak produkcyjna strona.</p><div class="links"><a class="back" href="../_redesign/index.html">← Seria A (pierwsze 9)</a><a class="back" href="../_redesign2/index.html">← Seria B (kolejne 9)</a></div></header>
+<div class="grid" id="g"></div>
+<section class="r"><h3>Czym się różni od serii A i B</h3><ul>
+<li>Każdy mock ma inny szkielet strony, a nie ten sam układ w innych kolorach.</li>
+<li>Efekty cięższe niż wcześniej: WebGL (three.js, shader), fizyka (matter.js), canvas, kursor z półtonów, masek-wipe, przyklejone sceny sterowane scrollem.</li>
+<li>Mocki z WebGL (05) i canvasem (04) działają najlepiej na komputerze, ale mają też układ mobilny.</li>
+<li>Ekrany, ikony, grafiki Mo i roślin oraz badge Play są prawdziwe z repozytorium.</li>
+<li>Każdy mock ma układ mobilny bez poziomego przewijania strony i tryb ograniczonego ruchu.</li>
+<li>Prawdziwy ruch trzeba ocenić okiem: sprawdzałem działanie i wygląd na zrzutach, a nie „czucie” płynności.</li>
+</ul></section>
+</div>
+<script>
+const M=[
+['01','pick-mode','Pick a Mode','Ekran startowy dzieli się na dwie połowy: Calm i Play. Połowa pod kursorem rośnie, na Play spadają kształty z fizyką, które można chwytać.','split screen · physics','studio'],
+['02','pug-shaft','Pug Shaft','Zjazd w głąb kopalni z Bigim. Latarka górnika oświetla tylko okolice kursora, licznik głębokości rośnie ze scrollem, na końcu trailer.','scroll descent · headlamp','Pug Bubble Dig'],
+['03','halftone-index','Halftone Index','Preloader, kursor zostawiający ślad z półtonów, zmieniające się słowo w nagłówku i akordeon aplikacji z kropkową matrycą.','halftone cursor · mono','studio'],
+['04','mosaic-canvas','Mosaic Canvas','Nieskończona, przeciągana mozaika z ekranów i grafik wszystkich aplikacji. Kliknięcie kafla otwiera szczegóły, jest też widok przeglądu.','infinite drag canvas','studio'],
+['05','iridescent-orb','Iridescent Orb','Jedna opalizująca kula 3D w shaderze, w kolorze aktualnej aplikacji. Przełączasz aplikacje, kula zmienia barwę.','WebGL shader','studio'],
+['06','slideshow-pill','Slideshow Pill','Pełnoekranowe slajdy jednej aplikacji na raz, wycieranie maską, a na górze mała pigułka ze zdaniem, które zmienia się razem ze slajdem.','fullscreen slideshow','studio'],
+['07','fakechat-demo','Fake Chat Demo','Telefon, w którym czat pisze się sam. Możesz dopisać własną wiadomość i przełączać motywy: Ink, Riso, Mono.','live demo in phone','Fake Chat Maker'],
+['08','mossy-mo','Mossy and Mo','Maskotka Mo w środku obracającego się napisu, wokół krążą rośliny. Przyklejona scena zmienia pozę Mo, na końcu półka z roślinami.','mascot · scroll story','Mossy'],
+['09','ssnd-clock','Fifty Days Dial','Tarcza z 50 kreskami: scroll odlicza dni od 1 do 50, a słowa rosną z 10 do 500. Telefon w środku zmienia ekran, na koniec papierowy zygzak.','radial scroll dial','Szybciej Się Nie Da']
+];
+document.getElementById('g').innerHTML=M.map(m=>`<a class="c" href="${m[0]}-${m[1]}/index.html"><div class="im"><img src="thumbs/${m[0]}.jpg" alt="" loading="lazy"></div><div class="b"><div class="n">${m[0]}</div><h2>${m[2]}</h2><p>${m[3]}</p><div class="t">${m[4]}</div><span class="k2">${m[5]==='studio'?'strona główna studia':'podstrona: '+m[5]}</span></div></a>`).join('');
+</script>
+</body>
+</html>

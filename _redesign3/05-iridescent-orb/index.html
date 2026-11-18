@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Iridescent Orb - Snoochie Soft redesign C5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07070a;--ink:#f3f2ee;--mut:#9494a0;--ac:#c9f23a;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden}
+body{font:500 17px/1.5 'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+main{position:relative;height:100svh;overflow:hidden}
+.glow{position:absolute;left:50%;top:48%;width:90vmin;height:90vmin;translate:-50% -50%;border-radius:50%;background:radial-gradient(circle,var(--g1,#c9f23a) 0,transparent 62%);opacity:.28;filter:blur(40px);transition:opacity .6s}
+.laser{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--g1,#c9f23a),transparent);opacity:.7}
+.word{position:absolute;left:0;right:0;top:50%;translate:0 -54%;text-align:center;font:800 clamp(80px,21vw,360px)/.8 'Syne',sans-serif;letter-spacing:-.06em;text-transform:uppercase;white-space:nowrap;pointer-events:none;color:transparent;-webkit-text-stroke:1.5px rgba(243,242,238,.5);overflow:hidden}
+.word .ch{display:inline-block}
+canvas#gl{position:absolute;inset:0;width:100%;height:100%}
+.top{position:absolute;inset:0 0 auto 0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:20px clamp(18px,3vw,44px)}
+.top b{font:800 18px 'Syne';letter-spacing:-.02em}
+.top a{font-weight:700;font-size:14px;border:1px solid rgba(255,255,255,.3);border-radius:99px;padding:7px 16px;transition:background .3s,color .3s}.top a:hover{background:var(--ink);color:#000}
+.card{position:absolute;z-index:5;left:clamp(18px,3vw,44px);bottom:clamp(18px,3vw,44px);width:min(360px,calc(100vw - 36px));background:rgba(20,20,26,.72);border:1px solid rgba(255,255,255,.16);border-radius:22px;padding:18px;backdrop-filter:blur(18px)}
+.card .h{display:flex;gap:12px;align-items:center;margin-bottom:10px}.card .h img{width:46px;border-radius:24%}
+.card .n{font-size:12px;color:var(--mut);letter-spacing:.1em;text-transform:uppercase}.card h3{font:700 19px/1.1 'Syne';letter-spacing:-.02em}
+.card p{font-size:15px;color:#d9d8d2;margin-bottom:12px}.card .tg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}.card .tg span{font-size:12.5px;border:1px solid rgba(255,255,255,.26);border-radius:99px;padding:1px 10px}
+.card .badge{height:46px;width:auto}
+.chips{position:absolute;z-index:5;right:clamp(18px,3vw,44px);bottom:clamp(18px,3vw,44px);display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.chips button{display:flex;gap:10px;align-items:center;background:rgba(20,20,26,.72);border:1px solid rgba(255,255,255,.16);border-radius:99px;padding:5px 16px 5px 6px;font-weight:700;font-size:14.5px;backdrop-filter:blur(12px);transition:background .3s,color .3s,translate .5s var(--ease)}
+.chips button img{width:28px;border-radius:30%}
+.chips button:hover{translate:-4px 0}
+.chips button.on{background:var(--ink);color:#000}
+.hint{position:absolute;z-index:5;left:50%;bottom:16px;translate:-50% 0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);white-space:nowrap}
+@media(max-width:860px){.word{top:30%;font-size:clamp(60px,15vw,160px)}.card{bottom:auto;top:auto;left:14px;right:14px;width:auto;bottom:70px;padding:14px}.card p{display:none}.card .tg{margin-bottom:10px}.card .badge{height:40px}.chips{flex-direction:row;flex-wrap:nowrap;left:14px;right:14px;bottom:14px;justify-content:center;gap:6px}.chips button{padding:5px;font-size:0}.chips button img{width:34px}.hint{display:none}}
+</style>
+</head>
+<body>
+<main>
+  <div class="glow" id="glow"></div>
+  <i class="laser" style="top:28%"></i><i class="laser" style="top:71%"></i>
+  <div class="word" id="word">Mossy</div>
+  <canvas id="gl"></canvas>
+  <div class="top"><b>Snoochie Soft</b><a id="mail" href="#">Contact</a></div>
+  <div class="card" id="card"></div>
+  <div class="chips" id="chips"></div>
+  <div class="hint">Pick an app · move your mouse</div>
+</main>
+<script src="../../_redesign/vendor/gsap.min.js"></script><script src="../vendor/three.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../../_redesign/shared/common.js"></script>
+<script>
+document.getElementById('mail').href='mailto:'+EMAIL;
+const glow=document.getElementById('glow'),word=document.getElementById('word'),card=document.getElementById('card'),chips=document.getElementById('chips');
+let cur=-1;
+chips.innerHTML=APPS.map((a,i)=>`<button data-i="${i}" aria-label="${a.name}"><img src="${a.icon}" alt="">${a.short}</button>`).join('');
+const hexRGB=h=>{const n=parseInt(h.slice(1),16);return [(n>>16&255)/255,(n>>8&255)/255,(n&255)/255]};
+/* three.js orb */
+const cv=document.getElementById('gl');let ok=true,renderer,uni;
+try{
+  renderer=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true});
+}catch(e){ok=false}
+const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(35,1,.1,50);cam.position.z=5.2;
+uni={uT:{value:0},uA:{value:new THREE.Color('#c9f23a')},uB:{value:new THREE.Color('#1f5a2b')},uM:{value:new THREE.Vector2()},uAmp:{value:.28}};
+const vs=`
+uniform float uT;uniform float uAmp;uniform vec2 uM;varying vec3 vN;varying vec3 vV;varying float vD;
+vec3 mod289(vec3 x){return x-floor(x*(1./289.))*289.;}vec4 mod289(vec4 x){return x-floor(x*(1./289.))*289.;}vec4 perm(vec4 x){return mod289(((x*34.)+1.)*x);}
+float noise(vec3 p){vec3 a=floor(p);vec3 d=p-a;d=d*d*(3.-2.*d);vec4 b=a.xxyy+vec4(0.,1.,0.,1.);vec4 k1=perm(b.xyxy);vec4 k2=perm(k1.xyxy+b.zzww);vec4 c=k2+a.zzzz;vec4 k3=perm(c);vec4 k4=perm(c+1.);vec4 o1=fract(k3*(1./41.));vec4 o2=fract(k4*(1./41.));vec4 o3=o2*d.z+o1*(1.-d.z);vec2 o4=o3.yw*d.x+o3.xz*(1.-d.x);return o4.y*d.y+o4.x*(1.-d.y);}
+void main(){vec3 p=position;float n=noise(p*1.15+vec3(0.,uT*.35,uT*.2))*2.-1.;float n2=noise(p*2.6-uT*.4)*2.-1.;float d=n*uAmp+n2*uAmp*.28;d+=dot(normalize(p).xy,uM)*.06;vD=d;vec3 np=p+normal*d;vN=normalize(normalMatrix*normal);vec4 mv=modelViewMatrix*vec4(np,1.);vV=normalize(-mv.xyz);gl_Position=projectionMatrix*mv;}`;
+const fs=`
+uniform float uT;uniform vec3 uA;uniform vec3 uB;varying vec3 vN;varying vec3 vV;varying float vD;
+void main(){vec3 N=normalize(vN),V=normalize(vV);float f=pow(1.-max(dot(N,V),0.),2.0);
+vec3 pal=.5+.5*cos(6.2831*(vec3(0.,.33,.67)+f*1.2+vD*2.2+uT*.04));
+vec3 base=mix(uB,uA,smoothstep(-.3,.45,vD)*.8+f*.4);
+vec3 col=mix(base,pal,.08+.34*f);
+vec3 L=normalize(vec3(.5,.8,.9));float sp=pow(max(dot(reflect(-L,N),V),0.),38.);
+col+=sp*.9+f*uA*.5;gl_FragColor=vec4(col,1.);}`;
+const mat=new THREE.ShaderMaterial({uniforms:uni,vertexShader:vs,fragmentShader:fs});
+const orb=new THREE.Mesh(new THREE.IcosahedronGeometry(1.35,48),mat);scene.add(orb);
+function fit(){const w=innerWidth,h=innerHeight;if(ok){renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(w,h,false)}cam.aspect=w/h;cam.updateProjectionMatrix();orb.position.set(0,innerWidth<860?.75:.05,0);orb.scale.setScalar(innerWidth<860?.55:.74)}
+fit();addEventListener('resize',fit);
+const M={x:0,y:0};addEventListener('pointermove',e=>{M.x=(e.clientX/innerWidth-.5)*2;M.y=-(e.clientY/innerHeight-.5)*2});
+const mx=gsap.quickTo(uni.uM.value,'x',{duration:1.2,ease:'power3'}),my=gsap.quickTo(uni.uM.value,'y',{duration:1.2,ease:'power3'});
+const rx=gsap.quickTo(orb.rotation,'x',{duration:1.4,ease:'power3'}),ry=gsap.quickTo(orb.rotation,'y',{duration:1.4,ease:'power3'});
+gsap.ticker.add((t)=>{uni.uT.value=t;mx(M.x);my(M.y);if(!RM){rx(-M.y*.35);ry(M.x*.5+t*.12)}if(ok)renderer.render(scene,cam)});
+if(RM){gsap.ticker.remove}
+/* switching */
+function show(i){if(i===cur)return;const a=APPS[i];const first=cur<0;cur=i;
+  chips.querySelectorAll('button').forEach((b,k)=>b.classList.toggle('on',k===i));
+  const ca=new THREE.Color(a.c1),cb=new THREE.Color(a.c2);
+  if(RM||first){uni.uA.value.copy(ca);uni.uB.value.copy(cb)}else{gsap.to(uni.uA.value,{r:ca.r,g:ca.g,b:ca.b,duration:1.2,ease:'power2.inOut'});gsap.to(uni.uB.value,{r:cb.r,g:cb.g,b:cb.b,duration:1.2,ease:'power2.inOut'});
+    gsap.timeline().to(uni.uAmp,{value:.62,duration:.35,ease:'power2.out'}).to(uni.uAmp,{value:.28,duration:1.3,ease:'elastic.out(1,.5)'})}
+  document.documentElement.style.setProperty('--g1',a.c1);document.documentElement.style.setProperty('--ac',a.c1);
+  /* word */
+  const out=word.querySelectorAll('.ch');
+  const swapWord=()=>{word.textContent=a.short;const chs=splitChars(word);if(!RM)gsap.from(chs,{yPercent:110,rotate:6,opacity:0,duration:1,ease:'expo.out',stagger:.04})};
+  if(out.length&&!RM)gsap.to(out,{yPercent:-110,opacity:0,duration:.35,ease:'power2.in',stagger:.02,onComplete:swapWord});else swapWord();
+  /* card */
+  const draw=()=>{card.innerHTML=`<div class="h"><img src="${a.icon}" alt=""><div><div class="n">${a.no} · ${a.cat}</div><h3>${a.name}</h3></div></div><p>${a.line}</p><div class="tg">${a.tags.map(t=>`<span>${t}</span>`).join('')}</div><a href="${a.play}"><img class="badge" src="${PLAY_BADGE}" alt="Get it on Google Play"></a>`;if(!RM)gsap.from(card.children,{y:24,opacity:0,duration:.8,ease:'expo.out',stagger:.06})};
+  if(first||RM)draw();else gsap.to(card.children,{opacity:0,y:-12,duration:.2,onComplete:draw})}
+chips.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(+b.dataset.i)});
+show(1);
+/* lasers drift */
+if(!RM){gsap.to('.laser',{xPercent:8,duration:3,ease:'sine.inOut',yoyo:true,repeat:-1,stagger:.6});
+  gsap.from(orb.scale,{x:.01,y:.01,z:.01,duration:1.8,ease:'expo.out'});gsap.from('.top,.chips button,.card',{opacity:0,y:20,duration:1,ease:'expo.out',stagger:.07,delay:.6})}
+if(!ok){cv.style.display='none';glow.style.opacity=.7}
+</script>
+</body>
+</html>

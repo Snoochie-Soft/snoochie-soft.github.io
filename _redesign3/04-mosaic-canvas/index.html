@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Mosaic Canvas - Snoochie Soft redesign C4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0d10;--card:#17171c;--ink:#f2f1ec;--mut:#8f8f99;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden;overscroll-behavior:none}
+body{font:500 17px/1.45 'Instrument Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);user-select:none;-webkit-user-select:none}
+img{display:block;max-width:100%;pointer-events:none;-webkit-user-drag:none}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.mono{font-family:'DM Mono',ui-monospace,monospace;font-weight:400}
+#view{position:fixed;inset:0;overflow:hidden;cursor:grab;touch-action:none}
+#view.drag{cursor:grabbing}
+#world{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
+.copy{position:absolute;display:grid}
+.t{position:relative;border-radius:22px;overflow:hidden;background:var(--card);transition:translate .6s var(--ease),scale .6s var(--ease),box-shadow .4s}
+.t:hover{scale:1.035;translate:0 -4px;box-shadow:0 22px 60px rgba(0,0,0,.6);z-index:3}
+.t img.fill{width:100%;height:100%;object-fit:cover;object-position:top}
+.t .lb{position:absolute;left:12px;bottom:10px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:rgba(13,13,16,.72);padding:3px 9px;border-radius:99px;backdrop-filter:blur(4px)}
+.t.ic{display:flex;flex-direction:column;justify-content:space-between;padding:20px;color:#101010}
+.t.ic img{width:34%;border-radius:24%;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.t.ic b{font-size:clamp(22px,2vw,30px);line-height:1;letter-spacing:-.03em;font-weight:700}
+.t.ic span{font-size:12px;text-transform:uppercase;opacity:.7}
+.t.tx{display:flex;flex-direction:column;justify-content:space-between;padding:22px;background:#0d0d10;border:1px solid rgba(255,255,255,.14)}
+.t.tx b{font-size:clamp(26px,2.5vw,38px);line-height:1;letter-spacing:-.04em;font-weight:700}
+.t.tx p{color:var(--mut);font-size:15px}
+.t.tx.hi{background:var(--ink);color:#101010}.t.tx.hi p{color:#555}
+.t.art::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(0,0,0,.5))}
+/* HUD */
+.pill{position:fixed;left:0;right:0;margin-inline:auto;width:max-content;top:16px;z-index:30;background:var(--ink);color:#101010;border-radius:99px;padding:9px 20px;font-weight:700;font-size:15.5px;max-width:calc(100vw - 32px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;pointer-events:none}
+.brand{position:fixed;left:clamp(14px,2vw,28px);top:14px;z-index:30;background:rgba(23,23,28,.9);border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:7px 16px 7px 12px;backdrop-filter:blur(8px);font-weight:700;letter-spacing:-.03em;font-size:20px;display:flex;gap:8px;align-items:center}
+.brand i{width:12px;height:12px;border-radius:50%;background:#ff6a3d}
+.corner{position:fixed;z-index:30;display:flex;gap:8px}
+.br{right:clamp(14px,2vw,28px);bottom:16px}.bl{left:clamp(14px,2vw,28px);bottom:18px;background:rgba(23,23,28,.9);border-radius:99px;padding:8px 14px;color:var(--ink);font-size:12.5px;text-transform:uppercase;letter-spacing:.06em}
+.tr{right:clamp(14px,2vw,28px);top:14px}
+.chip{background:rgba(23,23,28,.9);border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:8px 16px;font-weight:600;font-size:14.5px;backdrop-filter:blur(8px);transition:background .3s,color .3s}
+.chip:hover{background:var(--ink);color:#101010}
+/* detail overlay */
+#det{position:fixed;inset:0;z-index:60;background:#0d0d10;clip-path:circle(0 at 50% 50%);visibility:hidden;overflow-y:auto}
+#det .in{min-height:100%;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:clamp(24px,5vw,80px);align-items:center;padding:80px clamp(18px,5vw,80px) 50px}
+#det .k{font-size:13px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+#det .ic{width:84px;border-radius:22%;margin-bottom:22px}
+#det h2{font-size:clamp(40px,6.4vw,104px);line-height:.9;letter-spacing:-.05em;font-weight:700;margin-bottom:18px}
+#det p.l{font-size:clamp(18px,1.8vw,26px);line-height:1.3;max-width:26ch;margin-bottom:20px}
+#det .tg{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}#det .tg span{border:1px solid rgba(255,255,255,.28);border-radius:99px;padding:2px 13px;font-size:14px}
+#det .badge{height:54px;width:auto}
+#det .sh{display:flex;gap:clamp(10px,1.6vw,22px)}
+#det .sh img{flex:1 1 0;min-width:0;border-radius:24px;border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 70px rgba(0,0,0,.6)}
+#det .sh img:nth-child(2){translate:0 40px}
+#det .cl{position:fixed;right:clamp(14px,2vw,28px);top:14px;z-index:5}
+#det .nv{position:fixed;left:50%;bottom:18px;translate:-50% 0;z-index:5;display:flex;gap:8px}
+@media(max-width:820px){#det .in{grid-template-columns:1fr;padding-top:76px}#det .sh img:nth-child(2){translate:0}#det .sh{gap:8px}.pill{font-size:13.5px;padding:7px 14px;top:60px}.bl{display:none}}
+</style>
+</head>
+<body>
+<div id="view"><div id="world"></div></div>
+<a class="brand" href="#"><i></i>Snoochie Soft</a>
+<div class="pill" id="pill">Seven small apps. Drag the wall.</div>
+<div class="corner tr"><a class="chip" id="mail" href="#">Say hi</a></div>
+<div class="corner bl mono">Drag · Scroll · Click a tile</div>
+<div class="corner br"><button class="chip" id="ov">Overview</button><button class="chip" id="ctr">Reset</button></div>
+<div id="det"><button class="chip cl" id="cl">Close ✕</button><div class="in" id="di"></div><div class="nv"><button class="chip" id="pv">← Prev</button><button class="chip" id="nx">Next →</button></div></div>
+
+<script src="../../_redesign/vendor/gsap.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../../_redesign/shared/common.js"></script>
+<script>
+const RM_=RM;document.getElementById('mail').href='mailto:'+EMAIL;
+const ART=['aurora_7','cave_21','coins_7','gems_7','aurora_21','cave_7','coins_21'];
+/* tiles */
+let tiles=[];
+APPS.forEach(a=>{tiles.push({t:'ic',a});a.shots.forEach((s,i)=>tiles.push({t:'sh',a,s,i}))});
+ART.forEach((n,i)=>tiles.push({t:'art',src:A+'art/'+n+'.jpg',tip:['Aurora','Cave','Coins','Gems','Aurora','Cave','Coins'][i]}));
+tiles.push({t:'tx',h:'Small apps, made properly.',p:'Seven Android apps, one studio.',hi:1},{t:'tx',h:RULES[0][0]+'.',p:RULES[0][1]},{t:'tx',h:RULES[1][0]+'.',p:RULES[1][1]},{t:'tx',h:RULES[2][0]+'.',p:RULES[2][1]},{t:'tx',h:'Say hi.',p:EMAIL,mail:1,hi:1});
+let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+for(let i=tiles.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[tiles[i],tiles[j]]=[tiles[j],tiles[i]]}
+const COLS=8,ROWS=5;
+const mobile=()=>innerWidth<700;
+const CW=()=>mobile()?200:270,CH=()=>mobile()?250:330,GAP=14;
+const world=document.getElementById('world'),view=document.getElementById('view');
+let WW=0,HH=0;
+function tileHTML(t){
+  if(t.t==='ic')return `<div class="t ic" data-app="${t.a.id}" data-tip="${t.a.name}: ${t.a.kind}" style="background:${t.a.c1}"><img src="${t.a.icon}" alt=""><div><span class="mono">${t.a.no} · ${t.a.cat}</span><br><b>${t.a.name}</b></div></div>`;
+  if(t.t==='sh')return `<div class="t" data-app="${t.a.id}" data-tip="${t.a.name}: ${t.a.line}"><img class="fill" src="${t.s}" alt="" loading="lazy"><span class="lb mono">${t.a.short}</span></div>`;
+  if(t.t==='art')return `<div class="t art" data-tip="Art made for the apps"><img class="fill" src="${t.src}" alt="" loading="lazy" style="object-position:center"><span class="lb mono">${t.tip}</span></div>`;
+  return `<${t.mail?'a href="mailto:'+EMAIL+'"':'div'} class="t tx ${t.hi?'hi':''}" data-tip="${t.mail?'Email us':'Snoochie Soft'}"><span class="mono" style="font-size:12px;opacity:.6;text-transform:uppercase">${t.mail?'Contact':'Snoochie Soft'}</span><div><b>${t.h}</b><p>${t.p}</p></div></${t.mail?'a':'div'}>`}
+function build(){world.innerHTML='';const w=CW(),h=CH();WW=COLS*(w+GAP);HH=ROWS*(h+GAP);
+  const html=tiles.map(tileHTML).join('');
+  for(let j=0;j<3;j++)for(let i=0;i<3;i++){const c=document.createElement('div');c.className='copy';c.style.cssText=`left:${i*WW}px;top:${j*HH}px;grid-template-columns:repeat(${COLS},${w}px);grid-auto-rows:${h}px;gap:${GAP}px;width:${WW}px;height:${HH}px`;c.innerHTML=html;world.appendChild(c)}}
+build();
+/* state */
+const S={x:-WW*.1,y:-HH*.1,s:1,vx:0,vy:0,drag:false,ds:{x:0,y:0},moved:0,last:0};
+function wrap(){S.x=((S.x%WW)-WW)%WW;S.y=((S.y%HH)-HH)%HH}
+function apply(){wrap();world.style.transform=`scale(${S.s}) translate(${S.x}px,${S.y}px)`}
+function zoomTo(ns,dur){const vw=innerWidth,vh=innerHeight;const o={s:S.s};gsap.to(o,{s:ns,duration:RM?0:dur||1.1,ease:'expo.inOut',onUpdate:()=>{const cxw=vw/(2*S.s)-S.x,cyw=vh/(2*S.s)-S.y;S.s=o.s;S.x=vw/(2*S.s)-cxw;S.y=vh/(2*S.s)-cyw}})}
+let overview=false;
+document.getElementById('ov').onclick=function(){overview=!overview;zoomTo(overview?(mobile()?.4:.42):1);this.textContent=overview?'Zoom in':'Overview'};
+document.getElementById('ctr').onclick=()=>{overview=false;document.getElementById('ov').textContent='Overview';zoomTo(1);gsap.to(S,{x:-WW*.1,y:-HH*.1,duration:RM?0:1.2,ease:'expo.inOut'})};
+/* drag with inertia */
+view.addEventListener('pointerdown',e=>{if(det.open)return;S.drag=true;S.moved=0;S.ds={x:e.clientX,y:e.clientY};S.vx=S.vy=0;S.down=e.target;view.setPointerCapture(e.pointerId);view.classList.add('drag')});
+view.addEventListener('pointermove',e=>{if(!S.drag)return;const dx=(e.clientX-S.ds.x)/S.s,dy=(e.clientY-S.ds.y)/S.s;S.ds={x:e.clientX,y:e.clientY};S.moved+=Math.abs(dx)+Math.abs(dy);S.x+=dx;S.y+=dy;S.vx=dx;S.vy=dy});
+view.addEventListener('pointerup',e=>{if(!S.drag)return;S.drag=false;view.classList.remove('drag');if(S.moved<8/S.s){const t=document.elementFromPoint(e.clientX,e.clientY);const tile=t&&t.closest('.t');if(tile&&tile.dataset.app)openApp(tile.dataset.app,e.clientX,e.clientY);else if(tile&&tile.matches('a'))location.href=tile.href}});
+view.addEventListener('wheel',e=>{if(det.open)return;e.preventDefault();S.x-=e.deltaX/S.s;S.y-=e.deltaY/S.s;S.vx=-e.deltaX/S.s*.2;S.vy=-e.deltaY/S.s*.2},{passive:false});
+gsap.ticker.add(()=>{if(!S.drag){S.x+=S.vx;S.y+=S.vy;S.vx*=.93;S.vy*=.93;if(!RM&&!det.open&&Math.abs(S.vx)<.05&&Math.abs(S.vy)<.05){S.x-=.18/S.s;S.y-=.07/S.s}}apply()});
+/* pill sentence follows hover */
+const pill=document.getElementById('pill');let tip=pill.textContent;
+function setPill(t){if(t===tip)return;tip=t;if(RM){pill.textContent=t;return}gsap.to(pill,{opacity:0,y:-6,duration:.15,onComplete:()=>{pill.textContent=t;gsap.to(pill,{opacity:1,y:0,duration:.3,ease:'expo.out'})}})}
+view.addEventListener('pointerover',e=>{const t=e.target.closest('.t');if(t&&!S.drag)setPill(t.dataset.tip)});
+view.addEventListener('pointerleave',()=>setPill('Seven small apps. Drag the wall.'));
+/* detail overlay */
+const det=document.getElementById('det');det.open=false;let cur=0;
+function fill(i){const a=APPS[i];cur=i;document.getElementById('di').innerHTML=`<div><img class="ic" src="${a.icon}" alt=""><div class="k mono">${a.no} · ${a.cat}</div><h2>${a.name}</h2><p class="l">${a.line}</p><div class="tg">${a.tags.map(t=>`<span>${t}</span>`).join('')}</div><a href="${a.play}"><img class="badge" src="${PLAY_BADGE}" alt="Get it on Google Play"></a></div><div class="sh">${a.shots.map(s=>`<img src="${s}" alt="">`).join('')}</div>`}
+function openApp(id,x,y){const i=APPS.findIndex(a=>a.id===id);fill(i);det.open=true;det.style.visibility='visible';
+  gsap.fromTo(det,{clipPath:`circle(0px at ${x}px ${y}px)`},{clipPath:`circle(${Math.hypot(innerWidth,innerHeight)}px at ${x}px ${y}px)`,duration:RM?0:1.1,ease:'expo.inOut'});
+  gsap.from('#di > *',{y:50,opacity:0,duration:1,ease:'expo.out',stagger:.1,delay:RM?0:.45});det.scrollTop=0}
+function closeApp(){gsap.to(det,{clipPath:`circle(0px at 50% 50%)`,duration:RM?0:.8,ease:'expo.inOut',onComplete:()=>{det.style.visibility='hidden';det.open=false}})}
+function go(d){const n=(cur+d+APPS.length)%APPS.length;gsap.to('#di > *',{opacity:0,y:-20,duration:.25,onComplete:()=>{fill(n);gsap.from('#di > *',{y:40,opacity:0,duration:.8,ease:'expo.out',stagger:.08})}})}
+document.getElementById('cl').onclick=closeApp;document.getElementById('pv').onclick=()=>go(-1);document.getElementById('nx').onclick=()=>go(1);
+addEventListener('keydown',e=>{if(!det.open)return;if(e.key==='Escape')closeApp();if(e.key==='ArrowRight')go(1);if(e.key==='ArrowLeft')go(-1)});
+addEventListener('resize',()=>{build()});
+/* intro: tiles pop in from the centre */
+if(!RM)gsap.from('.copy:nth-child(5) .t',{scale:.5,opacity:0,duration:1.2,ease:'expo.out',stagger:{amount:.9,from:'center',grid:[COLS,ROWS]}});
+</script>
+</body>
+</html>

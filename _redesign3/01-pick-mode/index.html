@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Pick Your Mode - Snoochie Soft redesign C1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f3efe7;--ink:#121212;--or:#ff4b1f;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden}
+body{font:400 18px/1.5 'Bricolage Grotesque',system-ui,sans-serif;background:var(--ink);color:var(--ink)}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.bar{position:fixed;inset:0 0 auto 0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:18px clamp(16px,3vw,36px);pointer-events:none;mix-blend-mode:normal}
+.bar>*{pointer-events:auto}
+.brand{font-weight:800;letter-spacing:-.04em;font-size:20px;background:var(--ink);color:#fff;padding:7px 14px;border-radius:99px}
+.q{position:absolute;left:50%;top:18px;translate:-50% 0;background:#fff;color:var(--ink);padding:7px 16px;border-radius:99px;font-weight:700;font-size:15px;white-space:nowrap}
+.contact{background:#fff;color:var(--ink);font-weight:700;font-size:15px;padding:8px 16px;border-radius:99px;transition:background .3s,color .3s}
+.contact:hover{background:var(--ink);color:#fff}
+#split{display:flex;height:100svh}
+.p{position:relative;flex:1 1 0;min-width:0;overflow:hidden}
+.calm{background:#14122a;color:var(--cream)}
+.calm .enter{background:var(--cream);color:var(--ink)}
+.calm .card{background:#201d42;color:var(--cream)}
+.calm .back{background:var(--cream);color:var(--ink)}
+.play{background:var(--or)}
+.blob{position:absolute;width:48vmax;height:48vmax;left:50%;top:50%;translate:-50% -55%;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff9d8a,#7d6cff 55%,#3fb4ff);filter:blur(70px);opacity:.55;pointer-events:none}
+canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+.intro{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(18px,3vw,44px);pointer-events:none}
+.intro>*{pointer-events:none}
+.intro .enter,.intro .pill{pointer-events:auto}
+.num{font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
+.word{font-weight:800;font-size:clamp(54px,10.5vw,170px);line-height:.88;letter-spacing:-.06em;margin-left:-.04em}
+.sub{max-width:30ch;margin:14px 0 18px;font-weight:500;font-size:clamp(16px,1.35vw,20px)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.enter{display:inline-flex;gap:10px;align-items:center;background:var(--ink);color:#fff;padding:12px 20px;border-radius:99px;font-weight:700;transition:translate .5s var(--ease),background .3s}
+.enter:hover{translate:4px 0}
+.enter s{text-decoration:none}
+.play .enter{background:#fff;color:var(--ink)}
+.play .pill{background:var(--or)}
+.pill{border:2px solid currentColor;border-radius:99px;padding:3px 12px;font-weight:500;font-size:14px}
+.list{position:absolute;inset:0;overflow-y:auto;padding:128px clamp(16px,3vw,44px) 60px;opacity:0;visibility:hidden}
+.list h2{font-weight:800;font-size:clamp(36px,5.6vw,86px);line-height:.92;letter-spacing:-.05em;margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px}
+.card{background:#fff;color:var(--ink);border-radius:28px;padding:20px;display:flex;flex-direction:column;gap:12px;transition:translate .5s var(--ease)}
+.play .card{background:var(--ink);color:#fff}
+.card:hover{translate:0 -6px}
+.card .h{display:flex;gap:12px;align-items:center}
+.card .h img{width:52px;border-radius:24%}
+.card h3{font-size:22px;line-height:1.1;letter-spacing:-.03em}
+.card .n{font-size:12px;font-weight:700;letter-spacing:.14em;opacity:.55}
+.card p{font-size:15.5px;opacity:.85}
+.card .tags{display:flex;gap:6px;flex-wrap:wrap}
+.card .tags span{font-size:13px;border:1.5px solid currentColor;border-radius:99px;padding:1px 10px;opacity:.8}
+.card .sh{display:flex;gap:8px;height:150px;overflow:hidden;border-radius:16px}
+.card .sh img{height:170px;width:auto;border-radius:12px;object-fit:cover}
+.card .badge{height:44px;width:auto}
+.back{position:absolute;left:clamp(16px,3vw,44px);top:70px;z-index:5;background:var(--ink);color:#fff;border-radius:99px;padding:8px 16px;font-weight:700;font-size:15px;opacity:0;visibility:hidden}
+.play .back{background:#fff;color:var(--ink)}
+.hint{position:fixed;left:50%;top:64px;translate:-50% 0;z-index:30;background:var(--ink);color:#fff;border-radius:99px;padding:6px 14px;font-size:13px;font-weight:500;pointer-events:none}
+@media(max-width:820px){#split{flex-direction:column}.q{display:none}.word{font-size:clamp(46px,17vw,90px)}.intro{padding-bottom:20px}.sub{margin:8px 0 12px;font-size:15px}.hint{display:none}.list{padding-top:130px}}
+</style>
+</head>
+<body>
+<div class="bar"><a class="brand" href="#">Snoochie Soft</a><div class="q">How do you like it?</div><a class="contact" id="mail" href="#">Contact</a></div>
+<main id="split">
+  <section class="p calm" data-side="calm">
+    <div class="blob" id="blob"></div>
+    <div class="intro"><div class="num">01 · 4 apps</div><div class="word">Calm</div><p class="sub">Apps for learning, planning and a quiet moment. Clear, small and honest.</p><div class="row"><button class="enter">Enter <s>→</s></button><span class="pill">No account</span><span class="pill">Works offline</span></div></div>
+    <button class="back">← Back</button>
+    <div class="list"><h2>Calm apps.</h2><div class="grid" id="g-calm"></div></div>
+  </section>
+  <section class="p play" data-side="play">
+    <canvas id="cv"></canvas>
+    <div class="intro"><div class="num">02 · 3 apps</div><div class="word">Play<span style="color:#fff">!</span></div><p class="sub">Cosy games, a pug in a helmet and fake chats. Drag the shapes, they are real.</p><div class="row"><button class="enter">Enter <s>→</s></button><span class="pill">No ads in Mossy</span><span class="pill">Offline Pug</span></div></div>
+    <button class="back">← Back</button>
+    <div class="list"><h2>Play apps.</h2><div class="grid" id="g-play"></div></div>
+  </section>
+</main>
+<div class="hint">You can switch any time from the back button.</div>
+
+<script src="../../_redesign/vendor/gsap.min.js"></script><script src="../vendor/matter.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../../_redesign/shared/common.js"></script>
+<script>
+const SIDES={calm:['pray','loopclass','transcriber','ssnd'],play:['mossy','fakechat','pug']};
+const byId=id=>APPS.find(a=>a.id===id);
+for(const k in SIDES)document.getElementById('g-'+k).innerHTML=SIDES[k].map(byId).map(a=>`<article class="card"><div class="h"><img src="${a.icon}" alt=""><div><div class="n">${a.no} · ${a.cat}</div><h3>${a.name}</h3></div></div><div class="sh">${a.shots.map(s=>`<img src="${s}" alt="" loading="lazy">`).join('')}</div><p>${a.kind}. ${a.line}</p><div class="tags">${a.tags.map(t=>`<span>${t}</span>`).join('')}</div><a href="${a.play}">${badge()}</a></article>`).join('');
+const m=document.getElementById('mail');m.href='mailto:'+EMAIL;
+const panels=[...document.querySelectorAll('.p')];let open=null;
+const wide=()=>innerWidth>820;
+function grow(p,v){gsap.to(p,{flexGrow:v,duration:.9,ease:'expo.out',overwrite:true})}
+panels.forEach(p=>{
+  p.addEventListener('pointerenter',()=>{if(open||!wide()||RM)return;panels.forEach(q=>grow(q,q===p?1.7:1))});
+  p.addEventListener('pointerleave',()=>{if(open||!wide()||RM)return;panels.forEach(q=>grow(q,1))});
+  p.querySelector('.enter').addEventListener('click',()=>enter(p));
+  p.querySelector('.back').addEventListener('click',leave);
+});
+function enter(p){if(open)return;open=p;const o=panels.find(q=>q!==p);
+  const tl=gsap.timeline({defaults:{duration:RM?0:1,ease:'expo.inOut'}});
+  tl.to(o,{flexGrow:0.0001,opacity:0},0).to(p,{flexGrow:1},0)
+    .to(p.querySelector('.intro'),{autoAlpha:0,y:-40,duration:RM?0:.5,ease:'power2.in'},0)
+    .set(p.querySelector('.list'),{autoAlpha:1},.5)
+    .fromTo(p.querySelectorAll('.list h2,.card'),{y:60,opacity:0},{y:0,opacity:1,duration:RM?0:1,ease:'expo.out',stagger:.08},.6)
+    .to(p.querySelector('.back'),{autoAlpha:1,duration:.4},.8)
+    .to('.hint',{opacity:0,duration:.3},0);
+  p.querySelector('.list').scrollTop=0}
+function leave(){if(!open)return;const p=open,o=panels.find(q=>q!==p);open=null;
+  gsap.timeline({defaults:{duration:RM?0:.9,ease:'expo.inOut'}})
+   .to([p.querySelector('.list'),p.querySelector('.back')],{autoAlpha:0,duration:.3},0)
+   .to(o,{flexGrow:1,opacity:1},0).to(p,{flexGrow:1},0)
+   .to(p.querySelector('.intro'),{autoAlpha:1,y:0,duration:.6,ease:'expo.out'},.3)
+   .to('.hint',{opacity:1,duration:.3},.6)}
+addEventListener('keydown',e=>{if(e.key==='Escape')leave()});
+/* calm side: gradient blob follows the cursor */
+const blob=document.getElementById('blob');
+if(!RM){const bx=gsap.quickTo(blob,'x',{duration:1.6,ease:'power3'}),by=gsap.quickTo(blob,'y',{duration:1.6,ease:'power3'});
+  document.querySelector('.calm').addEventListener('pointermove',e=>{const r=e.currentTarget.getBoundingClientRect();bx((e.clientX-r.left-r.width/2)*.35);by((e.clientY-r.top-r.height/2)*.35)})}
+/* play side: real physics (Matter), draggable shapes */
+const cv=document.getElementById('cv'),ctx=cv.getContext('2d');
+const {Engine,Bodies,Composite,Mouse,MouseConstraint}=Matter;
+const eng=Engine.create();eng.gravity.y=1;let W=0,H=0,dpr=1,bodies=[],walls=[],mc;
+function size(){const r=cv.parentElement.getBoundingClientRect();dpr=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;
+  walls.forEach(w=>Composite.remove(eng.world,w));const t=200;
+  walls=[Bodies.rectangle(W/2,H+t/2,W*3,t,{isStatic:true}),Bodies.rectangle(-t/2,H/2,t,H*4,{isStatic:true}),Bodies.rectangle(W+t/2,H/2,t,H*4,{isStatic:true})];Composite.add(eng.world,walls)}
+size();
+const S=Math.max(22,Math.min(42,innerWidth/34));
+const defs=[["c",1],["c",.7],["t",1],["r",1],["s",1],["o",1],["c",.8],["r",.8],["s",.8]];
+defs.forEach(([k,sc],i)=>{const r=S*sc;let b;const x=W*(.18+.64*((i*37)%11)/11),y=-60-i*90;
+  if(k==='c')b=Bodies.circle(x,y,r,{restitution:.55});
+  else if(k==='t')b=Bodies.polygon(x,y,3,r*1.2,{restitution:.5});
+  else if(k==='r')b=Bodies.rectangle(x,y,r*1.5,r*1.5,{restitution:.5,chamfer:{radius:8}});
+  else if(k==='s')b=Bodies.polygon(x,y,5,r*1.1,{restitution:.5});
+  else b=Bodies.circle(x,y,r,{restitution:.55});
+  b.kind=k;b.rr=r;bodies.push(b)});
+if(RM){bodies.forEach((b,i)=>{Matter.Body.setPosition(b,{x:W*(.15+.7*((i*37)%11)/11),y:H-120-(i%3)*90})});}
+Composite.add(eng.world,bodies);
+mc=MouseConstraint.create(eng,{mouse:Mouse.create(cv),constraint:{stiffness:.2,render:{visible:false}}});
+mc.mouse.pixelRatio=1;Composite.add(eng.world,mc);
+mc.mouse.element.removeEventListener('mousewheel',mc.mouse.mousewheel);mc.mouse.element.removeEventListener('DOMMouseScroll',mc.mouse.mousewheel);
+function star(c,r){c.beginPath();for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,rad=i%2?r*.5:r;c.lineTo(Math.cos(a)*rad,Math.sin(a)*rad)}c.closePath()}
+function draw(){ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+  bodies.forEach(b=>{ctx.save();ctx.translate(b.position.x,b.position.y);ctx.rotate(b.angle);const r=b.rr;ctx.fillStyle='#121212';ctx.strokeStyle='#121212';ctx.lineWidth=Math.max(6,r*.28);
+    if(b.kind==='c'){ctx.beginPath();ctx.arc(0,0,r,0,7);ctx.fill()}
+    else if(b.kind==='o'){ctx.strokeStyle='#fff';ctx.beginPath();ctx.arc(0,0,r-ctx.lineWidth/2,0,7);ctx.stroke()}
+    else if(b.kind==='r'){ctx.fillStyle='#fff';ctx.beginPath();ctx.roundRect(-r*.75,-r*.75,r*1.5,r*1.5,10);ctx.fill()}
+    else if(b.kind==='t'){ctx.beginPath();for(let i=0;i<3;i++){const a=-Math.PI/2+i*2*Math.PI/3;ctx.lineTo(Math.cos(a)*r*1.2,Math.sin(a)*r*1.2)}ctx.closePath();ctx.fill()}
+    else{star(ctx,r*1.15);ctx.fill()}
+    ctx.restore()})}
+let last=0;gsap.ticker.add((t)=>{if(!RM){const dt=Math.min(32,(t-last)*1000||16);Engine.update(eng,dt)}last=t;draw()});
+addEventListener('resize',()=>{size();bodies.forEach(b=>{if(b.position.y>H||b.position.x>W)Matter.Body.setPosition(b,{x:Math.min(b.position.x,W-60),y:Math.min(b.position.y,H-60)})})});
+if(!RM)gsap.from('.word,.sub,.row,.num',{y:60,opacity:0,duration:1.2,ease:'expo.out',stagger:.05,delay:.15});
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Slideshow Pill - Snoochie Soft redesign C6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#f6f4ef;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden;background:#000}
+body{font:500 17px/1.45 'Inter Tight',system-ui,sans-serif;color:var(--ink);overscroll-behavior:none}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+#stage{position:fixed;inset:0;touch-action:pan-y}
+.sl{position:absolute;inset:0;overflow:hidden;background:var(--c2)}
+.sl .bg{position:absolute;inset:-6%;background-size:cover;background-position:center;filter:blur(26px) saturate(1.15) brightness(.55);will-change:transform}
+.sl.art .bg{filter:brightness(.55) saturate(1.1)}
+.sl::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),transparent 30%,rgba(0,0,0,.65)),linear-gradient(90deg,var(--c2),transparent 70%);opacity:.8;pointer-events:none}
+.sl .tint{position:absolute;inset:0;background:var(--c1);mix-blend-mode:soft-light;opacity:.5}
+.sl .name{position:absolute;left:clamp(16px,3.4vw,52px);bottom:clamp(120px,19vh,190px);z-index:3;font:900 clamp(60px,9vw,180px)/.8 'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:-.02em;max-width:44vw}
+.sl .name .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.06em}
+.sl .name .ch{display:inline-block}
+.sl .ph{position:absolute;right:clamp(10px,5vw,90px);top:50%;translate:0 -50%;z-index:2;display:flex;gap:clamp(8px,1.4vw,22px);align-items:center}
+.sl .ph img{width:clamp(110px,15vw,250px);border-radius:clamp(14px,2vw,28px);box-shadow:0 30px 80px rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.2)}
+.sl .ph img:nth-child(1){translate:0 6%;rotate:-5deg}.sl .ph img:nth-child(2){translate:0 -8%;scale:1.08}.sl .ph img:nth-child(3){translate:0 6%;rotate:5deg}
+.sl .meta{position:absolute;left:clamp(16px,3.4vw,52px);bottom:clamp(30px,6vh,60px);z-index:3;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.sl .meta .badge{height:50px;width:auto}
+.sl .meta .tg{display:flex;gap:8px}.sl .meta .tg span{border:1px solid rgba(255,255,255,.5);border-radius:99px;padding:3px 13px;font-size:14px}
+/* pill */
+.pill{position:fixed;left:50%;top:16px;translate:-50% 0;z-index:30;display:flex;align-items:center;gap:6px;background:var(--ink);color:#0b0b0b;border-radius:99px;padding:6px 8px 6px 20px;max-width:calc(100vw - 24px);box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.pill .s{font-weight:700;font-size:15.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.pill .c{font-weight:700;font-size:13px;opacity:.75;margin-left:8px;white-space:nowrap}
+.pill button{width:34px;height:34px;border-radius:50%;background:#0b0b0b;color:var(--ink);font-size:16px;flex:none;transition:background .3s,scale .4s var(--ease)}
+.pill button:hover{background:#ff5b36;scale:1.08}
+.pill .bar{position:absolute;left:20px;right:20px;bottom:2px;height:2px;background:rgba(0,0,0,.12);border-radius:2px;overflow:hidden}.pill .bar i{display:block;height:100%;background:#0b0b0b;transform-origin:left;transform:scaleX(0)}
+.brand{position:fixed;left:clamp(16px,3.4vw,52px);top:22px;z-index:30;font:900 22px 'Big Shoulders Display';letter-spacing:.02em;text-transform:uppercase}
+.mail{position:fixed;right:clamp(16px,3.4vw,52px);top:22px;z-index:30;font-weight:700;font-size:15px;border-bottom:2px solid currentColor}
+.dots{position:fixed;right:clamp(16px,3.4vw,52px);bottom:clamp(30px,6vh,60px);z-index:30;display:flex;flex-direction:column;gap:8px}
+.dots button{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.35);transition:background .3s,scale .4s var(--ease)}
+.dots button.on{background:#fff;scale:1.5}
+@media(max-width:860px){.sl .ph{right:auto;left:50%;translate:-50% 0;top:15%}.sl .ph img{width:24vw}.sl .name{bottom:150px;max-width:92vw;font-size:clamp(50px,17vw,110px)}.sl .meta{bottom:34px;gap:10px}.sl .meta .tg{display:none}.dots{display:none}.brand,.mail{display:none}.pill .s{font-size:13.5px}.pill{top:12px}}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<a class="brand" href="#">Snoochie Soft</a><a class="mail" id="mail" href="#">Say hi</a>
+<div class="pill"><button id="pv" aria-label="Previous">←</button><span class="s" id="sent"></span><span class="c" id="cnt"></span><button id="nx" aria-label="Next">→</button><span class="bar"><i id="pb"></i></span></div>
+<div class="dots" id="dots"></div>
+<script src="../../_redesign/vendor/gsap.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../../_redesign/shared/common.js"></script>
+<script>
+document.getElementById('mail').href='mailto:'+EMAIL;
+const BG={ssnd:null,mossy:null,fakechat:null,loopclass:null,transcriber:A+'art/aurora_7.jpg',pray:null,pug:A+'art/cave_21.jpg'};
+const SENT={
+ ssnd:a=>`${a.name} teaches the 500 most common English words in 50 days`,
+ mossy:a=>`${a.name} is sixteen tiny cosy games for focus and calm`,
+ fakechat:a=>`${a.name} writes a fake chat and saves it as a picture`,
+ loopclass:a=>`${a.name} keeps timetable, homework and grades in one place`,
+ transcriber:a=>`${a.name} turns voice notes into text, nothing uploaded`,
+ pray:a=>`${a.name} reads you a verse and 25 recorded prayers`,
+ pug:a=>`${a.name}: dig through 50 eras with Bigi the pug`};
+const stage=document.getElementById('stage'),sent=document.getElementById('sent'),cnt=document.getElementById('cnt'),pb=document.getElementById('pb'),dots=document.getElementById('dots');
+const sl=APPS.map((a,i)=>{const d=document.createElement('section');d.className='sl'+(BG[a.id]?' art':'');d.style.cssText=`--c1:${a.c1};--c2:${a.c2};z-index:${i===0?2:1}`;
+  d.innerHTML=`<div class="bg" style="background-image:url('${BG[a.id]||a.shots[0]}')"></div><div class="tint"></div><div class="ph">${a.shots.map(s=>`<img src="${s}" alt="">`).join('')}</div><h1 class="name">${a.name}</h1><div class="meta"><a href="${a.play}"><img class="badge" src="${PLAY_BADGE}" alt="Get it on Google Play"></a><div class="tg">${a.tags.map(t=>`<span>${t}</span>`).join('')}</div></div>`;
+  d.style.visibility='hidden';stage.appendChild(d);return d});
+dots.innerHTML=APPS.map((a,i)=>`<button data-i="${i}" aria-label="${a.name}"></button>`).join('');
+const names=sl.map(s=>s.querySelector('.name'));names.forEach(n=>{n.dataset.t=n.textContent});
+let cur=0,busy=false,timer=null;
+function setPill(i,instant){const a=APPS[i],t=SENT[a.id](a);cnt.textContent=String(i+1).padStart(2,'0')+' / '+String(APPS.length).padStart(2,'0');
+  dots.querySelectorAll('button').forEach((b,k)=>b.classList.toggle('on',k===i));
+  if(instant||RM){sent.textContent=t;return}
+  gsap.to(sent,{yPercent:-120,opacity:0,duration:.3,ease:'power2.in',onComplete:()=>{sent.textContent=t;gsap.fromTo(sent,{yPercent:120,opacity:0},{yPercent:0,opacity:1,duration:.6,ease:'expo.out'})}})}
+function arm(){clearTimeout(timer);gsap.killTweensOf(pb);gsap.set(pb,{scaleX:0});if(RM)return;gsap.to(pb,{scaleX:1,duration:6.5,ease:'none',onComplete:()=>go(cur+1)})}
+function go(n,dir){if(busy)return;n=(n+APPS.length)%APPS.length;if(n===cur)return;busy=true;dir=dir||1;
+  const from=sl[cur],to=sl[n];to.style.visibility='visible';to.style.zIndex=3;from.style.zIndex=2;
+  setPill(n);
+  const chars=splitChars(names[n]);names[n].setAttribute('aria-label',names[n].dataset.t);
+  if(RM){from.style.visibility='hidden';to.style.zIndex=2;cur=n;busy=false;return}
+  const tl=gsap.timeline({onComplete:()=>{from.style.visibility='hidden';to.style.zIndex=2;cur=n;busy=false;arm()}});
+  tl.fromTo(to,{clipPath:dir>0?'inset(100% 0 0 0)':'inset(0 0 100% 0)'},{clipPath:'inset(0% 0 0% 0)',duration:1.3,ease:'expo.inOut'},0)
+    .fromTo(to.querySelector('.bg'),{scale:1.3},{scale:1,duration:1.8,ease:'expo.out'},0)
+    .to(from.querySelector('.bg'),{scale:1.08,duration:1.3,ease:'expo.inOut'},0)
+    .fromTo(chars,{yPercent:115},{yPercent:0,duration:1,ease:'expo.out',stagger:.025},.55)
+    .fromTo(to.querySelectorAll('.ph img'),{y:160*dir,opacity:0},{y:0,opacity:1,duration:1.2,ease:'expo.out',stagger:.08},.5)
+    .fromTo(to.querySelector('.meta'),{y:40,opacity:0},{y:0,opacity:1,duration:1,ease:'expo.out'},.8)}
+document.getElementById('nx').onclick=()=>go(cur+1,1);document.getElementById('pv').onclick=()=>go(cur-1,-1);
+dots.addEventListener('click',e=>{const b=e.target.closest('button');if(b)go(+b.dataset.i,+b.dataset.i>cur?1:-1)});
+addEventListener('keydown',e=>{if(['ArrowRight','ArrowDown',' '].includes(e.key))go(cur+1,1);if(['ArrowLeft','ArrowUp'].includes(e.key))go(cur-1,-1)});
+let wl=0;addEventListener('wheel',e=>{const t=Date.now();if(t-wl<900||Math.abs(e.deltaY)<12)return;wl=t;go(cur+(e.deltaY>0?1:-1),e.deltaY>0?1:-1)},{passive:true});
+let ty=0;stage.addEventListener('touchstart',e=>ty=e.touches[0].clientY,{passive:true});stage.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientY-ty;if(Math.abs(d)>50)go(cur+(d<0?1:-1),d<0?1:-1)});
+document.querySelector('.pill').addEventListener('pointerenter',()=>gsap.getTweensOf(pb).forEach(t=>t.pause()));document.querySelector('.pill').addEventListener('pointerleave',()=>gsap.getTweensOf(pb).forEach(t=>t.play()));
+/* mouse parallax on phones */
+if(!RM)addEventListener('pointermove',e=>{const x=(e.clientX/innerWidth-.5),y=(e.clientY/innerHeight-.5);const s=sl[cur];gsap.to(s.querySelector('.ph'),{x:x*-30,y:y*-20,duration:1.2,ease:'power3'});gsap.to(s.querySelector('.bg'),{x:x*20,y:y*14,duration:1.6,ease:'power3'})});
+/* init */
+sl[0].style.visibility='visible';setPill(0,true);const ch0=splitChars(names[0]);
+if(!RM){gsap.from(ch0,{yPercent:115,duration:1.2,ease:'expo.out',stagger:.03,delay:.3});gsap.from('.sl:first-child .ph img',{y:200,opacity:0,duration:1.4,ease:'expo.out',stagger:.1,delay:.3});gsap.from('.pill,.brand,.mail',{y:-30,opacity:0,duration:1,ease:'expo.out',delay:.2});arm()}
+</script>
+</body>
+</html>

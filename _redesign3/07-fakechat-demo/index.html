@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Fake Chat Demo - Snoochie Soft redesign C7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#100d1a;--ink:#f4f1fa;--mut:#a29cb8;--lil:#b9a8ff;--cor:#ff5a3d;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html{overflow-x:clip}body{overflow-x:clip;font:500 18px/1.5 'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:clamp(18px,4vw,48px)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+nav b{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em}nav b img{width:32px;border-radius:24%}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--lil);color:#1a1030;font-weight:800;padding:11px 20px;border-radius:99px;transition:translate .5s var(--ease)}.btn:hover{translate:0 -3px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,5vw,80px);align-items:center;min-height:calc(100svh - 70px);padding:10px 0 50px}
+.k{display:inline-block;border:1.5px solid var(--lil);color:var(--lil);border-radius:99px;padding:3px 14px;font-weight:700;font-size:14px;margin-bottom:20px}
+h1{font-size:clamp(46px,6.4vw,100px);line-height:.95;letter-spacing:-.05em;font-weight:800;margin-bottom:22px}
+h1 em{font-style:normal;color:var(--lil)}
+.lead{color:var(--mut);max-width:34ch;font-size:clamp(17px,1.5vw,21px);margin-bottom:28px}
+.steps{display:grid;gap:10px;margin-bottom:30px;max-width:420px}
+.st{display:flex;gap:14px;align-items:center;border:1.5px solid rgba(255,255,255,.14);border-radius:18px;padding:12px 16px;transition:background .5s,border-color .5s,color .5s,translate .6s var(--ease);color:var(--mut)}
+.st i{font-style:normal;font-weight:800;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.1);font-size:14px;flex:none;transition:background .4s,color .4s}
+.st b{display:block;color:inherit;font-size:17px;line-height:1.2}.st span{font-size:14.5px}
+.st.on{background:rgba(185,168,255,.14);border-color:var(--lil);color:var(--ink);translate:8px 0}
+.st.on i{background:var(--lil);color:#1a1030}
+.cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.cta .badge{height:54px;width:auto}.tg{display:flex;gap:8px}.tg span{border:1.5px solid rgba(255,255,255,.25);border-radius:99px;padding:2px 13px;font-size:14px}
+/* phone */
+.stage{position:relative;display:grid;place-items:center}
+.stage::before{content:"";position:absolute;width:80%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--glow,#6b4dff),transparent 65%);opacity:.5;filter:blur(30px);transition:background .8s}
+.phone{position:relative;width:min(100%,340px);aspect-ratio:9/18.6;background:#000;border-radius:46px;padding:10px;box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 0 2px #2b2540;rotate:-2deg;transition:rotate .8s var(--ease)}
+.phone:hover{rotate:0deg}
+.scr{position:relative;height:100%;border-radius:37px;overflow:hidden;background:var(--sbg);color:var(--stx);display:flex;flex-direction:column;transition:background .6s,color .6s;font-family:system-ui,'Segoe UI',sans-serif}
+.hd{display:flex;align-items:center;gap:10px;padding:34px 16px 12px;background:var(--shd);border-bottom:1px solid var(--sln);transition:background .6s}
+.av{width:34px;height:34px;border-radius:50%;background:var(--me);display:grid;place-items:center;font-weight:800;font-size:14px;color:var(--metx)}
+.hd b{font-size:15px;line-height:1.1}.hd small{display:block;opacity:.6;font-size:11.5px}
+.chat{flex:1;overflow:hidden;padding:14px 12px;display:flex;flex-direction:column;gap:7px;justify-content:flex-end}
+.bb{max-width:78%;padding:9px 13px;border-radius:18px;font-size:14.5px;line-height:1.3;transition:background .6s,color .6s;transform-origin:var(--o,left bottom)}
+.bb.them{align-self:flex-start;background:var(--th);color:var(--thx);border-bottom-left-radius:5px}
+.bb.me{align-self:flex-end;background:var(--me);color:var(--metx);border-bottom-right-radius:5px;--o:right bottom}
+.typ{align-self:flex-start;background:var(--th);border-radius:18px;padding:11px 14px;display:flex;gap:4px}.typ i{width:6px;height:6px;border-radius:50%;background:var(--thx);opacity:.5;animation:b 1s infinite}.typ i:nth-child(2){animation-delay:.15s}.typ i:nth-child(3){animation-delay:.3s}
+@keyframes b{50%{translate:0 -4px;opacity:1}}
+.inp{display:flex;gap:8px;padding:10px 12px 14px;background:var(--shd);border-top:1px solid var(--sln);transition:background .6s}
+.inp input{flex:1;min-width:0;border:0;outline:0;border-radius:99px;padding:9px 14px;font:inherit;font-size:14px;background:var(--th);color:var(--thx)}
+.inp input::placeholder{color:var(--thx);opacity:.5}
+.inp button{width:36px;height:36px;border-radius:50%;background:var(--me);color:var(--metx);font-weight:800}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+.toast{position:absolute;left:50%;bottom:74px;translate:-50% 0;background:#fff;color:#111;border-radius:99px;padding:9px 18px;font-weight:800;font-size:14px;white-space:nowrap;opacity:0;font-family:'Plus Jakarta Sans'}
+.theme{position:absolute;right:-6px;top:20%;display:flex;flex-direction:column;gap:8px;z-index:3}
+.theme button{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:99px;padding:6px 14px;font-weight:700;font-size:13.5px;transition:background .3s,color .3s}
+.theme button.on{background:var(--ink);color:#111}
+.th0{--sbg:#14112a;--stx:#f1eefc;--shd:#1c1838;--sln:rgba(255,255,255,.08);--me:#b9a8ff;--metx:#1a1030;--th:#2b2650;--thx:#f1eefc}
+.th1{--sbg:#fff3ec;--stx:#2a1a14;--shd:#ffe5d8;--sln:rgba(0,0,0,.08);--me:#c8341c;--metx:#fff;--th:#f2dfd3;--thx:#2a1a14}
+.th2{--sbg:#0c0c0c;--stx:#fff;--shd:#161616;--sln:rgba(255,255,255,.1);--me:#fff;--metx:#000;--th:#2a2a2a;--thx:#fff}
+/* shots */
+.shots{padding:clamp(60px,9vw,120px) 0}
+.shots h2{font-size:clamp(36px,5.2vw,78px);line-height:.95;letter-spacing:-.045em;font-weight:800;margin-bottom:12px;max-width:16ch}
+.shots p{color:var(--mut);max-width:40ch;margin-bottom:40px}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,3vw,40px)}
+.row figure{position:relative}.row img{border-radius:28px;border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.row figure:nth-child(2){translate:0 40px}
+.row figcaption{margin-top:14px;color:var(--mut);font-size:15px}
+.fin{padding:60px 0 90px;text-align:center}.fin h2{font-size:clamp(42px,7vw,110px);line-height:.92;letter-spacing:-.05em;font-weight:800;margin-bottom:24px}.fin h2 em{font-style:normal;color:var(--cor)}
+.fin .cta{justify-content:center}
+footer{border-top:1px solid rgba(255,255,255,.12);padding:22px 0;color:var(--mut);font-size:14.5px}footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:900px){nav b{white-space:nowrap;font-size:16px}.btn{white-space:nowrap;padding:9px 16px;font-size:15px}.hero{grid-template-columns:1fr;min-height:0}.stage{order:-1}.theme{position:static;flex-direction:row;margin-top:14px}.stage{grid-template-columns:1fr}.row{grid-template-columns:1fr 1fr}.row figure:nth-child(2){translate:0}.row figure:nth-child(3){grid-column:1/-1;max-width:50%}.steps{max-width:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><b><img id="ic" src="../../fakechat/img/icon-192.png" alt="">Fake Chat Maker</b><a class="btn" id="top" href="#">Get it on Play →</a></nav>
+<section class="hero">
+  <div>
+    <span class="k">SNS-003 · Entertainment</span>
+    <h1>Write the chat.<br><em>Save the picture.</em></h1>
+    <p class="lead">Fake chats for jokes and stories. Write a fake text conversation, style it and save it as a picture.</p>
+    <div class="steps" id="steps">
+      <div class="st on"><i>1</i><div><b>Write</b><span>Type any chat, line by line.</span></div></div>
+      <div class="st"><i>2</i><div><b>Style</b><span>Ink, Riso or Mono. Your call.</span></div></div>
+      <div class="st"><i>3</i><div><b>Save</b><span>Every fake, filed like a prop.</span></div></div>
+    </div>
+    <div class="cta"><a class="play" href="#"><img class="badge" id="b1" src="../../img/badges/play-en.png" alt="Get it on Google Play"></a><div class="tg"><span>No account</span><span>Works offline</span></div></div>
+  </div>
+  <div class="stage">
+    <div class="phone"><div class="scr th0" id="scr"><div class="hd"><div class="av">A</div><div><b>Alex</b><small>online</small></div></div><div class="chat" id="chat"></div><form class="inp" id="f"><input id="in" placeholder="Type your own line…" autocomplete="off"><button aria-label="Add">↑</button></form><div class="flash" id="fl"></div><div class="toast" id="ts">Saved as a picture ✓</div></div></div>
+    <div class="theme" id="theme"><button class="on" data-t="0">Ink</button><button data-t="1">Riso</button><button data-t="2">Mono</button></div>
+  </div>
+</section>
+</div>
+<section class="shots"><div class="wrap">
+  <h2>The real app, up close.</h2><p>Three screens from the app, with the lines the app itself puts on them.</p>
+  <div class="row" id="row"></div>
+</div></section>
+<section class="fin"><div class="wrap"><h2>Fake it <em>properly.</em></h2><div class="cta"><a class="play" href="#"><img class="badge" id="b2" src="../../img/badges/play-en.png" alt="Get it on Google Play"></a></div></div></section>
+<footer><div class="wrap"><span>Snoochie Soft · Fake Chat Maker</span><span>All chats in the demo are made up.</span></div></footer>
+
+<script src="../../_redesign/vendor/gsap.min.js"></script><script src="../../_redesign/vendor/ScrollTrigger.min.js"></script><script src="../../_redesign/vendor/lenis.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../../_redesign/shared/common.js"></script>
+<script>
+const app=APPS.find(a=>a.id==='fakechat');
+document.getElementById('ic').src=app.icon;document.querySelectorAll('a.play,#top').forEach(a=>a.href=app.play);['b1','b2'].forEach(i=>document.getElementById(i).src=PLAY_BADGE);
+document.getElementById('row').innerHTML=app.shots.map((s,i)=>`<figure><img src="${s}" alt="" loading="lazy"><figcaption>${['Write any chat, line by line.','Ink, Riso or Mono. Your call.','Every fake, filed like a prop.'][i]}</figcaption></figure>`).join('');
+initSmooth();
+const chat=document.getElementById('chat'),scr=document.getElementById('scr'),steps=[...document.querySelectorAll('.st')],tbs=[...document.querySelectorAll('#theme button')];
+const SCRIPT=[['them','Did you finish the report?'],['me','Define "finish".'],['them','I need it by 5.'],['me','The report is a state of mind.'],['them','Please be serious.'],['me','Sending it now. It is a picture of a cat.']];
+let token=0,paused=false;const wait=ms=>new Promise(r=>setTimeout(r,ms));
+function setStep(i){steps.forEach((s,k)=>s.classList.toggle('on',k===i))}
+function setTheme(t){scr.className='scr th'+t;tbs.forEach((b,k)=>b.classList.toggle('on',k===t));document.querySelector('.stage').style.setProperty('--glow',['#6b4dff','#ff5a3d','#9a9a9a'][t])}
+function bubble(who,txt){const d=document.createElement('div');d.className='bb '+who;d.textContent=txt;chat.appendChild(d);while(chat.children.length>9)chat.firstChild.remove();if(!RM)gsap.from(d,{scale:.7,y:20,opacity:0,duration:.55,ease:'back.out(1.8)'});return d}
+async function play(){const my=++token;chat.innerHTML='';setStep(0);
+  for(const [who,txt] of SCRIPT){if(my!==token)return;if(who==='them'){const t=document.createElement('div');t.className='typ';t.innerHTML='<i></i><i></i><i></i>';chat.appendChild(t);await wait(RM?0:900);t.remove()}else await wait(RM?0:650);
+    if(my!==token)return;bubble(who,txt);await wait(RM?0:700)}
+  if(my!==token)return;
+  setStep(1);const next=(+scr.className.slice(-1)+1)%3;await wait(RM?0:700);setTheme(next);await wait(RM?0:1500);
+  if(my!==token)return;setStep(2);
+  if(!RM){gsap.timeline().to('#fl',{opacity:.9,duration:.08}).to('#fl',{opacity:0,duration:.5}).fromTo('#ts',{opacity:0,y:20},{opacity:1,y:0,duration:.5,ease:'expo.out'},.1).to('#ts',{opacity:0,duration:.4},'+=1.4')}
+  else document.getElementById('ts').style.opacity=1;
+  await wait(RM?0:3000);if(my!==token||paused)return;play()}
+tbs.forEach(b=>b.addEventListener('click',()=>{setTheme(+b.dataset.t);setStep(1)}));
+document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();const i=document.getElementById('in');const v=i.value.trim();if(!v)return;token++;paused=true;setStep(0);bubble('me',v.slice(0,90));i.value='';
+  setTimeout(()=>{if(paused){const t=bubble('them','…');setTimeout(()=>t.textContent='Okay, that is actually fair.',900)}},700)});
+/* only run the loop while the phone is on screen */
+ScrollTrigger.create({trigger:'.phone',start:'top 90%',end:'bottom 5%',onEnter:()=>{if(!paused)play()},onLeave:()=>{token++},onEnterBack:()=>{if(!paused)play()},onLeaveBack:()=>{token++}});
+if(!RM){gsap.from('.hero .k,.hero h1,.lead,.st,.cta',{y:50,opacity:0,duration:1.1,ease:'expo.out',stagger:.07,delay:.1});gsap.from('.phone',{y:120,opacity:0,rotate:6,duration:1.5,ease:'expo.out',delay:.2});
+  gsap.from('.shots h2,.shots p',{y:50,opacity:0,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.shots',start:'top 75%'}});
+  gsap.from('.row figure',{y:100,opacity:0,duration:1.2,ease:'expo.out',stagger:.12,scrollTrigger:{trigger:'.row',start:'top 85%'}});
+  gsap.from('.fin h2,.fin .cta',{y:60,opacity:0,duration:1.1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.fin',start:'top 80%'}})}
+</script>
+</body>
+</html>

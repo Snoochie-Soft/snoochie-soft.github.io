@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Pug Bubble Dig - Snoochie Soft redesign C2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#120c06;--ink:#fff3d9;--mut:#c9b595;--amb:#ffc94a;--red:#ff5a36;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html{overflow-x:clip}body{overflow-x:clip;font:500 18px/1.55 'Nunito',system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+img,video{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+h1,h2,h3,.dsp{font-family:'Lilita One',system-ui,sans-serif;font-weight:400;letter-spacing:.005em}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(18px,4vw,48px)}
+/* headlamp darkness */
+#dark{position:fixed;inset:0;z-index:20;pointer-events:none;background:radial-gradient(circle 340px at var(--x,50%) var(--y,40%),rgba(18,12,6,0) 0,rgba(18,12,6,.25) 55%,rgba(18,12,6,.78) 100%)}
+/* HUD */
+.nav{position:fixed;inset:0 0 auto 0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:16px clamp(16px,3vw,36px);background:linear-gradient(#120c06,rgba(18,12,6,0))}
+.brand{font-family:'Lilita One';font-size:22px;display:flex;align-items:center;gap:10px}
+.brand img{width:34px;border-radius:9px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--amb);color:#2b1a05;font-weight:800;padding:11px 20px;border-radius:99px;transition:translate .5s var(--ease),background .3s}
+.btn:hover{translate:0 -3px;background:#fff3d9}
+.hud{position:fixed;right:clamp(14px,2.4vw,34px);top:50%;translate:0 -50%;z-index:30;display:flex;flex-direction:column;align-items:center;gap:8px;font-family:'Lilita One';pointer-events:none}
+.hud b{font-size:30px;line-height:1;color:var(--amb);font-weight:400;min-width:3ch;text-align:center}
+.hud small{font:800 11px 'Nunito';letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.hud i{width:4px;height:140px;background:rgba(255,243,217,.18);border-radius:4px;position:relative;overflow:hidden}
+.hud i::after{content:"";position:absolute;inset:0;background:var(--amb);transform-origin:top;transform:scaleY(var(--p,0))}
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;align-items:center;padding:110px 0 60px;overflow:hidden;background:radial-gradient(ellipse at 70% 40%,#3b2610 0,#120c06 62%)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center}
+.tag{display:inline-block;border:2px solid var(--amb);color:var(--amb);border-radius:99px;padding:3px 14px;font-weight:800;font-size:14px;letter-spacing:.06em;margin-bottom:18px}
+.hero h1{font-size:clamp(54px,8.4vw,138px);line-height:.88;margin-bottom:22px;white-space:nowrap}
+.hero h1 span{display:block;color:var(--amb)}
+.hero p{max-width:34ch;color:var(--mut);font-size:clamp(18px,1.6vw,22px);margin-bottom:26px}
+.cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.cta .badge{height:54px;width:auto}
+.bigi{position:relative;justify-self:center;width:min(100%,440px)}
+.bigi img{width:100%;filter:drop-shadow(0 30px 50px rgba(0,0,0,.6));will-change:transform}
+.bigi::before{content:"";position:absolute;inset:6% 4% 0;background:radial-gradient(circle,rgba(255,201,74,.45),transparent 62%);filter:blur(30px);z-index:-1}
+.stk{position:absolute;font-family:'Lilita One';font-size:clamp(22px,3vw,40px);padding:4px 14px;border-radius:14px;transform:rotate(var(--r,-8deg));box-shadow:0 6px 0 rgba(0,0,0,.35);white-space:nowrap}
+.s1{left:-6%;top:10%;background:var(--red);color:#fff;--r:-10deg}
+.s2{right:-4%;top:42%;background:var(--amb);color:#2b1a05;--r:8deg}
+.s3{left:2%;bottom:6%;background:#fff3d9;color:#2b1a05;--r:-4deg}
+.scroll{position:absolute;left:50%;bottom:20px;translate:-50% 0;color:var(--mut);font-weight:800;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+/* shaft */
+.shaft{position:relative;padding:60px 0 40px}
+.shaft .line{position:absolute;left:50%;top:0;bottom:0;width:6px;margin-left:-3px;background:rgba(255,243,217,.1);border-radius:6px}
+.shaft .line i{position:absolute;inset:0;background:linear-gradient(var(--amb),var(--red));transform-origin:top;transform:scaleY(0);border-radius:6px}
+.step{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,8vw,120px);align-items:center;min-height:86vh;padding:30px 0}
+.step .txt{text-align:right}
+.step:nth-child(even) .txt{order:2;text-align:left}
+.step .dep{font-family:'Lilita One';color:var(--amb);font-size:15px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.step h2{font-size:clamp(44px,6vw,92px);line-height:.92;margin-bottom:14px}
+.step p{color:var(--mut);max-width:30ch;margin-left:auto;font-size:19px}
+.step:nth-child(even) p{margin-left:0}
+.step .ph{justify-self:start;position:relative;width:min(100%,300px)}
+.step:nth-child(even) .ph{justify-self:end}
+.step .ph img{border-radius:34px;border:6px solid #2b1a05;box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 0 2px var(--amb)}
+.node{position:absolute;left:50%;top:50%;width:26px;height:26px;margin:-13px;border-radius:50%;background:var(--bg);border:5px solid var(--amb);z-index:2}
+/* museum */
+.mus{padding:90px 0;background:linear-gradient(#120c06,#24150a 40%,#120c06)}
+.mus .wrap{display:grid;grid-template-columns:1fr 340px;gap:clamp(30px,6vw,90px);align-items:center}
+.mus h2{font-size:clamp(46px,6.4vw,100px);line-height:.92;margin-bottom:18px}
+.mus p{color:var(--mut);max-width:38ch;margin-bottom:22px}
+.chips{display:flex;gap:10px;flex-wrap:wrap}.chips span{border:2px solid rgba(255,243,217,.3);border-radius:99px;padding:4px 14px;font-weight:800;font-size:14.5px}
+.mus .ph{position:relative}.mus .ph img{border-radius:36px;border:6px solid #2b1a05;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.mus .ph .stk{left:-30px;top:12%}
+/* video */
+.vid{padding:30px 0 80px}
+.vid .wrap{display:flex;gap:clamp(24px,5vw,70px);align-items:center;justify-content:center;flex-wrap:wrap}
+.vid .frame{width:min(100%,290px);aspect-ratio:9/19;border-radius:38px;border:7px solid #2b1a05;overflow:hidden;box-shadow:0 0 0 2px var(--amb),0 30px 80px rgba(0,0,0,.6);background:#000}
+.vid video{width:100%;height:100%;object-fit:cover}
+.vid h2{font-size:clamp(40px,5vw,76px);line-height:.95;margin-bottom:12px}.vid p{color:var(--mut);max-width:30ch}
+/* final */
+.fin{position:relative;text-align:center;padding:100px 0 70px;overflow:hidden;background:radial-gradient(ellipse at 50% 100%,#6b3c0e 0,#120c06 65%)}
+.fin h2{font-size:clamp(52px,9vw,150px);line-height:.88;margin-bottom:22px}
+.fin h2 span{color:var(--amb)}
+.fin .cta{justify-content:center}
+.fin img.bg{position:absolute;left:50%;bottom:-6%;translate:-50% 0;width:min(360px,60vw);opacity:.95;filter:drop-shadow(0 -10px 40px rgba(255,201,74,.35))}
+.fin .in{position:relative;z-index:2;padding-bottom:240px}
+footer{background:#0b0703;padding:26px 0;color:var(--mut);font-size:15px}footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.bigi{width:min(80%,330px);order:-1}.hero{padding-top:90px}.step{grid-template-columns:1fr;min-height:auto;gap:22px;padding:40px 0 40px 36px}.step .txt,.step:nth-child(even) .txt{order:0;text-align:left}.step p{margin-left:0}.step .ph,.step:nth-child(even) .ph{justify-self:start;width:min(100%,260px)}.shaft .line{left:12px;margin:0}.node{left:12px;top:46px;margin:-13px 0 0 -10px}.mus .wrap{grid-template-columns:1fr}.mus .ph{max-width:300px}.hud{display:none}#dark{background:radial-gradient(circle 260px at var(--x,50%) var(--y,40%),rgba(18,12,6,0) 0,rgba(18,12,6,.2) 55%,rgba(18,12,6,.7) 100%)}.s1{left:0}.s2{right:0}.nav{background:#120c06}.nav .btn{padding:9px 14px;font-size:15px}.hero h1{font-size:clamp(46px,15vw,80px)}.scroll{display:none}}
+@media(prefers-reduced-motion:reduce){#dark{display:none}}
+</style>
+</head>
+<body>
+<div id="dark"></div>
+<header class="nav"><a class="brand" href="#"><img src="../../_redesign/assets/pug/icon.png" alt="">Pug Bubble Dig</a><a class="btn" id="top-cta" href="#">Get it on Play →</a></header>
+<aside class="hud" aria-hidden="true"><small>Depth</small><b id="m">0</b><small>m</small><i id="bar"></i></aside>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="tag">SNS-007 · Offline bubble shooter</span>
+      <h1 id="h1"><span style="color:var(--ink)">Dig down.</span><span>Find it all.</span></h1>
+      <p>Shoot bubbles, dig through 50 eras and find treasure with Bigi, the pug in the mining helmet.</p>
+      <div class="cta"><a href="#" class="play"><img class="badge" id="badge" src="../../img/badges/play-en.png" alt="Get it on Google Play"></a><span class="tag" style="margin:0">Works offline</span></div>
+    </div>
+    <div class="bigi" id="bigi"><img src="../../_redesign/assets/pug/bigi.webp" alt="Bigi the pug in a yellow mining helmet"><span class="stk s1">POP!</span><span class="stk s2">x7 COMBO!</span><span class="stk s3">50 eras</span></div>
+  </div>
+  <div class="scroll">Scroll to dig ↓</div>
+</section>
+
+<section class="shaft" id="shaft"><div class="line"><i id="ln"></i></div>
+  <div class="wrap">
+    <div class="step"><div class="txt"><div class="dep">Level 01 · Play</div><h2>Shoot, match, drop.</h2><p>Aim, pop bubbles and clear the way. Chain combos for a bigger pay-off.</p></div><div class="ph"><img src="../../_redesign/assets/pug/1_gra.jpg" alt="Gameplay: Bigi shooting bubbles" loading="lazy"></div><span class="node"></span></div>
+    <div class="step"><div class="txt"><div class="dep">Level 02 · Journey</div><h2>Travel through the eras.</h2><p>Dig deeper through 50 eras, one century after another.</p></div><div class="ph"><img src="../../_redesign/assets/pug/2_podroz.jpg" alt="Journey screen" loading="lazy"></div><span class="node"></span></div>
+    <div class="step"><div class="txt"><div class="dep">Level 03 · Race</div><h2>Race for the treasure.</h2><p>Beat the clock and see how far Bigi can go.</p></div><div class="ph"><img src="../../_redesign/assets/pug/3_wyscig.jpg" alt="Race screen" loading="lazy"></div><span class="node"></span></div>
+  </div>
+</section>
+
+<section class="mus"><div class="wrap">
+  <div><div class="dep" style="color:var(--amb);font-family:'Lilita One';letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px">Level 04 · Museum</div><h2>Every find goes in the museum.</h2><p>Collect the pieces from each century, from pocket watches to the Taj Mahal, and fill the shelves one era at a time.</p><div class="chips"><span>1300-1900 and beyond</span><span>Collect all pieces</span><span>Characters to meet</span></div></div>
+  <div class="ph"><img src="../../_redesign/assets/pug/4_muzeum.jpg" alt="Museum collection screen" loading="lazy"><span class="stk s2" style="left:-30px;right:auto;top:10%">Found it!</span></div>
+</div></section>
+
+<section class="vid"><div class="wrap">
+  <div class="frame"><video id="pv" src="../../_redesign/assets/pug/promo.mp4" muted loop playsinline preload="none" poster="../../_redesign/assets/pug/feature.jpg"></video></div>
+  <div><h2>See Bigi at work.</h2><p>Hit play on the trailer and watch the dig.</p><p style="margin-top:14px"><a class="btn" href="#" id="vplay">Play trailer</a></p></div>
+</div></section>
+
+<section class="fin"><div class="in wrap"><h2>Ready to <span>dig?</span></h2><div class="cta"><a href="#" class="play"><img class="badge" id="badge2" src="../../img/badges/play-en.png" alt="Get it on Google Play"></a></div></div><img class="bg" src="../../_redesign/assets/pug/bigi.webp" alt=""></section>
+<footer><div class="wrap"><span>Snoochie Soft · Pug Bubble Dig</span><span>Offline. No account needed.</span></div></footer>
+
+<script src="../../_redesign/vendor/gsap.min.js"></script><script src="../../_redesign/vendor/ScrollTrigger.min.js"></script><script src="../../_redesign/vendor/lenis.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../../_redesign/shared/common.js"></script>
+<script>
+const pug=APPS.find(a=>a.id==='pug');
+document.querySelectorAll('a.play,#top-cta').forEach(a=>a.href=pug.play);
+['badge','badge2'].forEach(i=>document.getElementById(i).src=PLAY_BADGE);
+initSmooth();
+/* headlamp follows the cursor (and drifts by itself on touch) */
+const dk=document.getElementById('dark');
+if(!RM){
+  const qx=gsap.quickTo(dk,'--x',{duration:.6,ease:'power3',unit:'px'}),qy=gsap.quickTo(dk,'--y',{duration:.6,ease:'power3',unit:'px'});
+  addEventListener('pointermove',e=>{qx(e.clientX);qy(e.clientY)});
+  if(matchMedia('(pointer:coarse)').matches){const o={t:0};gsap.to(o,{t:6.28,duration:7,repeat:-1,ease:'none',onUpdate:()=>{dk.style.setProperty('--x',(innerWidth*(.5+.28*Math.cos(o.t)))+'px');dk.style.setProperty('--y',(innerHeight*(.42+.22*Math.sin(o.t*1.3)))+'px')}})}
+}
+/* hero intro */
+if(!RM){
+  gsap.from('#h1 span',{yPercent:60,opacity:0,duration:1.3,ease:'expo.out',stagger:.14,delay:.1});
+  gsap.from('.hero p,.hero .cta,.hero .tag',{y:30,opacity:0,duration:1,ease:'expo.out',stagger:.08,delay:.5});
+  gsap.from('#bigi img',{y:120,scale:.8,opacity:0,duration:1.6,ease:'elastic.out(1,.6)',delay:.2});
+  gsap.from('.stk',{scale:0,rotate:-30,duration:.7,ease:'back.out(2.4)',stagger:.16,delay:1});
+  gsap.to('#bigi img',{y:-14,duration:2.4,ease:'sine.inOut',yoyo:true,repeat:-1,delay:1.8});
+  gsap.to('#bigi',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+}
+/* depth counter + shaft line */
+const m=document.getElementById('m'),bar=document.getElementById('bar'),ln=document.getElementById('ln');
+ScrollTrigger.create({trigger:document.body,start:'top top',end:'bottom bottom',onUpdate:s=>{m.textContent=Math.round(s.progress*5000);bar.style.setProperty('--p',s.progress)}});
+if(!RM){
+  gsap.to(ln,{scaleY:1,ease:'none',scrollTrigger:{trigger:'#shaft',start:'top 60%',end:'bottom 60%',scrub:.4}});
+  document.querySelectorAll('.step').forEach(s=>{
+    gsap.from(s.querySelector('.txt'),{x:s.matches(':nth-child(even)')?60:-60,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:s,start:'top 70%'}});
+    gsap.from(s.querySelector('.ph'),{y:90,rotate:s.matches(':nth-child(even)')?5:-5,opacity:0,duration:1.4,ease:'expo.out',scrollTrigger:{trigger:s,start:'top 70%'}});
+    gsap.from(s.querySelector('.node'),{scale:0,duration:.6,ease:'back.out(3)',scrollTrigger:{trigger:s,start:'top 55%'}});
+  });
+  gsap.from('.mus h2,.mus p,.chips',{y:50,opacity:0,duration:1.1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.mus',start:'top 65%'}});
+  gsap.from('.mus .ph',{x:80,rotate:6,opacity:0,duration:1.3,ease:'expo.out',scrollTrigger:{trigger:'.mus',start:'top 65%'}});
+  gsap.from('.fin h2',{y:80,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.fin',start:'top 70%'}});
+  gsap.from('.fin img.bg',{yPercent:60,duration:1.6,ease:'expo.out',scrollTrigger:{trigger:'.fin',start:'top 60%'}});
+}
+/* trailer */
+const pv=document.getElementById('pv'),vp=document.getElementById('vplay');
+vp.addEventListener('click',e=>{e.preventDefault();if(pv.paused){pv.play();vp.textContent='Pause trailer'}else{pv.pause();vp.textContent='Play trailer'}});
+</script>
+</body>
+</html>

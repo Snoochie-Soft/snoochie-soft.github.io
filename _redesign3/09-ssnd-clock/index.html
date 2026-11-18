@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Fifty Days Dial - Snoochie Soft redesign C9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800;900&family=Onest:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--g:#0f2a17;--g2:#1f5a2b;--lime:#c9f23a;--ink:#f1f7e6;--mut:#a9c19a;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html{overflow-x:clip}body{overflow-x:clip;background:var(--g);color:var(--ink);font:500 18px/1.5 'Onest',system-ui,sans-serif}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.disp{font-family:'Unbounded',system-ui,sans-serif;font-weight:900;letter-spacing:-.04em}
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:12px clamp(16px,3.4vw,48px);background:var(--g)}
+.nav b{display:flex;gap:10px;align-items:center;font-family:'Unbounded';font-weight:800;font-size:15px;letter-spacing:-.02em;white-space:nowrap}.nav b img{width:30px;border-radius:24%}
+.btn{background:var(--lime);color:#13230a;font-weight:700;border-radius:99px;padding:10px 20px;white-space:nowrap;transition:translate .5s var(--ease)}.btn:hover{translate:0 -3px}
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;align-content:center;justify-items:center;text-align:center;padding:90px 16px 40px;background:radial-gradient(60% 50% at 50% 45%,#2a6e39,transparent 70%),var(--g);overflow:hidden}
+.hero .k{font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:13.5px;color:var(--lime);margin-bottom:6px}
+.hero .num{font-size:clamp(150px,34vw,560px);line-height:.82;color:var(--lime);font-variant-numeric:tabular-nums;letter-spacing:-.06em}
+.hero h1{font-family:'Unbounded';font-weight:800;font-size:clamp(24px,3.6vw,56px);letter-spacing:-.03em;line-height:1.05;margin:8px 0 14px}
+.hero h1 span{color:var(--lime)}
+.hero p{color:var(--mut);max-width:40ch;margin-bottom:24px}
+.cta{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap}.cta .badge{height:52px;width:auto}.chip{border:1.5px solid rgba(255,255,255,.28);border-radius:99px;padding:2px 13px;font-size:14px}
+.tick-bg{position:absolute;inset:0;pointer-events:none;opacity:.5}
+/* dial */
+.dial{position:relative;height:560vh}
+.stick{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;place-items:center;background:var(--g)}
+.ring{position:absolute;left:50%;top:50%;width:min(96vh,96vw);translate:-50% -50%;aspect-ratio:1}
+.ring svg{width:100%;height:100%;overflow:visible}
+.ring line{stroke:rgba(201,242,58,.18);stroke-width:5;stroke-linecap:round}
+.ring line.on{stroke:var(--lime)}
+.phone{position:relative;z-index:2;width:min(32vh,34vw,320px);aspect-ratio:600/1157;border-radius:clamp(14px,2vw,24px);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.2);background:#0b1a10}
+.phone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0}
+.phone img:first-child{opacity:1}
+.hud{position:absolute;z-index:3;left:clamp(16px,4vw,70px);top:50%;translate:0 -50%}
+.hud .d{font:900 clamp(18px,2vw,30px) 'Unbounded';letter-spacing:-.02em;color:var(--lime)}
+.hud .n{font:900 clamp(64px,8.4vw,150px)/.9 'Unbounded';letter-spacing:-.06em;font-variant-numeric:tabular-nums}
+.hud .w{color:var(--mut);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13.5px;margin-top:8px}
+.cap{position:absolute;z-index:3;right:clamp(16px,4vw,70px);top:50%;translate:0 -50%;max-width:min(26vw,300px);text-align:right}
+.cap b{display:block;font:800 clamp(22px,2.6vw,40px)/1.05 'Unbounded';letter-spacing:-.03em;margin-bottom:10px}
+.cap span{color:var(--mut);font-size:16px}
+.steps{position:absolute;bottom:24px;left:50%;translate:-50% 0;display:flex;gap:8px;z-index:3}.steps i{width:32px;height:4px;border-radius:2px;background:rgba(255,255,255,.2)}.steps i.on{background:var(--lime)}
+/* paper */
+.paper{position:relative;background:var(--lime);color:#13230a;padding:clamp(80px,12vw,160px) 0 clamp(70px,9vw,120px)}
+.paper::before{content:"";position:absolute;left:0;right:0;top:-26px;height:27px;background:var(--lime);--s:36px;-webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/var(--s) 100%;mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/var(--s) 100%}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:clamp(18px,4vw,48px)}
+.paper h2{font:900 clamp(40px,7.4vw,120px)/.9 'Unbounded';letter-spacing:-.05em;margin-bottom:26px;max-width:12ch}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2.4vw,32px);margin-top:36px}
+.rules div{border:2.5px solid #13230a;border-radius:22px;padding:22px 22px 26px}
+.rules b{display:block;font:800 clamp(22px,2.2vw,32px)/1.05 'Unbounded';letter-spacing:-.03em;margin-bottom:8px}
+.rules em{font-style:normal;font:800 14px "Unbounded";opacity:.8;display:block;margin-bottom:26px}
+.paper p.lead{max-width:36ch;font-size:clamp(18px,1.6vw,22px);font-weight:700}
+/* shots */
+.shots{padding:clamp(70px,10vw,130px) 0;background:var(--g)}
+.shots h2{font:900 clamp(36px,5.6vw,88px)/.92 'Unbounded';letter-spacing:-.05em;margin-bottom:12px}
+.shots p{color:var(--mut);max-width:44ch;margin-bottom:38px}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,3vw,44px)}
+.row figure img{border-radius:26px;border:1px solid rgba(255,255,255,.16);box-shadow:0 30px 70px rgba(0,0,0,.5);width:100%}
+.row figure:nth-child(2){translate:0 44px}
+.row figcaption{margin-top:14px;color:var(--mut);font-size:15px}
+.fin{text-align:center;padding:30px 16px clamp(60px,8vw,110px);background:var(--g)}
+.fin .num{font-size:clamp(120px,24vw,400px);line-height:.85;color:var(--lime);letter-spacing:-.06em}
+.fin h2{font:800 clamp(24px,3.4vw,52px)/1.05 'Unbounded';letter-spacing:-.03em;margin:6px 0 22px}
+footer{border-top:1px solid rgba(255,255,255,.12);padding:20px 0;color:var(--mut);font-size:14.5px}footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+@media(max-width:860px){.hud{left:16px;top:84px;translate:0 0;display:flex;align-items:baseline;gap:14px}.hud .n{font-size:68px}.hud .w{margin:0}.hud .d{order:2}.cap{right:auto;left:16px;top:auto;bottom:62px;translate:0;max-width:none;text-align:left}.cap b{font-size:22px}.phone{width:min(42vw,26vh,200px)}.ring{top:52%}.rules{grid-template-columns:1fr}.row{grid-template-columns:1fr 1fr}.row figure:nth-child(2){translate:0}.row figure:nth-child(3){grid-column:1/-1;max-width:50%}.nav b span{display:none}}
+</style>
+</head>
+<body>
+<div class="nav"><b><img src="../../szybciej-sie-nie-da/img/icon-192.png" alt=""><span>Szybciej Się Nie Da</span></b><a class="btn" id="top" href="#">Get it →</a></div>
+
+<header class="hero" id="hero">
+  <svg class="tick-bg" id="tbg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+  <p class="k">SNS-001 · Education · English words for Polish speakers</p>
+  <div class="num disp" id="big" aria-label="500">0</div>
+  <h1>common English words<br>in <span>50 days.</span></h1>
+  <p>10 a day. No grammar.</p>
+  <div class="cta"><a class="play" href="#"><img class="badge" src="../../img/badges/play-en.png" alt="Get it on Google Play"></a><span class="chip">No account</span><span class="chip">Works offline</span></div>
+</header>
+
+<section class="dial" id="dial">
+  <div class="stick">
+    <div class="ring"><svg id="svg" viewBox="0 0 600 600" aria-hidden="true"></svg></div>
+    <div class="phone" id="phone">
+      <img src="../../szybciej-sie-nie-da/img/fiszka-przod.webp" alt="Flashcard, front">
+      <img src="../../szybciej-sie-nie-da/img/fiszka-tyl.webp" alt="Flashcard, back">
+      <img src="../../szybciej-sie-nie-da/img/quiz.webp" alt="Quiz">
+      <img src="../../szybciej-sie-nie-da/img/statystyki.webp" alt="Statistics">
+    </div>
+    <div class="hud"><div class="n" id="words">10</div><div class="d" id="day">Day 1</div><div class="w">words learned</div></div>
+    <div class="cap"><b id="capT">See the word.</b><span id="capS">A flashcard shows the English word.</span></div>
+    <div class="steps" id="steps"><i class="on"></i><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<section class="paper">
+  <div class="wrap">
+    <h2>No grammar. No fuss.</h2>
+    <p class="lead">The 500 most common English words in 50 days, 10 a day.</p>
+    <div class="rules" id="rules"></div>
+  </div>
+</section>
+
+<section class="shots"><div class="wrap">
+  <h2>The real screens.</h2><p>Flashcard, quiz and statistics, straight from the app.</p>
+  <div class="row" id="row"></div>
+</div></section>
+
+<section class="fin"><div class="num disp">500</div><h2>words. 50 days.</h2><div class="cta"><a class="play" href="#"><img class="badge" src="../../img/badges/play-en.png" alt="Get it on Google Play"></a></div></section>
+<footer><div class="wrap"><span>Snoochie Soft · Szybciej Się Nie Da</span><span>Mockup, not final copy.</span></div></footer>
+
+<script src="../../_redesign/vendor/gsap.min.js"></script><script src="../../_redesign/vendor/ScrollTrigger.min.js"></script><script src="../../_redesign/vendor/lenis.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../../_redesign/shared/common.js"></script>
+<script>
+const app=APPS.find(a=>a.id==='ssnd');
+document.querySelectorAll('a.play,#top').forEach(a=>a.href=app.play);
+initSmooth();
+/* rules + shots */
+document.getElementById('rules').innerHTML=RULES.map((r,i)=>`<div><em>0${i+1}</em><b>${r.t||r.title||r.name||r[0]||''}</b>${r.d||r.text||r.body||r[1]||''}</div>`).join('');
+document.getElementById('row').innerHTML=app.shots.map((s,i)=>`<figure><img src="${s}" alt="" loading="lazy"><figcaption>${['Flashcard','Quiz','Statistics'][i]}</figcaption></figure>`).join('');
+/* hero tick pattern */
+const tbg=document.getElementById('tbg');let h='';for(let i=0;i<50;i++){const a=i/50*Math.PI*2;h+=`<line x1="${50+Math.cos(a)*44}" y1="${50+Math.sin(a)*44}" x2="${50+Math.cos(a)*49}" y2="${50+Math.sin(a)*49}" stroke="#c9f23a" stroke-opacity=".25" stroke-width=".5" stroke-linecap="round"/>`}tbg.innerHTML=h;
+/* hero counter 0 -> 500 */
+const big=document.getElementById('big');
+if(RM)big.textContent='500';else{const o={v:0};gsap.to(o,{v:500,duration:2.2,ease:'power3.out',delay:.2,onUpdate:()=>big.textContent=Math.round(o.v)});
+  gsap.from('.hero .k,.hero h1,.hero p,.hero .cta,.nav',{y:30,opacity:0,duration:1,ease:'expo.out',stagger:.08,delay:.5});
+  gsap.to('#tbg',{rotation:60,transformOrigin:'50% 50%',ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}})}
+/* dial */
+const svg=document.getElementById('svg');let tk='';for(let i=0;i<50;i++){const a=(i/50)*Math.PI*2-Math.PI/2;const r1=i%5===0?255:268,r2=292;tk+=`<line x1="${300+Math.cos(a)*r1}" y1="${300+Math.sin(a)*r1}" x2="${300+Math.cos(a)*r2}" y2="${300+Math.sin(a)*r2}"/>`}svg.innerHTML=tk;
+const ticks=[...svg.querySelectorAll('line')],imgs=[...document.querySelectorAll('#phone img')],dots=[...document.querySelectorAll('#steps i')],wordsEl=document.getElementById('words'),dayEl=document.getElementById('day'),capT=document.getElementById('capT'),capS=document.getElementById('capS');
+const CAP=[['See the word.','A flashcard shows the English word.'],['Flip it.','The back of the card gives you the meaning.'],['Check yourself.','A short quiz after the words.'],['Watch it add up.','Your numbers, day after day.']];
+let lastI=-1,lastDay=0;
+function update(p){const day=Math.max(1,Math.min(50,Math.ceil(p*50)));if(day!==lastDay){lastDay=day;dayEl.textContent='Day '+day;wordsEl.textContent=day*10;ticks.forEach((tk,i)=>tk.classList.toggle('on',i<day))}
+  const i=Math.min(3,Math.floor(p*4));if(i!==lastI){lastI=i;imgs.forEach((im,k)=>gsap.to(im,{opacity:k===i?1:0,scale:k===i?1:1.06,duration:.5,ease:'power2.out'}));dots.forEach((d,k)=>d.classList.toggle('on',k<=i));gsap.fromTo('.cap',{opacity:0,y:14},{opacity:1,y:0,duration:.5});capT.textContent=CAP[i][0];capS.textContent=CAP[i][1]}}
+if(RM){update(.99)}else{update(0);ScrollTrigger.create({trigger:'#dial',start:'top top',end:'bottom bottom',onUpdate:s=>update(s.progress)});
+  gsap.to('.ring',{rotation:36,ease:'none',scrollTrigger:{trigger:'#dial',start:'top top',end:'bottom bottom',scrub:true}})}
+/* paper + others */
+if(!RM){gsap.from('.paper h2,.paper .lead',{y:60,opacity:0,duration:1.1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.paper',start:'top 70%'}});
+  gsap.from('.rules div',{y:80,opacity:0,rotate:2,duration:1.1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.rules',start:'top 88%'}});
+  gsap.from('.shots h2,.shots p',{y:50,opacity:0,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.shots',start:'top 75%'}});
+  gsap.from('.row figure',{y:110,opacity:0,duration:1.2,ease:'expo.out',stagger:.12,scrollTrigger:{trigger:'.row',start:'top 85%'}});
+  gsap.from('.fin .num',{yPercent:30,opacity:0,duration:1.3,ease:'expo.out',scrollTrigger:{trigger:'.fin',start:'top 80%'}});gsap.from('.fin h2,.fin .cta',{y:40,opacity:0,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.fin',start:'top 75%'}})}
+</script>
+</body>
+</html>

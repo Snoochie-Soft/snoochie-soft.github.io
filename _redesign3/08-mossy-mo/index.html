@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Mossy and Mo - Snoochie Soft redesign C8</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1c0f27;--bg2:#2a1438;--pur:#46205c;--grn:#8fd34a;--ink:#f3eefa;--mut:#b8a9c9;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html{overflow-x:clip}body{overflow-x:clip;background:var(--bg);color:var(--ink);font:500 18px/1.5 'Figtree',system-ui,sans-serif}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.serif{font-family:'Young Serif',Georgia,serif;font-weight:400}
+.nav{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:16px clamp(16px,3.4vw,48px);background:linear-gradient(var(--bg),rgba(28,15,39,0))}
+.nav b{display:flex;align-items:center;gap:10px;font-weight:800}.nav b img{width:30px;border-radius:24%}
+.pillbtn{background:var(--grn);color:#14240a;font-weight:800;border-radius:99px;padding:10px 20px;transition:translate .5s var(--ease)}.pillbtn:hover{translate:0 -3px}
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;padding:112px 0 215px;overflow:hidden;background:radial-gradient(70% 60% at 50% 55%,#4b2564,transparent 70%),var(--bg)}
+.hero .night{position:absolute;inset:0;background:url('../../mossy/img/forest-night.webp') center/cover;opacity:.28;mix-blend-mode:screen}
+.core{position:relative;width:min(86vw,calc(100svh - 430px),600px);min-width:300px;aspect-ratio:1}
+.ring{position:absolute;inset:-9%;width:118%;height:118%;overflow:visible}
+.ring text{font:800 17px 'Figtree';text-transform:uppercase;fill:var(--grn)}
+.mo{position:absolute;left:24%;top:22%;width:52%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5))}
+.orbit{position:absolute;inset:0;pointer-events:none}
+.orbit img{position:absolute;left:50%;top:50%;width:var(--s);translate:-50% -50%;filter:drop-shadow(0 14px 18px rgba(0,0,0,.45))}
+h1.big{position:absolute;left:0;right:0;bottom:clamp(60px,9vh,96px);text-align:center;font:400 clamp(60px,11vw,190px)/.8 'Young Serif',serif;letter-spacing:-.03em;z-index:3;pointer-events:none;mix-blend-mode:normal}
+.hero .sub{position:absolute;top:80px;left:0;right:0;text-align:center;z-index:3;color:var(--mut);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13.5px}
+.hero .cta{position:absolute;bottom:clamp(14px,3vh,30px);left:0;right:0;z-index:4;display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap}
+.hero .cta .badge{height:48px;width:auto}.chip{border:1.5px solid rgba(255,255,255,.3);border-radius:99px;padding:2px 13px;font-size:14px}
+/* pinned story */
+.story{position:relative;height:420vh}
+.pin{position:sticky;top:0;height:100svh;display:grid;place-items:center;overflow:hidden;background:var(--bg2)}
+.pin .moBig{position:absolute;left:50%;top:50%;width:min(56vh,56vw);translate:-50% -50%;z-index:1}
+.pin .moBig img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0}
+.pin .moBig img:first-child{opacity:1}
+.pin .moBig{aspect-ratio:1}
+.blob{position:absolute;left:50%;top:50%;width:min(86vh,92vw);aspect-ratio:1;translate:-50% -50%;border-radius:46% 54% 52% 48%/52% 46% 54% 48%;background:var(--pur);transition:background .6s}
+.line{position:absolute;z-index:2;font:400 clamp(38px,5.4vw,88px)/.95 'Young Serif',serif;letter-spacing:-.03em;max-width:9ch;opacity:0}
+.line:nth-of-type(odd){left:clamp(16px,5vw,90px)}.line:nth-of-type(even){right:clamp(16px,5vw,90px);text-align:right}
+.line small{display:block;font:700 13.5px 'Figtree';letter-spacing:.16em;text-transform:uppercase;color:var(--grn);margin-bottom:12px}
+.count{position:absolute;bottom:26px;left:50%;translate:-50% 0;z-index:3;display:flex;gap:8px}.count i{width:28px;height:4px;border-radius:2px;background:rgba(255,255,255,.2)}.count i.on{background:var(--grn)}
+/* shelf */
+.shelf{padding:clamp(70px,10vw,140px) 0 clamp(40px,6vw,80px);background:var(--bg)}
+.wrap{max-width:1300px;margin:0 auto;padding-inline:clamp(18px,4vw,48px)}
+.shelf h2,.phones h2{font:400 clamp(40px,6vw,92px)/.95 'Young Serif',serif;letter-spacing:-.03em;margin-bottom:14px}
+.shelf p,.phones p{color:var(--mut);max-width:44ch;margin-bottom:36px}
+.board{margin-bottom:34px;position:relative;display:flex;flex-wrap:wrap;gap:clamp(8px,2vw,28px);justify-content:center;align-items:flex-end;padding-bottom:20px;border-bottom:14px solid #5a3a22;border-radius:0 0 6px 6px}
+.jar{position:relative;width:calc((100% - 7 * clamp(8px,2vw,28px)) / 8);display:flex;flex-direction:column;align-items:center;cursor:default}
+.jar img{width:100%;height:auto;transition:translate .6s var(--ease),rotate .6s var(--ease);transform-origin:50% 100%}
+.jar:hover img{translate:0 -14px;rotate:-4deg}
+.jar:hover{z-index:3}.jar span{position:absolute;bottom:-4px;left:50%;translate:-50% 100%;background:var(--grn);color:#14240a;font-weight:800;font-size:13px;padding:3px 11px;border-radius:99px;white-space:nowrap;opacity:0;transition:opacity .3s,translate .5s var(--ease);pointer-events:none;z-index:2}
+.jar:hover span{opacity:1;translate:-50% 130%}
+.hint{margin-top:42px;color:var(--mut);font-size:14.5px}
+/* phones */
+.phones{padding:clamp(60px,9vw,120px) 0;background:linear-gradient(var(--bg),var(--bg2))}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,3.4vw,50px);padding-top:30px}
+.ph{position:relative}.ph .tag{position:absolute;z-index:3;left:-10px;top:-14px;background:var(--c);color:#14130f;border-radius:99px;padding:5px 16px;font-weight:800;font-size:15px;rotate:-4deg;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.ph img{border-radius:28px;border:1px solid rgba(255,255,255,.16);box-shadow:0 30px 70px rgba(0,0,0,.5);width:100%}
+.ph:nth-child(2){translate:0 40px}
+.ph:nth-child(1){--c:#8fd34a}.ph:nth-child(2){--c:#ffc94a}.ph:nth-child(3){--c:#ff8fb1}
+.fin{position:relative;text-align:center;padding:clamp(80px,10vw,140px) 0 40px;background:var(--bg2);overflow:hidden}
+.fin h2{font:400 clamp(46px,8vw,128px)/.9 'Young Serif',serif;letter-spacing:-.03em;margin-bottom:26px}
+.fin h2 em{font-style:normal;color:var(--grn)}
+.fin .cta{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;position:relative;z-index:2}.fin .badge{height:54px;width:auto}
+.fin .wave{width:min(34vw,240px);margin:50px auto 0;translate:0 14%}
+footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,.12);padding:20px 0;color:var(--mut);font-size:14.5px}footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+@media(max-width:860px){.line{font-size:clamp(32px,10vw,54px);max-width:8ch}.line:nth-of-type(n){left:16px;right:auto;text-align:left;top:11%}.pin .moBig{width:min(78vw,50vh);top:60%}.hero .sub{top:78px;font-size:12px}.row{grid-template-columns:1fr 1fr}.ph:nth-child(2){translate:0}.ph:nth-child(3){grid-column:1/-1;max-width:50%}.jar{width:calc((100% - 3 * 10px) / 4);min-width:0}.core{width:min(74vw,calc(100svh - 420px))}.hero{padding:104px 0 200px}.ring text{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="nav"><b><img id="ic" src="../../mossy/img/icon-192.png" alt="">Mossy</b><a class="pillbtn" id="top" href="#">Get it →</a></div>
+
+<header class="hero" id="hero">
+  <div class="night"></div>
+  <p class="sub">SNS-002 · Cosy ADHD games for adults</p>
+  <div class="core" id="core">
+    <svg class="ring" id="ring" viewBox="0 0 400 400" aria-hidden="true"><defs><path id="circ" d="M200,200 m-176,0 a176,176 0 1,1 352,0 a176,176 0 1,1 -352,0"/></defs><text><textPath href="#circ" id="tp" textLength="1090" lengthAdjust="spacing">Sixteen tiny cosy games · 1 to 3 minutes a round · no ads · works offline · </textPath></text></svg>
+    <div class="orbit" id="orbit"></div>
+    <img class="mo" id="mo" src="../../mossy/img/mo/mo-sunglasses.webp" alt="Mo, the Mossy mascot, wearing sunglasses">
+  </div>
+  <h1 class="big" id="h1">Mossy</h1>
+  <div class="cta"><a class="play" href="#"><img class="badge" src="../../img/badges/play-en.png" alt="Get it on Google Play"></a><span class="chip">No ads</span><span class="chip">Works offline</span></div>
+</header>
+
+<section class="story" id="story">
+  <div class="pin">
+    <div class="blob" id="blob"></div>
+    <div class="moBig" id="moBig">
+      <img src="../../mossy/img/mo/mo-peek.webp" alt="">
+      <img src="../../mossy/img/mo/mo-happy.webp" alt="">
+      <img src="../../mossy/img/mo/mo-fly.webp" alt="">
+      <img src="../../mossy/img/mo/mo-sunglasses.webp" alt="">
+      <img src="../../mossy/img/mo/mo-sit-sleep.webp" alt="">
+    </div>
+    <h2 class="line"><small>01</small>Meet Mo.</h2>
+    <h2 class="line"><small>02</small>Sixteen tiny games.</h2>
+    <h2 class="line"><small>03</small>1 to 3 minutes a round.</h2>
+    <h2 class="line"><small>04</small>No ads. Works offline.</h2>
+    <h2 class="line"><small>05</small>For focus and calm.</h2>
+    <div class="count" id="count"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<section class="shelf"><div class="wrap">
+  <h2>The whole shelf.</h2><p>Sixteen plants, one per game. Hover a jar to read its name.</p>
+  <div class="board" id="board"></div><div class="board" id="board2"></div>
+  <p class="hint">Seven of the sixteen are named here; you meet the rest in the app.</p>
+</div></section>
+
+<section class="phones"><div class="wrap">
+  <h2>Inside the app.</h2><p>Three real screens, labelled by what you do there.</p>
+  <div class="row" id="row"></div>
+</div></section>
+
+<section class="fin"><div class="wrap">
+  <h2>Come and <em>settle in.</em></h2>
+  <div class="cta"><a class="play" href="#"><img class="badge" src="../../img/badges/play-en.png" alt="Get it on Google Play"></a><span class="chip">No ads</span><span class="chip">Works offline</span></div>
+  <img class="wave" src="../../mossy/img/mo/mo-wave-bye.webp" alt="Mo waving">
+</div></section>
+<footer><div class="wrap"><span>Snoochie Soft · Mossy</span><span>Mockup, not final copy.</span></div></footer>
+
+<script src="../../_redesign/vendor/gsap.min.js"></script><script src="../../_redesign/vendor/ScrollTrigger.min.js"></script><script src="../../_redesign/vendor/lenis.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../../_redesign/shared/common.js"></script>
+<script>
+const app=APPS.find(a=>a.id==='mossy');
+document.querySelectorAll('a.play,#top').forEach(a=>a.href=app.play);
+initSmooth();
+const P=[['pour','Pour Decisions'],['tab-storm','Tab Storm'],['time-blind','Time Blind'],['impulse','Impulse Gate'],['squirrel','Squirrel!'],['where','Where Did I Put It?'],['brain-dump','Brain Dump Sorter'],['boss-email',''],['dishes-can-wait',''],['doom-dodger',''],['firefly',''],['pachinko-calm',''],['packing-window',''],['plan-reality',''],['pulse-tap',''],['sort-shift','']];
+/* shelf */
+const jar=([f,n])=>`<div class="jar"><img src="../../mossy/img/plants/${f}.webp" alt="${n||'Mossy plant'}" loading="lazy">${n?`<span>${n}</span>`:''}</div>`;
+document.getElementById('board').innerHTML=P.slice(0,8).map(jar).join('');document.getElementById('board2').innerHTML=P.slice(8).map(jar).join('');
+const sh=app.shots,lab=['Hub','Time Blind','Brain Dump'];
+document.getElementById('row').innerHTML=sh.map((s,i)=>`<div class="ph"><span class="tag">${lab[i]}</span><img src="${s}" alt="" loading="lazy"></div>`).join('');
+/* orbiting plants */
+const orbit=document.getElementById('orbit'),ORB=['pour','tab-storm','time-blind','impulse','squirrel','where','brain-dump','firefly'];
+const items=ORB.map((f,i)=>{const im=document.createElement('img');im.src=`../../mossy/img/plants/${f}.webp`;im.alt='';im.style.setProperty('--s',(7+(i%3)*2)+'%');orbit.appendChild(im);return{im,a:i/ORB.length*Math.PI*2,r:.5+(i%2)*.06,sp:.1+(i%3)*.03}});
+function place(t){items.forEach(o=>{const a=o.a+t*o.sp;const R=o.r*orbit.clientWidth*.98;o.im.style.transform=`translate(${Math.cos(a)*R*1.0}px,${Math.sin(a)*R*.62}px) rotate(${Math.sin(a*2)*10}deg)`;o.im.style.zIndex=Math.sin(a)>0?4:0})}
+let tt=0;if(!RM){gsap.ticker.add((t,dt)=>{tt+=dt/1000;place(tt)})}else place(0);
+/* spinning ring, speeds up with scroll */
+const ring=document.getElementById('ring');if(!RM){const spin=gsap.to(ring,{rotation:360,duration:36,repeat:-1,ease:'none',transformOrigin:'50% 50%'});
+  ScrollTrigger.create({trigger:'#hero',start:'top top',end:'bottom top',onUpdate:s=>spin.timeScale(1+Math.abs(s.getVelocity())/400)})}
+/* mo follows pointer */
+if(!RM){const mo=document.getElementById('mo');addEventListener('pointermove',e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;gsap.to(mo,{x:x*40,y:y*26,rotate:x*8,duration:1.1,ease:'power3'})});
+  gsap.from(mo,{scale:.2,rotate:-30,opacity:0,duration:1.6,ease:'elastic.out(1,.55)',delay:.2});gsap.from('#h1',{yPercent:60,opacity:0,duration:1.4,ease:'expo.out',delay:.4});gsap.from('.hero .sub,.hero .cta,.nav',{y:-20,opacity:0,duration:1,ease:'expo.out',delay:.6,stagger:.08});
+  gsap.from(items.map(o=>o.im),{scale:0,duration:1.2,ease:'back.out(2)',stagger:.08,delay:.7})}
+/* pinned story */
+const lines=[...document.querySelectorAll('.line')],mos=[...document.querySelectorAll('#moBig img')],dots=[...document.querySelectorAll('#count i')],blob=document.getElementById('blob');
+const cols=['#46205c','#1f5a2b','#5a2a1c','#1c3a5a','#3a2a5c'];
+let cur=-1;function show(i){if(i===cur)return;cur=i;lines.forEach((l,k)=>gsap.to(l,{opacity:k===i?1:0,y:k===i?0:(k<i?-40:40),duration:.7,ease:'expo.out'}));mos.forEach((m,k)=>gsap.to(m,{opacity:k===i?1:0,scale:k===i?1:.85,rotate:k===i?0:(k<i?-8:8),duration:.7,ease:'expo.out'}));dots.forEach((d,k)=>d.classList.toggle('on',k<=i));gsap.to(blob,{backgroundColor:cols[i],duration:.8})}
+if(RM){lines.forEach(l=>{l.style.opacity=1;l.style.position='relative'});document.getElementById('story').style.height='auto'}
+else{ScrollTrigger.create({trigger:'#story',start:'top top',end:'bottom bottom',onUpdate:s=>show(Math.min(4,Math.floor(s.progress*5)))});gsap.set(lines,{opacity:0});show(0);
+  gsap.to('#blob',{rotation:90,scale:1.08,ease:'none',scrollTrigger:{trigger:'#story',start:'top top',end:'bottom bottom',scrub:true}})}
+/* reveals */
+if(!RM){gsap.from('.shelf h2,.shelf p',{y:50,opacity:0,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.shelf',start:'top 75%'}});
+  gsap.from('.jar img',{y:120,opacity:0,duration:1.1,ease:'expo.out',stagger:.05,scrollTrigger:{trigger:'#board',start:'top 85%'}});
+  gsap.from('.phones h2,.phones p',{y:50,opacity:0,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.phones',start:'top 75%'}});
+  gsap.from('.ph',{y:110,opacity:0,duration:1.2,ease:'expo.out',stagger:.12,scrollTrigger:{trigger:'#row',start:'top 85%'}});
+  gsap.from('.fin h2,.fin .cta',{y:60,opacity:0,duration:1.1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.fin',start:'top 80%'}});
+  gsap.from('.fin .wave',{y:200,rotate:-10,duration:1.4,ease:'expo.out',scrollTrigger:{trigger:'.fin .wave',start:'top 100%'}})}
+</script>
+</body>
+</html>
