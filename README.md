@@ -31,11 +31,14 @@ Commit the generated HTML: GitHub Pages serves the files as they are.
 
 | URL | Source |
 |---|---|
-| `/` | generated: studio home (crate, desk, catalogue, house rules, contact) |
-| `/szybciej-sie-nie-da/`, `/mossy/`, `/fakechat/`, `/loopclass/`, `/audio-transcriber/`, `/christian-pray/` | generated app pages |
+| `/` | HAND-PORTED static page (bento-aurora redesign): `index.html` + `css/page-home.css` + `js/page-home.js`. The generator skips it |
+| `/szybciej-sie-nie-da/`, `/mossy/`, `/pug-bubble-dig/` | HAND-PORTED static pages (redesign series C: ssnd-clock, mossy-mo, pug-shaft) with `css/page-<x>.css` + `js/page-<x>.js`. The generator skips them (`HANDMADE` in `tools/build.mjs`) |
+| `/fakechat/`, `/loopclass/`, `/audio-transcriber/`, `/christian-pray/` | generated app pages |
 | `*/privacy/`, `*/terms/`, `audio-transcriber/support/`, `audio-transcriber/licenses/` | hand-written legal pages, do not regenerate |
 | `audio-transcriber/{pl,de,fr,es,pt-br}/` | older translated Transcriber pages, hand-written |
 | `404.html` | generated |
+
+The hand-ported pages share `css/fonts-pages.css` (self-hosted OFL fonts), `vendor/{gsap,ScrollTrigger,lenis}.min.js` and `js/fx.js` (reduced-motion flag + Lenis/ScrollTrigger sync). Their copy lives in the HTML, not in `content/en.json`; edit both if the copy changes.
 
 Do not delete or change: `app-ads.txt` (AdMob), `google7bf347b91b7e4bc3.html` (Google
 verification), `robots.txt`, `.nojekyll`. `audio-transcriber/sitemap.xml` is maintained by hand.

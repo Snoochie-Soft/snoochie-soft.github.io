@@ -42,7 +42,10 @@ for (const l of LANGS_BUILT) for (const a of cat.apps) {
 }
 
 const written = [];
+// Hand-ported pages (static HTML in the repo, not produced by templates.mjs). The build must never overwrite them.
+const HANDMADE = new Set(["index.html", "mossy/index.html", "szybciej-sie-nie-da/index.html", "pug-bubble-dig/index.html"]);
 function write(rel, html) {
+  if (HANDMADE.has(rel)) { console.log("skip (hand-made): " + rel); return; }
   const out = resolve(OUT, rel);
   mkdirSync(dirname(out), { recursive: true });
   writeFileSync(out, html);

@@ -39,3 +39,5 @@ New files were resized with `tools/make-images.mjs` (headless Chrome canvas); OG
 
 ## Fonts (not raster, listed for completeness)
 - `fonts/unbounded-*.woff2`, `fonts/schibsted-grotesk-*.woff2`, `fonts/martian-mono-*.woff2`: @fontsource-variable packages from jsDelivr; licences `fonts/OFL-*.txt`.
+- `fonts/{figtree,instrument-serif-italic,lilita-one,manrope,nunito,onest,young-serif}-*.woff2`: @fontsource packages (SIL OFL), used by `css/fonts-pages.css` on the hand-ported pages.
+- `vendor/gsap.min.js`, `ScrollTrigger.min.js`, `lenis.min.js`: vendored animation libraries.
