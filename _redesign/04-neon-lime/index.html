@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Neon Lime - Snoochie Soft redesign 04</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0a;--lime:#d4f03c;--ink:#f6f6ef;--mut:#8b8d84;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html{background:var(--bg)}
+body{font:500 17px/1.5 Archivo,system-ui,sans-serif;color:var(--ink);overflow-x:hidden}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.an{font-family:Anton,Impact,sans-serif;text-transform:uppercase;font-weight:400}
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:60;display:flex;align-items:center;gap:6px;padding:6px;border-radius:99px;background:rgba(10,10,10,.82);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12)}
+nav a{padding:10px 18px;border-radius:99px;font-size:14px;font-weight:600}
+nav a.logo{background:var(--lime);color:#0a0a0a;font:400 18px Anton;letter-spacing:.02em;text-transform:uppercase;padding:8px 18px}
+nav a:not(.logo):hover{background:rgba(255,255,255,.1)}
+#cur{position:fixed;left:0;top:0;z-index:70;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:var(--lime);pointer-events:none;display:grid;place-items:center;font:400 14px Anton;color:#000;letter-spacing:.04em;mix-blend-mode:normal;transition:width .35s var(--ease),height .35s var(--ease),margin .35s var(--ease)}
+#cur.big{width:92px;height:92px;margin:-46px 0 0 -46px}
+@media(hover:none){#cur{display:none}}
+.hero{position:relative;min-height:100svh;padding:120px clamp(16px,4vw,44px) 60px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.hero h1{position:relative;z-index:2;font:400 clamp(66px,15.5vw,270px)/.86 Anton;text-transform:uppercase;letter-spacing:-.01em}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln>span{display:inline-block}
+.hl{background:var(--lime);color:#0a0a0a;padding:0 .12em;display:inline-block;transform:rotate(-1.4deg);box-shadow:.05em .06em 0 #fff}
+.sub{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-top:40px;flex-wrap:wrap}
+.sub p{max-width:36ch;font-size:clamp(18px,1.6vw,22px);color:#d6d8cd}
+.cta{display:inline-flex;gap:12px;align-items:center;background:var(--lime);color:#0a0a0a;font-weight:800;padding:18px 30px;border-radius:99px;box-shadow:5px 5px 0 #fff;transition:transform .3s var(--ease),box-shadow .3s}
+.cta:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 #fff}
+.stick{position:absolute;z-index:1;filter:drop-shadow(0 14px 18px rgba(0,0,0,.5))}
+.stick img{width:100%;border-radius:22%;border:3px solid #fff}
+.spin{position:absolute;right:clamp(16px,6vw,110px);top:130px;width:clamp(110px,13vw,190px);z-index:4}
+.spin svg{width:100%;animation:sp 14s linear infinite}
+.spin div{position:absolute;inset:0;display:grid;place-items:center;font:400 clamp(22px,3vw,40px) Anton;color:#0a0a0a}
+.spin::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--lime)}
+@keyframes sp{to{transform:rotate(360deg)}}
+.tape{position:relative;overflow:hidden;background:var(--lime);color:#0a0a0a;padding:14px 0;white-space:nowrap;transform:rotate(-2deg);margin:0 -4vw;z-index:5;border-block:3px solid #0a0a0a}
+.tape.b{background:#fff;transform:rotate(1.6deg);margin-top:-34px;z-index:4}
+.tape div{display:inline-flex;gap:30px;animation:mq 30s linear infinite}
+.tape.b div{animation-direction:reverse}
+.tape span{font:400 clamp(28px,4vw,56px) Anton;text-transform:uppercase;display:inline-flex;align-items:center;gap:30px}
+.tape span::after{content:"✸";font-size:.7em}
+@keyframes mq{to{transform:translateX(-50%)}}
+.stack{padding:120px clamp(10px,3vw,40px) 60px}
+.stack>h2{font:400 clamp(48px,9vw,150px)/.9 Anton;text-transform:uppercase;margin:0 clamp(6px,1vw,14px) 40px}
+.stack>h2 span{color:var(--lime)}
+.card{position:sticky;top:calc(9vh + var(--i)*22px);margin-bottom:26px;border-radius:34px;background:var(--c);color:#0a0a0a;border:3px solid #0a0a0a;box-shadow:0 -10px 40px rgba(0,0,0,.4);display:grid;grid-template-columns:1.05fr 1fr;gap:30px;padding:clamp(22px,3.4vw,52px);min-height:min(76vh,640px);overflow:hidden;transform-origin:50% 0}
+.card .no{font:400 clamp(60px,9vw,150px)/.8 Anton;opacity:.16;position:absolute;right:30px;bottom:-10px}
+.card h3{font:400 clamp(44px,6.4vw,104px)/.9 Anton;text-transform:uppercase;letter-spacing:-.005em;margin:6px 0 14px}
+.card .k{font-weight:800;font-size:clamp(17px,1.6vw,22px);margin-bottom:10px}
+.card p{max-width:36ch;font-weight:500;margin-bottom:22px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.pills span{background:#0a0a0a;color:var(--c);font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;border-radius:99px}
+.card .ic{display:flex;gap:14px;align-items:center}
+.card .ic img.i{width:62px;border-radius:22%;border:3px solid #0a0a0a;transform:rotate(-8deg)}
+.badge{height:50px;width:auto}
+.ph3{position:relative;display:grid;place-items:center}
+.ph3 .p{position:absolute;width:clamp(130px,16vw,230px);aspect-ratio:9/19;border-radius:26px;border:5px solid #0a0a0a;overflow:hidden;background:#0a0a0a;box-shadow:8px 10px 0 rgba(0,0,0,.9)}
+.ph3 .p img{width:100%;height:100%;object-fit:cover}
+.ph3 .p:nth-child(1){transform:translate(-70%,8%) rotate(-10deg)}
+.ph3 .p:nth-child(2){transform:translateY(-4%) rotate(2deg);z-index:2}
+.ph3 .p:nth-child(3){transform:translate(70%,10%) rotate(11deg)}
+.zig{--z:28px;height:var(--z);background:var(--lime);clip-path:polygon(0 100%,2% 0,4% 100%,6% 0,8% 100%,10% 0,12% 100%,14% 0,16% 100%,18% 0,20% 100%,22% 0,24% 100%,26% 0,28% 100%,30% 0,32% 100%,34% 0,36% 100%,38% 0,40% 100%,42% 0,44% 100%,46% 0,48% 100%,50% 0,52% 100%,54% 0,56% 100%,58% 0,60% 100%,62% 0,64% 100%,66% 0,68% 100%,70% 0,72% 100%,74% 0,76% 100%,78% 0,80% 100%,82% 0,84% 100%,86% 0,88% 100%,90% 0,92% 100%,94% 0,96% 100%,98% 0,100% 100%)}
+.rules{background:var(--lime);color:#0a0a0a;padding:70px clamp(16px,4vw,44px) 110px}
+.rules h2{font:400 clamp(52px,11vw,190px)/.88 Anton;text-transform:uppercase;margin-bottom:50px}
+.rg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rg div{background:#0a0a0a;color:var(--ink);border-radius:26px;padding:30px 30px 44px;transition:transform .5s var(--ease)}
+.rg div:hover{transform:rotate(-2deg) translateY(-8px)}
+.rg b{display:block;font:400 clamp(34px,3.6vw,56px)/.95 Anton;text-transform:uppercase;color:var(--lime);margin:60px 0 10px}
+.rg p{color:#bdbfb3}
+.rg span{font:400 22px Anton;color:#fff}
+footer{background:#0a0a0a;padding:90px clamp(16px,4vw,44px) 34px}
+footer .m{font:400 clamp(30px,7.2vw,130px)/.9 Anton;text-transform:uppercase;display:block;word-break:normal;overflow-wrap:anywhere;color:var(--lime)}
+footer .m:hover{color:#fff}
+footer .meta{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:60px;color:var(--mut);font-size:14px}
+@media(max-width:820px){nav a:not(.logo):not(:last-child){display:none}.card{grid-template-columns:1fr;min-height:0;position:relative;top:0!important}.ph3{height:300px}.rg{grid-template-columns:1fr}.spin{display:none}.stick{display:none}}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<nav><a class="logo" href="#">Snoochie Soft</a><a href="#apps">Apps</a><a href="#rules">Rules</a><a href="#contact">Contact</a></nav>
+
+<section class="hero" id="top">
+  <h1><span class="ln"><span>Small apps.</span></span><span class="ln"><span>Made <em class="hl" style="font-style:normal">properly.</em></span></span></h1>
+  <div class="sub"><p>Seven Android apps on Google Play from one tiny studio. No accounts. No nonsense.</p><a class="cta" href="#apps">Pick your app ↓</a></div>
+  <div class="spin"><svg viewBox="0 0 200 200"><defs><path id="c" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text font-family="Anton" font-size="21" letter-spacing="3.4" fill="#0a0a0a"><textPath href="#c">7 APPS ✸ GOOGLE PLAY ✸ NO ACCOUNT ✸ OFFLINE ✸</textPath></text></svg><div>7</div></div>
+  <div id="sticks"></div>
+</section>
+
+<div class="tape"><div id="t1"></div></div>
+<div class="tape b"><div id="t2"></div></div>
+
+<section class="stack" id="apps">
+  <h2>The <span>catalogue</span></h2>
+  <div id="cards"></div>
+</section>
+
+<div class="zig" style="background:#0a0a0a;clip-path:none;height:0"></div>
+<div class="zig"></div>
+<section class="rules" id="rules"><h2>House<br>rules.</h2><div class="rg" id="rg"></div></section>
+<footer id="contact"><p style="color:var(--mut);margin-bottom:14px">Say hi →</p><a class="m" id="mail"></a>
+<div class="meta"><span>© 2026 Snoochie Soft · Bydgoszcz, Poland</span><span>Privacy · Terms · Support</span></div></footer>
+
+<script src="../vendor/gsap.min.js"></script><script src="../vendor/ScrollTrigger.min.js"></script><script src="../vendor/lenis.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../shared/common.js"></script>
+<script>
+document.getElementById('cards').innerHTML=APPS.map((a,i)=>`<article class="card" style="--c:${a.c1};--i:${i}"><div><div class="k">${a.no} · ${a.cat}</div><h3>${a.name}</h3><div class="k">${a.kind}</div><p>${a.line}</p><div class="pills">${a.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="ic"><a href="${a.play}" data-play>${badge()}</a><img class="i" src="${a.icon}" alt=""></div></div><div class="ph3">${a.shots.map(s=>`<div class="p"><img src="${s}" alt=""></div>`).join('')}</div><div class="no an">${String(i+1).padStart(2,'0')}</div></article>`).join('');
+const tp=[...APPS,...APPS].map(a=>`<span>${a.short}</span>`).join('');t1.innerHTML=tp;t2.innerHTML=[...APPS,...APPS].map(a=>`<span>${a.kind}</span>`).join('');
+document.getElementById('rg').innerHTML=RULES.map((r,i)=>`<div><span>0${i+1}</span><b>${r[0]}</b><p>${r[1]}</p></div>`).join('');
+const m=document.getElementById('mail');m.textContent=EMAIL;m.href='mailto:'+EMAIL;
+const pos=[[6,62,9,-12],[26,70,8,8],[58,66,7,-6],[72,58,9,10],[44,10,7,-9],[84,40,8,7],[14,38,7,12]];
+sticks.innerHTML=APPS.map((a,i)=>`<div class="stick" style="left:${pos[i][0]}%;top:${pos[i][1]}%;width:${pos[i][2]}vw;min-width:70px;transform:rotate(${pos[i][3]}deg)"><img src="${a.icon}" alt=""></div>`).join('');
+
+initSmooth();
+const cur=document.getElementById('cur');
+addEventListener('pointermove',e=>gsap.to(cur,{x:e.clientX,y:e.clientY,duration:.25,ease:'power3.out'}));
+document.querySelectorAll('[data-play],.cta').forEach(n=>{n.addEventListener('mouseenter',()=>{cur.classList.add('big');cur.textContent=n.matches('.cta')?'GO':'PLAY'});n.addEventListener('mouseleave',()=>{cur.classList.remove('big');cur.textContent=''})});
+if(!RM){
+  gsap.from('.hero h1 .ln>span',{yPercent:110,rotate:3,duration:1.2,ease:'expo.out',stagger:.15,delay:.1});
+  gsap.from('.stick',{y:-700,opacity:0,rotate:()=>gsap.utils.random(-60,60),duration:1.5,ease:'bounce.out',stagger:.1,delay:.5});
+  gsap.from('.sub>*',{y:40,opacity:0,duration:1,ease:'expo.out',stagger:.12,delay:.9});
+  gsap.from('.spin',{scale:0,rotate:-180,duration:1.2,ease:'back.out(1.7)',delay:.8});
+  document.querySelectorAll('.stick').forEach((s,i)=>gsap.to(s,{y:i%2?-14:14,rotate:'+='+(i%2?6:-6),duration:2.2+i*.3,yoyo:true,repeat:-1,ease:'sine.inOut',delay:1.8}));
+  gsap.to('.hero h1',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('.tape:not(.b)',{x:-80,ease:'none',scrollTrigger:{trigger:'.tape',scrub:true,start:'top bottom',end:'bottom top'}});
+  const cards=gsap.utils.toArray('.card');
+  cards.forEach((c,i)=>{
+    gsap.from(c.querySelectorAll('.p'),{y:120,opacity:0,duration:1.1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:c,start:'top 78%'}});
+    if(i<cards.length-1)gsap.to(c,{scale:.94,filter:'brightness(.6)',ease:'none',scrollTrigger:{trigger:cards[i+1],start:'top 70%',end:'top 10%',scrub:true}});
+  });
+  gsap.from('.rules h2',{yPercent:30,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.rules',start:'top 70%'}});
+  gsap.from('.rg div',{y:80,opacity:0,rotate:4,duration:1,ease:'expo.out',stagger:.12,scrollTrigger:{trigger:'.rg',start:'top 85%'}});
+  gsap.from('footer .m',{yPercent:40,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'footer',start:'top 75%'}});
+}
+</script>
+</body>
+</html>

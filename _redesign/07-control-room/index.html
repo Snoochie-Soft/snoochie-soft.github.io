@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Control Room - Snoochie Soft redesign 07</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Chakra+Petch:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#04070a;--ink:#dfeee9;--mut:#6f8a84;--ac:#5dffc1;--line:rgba(93,255,193,.22);--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html,body{overflow-x:clip}
+body{font:400 14px/1.6 'IBM Plex Mono',monospace;color:var(--ink);background:var(--bg)}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.hd{font-family:'Chakra Petch',sans-serif;text-transform:uppercase;letter-spacing:.01em}
+.scan{position:fixed;inset:0;z-index:80;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px);mix-blend-mode:overlay}
+.top{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;justify-content:space-between;padding:16px clamp(14px,3vw,36px);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);background:linear-gradient(var(--bg),transparent)}
+.top b{color:var(--ink);font-weight:600}
+.top .ok{color:var(--ac)}
+.top .ok::before{content:"●";margin-right:8px;animation:bl 1.4s steps(2) infinite}
+@keyframes bl{50%{opacity:.2}}
+.stage{position:relative;height:100vh;overflow:hidden}
+.grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;opacity:.28;mask-image:radial-gradient(60% 60% at 50% 50%,#000,transparent)}
+#rad{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(78vh,70vw);height:min(78vh,70vw)}
+#rad svg{width:100%;height:100%;overflow:visible}
+.node{position:absolute;width:var(--s);height:var(--s);margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);border-radius:22%;overflow:hidden;border:1px solid var(--line);background:#06100f;cursor:pointer;transition:scale .5s var(--ease),border-color .3s,box-shadow .4s}
+.node img{width:100%;height:100%;object-fit:cover;filter:grayscale(.85) brightness(.75);transition:filter .5s}
+.node:hover,.node.on{scale:1.35;border-color:var(--ac);box-shadow:0 0 36px rgba(93,255,193,.5);z-index:3}
+.node:hover img,.node.on img{filter:none}
+.core{position:absolute;left:50%;top:50%;width:46%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
+.core .ph{position:relative;width:min(100%,230px);aspect-ratio:9/19;margin:0 auto;border-radius:24px;border:3px solid var(--ac);overflow:hidden;box-shadow:0 0 80px rgba(93,255,193,.25);background:#000}
+.core .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.core .ph::after{content:"";position:absolute;left:0;right:0;height:30%;top:-30%;background:linear-gradient(transparent,rgba(93,255,193,.35),transparent);animation:sc 3.2s linear infinite}
+@keyframes sc{to{top:100%}}
+.brk{position:absolute;width:26px;height:26px;border:2px solid var(--ac)}
+.brk.a{left:clamp(14px,3vw,36px);top:70px;border-right:0;border-bottom:0}.brk.b{right:clamp(14px,3vw,36px);top:70px;border-left:0;border-bottom:0}.brk.c{left:clamp(14px,3vw,36px);bottom:22px;border-right:0;border-top:0}.brk.d{right:clamp(14px,3vw,36px);bottom:22px;border-left:0;border-top:0}
+.ltxt{position:absolute;left:clamp(14px,3vw,36px);top:50%;transform:translateY(-50%);max-width:min(38vw,460px)}
+.ltxt h1{font:700 clamp(32px,3.9vw,62px)/.95 'Chakra Petch';text-transform:uppercase;letter-spacing:-.01em;margin-bottom:18px}
+.ltxt h1 span{color:var(--ac)}
+.ltxt p{color:var(--mut);max-width:34ch}
+.rtxt{position:absolute;right:clamp(14px,3vw,36px);top:50%;transform:translateY(-50%);width:min(26vw,360px);border:1px solid var(--line);padding:22px;background:rgba(4,12,10,.72);backdrop-filter:blur(8px)}
+.rtxt::before{content:"";position:absolute;left:-1px;top:-1px;width:14px;height:14px;border:2px solid var(--ac);border-right:0;border-bottom:0}
+.rtxt .no{color:var(--ac);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px}
+.rtxt h2{font:700 clamp(24px,2.4vw,36px)/1 'Chakra Petch';text-transform:uppercase;margin-bottom:10px}
+.rtxt p{color:#a9c4bd;font-size:13.5px;margin-bottom:14px}
+.rtxt table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:16px}
+.rtxt td{padding:5px 0;border-top:1px dashed var(--line)}.rtxt td:last-child{text-align:right;color:var(--ac)}
+.badge{height:46px;width:auto}
+.hint{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);font-size:11px;letter-spacing:.3em;color:var(--mut);text-transform:uppercase}
+.log{padding:clamp(80px,9vw,140px) clamp(14px,3vw,36px)}
+.log h2{font:700 clamp(40px,7vw,110px)/.9 'Chakra Petch';text-transform:uppercase;margin-bottom:40px}
+.log h2 span{color:var(--ac)}
+.rowl{display:grid;grid-template-columns:90px 60px 1.1fr 1.6fr 1fr 80px;gap:18px;align-items:center;padding:18px 0;border-top:1px solid var(--line);transition:.4s var(--ease);position:relative;overflow:hidden}
+.rowl:last-child{border-bottom:1px solid var(--line)}
+.rowl::before{content:"";position:absolute;inset:0;background:var(--ac);transform:translateX(-101%);transition:transform .55s var(--ease);z-index:-1}
+.rowl{z-index:0}
+.rowl:hover{color:#04100c;padding-left:16px}.rowl:hover::before{transform:none}.rowl:hover .mt{color:#04100c}
+.rowl img{width:46px;border-radius:22%}
+.rowl .nm{font:700 22px 'Chakra Petch';text-transform:uppercase}
+.mt{color:var(--mut)}
+.rl{padding:30px clamp(14px,3vw,36px) 100px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin:0 clamp(14px,3vw,36px);border:1px solid var(--line)}
+.rl div{background:var(--bg);padding:28px 26px 44px}
+.rl i{color:var(--ac);font-style:normal;font-size:12px;letter-spacing:.2em}
+.rl b{display:block;font:700 26px 'Chakra Petch';text-transform:uppercase;margin:40px 0 6px}
+.rl p{color:var(--mut)}
+footer{padding:80px clamp(14px,3vw,36px) 28px}
+footer .m{display:block;font:700 clamp(24px,6vw,100px)/1 'Chakra Petch';text-transform:uppercase;word-break:break-all}
+footer .m:hover{color:var(--ac)}
+footer .meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:50px;color:var(--mut);font-size:12px}
+@media(max-width:860px){.ltxt{top:92px;transform:none;max-width:none;right:14px}.ltxt p{display:none}.rtxt{top:auto;bottom:34px;right:14px;left:14px;transform:none;width:auto;padding:14px}.rtxt p,.rtxt table{display:none}#rad{top:46%;width:96vw;height:96vw}.core{width:36%}.rowl{grid-template-columns:50px 1fr 40px}.rowl .mt,.rowl .ic{display:none}.rl{grid-template-columns:1fr}.hint{display:none}}
+</style>
+</head>
+<body>
+<div class="scan"></div>
+<div class="top"><span><b>SNOOCHIE SOFT</b> // CONTROL ROOM</span><span class="ok">ALL 7 SYSTEMS ONLINE</span></div>
+
+<section class="stage" id="stage">
+  <div class="grid"></div>
+  <i class="brk a"></i><i class="brk b"></i><i class="brk c"></i><i class="brk d"></i>
+  <div class="ltxt"><h1>Small apps,<br><span>made properly.</span></h1><p>Pick a system on the ring. Each one is a finished Android app on Google Play: no accounts, no subscriptions you did not choose.</p></div>
+  <div id="rad"><svg viewBox="-500 -500 1000 1000" id="svg"></svg><div class="core"><div class="ph" id="ph"></div></div></div>
+  <div class="rtxt" id="rt"></div>
+  <div class="hint">Scroll / click to select</div>
+</section>
+
+<section class="log" id="log"><h2>System <span>log</span></h2><div id="rows"></div></section>
+<div class="rl" id="rl"></div>
+<footer id="contact"><p class="mt" style="margin-bottom:14px">// OPEN CHANNEL</p><a class="m" id="mail"></a><div class="meta"><span>© 2026 SNOOCHIE SOFT · BYDGOSZCZ, POLAND</span><span>PRIVACY · TERMS · SUPPORT</span></div></footer>
+
+<script src="../vendor/gsap.min.js"></script><script src="../vendor/ScrollTrigger.min.js"></script><script src="../vendor/lenis.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../shared/common.js"></script>
+<script>
+const N=APPS.length,rad=document.getElementById('rad'),svg=document.getElementById('svg');
+/* ring svg */
+let ringS='';[470,380,300].forEach((r,i)=>ringS+=`<circle r="${r}" fill="none" stroke="rgba(93,255,193,${.34-i*.08})" stroke-width="1.4" ${i==1?'stroke-dasharray="3 12"':''}/>`);
+for(let i=0;i<72;i++){const a=i*5*Math.PI/180,l=i%6?10:22;ringS+=`<line x1="${Math.cos(a)*(480)}" y1="${Math.sin(a)*480}" x2="${Math.cos(a)*(480+l)}" y2="${Math.sin(a)*(480+l)}" stroke="rgba(93,255,193,.5)"/>`}
+ringS+=`<g id="sweep"><path d="M0 0 L470 0 A470 470 0 0 0 ${470*Math.cos(-.5)} ${470*Math.sin(-.5)} Z" fill="url(#g)" opacity=".55"/></g><defs><radialGradient id="g"><stop offset="0" stop-color="#5dffc1" stop-opacity="0"/><stop offset="1" stop-color="#5dffc1" stop-opacity=".3"/></radialGradient></defs>`;
+svg.innerHTML=ringS;
+const sz=()=>Math.round(rad.clientWidth*.115);
+const nodes=APPS.map((a,i)=>{const n=el(`<div class="node" data-i="${i}"><img src="${a.icon}" alt=""></div>`);rad.appendChild(n);n.onclick=()=>sel(i,true);return n});
+let cur=-1,rot=0;
+function place(){const w=rad.clientWidth,R=w*.4,S=sz();nodes.forEach((n,i)=>{const a=(i/N)*Math.PI*2-Math.PI/2+rot;n.style.setProperty('--s',S+'px');n.style.left=(w/2+Math.cos(a)*R)+'px';n.style.top=(w/2+Math.sin(a)*R)+'px'})}
+let shotT;
+function sel(i,click){if(i===cur)return;cur=i;const a=APPS[i];
+  nodes.forEach((n,k)=>n.classList.toggle('on',k===i));
+  document.documentElement.style.setProperty('--ac',a.c1);
+  document.getElementById('ph').innerHTML=a.shots.map((s,k)=>`<img src="${s}" alt="" style="opacity:${k?0:1};transition:opacity .6s">`).join('');
+  clearInterval(shotT);let k=0;const im=document.querySelectorAll('#ph img');shotT=setInterval(()=>{im[k].style.opacity=0;k=(k+1)%im.length;im[k].style.opacity=1},2200);
+  document.getElementById('rt').innerHTML=`<div class="no">${a.no} // ${a.cat}</div><h2>${a.name}</h2><p>${a.kind}. ${a.line}</p><table><tr><td>PLATFORM</td><td>ANDROID</td></tr><tr><td>STORE</td><td>GOOGLE PLAY</td></tr><tr><td>ACCOUNT</td><td>NOT REQUIRED</td></tr><tr><td>STATUS</td><td>ONLINE</td></tr></table><a href="${a.play}">${badge()}</a>`;
+  if(!RM){gsap.from('#rt>*',{x:24,opacity:0,duration:.6,ease:'expo.out',stagger:.05});gsap.fromTo('#ph',{scale:.9,opacity:.3},{scale:1,opacity:1,duration:.7,ease:'expo.out'})}
+  if(click){window.__l?__l.scrollTo(stage.offsetTop+tot()*i/(N-1),{duration:1.2}):0}
+}
+const stage=document.getElementById('stage'),tot=()=>innerHeight*(N-1)*.8;
+document.getElementById('rows').innerHTML=APPS.map(a=>`<a class="rowl" href="${a.play}"><span class="mt">${a.no}</span><img class="ic" src="${a.icon}" alt=""><span class="nm">${a.name}</span><span class="mt">${a.line}</span><span class="mt">${a.cat}</span><span style="text-align:right">↗</span></a>`).join('');
+document.getElementById('rl').innerHTML=RULES.map((r,i)=>`<div><i>RULE 0${i+1}</i><b>${r[0]}</b><p>${r[1]}</p></div>`).join('');
+const m=document.getElementById('mail');m.textContent=EMAIL;m.href='mailto:'+EMAIL;
+addEventListener('resize',place);place();sel(0);
+window.__l=initSmooth();
+if(!RM){
+  gsap.to('#sweep',{rotation:360,svgOrigin:'0 0',duration:7,repeat:-1,ease:'none'});
+  gsap.from('#svg circle,#svg line',{opacity:0,duration:1.4,stagger:.01,ease:'power2.out'});
+  gsap.from('.node',{opacity:0,duration:.9,ease:'power2.out',stagger:.08,delay:.4});
+  gsap.from('.ltxt>*',{y:40,opacity:0,duration:1.1,ease:'expo.out',stagger:.12,delay:.2});
+  gsap.from('.brk',{scale:2.4,opacity:0,duration:1,ease:'expo.out',stagger:.08});
+  const o={r:0};
+  ScrollTrigger.create({trigger:stage,start:'top top',end:()=>'+='+tot(),pin:true,scrub:true,onUpdate:s=>{
+    const i=Math.min(N-1,Math.round(s.progress*(N-1)));sel(i);
+    gsap.to(o,{r:-(s.progress*(N-1)/N)*Math.PI*2*.0,duration:.6,overwrite:true,onUpdate:()=>{rot=o.r;place()}})}});
+  gsap.from('.log h2',{y:60,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:'.log',start:'top 80%'}});
+  gsap.from('.rowl',{x:-60,opacity:0,duration:.9,ease:'expo.out',stagger:.07,scrollTrigger:{trigger:'#rows',start:'top 82%'}});
+  gsap.from('.rl div',{y:50,opacity:0,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.rl',start:'top 88%'}});
+  gsap.from('footer .m',{yPercent:50,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'footer',start:'top 85%'}});
+}
+</script>
+</body>
+</html>

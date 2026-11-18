@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Clarity Rows - Snoochie Soft redesign 06</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e0d0b;--bg2:#171512;--ink:#f4efe6;--mut:#a49d90;--red:#ff6a3d;--line:rgba(244,239,230,.12);--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html,body{overflow-x:clip}body{font:400 18px/1.6 Figtree,system-ui,sans-serif;color:var(--ink);background:var(--bg);overflow-x:hidden}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+.dsp{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.035em}
+header{position:sticky;top:0;z-index:50;background:rgba(14,13,11,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:66px}
+header .logo{font:800 21px 'Bricolage Grotesque';letter-spacing:-.03em;display:flex;gap:10px;align-items:center}
+header .logo i{width:26px;height:26px;border-radius:8px;background:var(--red);display:grid;place-items:center;font:800 15px 'Bricolage Grotesque';color:#0e0d0b;font-style:normal}
+header nav{display:flex;gap:6px}
+header nav a{padding:8px 14px;border-radius:99px;color:var(--mut);font-size:15px;font-weight:500;transition:.3s}
+header nav a:hover{color:var(--ink);background:var(--bg2)}
+header .go{background:var(--ink);color:#0e0d0b!important}
+.hero{padding:clamp(60px,9vw,130px) 0 clamp(50px,7vw,90px);display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.eyebrow{display:inline-flex;gap:10px;align-items:center;padding:7px 14px 7px 8px;border-radius:99px;background:var(--bg2);border:1px solid var(--line);font-size:14px;font-weight:500;color:var(--mut);margin-bottom:26px}
+.eyebrow b{background:var(--red);color:#0e0d0b;padding:2px 9px;border-radius:99px;font-weight:600}
+.hero h1{font:800 clamp(46px,7vw,104px)/.95 'Bricolage Grotesque';letter-spacing:-.045em;margin-bottom:24px}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero p{color:var(--mut);max-width:44ch;font-size:clamp(18px,1.5vw,21px);margin-bottom:32px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:99px;font-weight:600;background:var(--red);color:#0e0d0b;transition:transform .4s var(--ease)}
+.btn:hover{transform:translateY(-3px)}
+.btn.o{background:none;border:1px solid var(--line);color:var(--ink)}
+.stack{position:relative;height:clamp(380px,46vw,600px)}
+.stack .ph{position:absolute;aspect-ratio:9/19;border-radius:30px;border:6px solid #1f1c18;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.6)}
+.stack .ph img{width:100%;height:100%;object-fit:cover}
+.stack .ph:nth-child(1){height:78%;left:6%;top:14%;transform:rotate(-8deg)}
+.stack .ph:nth-child(2){height:92%;left:50%;top:0;transform:translateX(-50%) rotate(1deg);z-index:2}
+.stack .ph:nth-child(3){height:78%;right:6%;top:18%;transform:rotate(9deg)}
+.pill{position:absolute;z-index:3;padding:10px 16px;border-radius:99px;background:rgba(23,21,18,.92);border:1px solid var(--line);font-weight:600;font-size:14px;display:flex;gap:8px;align-items:center;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.pill i{width:8px;height:8px;border-radius:50%;background:#7bdc6d;font-style:normal}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border-block:1px solid var(--line)}
+.facts div{padding:30px 20px;text-align:center;border-right:1px solid var(--line)}
+.facts div:last-child{border:0}
+.facts b{display:block;font:800 clamp(36px,4vw,56px)/1 'Bricolage Grotesque';letter-spacing:-.04em;color:var(--red)}
+.facts span{color:var(--mut);font-size:15px}
+.sec-h{padding:clamp(70px,9vw,120px) 0 20px}
+.sec-h h2{font:800 clamp(36px,5vw,72px)/1 'Bricolage Grotesque';letter-spacing:-.04em}
+.sec-h p{color:var(--mut);margin-top:10px;max-width:50ch}
+.app{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px);align-items:center;padding:clamp(40px,6vw,80px) 0;border-top:1px solid var(--line)}
+.app:nth-of-type(even) .tx{order:2}
+.tx .no{font:600 14px Figtree;letter-spacing:.14em;text-transform:uppercase;color:var(--c);margin-bottom:14px;display:flex;gap:12px;align-items:center}
+.tx .no img{width:44px;border-radius:22%}
+.tx h3{font:800 clamp(34px,4.4vw,62px)/1 'Bricolage Grotesque';letter-spacing:-.04em;margin-bottom:12px}
+.tx .k{font-weight:600;font-size:20px;margin-bottom:8px}
+.tx p{color:var(--mut);max-width:42ch;margin-bottom:22px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.tags span{padding:6px 13px;border-radius:99px;border:1px solid var(--line);font-size:13.5px;font-weight:500}
+.badge{height:52px;width:auto}
+.vis{position:relative;display:grid;place-items:center;min-height:440px;border-radius:36px;background:radial-gradient(80% 70% at 50% 60%,color-mix(in srgb,var(--c) 28%,var(--bg)) 0,var(--bg2) 75%);overflow:hidden;border:1px solid var(--line)}
+.vis .p{position:absolute;width:30%;aspect-ratio:9/19;border-radius:24px;border:5px solid #1f1c18;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.55);will-change:transform}
+.vis .p img{width:100%;height:100%;object-fit:cover}
+.vis .p:nth-child(1){left:9%;top:16%;transform:rotate(-7deg)}
+.vis .p:nth-child(2){left:35%;top:6%;z-index:2}
+.vis .p:nth-child(3){right:9%;top:20%;transform:rotate(8deg)}
+.vis{height:clamp(420px,42vw,560px)}
+.pug{position:relative;margin:30px 0 0;border-radius:40px;overflow:hidden;min-height:520px;display:grid;align-items:end;border:1px solid var(--line)}
+.pug>img.bg{position:absolute;inset:0;width:100%;height:120%;object-fit:cover}
+.pug::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,13,11,.88),rgba(14,13,11,.2) 60%,transparent)}
+.pug .in{position:relative;z-index:2;padding:clamp(24px,5vw,60px);max-width:560px}
+.pug .big{position:absolute;right:4%;bottom:0;height:90%;z-index:2}
+.rules{padding:clamp(80px,9vw,130px) 0}
+.rg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.rg div{padding:32px;border-radius:28px;background:var(--bg2);border:1px solid var(--line);transition:.5s var(--ease)}
+.rg div:hover{transform:translateY(-6px);border-color:var(--red)}
+.rg i{font:800 15px Figtree;color:var(--red);font-style:normal}
+.rg b{display:block;font:800 28px 'Bricolage Grotesque';letter-spacing:-.03em;margin:46px 0 6px}
+.rg p{color:var(--mut)}
+.contact{background:var(--red);color:#0e0d0b;border-radius:44px;padding:clamp(40px,7vw,90px);margin-bottom:40px}
+.contact h2{font:800 clamp(38px,6vw,90px)/.95 'Bricolage Grotesque';letter-spacing:-.045em;margin-bottom:22px}
+.contact a.m{font:800 clamp(20px,3.4vw,46px) 'Bricolage Grotesque';letter-spacing:-.03em;border-bottom:3px solid #0e0d0b;word-break:break-all}
+footer{padding:20px 0 40px;color:var(--mut);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+@media(max-width:860px){.hero{grid-template-columns:1fr}.stack{height:420px}.app{grid-template-columns:1fr}.app:nth-of-type(even) .tx{order:0}.rg{grid-template-columns:1fr}header nav a:not(.go){display:none}.pug .big{opacity:.5}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#"><i>S</i>Snoochie Soft</a><nav><a href="#apps">Apps</a><a href="#rules">House rules</a><a class="go" href="#contact">Contact</a></nav></div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <div class="eyebrow"><b>New</b>Pug Bubble Dig is out on Google Play</div>
+      <h1>Small apps,<br><em>made properly.</em></h1>
+      <p>Seven Android apps from one tiny studio in Poland: learn, focus, chat, plan, pray, play. No accounts. Works offline. Honest pricing.</p>
+      <div class="btns"><a class="btn" href="#apps">See all 7 apps ↓</a><a class="btn o" href="#contact">Say hello</a></div>
+    </div>
+    <div class="stack" id="hs"><div class="pill" style="left:-2%;top:10%"><i></i>Offline, always</div><div class="pill" style="right:0;bottom:12%"><i></i>No account needed</div></div>
+  </section>
+  <section class="facts" id="facts"></section>
+
+  <div class="sec-h" id="apps"><h2>The apps.</h2><p>One row each. Tap a badge to open the Google Play page.</p></div>
+  <div id="rows"></div>
+
+  <section class="pug" id="pugx"><img class="bg" src="../assets/art/cave_21.jpg" alt=""><div class="in"><div class="tx" style="--c:#ffc94a"><div class="no">Featured · SNS-007</div><h3>Meet Bigi.</h3><p>The pug with a mining helmet. Offline bubble shooter, 50 levels, zero ads between rounds.</p><a id="pugp"></a></div></div><img class="big" src="../assets/pug/bigi.webp" alt=""></section>
+
+  <section class="rules" id="rules"><div class="sec-h" style="padding:0"><h2>House rules.</h2><p>Three promises we keep in every app.</p></div><div class="rg" id="rg"></div></section>
+
+  <section class="contact" id="contact"><h2>Got a question?<br>Write us.</h2><a class="m" id="mail"></a></section>
+</main>
+<footer><div class="wrap"><span>© 2026 Snoochie Soft · Bydgoszcz, Poland</span><span>Privacy · Terms · Support</span></div></footer>
+
+<script src="../vendor/gsap.min.js"></script><script src="../vendor/ScrollTrigger.min.js"></script><script src="../vendor/lenis.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../shared/common.js"></script>
+<script>
+document.getElementById('hs').insertAdjacentHTML('afterbegin',[APPS[0],APPS[6],APPS[3]].map(a=>`<div class="ph"><img src="${a.shots[0]}" alt=""></div>`).join(''));
+document.getElementById('facts').innerHTML=[['7','Apps on Google Play'],['9','Languages'],['0','Accounts required']].map(f=>`<div><b data-n="${f[0]}">${f[0]}</b><span>${f[1]}</span></div>`).join('');
+document.getElementById('rows').innerHTML=APPS.map(a=>`<article class="app" style="--c:${a.c1}"><div class="tx"><div class="no"><img src="${a.icon}" alt="">${a.no} · ${a.cat}</div><h3>${a.name}</h3><div class="k">${a.kind}</div><p>${a.line}</p><div class="tags">${a.tags.map(t=>`<span>${t}</span>`).join('')}</div><a href="${a.play}">${badge()}</a></div><div class="vis">${a.shots.map(s=>`<div class="p"><img src="${s}" alt=""></div>`).join('')}</div></article>`).join('');
+document.getElementById('pugp').outerHTML=`<a href="${APPS[6].play}">${badge()}</a>`;
+document.getElementById('rg').innerHTML=RULES.map((r,i)=>`<div><i>0${i+1}</i><b>${r[0]}</b><p>${r[1]}</p></div>`).join('');
+const m=document.getElementById('mail');m.textContent=EMAIL;m.href='mailto:'+EMAIL;
+initSmooth();
+if(!RM){
+  gsap.from('.eyebrow,.hero h1,.hero p,.btns',{y:40,opacity:0,duration:1.1,ease:'expo.out',stagger:.1,delay:.1});
+  gsap.from('.stack .ph',{y:140,opacity:0,rotate:0,duration:1.4,ease:'expo.out',stagger:.12,delay:.3});
+  gsap.from('.pill',{scale:0,duration:.8,ease:'back.out(2)',stagger:.2,delay:1.1});
+  gsap.to('.pill',{y:-10,duration:2.4,yoyo:true,repeat:-1,ease:'sine.inOut',stagger:.5});
+  gsap.utils.toArray('.stack .ph').forEach((p,i)=>gsap.to(p,{yPercent:[-6,-14,-8][i],ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}}));
+  gsap.from('.facts div',{y:30,opacity:0,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.facts',start:'top 90%'}});
+  gsap.from('.sec-h h2',{y:50,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:'#apps',start:'top 85%'}});
+  gsap.utils.toArray('.app').forEach((a,i)=>{
+    const left=i%2===0;
+    gsap.from(a.querySelectorAll('.tx>*'),{y:36,opacity:0,duration:1,ease:'expo.out',stagger:.07,scrollTrigger:{trigger:a,start:'top 75%'}});
+    gsap.from(a.querySelector('.vis'),{x:left?80:-80,opacity:0,duration:1.3,ease:'expo.out',scrollTrigger:{trigger:a,start:'top 75%'}});
+    a.querySelectorAll('.p').forEach((p,k)=>gsap.fromTo(p,{y:[40,70,30][k]},{y:[-40,-70,-30][k],ease:'none',scrollTrigger:{trigger:a,start:'top bottom',end:'bottom top',scrub:true}}));
+  });
+  gsap.fromTo('.pug>img.bg',{yPercent:-8},{yPercent:8,ease:'none',scrollTrigger:{trigger:'.pug',start:'top bottom',end:'bottom top',scrub:true}});
+  gsap.from('.pug .big',{x:200,opacity:0,duration:1.4,ease:'expo.out',scrollTrigger:{trigger:'.pug',start:'top 70%'}});
+  gsap.from('.rg div',{y:60,opacity:0,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.rg',start:'top 85%'}});
+  gsap.from('.contact',{y:80,opacity:0,scale:.96,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.contact',start:'top 88%'}});
+  document.querySelectorAll('[data-n]').forEach(n=>{const v=+n.dataset.n;if(!v)return;const o={v:0};gsap.to(o,{v,duration:1.6,ease:'power2.out',scrollTrigger:{trigger:n,start:'top 92%'},onUpdate:()=>n.textContent=Math.round(o.v)})});
+}
+</script>
+</body>
+</html>

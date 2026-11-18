@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Redesign Snoochie Soft - 9 propozycji</title>
+<style>
+:root{--bg:#08080a;--ink:#f1f1ee;--mut:#9a9aa3;--line:rgba(255,255,255,.12);--ac:#d4f03c}
+*{box-sizing:border-box;margin:0}
+body{font:400 17px/1.55 system-ui,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink)}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.w{max-width:1320px;margin:0 auto;padding:0 clamp(16px,4vw,44px)}
+header{padding:70px 0 30px}
+header p.k{color:var(--ac);font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:13px;margin-bottom:14px}
+header h1{font-size:clamp(40px,6.4vw,96px);line-height:.95;letter-spacing:-.045em;margin-bottom:20px}
+header p{color:var(--mut);max-width:62ch}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:30px 0 60px}
+.c{display:block;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#0f0f12;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .3s}
+.c:hover{transform:translateY(-6px);border-color:var(--ac)}
+.c .im{aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line)}
+.c .im img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.c:hover .im img{transform:scale(1.05)}
+.c .b{padding:20px 22px 24px}
+.c .n{color:var(--ac);font-weight:700;font-size:13px;letter-spacing:.14em}
+.c h2{font-size:26px;letter-spacing:-.03em;margin:4px 0 8px}
+.c p{color:var(--mut);font-size:15px}
+.c .t{margin-top:12px;font-size:12.5px;color:#c5c5cc}
+.r{border-top:1px solid var(--line);padding:50px 0 80px}
+.r h3{font-size:30px;letter-spacing:-.03em;margin-bottom:18px}
+.r ul{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 40px;color:#c8c8d0;font-size:15.5px;list-style:none}
+.r li::before{content:"→ ";color:var(--ac)}
+@media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.grid{grid-template-columns:1fr}.r ul{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="w">
+<header><p class="k">Snoochie Soft · redesign · dark mode</p><h1>9 propozycji redesignu strony głównej</h1><p>Każda to działający mockup (prawdziwe ikony, ekrany i badge'e Play, animacje GSAP + ScrollTrigger + Lenis). Otwórz, przescrolluj, najedź myszą. Skrypty i grafiki są lokalne. Nic z produkcyjnej strony nie zostało ruszone.</p></header>
+<div class="grid" id="g"></div>
+<section class="r"><h3>Z czego to wynika (research 28 stron)</h3><ul>
+<li>Preloader z licznikiem 000→100 i wejście przez „bramę” (vault.hyperiux, byholm, Keltic, Bucks Sauce).</li>
+<li>Scena zamiast sekcji: scroll przybliża bieżącą scenę i wciąga następną (Whoopsies, Factura).</li>
+<li>Ciężki WebGL tylko tam, gdzie jest bohater: logo, maska, cząstki (Neuroform, Keltic, Thelonelypixel).</li>
+<li>Video-first i pasek miniatur na dole (First Chair, lafour, xk.studio).</li>
+<li>Neon + czerń, stickery, taśmy marquee, karty układane w stos (freeagency, thunder-buns, Bucks Sauce).</li>
+<li>Przejrzystość chili-logic: jeden pomysł na sekcję, naprzemienne wiersze z telefonami, dużo oddechu.</li>
+<li>Stos dominujący: GSAP 3.13 + ScrollTrigger + Lenis, więc to samo działa na GitHub Pages bez builda.</li>
+<li>Typografia specyfikacji / mono dla „katalogu” (kovalseo, muda, tiger.exposed, threezerofive).</li>
+</ul></section>
+</div>
+<script>
+const M=[
+['01','gold-rush','Gold Rush','Wodospad złotych monet (canvas, 140 monet, odpychane myszką) + preloader 000→100, jaskinia z kryształami przy Pugu, karty zasad obracane jak monety. Najbardziej „miliony monet”.','GSAP · canvas · Klein art'],
+['02','portal-zoom','Portal Zoom','Jedna przypięta scena; scroll wjeżdża w bieżącą aplikację (7× zoom + blur) i otwiera następną. Kolorowa poświata per aplikacja, szyna ikon.','GSAP pin + scrub'],
+['03','particle-morph','Particle Morph','Ikony aplikacji rozbite na ~6 tys. cząstek, które przepływają z jednej ikony w drugą (scroll / klik), odpychane kursorem. Tabela katalogu z podglądem ekranu przy hover.','canvas · Keltic-style'],
+['04','neon-lime','Neon Lime','Czerń + chartreuse, gigantyczny Anton, spadające naklejki z ikonami, taśmy marquee, karty zasypujące się w stos, kursor-pigułka, zębate krawędzie.','brutalizm · stacking cards'],
+['05','phone-ring','Phone Ring','Pierścień 3D z telefonami obracany scrollem; tło i akcent zmieniają kolor na barwę aplikacji, ekrany w telefonach się przełączają.','CSS 3D · scrub'],
+['06','clarity-rows','Clarity Rows','Najbliżej chili-logic: ciemne, ciepłe tło, naprzemienne wiersze 1 aplikacja = 1 ekran, paralaksa telefonów, odliczanie liczb. Najbezpieczniejszy i najczytelniejszy.','układ + subtelny ruch'],
+['07','control-room','Control Room','Pulpit HUD: radar z obracającą się wiązką, aplikacje jako systemy na pierścieniu, tabela parametrów, numeracja SNS-00X, log systemu.','mono · HUD'],
+['08','bento-aurora','Bento Aurora','Ciemne szklane kafle (bento) na tle chromowych wstęg z Kleina, światło podąża za kursorem w każdym kaflu, Bigi wyskakuje z kafla Pug Bubble Dig.','glassmorphism · Klein art'],
+['09','film-strip','Film Strip','Pełnoekranowe „odcinki” z wipe’em clip-path i paskiem miniatur jak w montażu; slajd Puga gra prawdziwy promo.mp4. Strzałki / swipe / auto.','video-first']
+];
+document.getElementById('g').innerHTML=M.map(m=>`<a class="c" href="${m[0]}-${m[1]}/index.html"><div class="im"><img src="thumbs/${m[0]}.jpg" alt="" loading="lazy"></div><div class="b"><div class="n">${m[0]}</div><h2>${m[2]}</h2><p>${m[3]}</p><div class="t">${m[4]}</div></div></a>`).join('');
+</script>
+</body>
+</html>

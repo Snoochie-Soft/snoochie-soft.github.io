@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Film Strip - Snoochie Soft redesign 09</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050506;--ink:#f5f3ee;--mut:#9c9a94;--c:#c9f23a;--ease:cubic-bezier(.76,0,.24,1)}
+*{box-sizing:border-box;margin:0}
+html,body{overflow-x:clip}
+body{font:400 17px/1.55 'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.bs{font-family:'Big Shoulders Display',Impact,sans-serif;text-transform:uppercase}
+.cine{position:relative;height:100vh;min-height:620px;overflow:hidden;background:#000}
+.slide{position:absolute;inset:0;clip-path:inset(0 0 0 100%);z-index:1}
+.slide.on{clip-path:inset(0);z-index:2}
+.slide .bg{position:absolute;inset:-4%;background-size:cover;background-position:center;filter:blur(30px) brightness(.5) saturate(1.5);transform:scale(1.2)}
+.slide video,.slide .art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.slide::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.05) 60%),linear-gradient(0deg,rgba(0,0,0,.85),transparent 40%)}
+.slide .ph{position:absolute;right:calc(14vw + var(--o,0px));top:50%;height:min(76vh,720px);aspect-ratio:9/19;margin-top:calc(min(76vh,720px)/-2 - 40px);border-radius:34px;border:7px solid #15161a;overflow:hidden;z-index:3;box-shadow:0 50px 120px rgba(0,0,0,.8);transform:rotate(4deg)}
+.slide .ph.b{right:calc(14vw + 17vh);transform:rotate(-5deg) scale(.88);z-index:2}
+.slide .ph img{width:100%;height:100%;object-fit:cover}
+.copy{position:absolute;left:clamp(18px,4vw,60px);bottom:190px;z-index:5;max-width:min(52vw,720px)}
+.copy .no{display:flex;gap:12px;align-items:center;font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--c);margin-bottom:12px}
+.copy .no img{width:38px;border-radius:24%}
+.copy h2{font:900 clamp(56px,10vw,170px)/.84 'Big Shoulders Display';text-transform:uppercase;letter-spacing:-.01em;margin-bottom:16px}
+.copy h2 .ln{display:block;overflow:hidden}.copy h2 .ln>span{display:inline-block}
+.copy p{color:#d8d6cf;max-width:42ch;margin-bottom:20px;font-size:clamp(16px,1.3vw,19px)}
+.badge{height:50px;width:auto}
+.top{position:absolute;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:20px clamp(18px,4vw,60px)}
+.top .logo{font:900 24px 'Big Shoulders Display';text-transform:uppercase;letter-spacing:.04em}
+.top .r{display:flex;gap:24px;font-size:14px;font-weight:500;color:#cfcdc6}
+.tag{position:absolute;left:clamp(18px,4vw,60px);top:76px;z-index:20;font:700 clamp(15px,1.4vw,19px) 'DM Sans';color:#d8d6cf;max-width:30ch}
+.strip{position:absolute;left:0;right:0;bottom:0;z-index:20;padding:0 clamp(18px,4vw,60px) 22px;display:flex;gap:10px;align-items:flex-end}
+.th{position:relative;flex:1;max-width:210px;cursor:pointer;opacity:.55;transition:opacity .4s,transform .5s var(--ease)}
+.th .im{position:relative;aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,.18)}
+.th .im img{width:100%;height:100%;object-fit:cover;filter:blur(1px) brightness(.8)}
+.th .im b{position:absolute;left:0;bottom:0;height:3px;background:var(--c);width:0}
+.th .im i{position:absolute;inset:0;display:grid;place-items:center;font:900 26px 'Big Shoulders Display';font-style:normal;color:#fff}
+.th small{display:block;margin-top:6px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#cfcdc6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.th:hover{opacity:1;transform:translateY(-6px)}.th.on{opacity:1;transform:translateY(-10px)}.th.on .im{border-color:var(--c)}
+.cnt{position:absolute;right:clamp(18px,4vw,60px);top:50%;z-index:20;font:900 18px 'Big Shoulders Display';letter-spacing:.2em;writing-mode:vertical-rl;color:#bdbbb4}
+.sec{padding:clamp(90px,10vw,160px) clamp(18px,4vw,60px) 30px;max-width:1440px;margin:0 auto}
+.sec h2{font:900 clamp(60px,12vw,200px)/.84 'Big Shoulders Display';text-transform:uppercase;margin-bottom:46px}
+.sec h2 span{color:var(--c)}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(255,255,255,.2)}
+.g3 div{padding:30px 28px 56px 0;border-right:1px solid rgba(255,255,255,.2)}
+.g3 div:not(:first-child){padding-left:28px}.g3 div:last-child{border:0}
+.g3 b{display:block;font:900 clamp(34px,4vw,64px)/.95 'Big Shoulders Display';text-transform:uppercase;margin:50px 0 8px}
+.g3 p{color:var(--mut)}.g3 i{font-style:normal;color:var(--c);font-weight:700;letter-spacing:.2em;font-size:13px}
+footer{max-width:1440px;margin:0 auto;padding:90px clamp(18px,4vw,60px) 34px}
+footer .m{display:block;font:900 clamp(34px,8.4vw,150px)/.9 'Big Shoulders Display';text-transform:uppercase;overflow-wrap:anywhere}
+footer .m:hover{color:var(--c)}
+footer .meta{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:60px;color:var(--mut);font-size:14px}
+@media(max-width:860px){.slide .ph{right:50%;margin-right:-18vh;height:48vh;margin-top:-36vh}.slide .ph.b{display:none}.copy{bottom:128px;max-width:none;right:18px}.copy p{display:none}.top .r{display:none}.tag{display:none}.cnt{display:none}.th small{display:none}.th{max-width:none}.g3{grid-template-columns:1fr}.g3 div{border-right:0;border-bottom:1px solid rgba(255,255,255,.2);padding-left:0!important}}
+</style>
+</head>
+<body>
+<section class="cine" id="cine">
+  <div id="slides"></div>
+  <div class="top"><span class="logo">Snoochie Soft</span><div class="r"><a href="#rules">House rules</a><a href="#contact">Contact</a><span>EN</span></div></div>
+  <div class="tag">Small apps, made properly. Seven Android apps, no accounts.</div>
+  <div class="cnt" id="cnt"></div>
+  <div class="strip" id="strip"></div>
+</section>
+
+<section class="sec" id="rules"><h2>House <span>rules</span></h2><div class="g3" id="g3"></div></section>
+<footer id="contact"><p style="color:var(--mut);margin-bottom:12px">Write to us</p><a class="m" id="mail"></a><div class="meta"><span>© 2026 Snoochie Soft · Bydgoszcz, Poland</span><span>Privacy · Terms · Support</span></div></footer>
+
+<script src="../vendor/gsap.min.js"></script><script src="../vendor/ScrollTrigger.min.js"></script><script src="../vendor/lenis.min.js"></script>
+<script src="../shared/apps.js"></script><script src="../shared/common.js"></script>
+<script>
+const N=APPS.length,DUR=6.5,root=document.getElementById('slides'),strip=document.getElementById('strip');
+const words=n=>n.split(' ').reduce((a,w,i,arr)=>{const last=a[a.length-1];if(last&&(last+' '+w).length<=11)a[a.length-1]=last+' '+w;else a.push(w);return a},[]);
+APPS.forEach((a,i)=>{
+  const isPug=i===6;
+  const bg=isPug?`<video class="vid" src="../assets/pug/promo.mp4" muted loop playsinline preload="auto"></video>`:`<div class="bg" style="background-image:url(${a.shots[1]})"></div><div class="bg" style="background-image:url(${a.shots[0]});opacity:.5;mix-blend-mode:screen"></div>`;
+  const phones=isPug?'':`<div class="ph b"><img src="${a.shots[1]}" alt=""></div><div class="ph"><img src="${a.shots[0]}" alt=""></div>`;
+  const s=el(`<div class="slide" style="--c:${a.c1}">${bg}${phones}<div class="copy"><div class="no"><img src="${a.icon}" alt="">${a.no} · ${a.cat}</div><h2 class="bs">${words(a.name).map(w=>`<span class="ln"><span>${w}</span></span>`).join('')}</h2><p>${a.kind}. ${a.line}</p><a href="${a.play}">${badge()}</a></div></div>`);
+  root.appendChild(s);
+  strip.appendChild(el(`<div class="th" data-i="${i}"><div class="im"><img src="${a.shots[0]}" alt=""><i>${String(i+1).padStart(2,'0')}</i><b></b></div><small>${a.short}</small></div>`));
+});
+const slides=[...root.children],ths=[...strip.children];
+document.getElementById('g3').innerHTML=RULES.map((r,i)=>`<div><i>0${i+1}</i><b>${r[0]}</b><p>${r[1]}</p></div>`).join('');
+const m=document.getElementById('mail');m.textContent=EMAIL;m.href='mailto:'+EMAIL;
+let cur=-1,tl=null,prog=null,lock=false;
+function go(i,dir=1){
+  if(i===cur||lock)return;
+  const prev=cur>=0?slides[cur]:null,next=slides[i];cur=i;
+  document.documentElement.style.setProperty('--c',APPS[i].c1);
+  ths.forEach((t,k)=>t.classList.toggle('on',k===i));
+  document.getElementById('cnt').textContent=String(i+1).padStart(2,'0')+' / '+String(N).padStart(2,'0');
+  const v=next.querySelector('video');if(v){v.currentTime=0;v.play().catch(()=>{})}
+  if(prev){const pv=prev.querySelector('video');setTimeout(()=>pv&&pv.pause(),1100)}
+  if(RM){slides.forEach(s=>s.classList.remove('on'));next.classList.add('on');restartProg();return}
+  lock=true;
+  gsap.set(next,{clipPath:'inset(0 0 0 100%)',zIndex:3,className:'slide on'});
+  const t=gsap.timeline({onComplete:()=>{if(prev){prev.classList.remove('on');gsap.set(prev,{clearProps:'clipPath,zIndex'})}gsap.set(next,{zIndex:2});lock=false}});
+  t.to(next,{clipPath:'inset(0 0 0 0%)',duration:1.1,ease:'power4.inOut'},0);
+  if(prev)t.to(prev,{xPercent:-12,duration:1.1,ease:'power4.inOut'},0).set(prev,{xPercent:0});
+  t.fromTo(next.querySelectorAll('.bg,video'),{scale:1.35},{scale:1.2,duration:2.2,ease:'power2.out'},0);
+  t.from(next.querySelectorAll('.copy .ln>span'),{yPercent:110,duration:1,ease:'expo.out',stagger:.09},.55);
+  t.from(next.querySelectorAll('.copy .no,.copy p,.copy a'),{y:30,opacity:0,duration:.9,ease:'expo.out',stagger:.08},.75);
+  t.from(next.querySelectorAll('.ph'),{y:160,opacity:0,rotate:0,duration:1.3,ease:'expo.out',stagger:.1},.5);
+  restartProg();
+}
+function restartProg(){if(prog)prog.kill();ths.forEach(t=>t.querySelector('b').style.width='0');if(RM||!auto)return;prog=gsap.fromTo(ths[cur].querySelector('b'),{width:'0%'},{width:'100%',duration:DUR,ease:'none',onComplete:()=>go((cur+1)%N)})}
+let auto=true;
+ths.forEach(t=>t.addEventListener('click',()=>{auto=false;go(+t.dataset.i)}));
+addEventListener('keydown',e=>{if(e.key==='ArrowRight'){auto=false;go((cur+1)%N)}if(e.key==='ArrowLeft'){auto=false;go((cur-1+N)%N)}});
+let sx=0;addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>50){auto=false;go(d<0?(cur+1)%N:(cur-1+N)%N)}},{passive:true});
+initSmooth();
+go(0);
+if(!RM){
+  gsap.from('.top,.tag,.strip,.cnt',{opacity:0,y:-20,duration:1.2,ease:'expo.out',delay:.4,stagger:.08});
+  gsap.from('.g3 div',{y:60,opacity:0,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.g3',start:'top 88%'}});
+  gsap.from('.sec h2',{y:80,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.sec',start:'top 80%'}});
+  gsap.from('footer .m',{yPercent:50,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'footer',start:'top 85%'}});
+  /* pause rotation when scrolled away */
+  ScrollTrigger.create({trigger:'#cine',start:'bottom top',onEnter:()=>prog&&prog.pause(),onLeaveBack:()=>prog&&prog.resume()});
+}
+</script>
+</body>
+</html>
