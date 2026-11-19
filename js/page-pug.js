@@ -64,7 +64,9 @@ if (!RM) {
     tx(nx * (S.ready ? 4 : 14)); ty(-ny * (S.ready ? 5 : 8));
     if (S.ready) {
       const k = 1 - Math.exp(-dt * 9);
-      let tp = S.c + nx * S.c, tv = ny;
+      // one axis at a time: looking mostly up/down centres the horizontal turn (and vice versa), so two poses never stack
+      const vdom = Math.abs(ny) > Math.abs(nx) * .9 + .05;
+      let tp = S.c + (vdom ? 0 : nx) * S.c, tv = vdom ? ny : 0;
       if (S.mode !== 'follow') { tp = S.c; tv = 0; }
       S.px = lerp(S.px, tp, k); S.py = lerp(S.py, tv, k);
       let frames = null, key;
@@ -75,14 +77,16 @@ if (!RM) {
         else { frames = S.ex.f[idx]; lamp = S.ex.l[idx]; key = 'e' + idx + S.ex.f.length; }
       }
       if (!frames) {
-        const p = clamp(S.px, 0, S.turn.f.length - 1), i = Math.floor(p), f = p - i;
-        const vert = Math.abs(S.py) > .03 && (S.py < 0 ? S.up : S.down), w = vert ? clamp(1 - Math.abs(nx) / .35, 0, 1) * clamp(Math.abs(S.py) * 1.6, 0, 1) : 0;
-        const vi = vert ? Math.abs(S.py) * (vert.f.length - 1) : 0, vf = Math.floor(vi);
+        const p = clamp(S.px, 0, S.turn.f.length - 1), i = Math.round(p), f = 0; // always one crisp frame, never a cross-fade of two poses
+        const vert = Math.abs(S.py) > .03 && (S.py < 0 ? S.up : S.down), w = vert && Math.abs(S.py) > Math.abs((S.px - S.c) / S.c) ? 1 : 0;
+        const vi = vert ? Math.abs(S.py) * (vert.f.length - 1) : 0, vf = Math.round(vi);
         key = [i, f.toFixed(2), vert ? vf + ':' + (vi - vf).toFixed(2) + ':' + w.toFixed(2) : 0, S.py < 0].join('|');
         if (key !== lastKey) {
           ctx.clearRect(0, 0, cv.width, cv.height);
-          ctx.drawImage(S.turn.f[i], 0, 0);
-          if (f > .02 && S.turn.f[i + 1]) { ctx.globalAlpha = f; ctx.drawImage(S.turn.f[i + 1], 0, 0); ctx.globalAlpha = 1; }
+          if (w < .98) {
+            ctx.drawImage(S.turn.f[i], 0, 0);
+            if (f > .02 && S.turn.f[i + 1]) { ctx.globalAlpha = f; ctx.drawImage(S.turn.f[i + 1], 0, 0); ctx.globalAlpha = 1; }
+          }
           if (w > .02) {
             ctx.globalAlpha = w; ctx.drawImage(vert.f[vf], 0, 0);
             const vg = vi - vf; if (vg > .02 && vert.f[vf + 1]) { ctx.globalAlpha = w * vg; ctx.drawImage(vert.f[vf + 1], 0, 0); }
