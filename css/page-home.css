@@ -199,3 +199,6 @@ footer{max-width:1240px;margin:0 auto;padding:10px clamp(14px,3vw,30px) 40px;col
   .bento .tile.p2 .ph.a{right:23%}
 }
 @media(max-width:480px){.acts .more{font-size:14.5px;padding:11px 14px}.tile .badge{height:42px}}
+footer .fbar{margin-top:0}
+.fbar a{text-decoration:underline;text-underline-offset:3px;color:var(--ink)}
+.fbar a:focus-visible{outline:2px solid #fff;outline-offset:3px}
