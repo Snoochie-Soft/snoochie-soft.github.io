@@ -72,8 +72,8 @@
     "rulesTitle": "House rules",
     "rulesSub": "Three promises we press into our releases. Each app page lists the ones it keeps, in its own words.",
     "rules": [
-      { "h": "No account", "p": "Open the app and use it. No sign-up wall and nothing to log in to before you can try it." },
-      { "h": "Works offline", "p": "Notes, games and recordings stay on your phone and keep working on a plane, on a train or with the Wi-Fi off." },
+      { "h": "No account", "p": "Open the app and use it. No sign-up wall. Signing in is only ever optional." },
+      { "h": "Works offline", "p": "Most of our apps keep working on a plane, on a train or with the Wi-Fi off. Each app page says what needs a connection." },
       { "h": "Honest pricing", "p": "What an app costs is shown before you pay. No surprise walls, no guilt trips, no shaming." }
     ],
     "contactTitle": "Write to the studio",

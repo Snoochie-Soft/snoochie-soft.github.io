@@ -116,3 +116,13 @@ footer{max-width:1240px;margin:0 auto;padding:10px clamp(14px,3vw,30px) 40px;col
 
 /* Pug banner: bigi sits next to the title arrow instead of the far right edge */
 @media(min-width:901px){.t7 .big{right:auto;left:46%}}
+
+/* app cards: shared footer bar (Learn more left, Google Play right) with phones peeking out above it; empty bar area stays click-through to the two card zones */
+.tile:not(.t7) .acts{margin:16px -26px -26px;padding:40px 26px 26px;background:linear-gradient(rgba(9,10,15,0),rgba(9,10,15,.92) 55%);pointer-events:none}
+.acts a{pointer-events:auto}
+.t4 .ph,.t5 .ph,.t6 .ph{bottom:-4%}
+@media(max-width:900px){.t4 .ph,.t5 .ph,.t6 .ph{bottom:-2%}}
+@media(max-width:560px){.t1 .ph,.t2 .ph,.t3 .ph{bottom:6%}}
+/* grid without holes: Szybciej (7 cols) spans the same 4 rows as Mossy + Fake Chat (2 rows each) */
+@media(min-width:901px){.t1{grid-row:span 4}}
+@media(min-width:901px){.t2 .ph{top:6%}.t3 .ph{top:8%}}
