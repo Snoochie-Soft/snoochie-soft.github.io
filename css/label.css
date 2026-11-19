@@ -448,3 +448,9 @@ section.block{padding:clamp(64px,8vw,112px) var(--gutter) 0}
 
 /* ribbon: open slot text aligns with button labels (buttons centre their text) */
 .scrub span.open{display:flex;align-items:center}
+/* footer legal block (own app's privacy/terms + link to /legal/) */
+.foot-legal li{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;grid-template-columns:none}
+.foot-legal .own .nm{font-weight:600;color:var(--on-panel)}
+.foot-legal .all a{color:var(--on-panel);text-decoration:underline;text-underline-offset:3px}
+.foot-legal .lg{justify-content:flex-start}
+@media(max-width:560px){.foot-legal li{display:flex;grid-template-columns:none}.foot-legal .lg{grid-column:auto}}

@@ -21,8 +21,9 @@
     "appPageLabel": "{name}, app page",
     "inPolish": "in Polish",
     "footer": {
-      "releases": "Releases",
-      "releasesLabel": "App pages and legal pages",
+      "releases": "Legal",
+      "releasesLabel": "Privacy policy and terms",
+      "legalAll": "Privacy & terms for all apps",
       "language": "Language",
       "contact": "Contact",
       "place": "Bydgoszcz, Poland",

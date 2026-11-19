@@ -189,11 +189,10 @@ function legalLinks(ctx, app, cls = "") {
 export function footer(ctx) {
   const t = ctx.t, cat = ctx.cat;
   const home = ctx.key === "home" ? "./" : href(ctx, langDir(cat, ctx.lang));
-  const rows = cat.apps.map((a) => {
-    const at = t.apps[a.id];
-    const legal = legalLinks(ctx, { ...a, legal: a.legal.filter((l) => l.key === "privacy" || l.key === "terms") });
-    return `<li><span class="no">${a.no}</span><a class="nm" href="${href(ctx, pageDir(cat, ctx.lang, a.id))}">${esc(at.name)}</a><span class="lg">${legal.join(" ")}</span></li>`;
-  }).join("");
+  const cur = cat.apps.find((a) => a.id === ctx.key);
+  const own = cur ? legalLinks(ctx, { ...cur, legal: cur.legal.filter((l) => l.key === "privacy" || l.key === "terms") }) : [];
+  const rows = (own.length ? `<li class="own"><span class="nm">${esc(t.apps[cur.id].name)}</span><span class="lg">${own.join(" ")}</span></li>` : "")
+    + `<li class="all"><a class="nm" href="${href(ctx, langDir(cat, ctx.lang) + "legal/")}">${esc(t.site.footer.legalAll)}</a></li>`;
   const langs = ctx.built.map((l) => {
     const m = ctx.langs[l].meta;
     return `<a href="${href(ctx, pageDir(cat, l, ctx.key))}" hreflang="${cat.languages[l].hreflang}" lang="${esc(m.lang)}" title="${esc(m.nameNative)}"${l === ctx.lang ? ' aria-current="page"' : ""}>${esc(m.short)}</a>`;
@@ -207,7 +206,7 @@ export function footer(ctx) {
       </a>
       <p>${esc(cat.site.email)}<br>${esc(t.site.footer.place)}</p>
     </div>
-    <nav class="foot-rel" aria-label="${esc(t.site.footer.releasesLabel)}"><h2>${esc(t.site.footer.releases)}</h2><ul>${rows}</ul></nav>
+    <nav class="foot-rel foot-legal" aria-label="${esc(t.site.footer.releasesLabel)}"><h2>${esc(t.site.footer.releases)}</h2><ul>${rows}</ul></nav>
     ${ctx.built.length > 1 ? `<nav class="foot-lang" aria-label="${esc(t.site.footer.language)}"><h2>${esc(t.site.footer.language)}</h2><div class="langs">${langs}</div></nav>` : ""}
   </div>
   <div class="foot-bar">
