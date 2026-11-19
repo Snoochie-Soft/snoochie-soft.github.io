@@ -126,3 +126,60 @@ footer{max-width:1240px;margin:0 auto;padding:10px clamp(14px,3vw,30px) 40px;col
 /* grid without holes: Szybciej (7 cols) spans the same 4 rows as Mossy + Fake Chat (2 rows each) */
 @media(min-width:901px){.t1{grid-row:span 4}}
 @media(min-width:901px){.t2 .ph{top:6%}.t3 .ph{top:8%}}
+
+/* v2 cards: big phones. 3-phone cards run full width, 2-phone cards are half width */
+.tile.chat .ph{aspect-ratio:555/1015}
+@media(min-width:901px){
+  .bento .tile.p3{grid-column:span 12;grid-row:auto;min-height:560px}
+  .bento .tile.p2{grid-column:span 6;grid-row:auto;min-height:600px}
+  .tile.p3 .t{max-width:34%}
+  .tile.p2 .t{max-width:42%}
+  .bento .tile.p3 .ph{width:21%;left:auto;bottom:auto}
+  .bento .tile.p3 .ph.a{right:44%;top:9%;transform:rotate(-5deg)}
+  .bento .tile.p3 .ph.b{right:23%;top:3%;transform:rotate(0deg)}
+  .bento .tile.p3 .ph.c{right:2%;top:11%;transform:rotate(5deg)}
+  .bento .tile.p2 .ph{width:33%;left:auto;bottom:auto}
+  .bento .tile.p2 .ph.a{right:25%;top:16%;transform:rotate(-5deg)}
+  .bento .tile.p2 .ph.b{right:2%;top:9%;transform:rotate(5deg)}
+  .tile.p3:hover .ph.a{transform:rotate(-8deg) translateY(-10px)}
+  .tile.p3:hover .ph.c{transform:rotate(8deg) translateY(10px)}
+  .tile.p2:hover .ph.a{transform:rotate(-8deg) translateY(-10px)}
+  .tile.p2:hover .ph.b{transform:rotate(8deg) translateY(10px)}
+}
+@media(max-width:900px){
+  .bento .tile.p2,.bento .tile.p3{min-height:680px}
+  .tile.p2 .t,.tile.p3 .t{max-width:none!important}
+  .bento .tile.p2 .ph{top:auto!important;bottom:-3%!important;width:44%!important;left:auto!important}
+  .bento .tile.p2 .ph.a{right:48%!important;transform:rotate(-4deg)}
+  .bento .tile.p2 .ph.b{right:4%!important;transform:rotate(4deg)}
+  .bento .tile.p3 .ph{top:auto!important;bottom:-3%!important;width:35%!important;left:auto!important}
+  .bento .tile.p3 .ph.a{right:62%!important;transform:rotate(-4deg)}
+  .bento .tile.p3 .ph.b{right:32%!important;transform:rotate(0deg)}
+  .bento .tile.p3 .ph.c{right:2%!important;transform:rotate(4deg)}
+}
+.tile.t4 .ph,.tile.chat .ph{aspect-ratio:1080/1975}
+.tile.chat .ph{aspect-ratio:555/1015}
+@media(min-width:901px){
+  .tile.p2 .t{max-width:40%}
+  .tile.p2 h3{font-size:clamp(22px,2.3vw,34px)}
+  .bento .tile.p2 .ph{width:31%}
+  .bento .tile.p2 .ph.a{right:24%}
+  .bento .tile.p2 .ph.b{right:1%}
+}
+@media(max-width:900px){
+  .bento .tile.p2{min-height:660px}
+  .bento .tile.p3{min-height:620px}
+  .bento .tile.p2 .ph{width:54%!important}
+  .bento .tile.p2 .ph.a{right:42%!important}
+  .bento .tile.p2 .ph.b{right:0!important}
+  .bento .tile.p3 .ph{width:42%!important}
+  .bento .tile.p3 .ph.a{right:56%!important}
+  .bento .tile.p3 .ph.b{right:29%!important}
+  .bento .tile.p3 .ph.c{right:2%!important}
+}
+@media(max-width:480px){
+  .acts{gap:8px}
+  .acts .more{padding:11px 14px;font-size:14px}
+  .acts .more [aria-hidden]{display:none}
+  .tile .badge{height:40px}
+}
