@@ -41,7 +41,7 @@ const shell = (lang, body) => `<!doctype html><html lang="${lang}"><head><meta c
 .og .cn{display:inline-block;font:600 18px/1 var(--mono);padding:9px 12px;border-radius:8px;background:#161a12;color:#d4f03c;margin-top:28px}
 </style></head><body>${body}</body></html>`;
 
-const browser = await chromium.launch({ executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe", headless: true });
+const browser = await chromium.launch({ executablePath: "C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe", headless: true });
 try {
   const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
   await mkdir(resolve(ROOT, "img/og"), { recursive: true });
@@ -53,10 +53,11 @@ try {
     for (const a of cat.apps) {
       const at = t.apps[a.id];
       jobs.push([a.id, `<div class="og app"><div class="mark"><img src="/${cat.site.studioMark}" alt="">${esc(t.site.studio)}</div>
-        <span class="cn">${a.no}</span><h1>${esc(at.name)}</h1><p>${esc(at.kind)}</p>
+        <h1>${esc(at.name)}</h1><p>${esc(at.kind)}</p>
         <div class="big">${cover(ctx, a, { full: true, sticker: true, lazy: false })}</div></div>`]);
     }
     for (const [key, body] of jobs) {
+      if (key === "home" && process.env.OG_SKIP_HOME) continue;
       const path = `/__og/${key}-${lang}.html`;
       pages.set(path, shell(t.meta.lang, body));
       await page.goto(base + path, { waitUntil: "networkidle" });
