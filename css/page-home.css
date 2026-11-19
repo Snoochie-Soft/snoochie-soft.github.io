@@ -183,3 +183,4 @@ footer{max-width:1240px;margin:0 auto;padding:10px clamp(14px,3vw,30px) 40px;col
   .acts .more [aria-hidden]{display:none}
   .tile .badge{height:40px}
 }
+@media(max-width:480px){.acts{flex-wrap:wrap;row-gap:10px}.acts .more{font-size:13.5px;padding:10px 13px}.tile:not(.t7) .acts{padding-top:56px}}
