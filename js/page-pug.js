@@ -19,7 +19,7 @@ if (!RM) {
   const ctx = cv.getContext('2d');
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const lerp = (a, b, t) => a + (b - a) * t;
-  const S = { px: 0, py: 0, c: 0, ready: false, mode: 'follow', ex: null, et: 0, next: 0, turn: null, up: null, down: null, exp: {}, names: [] };
+  const S = { reg: 'h', dg: null, px: 0, py: 0, c: 0, ready: false, mode: 'follow', ex: null, et: 0, next: 0, turn: null, up: null, down: null, exp: {}, names: [] };
   const base = 'img/bigi/';
   const load = (dir, n) => Promise.all(Array.from({ length: n }, (_, i) => new Promise(res => {
     const im = new Image(); im.decoding = 'async';
@@ -38,6 +38,7 @@ if (!RM) {
     const ld = async k => { const a = await load(k, m[k].n); return ok(a) ? { f: a, l: m[k].lamp } : null; };
     S.up = await ld('lookUp'); S.down = await ld('lookDown');
     if (navigator.connection && navigator.connection.saveData) return;
+    S.dg = {}; for (const k of ['upL', 'upR', 'dnL', 'dnR']) if (m[k]) S.dg[k] = await ld(k);
     for (const k of m.expr) { const e = await ld(k); if (e) { S.exp[k] = e; S.names.push(k); } }
   }).catch(() => {});
   const startExpr = (name) => {
@@ -64,9 +65,8 @@ if (!RM) {
     tx(nx * (S.ready ? 4 : 14)); ty(-ny * (S.ready ? 5 : 8));
     if (S.ready) {
       const k = 1 - Math.exp(-dt * 9);
-      // one axis at a time: looking mostly up/down centres the horizontal turn (and vice versa), so two poses never stack
-      const vdom = Math.abs(ny) > Math.abs(nx) * .9 + .05;
-      let tp = S.c + (vdom ? 0 : nx) * S.c, tv = vdom ? ny : 0;
+      // pose = one crisp frame from ONE clip: horizontal turn, vertical look or a diagonal clip; hysteresis keeps it from flickering between clips
+      let tp = S.c + nx * S.c, tv = ny;
       if (S.mode !== 'follow') { tp = S.c; tv = 0; }
       S.px = lerp(S.px, tp, k); S.py = lerp(S.py, tv, k);
       let frames = null, key;
@@ -77,24 +77,19 @@ if (!RM) {
         else { frames = S.ex.f[idx]; lamp = S.ex.l[idx]; key = 'e' + idx + S.ex.f.length; }
       }
       if (!frames) {
-        const p = clamp(S.px, 0, S.turn.f.length - 1), i = Math.round(p), f = 0; // always one crisp frame, never a cross-fade of two poses
-        const vert = Math.abs(S.py) > .03 && (S.py < 0 ? S.up : S.down), w = vert && Math.abs(S.py) > Math.abs((S.px - S.c) / S.c) ? 1 : 0;
-        const vi = vert ? Math.abs(S.py) * (vert.f.length - 1) : 0, vf = Math.round(vi);
-        key = [i, f.toFixed(2), vert ? vf + ':' + (vi - vf).toFixed(2) + ':' + w.toFixed(2) : 0, S.py < 0].join('|');
-        if (key !== lastKey) {
-          ctx.clearRect(0, 0, cv.width, cv.height);
-          if (w < .98) {
-            ctx.drawImage(S.turn.f[i], 0, 0);
-            if (f > .02 && S.turn.f[i + 1]) { ctx.globalAlpha = f; ctx.drawImage(S.turn.f[i + 1], 0, 0); ctx.globalAlpha = 1; }
-          }
-          if (w > .02) {
-            ctx.globalAlpha = w; ctx.drawImage(vert.f[vf], 0, 0);
-            const vg = vi - vf; if (vg > .02 && vert.f[vf + 1]) { ctx.globalAlpha = w * vg; ctx.drawImage(vert.f[vf + 1], 0, 0); }
-            ctx.globalAlpha = 1;
-          }
+        const p = clamp(S.px, 0, S.turn.f.length - 1), sx = (S.px - S.c) / S.c, sy = S.py, ax = Math.abs(sx), ay = Math.abs(sy), rt = ay / (ax + 1e-4);
+        if (S.reg === 'd') { if (rt < .38) S.reg = 'h'; else if (rt > 2.6) S.reg = 'v'; }
+        else if (S.reg === 'h') { if (rt > 2.6) S.reg = 'v'; else if (rt > .6) S.reg = 'd'; }
+        else { if (rt < .38) S.reg = 'h'; else if (rt < 1.7) S.reg = 'd'; }
+        let clip = null, ci = 0;
+        if (ay > .03 || ax > .03) {
+          if (S.reg === 'd') { clip = S.dg && S.dg[(sy < 0 ? 'up' : 'dn') + (sx < 0 ? 'L' : 'R')]; if (clip) ci = Math.round(clamp(Math.hypot(ax, ay) / 1.2, 0, 1) * (clip.f.length - 1)); }
+          if (!clip && S.reg !== 'h' && ay > .03) { clip = sy < 0 ? S.up : S.down; if (clip) ci = Math.round(clamp(ay, 0, 1) * (clip.f.length - 1)); }
         }
-        const lt = lampAt(S.turn.l, p);
-        lamp = w > .02 ? [lerp(lt[0], vert.l[Math.min(vert.l.length - 1, Math.round(vi))][0], w), lerp(lt[1], vert.l[Math.min(vert.l.length - 1, Math.round(vi))][1], w)] : lt;
+        const i = Math.round(p);
+        key = clip ? clip.f[ci].src : i;
+        if (key !== lastKey) { ctx.clearRect(0, 0, cv.width, cv.height); ctx.drawImage(clip ? clip.f[ci] : S.turn.f[i], 0, 0); }
+        lamp = clip ? clip.l[ci] : S.turn.l[i];
         if (S.mode === 'center' && Math.abs(S.px - S.c) < .6 && Math.abs(S.py) < .06) { S.mode = 'expr'; S.et = 0; }
         else if (S.mode === 'follow' && now > S.next && now - lastMove > 1500) startExpr();
         else if (S.mode === 'follow' && now > S.next) S.next = now + 1500;
