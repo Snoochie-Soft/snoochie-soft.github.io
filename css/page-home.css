@@ -184,3 +184,18 @@ footer{max-width:1240px;margin:0 auto;padding:10px clamp(14px,3vw,30px) 40px;col
   .tile .badge{height:40px}
 }
 @media(max-width:480px){.acts{flex-wrap:wrap;row-gap:10px}.acts .more{font-size:13.5px;padding:10px 13px}.tile:not(.t7) .acts{padding-top:56px}}
+
+/* readability: bigger card text and buttons */
+.tile .t>p:not(.no){font-size:clamp(16.5px,1.3vw,18.5px);line-height:1.5}
+.tile .no{font-size:13px}
+.acts .more{font-size:16.5px;padding:13px 24px}
+.tile .badge{height:48px}
+@media(min-width:901px){
+  .tile.p2 .t{max-width:44%}
+  .tile.p3 .t{max-width:31%}
+  .tile.p2 h3{font-size:clamp(26px,2.5vw,36px)}
+  .tile.p3 h3{font-size:clamp(32px,3.2vw,46px)}
+  .bento .tile.p2 .ph{width:30%}
+  .bento .tile.p2 .ph.a{right:23%}
+}
+@media(max-width:480px){.acts .more{font-size:14.5px;padding:11px 14px}.tile .badge{height:42px}}
