@@ -67,8 +67,14 @@ a:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:6px}
 .tile .cover{position:absolute;inset:0;z-index:1}
 .tile .t{pointer-events:none}.tile .t a{pointer-events:auto}
 .tile h3 a::after{content:" →";color:var(--c,#fff);font-weight:700}
-.acts{position:relative;z-index:3;margin-top:14px;align-self:flex-start}
-.acts .play{display:block}
+.acts{position:relative;z-index:3;margin-top:14px;align-self:stretch;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.acts .play{display:block;flex:none}
+.acts .more{display:inline-flex;align-items:center;gap:6px;padding:12px 22px;border-radius:99px;background:var(--glass);border:1px solid var(--gb);backdrop-filter:blur(10px);color:#fff;font-weight:700;font-size:15px;white-space:nowrap;transition:background .3s,border-color .3s,transform .4s var(--ease)}
+.acts .more:hover{background:rgba(255,255,255,.14);border-color:color-mix(in srgb,var(--c,#fff) 60%,transparent);transform:translateY(-2px)}
+.acts .more:focus-visible,.acts .play:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:99px}
+/* whole card is two click zones: left half = app page, right half = Google Play */
+.tile .cover.l{right:50%}
+.tile .cover.r{left:50%}
 .contact .why{color:#b9bfd3;max-width:46ch}
 .rules .tile .no{margin-bottom:6px}
 footer{max-width:1240px;margin:0 auto;padding:10px clamp(14px,3vw,30px) 40px;color:var(--mut);font-size:14px}
@@ -107,3 +113,6 @@ footer{max-width:1240px;margin:0 auto;padding:10px clamp(14px,3vw,30px) 40px;col
   .t1 .ph.a{right:40%!important}.t1 .ph.b{right:4%!important}
   .t4,.t5,.t6{min-height:520px}
 }
+
+/* Pug banner: bigi sits next to the title arrow instead of the far right edge */
+@media(min-width:901px){.t7 .big{right:auto;left:46%}}
