@@ -221,7 +221,6 @@ export function cover(ctx, app, { full = false, sticker = false, lazy = true } =
   const at = appT(ctx, app);
   return `<div class="cover" style="--c1:${app.colors.c1};--c2:${app.colors.c2}">
     <div class="art">${motif(app)}</div>
-    <span class="cno">${app.no}</span>
     <img class="ico" src="${href(ctx, app.icon)}" alt="" width="64" height="64"${lazy ? ' loading="lazy"' : ""}>
     ${sticker ? `<span class="sticker"><span>${esc(at.sticker)}</span></span>` : ""}
     <p class="ttl">${esc(full ? at.name : at.short)}${full ? `<small>${esc(at.kind)}</small>` : ""}</p>
@@ -386,8 +385,8 @@ export function appPage(ctx, app) {
   const tracks = (arr, side) => arr.map((x, i) => `<li><span class="tn">${side}${i + 1}</span><span>${esc(x)}</span></li>`).join("");
   const others = cat.apps.filter((o) => o.id !== app.id).map((o) => {
     const ot = appT(ctx, o);
-    return `<li><a class="mini" href="${href(ctx, pageDir(cat, ctx.lang, o.id))}" style="--c1:${o.colors.c1};--c3:${o.colors.c3}"><span class="body"><span class="spine" aria-hidden="true">${o.no}</span>${cover(ctx, o)}</span><span class="cap"><span class="mono">${o.no}</span>${esc(ot.name)}</span></a></li>`;
-  }).join("") + `<li><div class="mini empty"><span class="body"><span class="mono">${cat.site.nextNo}</span><b>${esc(t.home.nextSlotTitle)}</b></span></div></li>`;
+    return `<li><a class="mini" href="${href(ctx, pageDir(cat, ctx.lang, o.id))}" style="--c1:${o.colors.c1};--c3:${o.colors.c3}"><span class="body"><span class="spine" aria-hidden="true">${esc(ot.spine || ot.short)}</span>${cover(ctx, o)}</span><span class="cap">${esc(ot.name)}</span></a></li>`;
+  }).join("") + `<li><div class="mini empty"><span class="body"><b>${esc(t.home.nextSlotTitle)}</b></span></div></li>`;
   const legal = legalLinks(ctx, app);
   const priv = app.legal.find((l) => l.key === "privacy");
   const privacyNear = priv ? `<p class="side-legal">${ICON.doc}<a href="${/^https?:/.test(priv.href) ? priv.href : href(ctx, priv.href)}"${priv.hreflang ? ` hreflang="${priv.hreflang}"` : ""}${/^https?:/.test(priv.href) ? ' rel="noopener"' : ""}>${esc(a.privacyNear)}</a>${priv.hreflang === "pl" ? ` <span class="note">(${esc(t.site.inPolish)})</span>` : ""}</p>` : "";
@@ -398,7 +397,7 @@ export function appPage(ctx, app) {
     ? `<p class="other-langs">${esc(a.otherLanguages)}: ${Object.entries(app.legacyAlternates).filter(([l]) => !ctx.built.includes(l)).map(([l, p]) => `<a href="${href(ctx, p)}" hreflang="${cat.languages[l].hreflang}" lang="${l}">${esc(cat.languages[l].native)}</a>`).join(", ")}</p>`
     : "";
   const credits = [
-    [a.creditRows.no, app.no], [a.creditRows.platform, a.platform], [a.creditRows.package, app.package],
+    [a.creditRows.platform, a.platform], [a.creditRows.package, app.package],
     [a.creditRows.languages, at.appLanguage], [a.creditRows.studio, `${t.site.studio}, ${t.site.footer.place}`],
   ].map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("");
   const notes = at.notes.map((n) => `<p>${esc(n)}</p>`).join("");
@@ -427,7 +426,7 @@ ${header(ctx)}
   <section class="sleeve-hero" aria-labelledby="h1">
     <div class="hero-text">
       <h1 id="h1">${esc(at.name)}</h1>
-      <p class="meta"><span class="catno">${app.no}</span><span>${esc(at.kind)}</span></p>
+      <p class="meta"><span>${esc(at.kind)}</span></p>
       <p class="line">${esc(at.line)}</p>
       ${at.languageNote ? `<p class="langnote">${esc(at.languageNote)}</p>` : ""}
       <div class="actions">
@@ -490,7 +489,7 @@ ${footer(ctx)}
 /* ---------- 404 ---------- */
 export function notFoundPage(ctx) {
   const t = ctx.t, cat = ctx.cat, n = t.notFound;
-  const list = cat.apps.map((a) => `<li><a href="/${pageDir(cat, ctx.lang, a.id)}"><span class="mono">${a.no}</span>${esc(t.apps[a.id].name)}</a></li>`).join("");
+  const list = cat.apps.map((a) => `<li><a href="/${pageDir(cat, ctx.lang, a.id)}">${esc(t.apps[a.id].name)}</a></li>`).join("");
   return `${head(ctx, { title: n.title, description: n.p, noindex: true })}
 <body class="nf">
 ${header(ctx)}

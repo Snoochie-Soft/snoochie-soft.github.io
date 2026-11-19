@@ -454,3 +454,5 @@ section.block{padding:clamp(64px,8vw,112px) var(--gutter) 0}
 .foot-legal .all a{color:var(--on-panel);text-decoration:underline;text-underline-offset:3px}
 .foot-legal .lg{justify-content:flex-start}
 @media(max-width:560px){.foot-legal li{display:flex;grid-template-columns:none}.foot-legal .lg{grid-column:auto}}
+
+.nf-list a{grid-template-columns:1fr}
