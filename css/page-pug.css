@@ -5,7 +5,15 @@ img,video{display:block;max-width:100%}a{color:inherit;text-decoration:none}
 h1,h2,h3,.dsp{font-family:'Lilita One',system-ui,sans-serif;font-weight:400;letter-spacing:.005em}
 .wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(18px,4vw,48px)}
 /* headlamp darkness */
-#dark{position:fixed;inset:0;z-index:20;pointer-events:none;background:radial-gradient(circle 340px at var(--x,50%) var(--y,40%),rgba(18,12,6,0) 0,rgba(18,12,6,.25) 55%,rgba(18,12,6,.78) 100%)}
+#dark{position:fixed;inset:0;z-index:20;pointer-events:none;background:radial-gradient(circle 400px at var(--x,50%) var(--y,40%),rgba(18,12,6,0) 0,rgba(18,12,6,.2) 42%,rgba(18,12,6,.86) 100%)}
+/* helmet lamp: glow on the helmet and a beam towards the cursor (position set in js/page-pug.js) */
+#beam{position:fixed;left:0;top:0;width:0;height:0;z-index:21;pointer-events:none;mix-blend-mode:screen;opacity:0;transition:opacity .4s}
+#beam.on{opacity:1}
+#beam .glow{position:absolute;left:-70px;top:-70px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(255,244,205,.95) 0,rgba(255,214,120,.55) 22%,rgba(255,190,70,.18) 52%,transparent 70%);animation:lampPulse 3.2s ease-in-out infinite}
+#beam .cone{position:absolute;left:0;top:-170px;width:var(--len,900px);height:340px;transform-origin:0 50%;rotate:var(--a,0deg);background:linear-gradient(90deg,rgba(255,226,150,.5),rgba(255,214,120,.22) 38%,transparent 100%);clip-path:polygon(0 47%,100% 0,100% 100%,0 53%);filter:blur(6px)}
+@keyframes lampPulse{50%{opacity:.78;scale:.92}}
+/* readable copy stays above the darkness; the pug and the scenery sit under it */
+.hero .wrap>div:first-child,.step .txt,footer{position:relative;z-index:25}
 /* HUD */
 .nav{position:fixed;inset:0 0 auto 0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:16px clamp(16px,3vw,36px);background:linear-gradient(#120c06,rgba(18,12,6,0))}
 .brand{font-family:'Lilita One';font-size:22px;display:flex;align-items:center;gap:10px}
