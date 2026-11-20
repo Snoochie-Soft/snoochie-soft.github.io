@@ -189,7 +189,7 @@ if (!RM) {
   const build = () => {
     if (jump) { jump.scrollTrigger && jump.scrollTrigger.kill(true); jump.kill(); jump = null; }
     gsap.set(bigi, { clearProps: 'all' }); gsap.set(pc, { clearProps: 'all' }); gsap.set(sw, { clearProps: 'scale' });
-    $$('.hero .wrap>div:first-child,.stk,#bucket .dig').forEach(e => gsap.set(e, { clearProps: 'all' }));
+    $$('.hero .wrap>div:first-child,.stk,#bucket .dig:not(.more)').forEach(e => gsap.set(e, { clearProps: 'all' }));
     layout();
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;   // no pinned jump: Bigi just sits by the shaft
     const V = innerHeight, hr = hero.getBoundingClientRect(), br = bigi.getBoundingClientRect();
@@ -204,7 +204,7 @@ if (!RM) {
       scrollTrigger: { trigger: hero, start: 'top top', end: '+=' + pinLen, pin: true, scrub: .5, anticipatePin: 1, invalidateOnRefresh: true },
     });
     jump.to('.hero .wrap>div:first-child', { autoAlpha: 0, x: -90, duration: 1.4 }, 0)
-        .to('#bucket .dig', { autoAlpha: 0, duration: .5 }, 0)
+        .to('#bucket .dig:not(.more)', { autoAlpha: 0, duration: .5 }, 0)
         .to('.cave', { '--g': .3, duration: 2.4 }, 0)
         .to('.stk', { scale: 0, duration: .8 }, .2)
         .to(bigi, { x: dx, duration: 3 }, 1)
@@ -226,9 +226,17 @@ if (!RM) {
   const goDig = () => {
     const s = $('.step'), r = s.getBoundingClientRect();
     const to = Math.round(scrollY + r.top + r.height / 2 - innerHeight / 2);
-    if (lenis) lenis.scrollTo(to, { duration: clamp((to - scrollY) / 420, 4.5, 8), easing: t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2 });
-    else scrollTo({ top: to, behavior: 'smooth' });
+    if (lenis) lenis.scrollTo(to, { duration: clamp((to - scrollY) / 420, 4.5, 8), easing: t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2, onComplete: arrived });
+    else { scrollTo({ top: to, behavior: 'smooth' }); setTimeout(arrived, 1200); }
   };
+  // after the ride: "scroll down to dig deeper" above Bigi's head, hidden as soon as the visitor scrolls on
+  if (matchMedia('(hover: none)').matches) {                 // phones: tap, not click
+    const d = $('#bucket .dig:not(.more)');
+    d.innerHTML = 'Tap<br>to start!<i aria-hidden="true"></i>'; d.setAttribute('aria-label', 'Tap to start: ride the bucket down to Level 01');
+  }
+  const more = $('#bucket .dig.more');
+  let moreAt = -1;
+  const arrived = () => { moreAt = scrollY; more.classList.add('on'); };
   sw.addEventListener('click', () => { if (bk.classList.contains('tap')) goDig(); });
   $('#bucket .dig').addEventListener('click', e => { e.stopPropagation(); goDig(); });
 
@@ -236,6 +244,7 @@ if (!RM) {
   gsap.fromTo(sw, { rotation: -1.1 }, { rotation: 1.1, duration: 2.8, ease: 'sine.inOut', yoyo: true, repeat: -1 });
   const rotQ = gsap.quickTo(bk, 'rotation', { duration: .9, ease: 'power3' });
   gsap.to(bk, { opacity: 0, ease: 'none', scrollTrigger: { trigger: '.fin', start: 'top 85%', end: 'top 40%', scrub: true } });
+  gsap.to('.hud', { autoAlpha: 0, ease: 'none', scrollTrigger: { trigger: '.fin', start: 'top 70%', end: 'top 35%', scrub: true } });
 
   /* ---------- per-frame: aim, lamp carrier (hero Bigi or the bucket), darkness mask, beam, glints ---------- */
   let last = performance.now(), lastSY = scrollY;
@@ -248,6 +257,7 @@ if (!RM) {
     bk.style.setProperty('--rh', Math.max(0, restTop + 3 - Math.max(0, ht + ropeTopRel)).toFixed(0) + 'px');
     rotQ(clamp(-sv / 1600, -3, 3));
     bk.classList.toggle('tap', sy < 40);
+    if (moreAt >= 0 && Math.abs(sy - moreAt) > 60) { moreAt = -1; more.classList.remove('on'); }
     dk.style.opacity = (.35 + .65 * clamp(sy / (pinLen * .9), 0, 1)).toFixed(2);   // the hero is lit enough to read, the shaft gets darker as you go down
     const r = fig.getBoundingClientRect();
     const figOp = +gsap.getProperty(bigi, 'opacity');
@@ -305,8 +315,11 @@ if (!RM) {
   gsap.from('.mus h2,.mus p,.chips', { y: 50, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.mus', start: 'top 65%' } });
   gsap.from('.mus .ph', { x: 80, rotate: 6, opacity: 0, duration: 1.3, ease: 'expo.out', scrollTrigger: { trigger: '.mus', start: 'top 65%' } });
   gsap.from('.fin h2', { y: 80, opacity: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: '.fin', start: 'top 70%' } });
-  gsap.from('.fin img.bg', { yPercent: 60, duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: '.fin', start: 'top 60%' } });
+  gsap.from('.fin .box', { yPercent: 40, opacity: 0, duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: '.fin', start: 'top 60%' } });
 }
+/* the last section fills the screen above the footer: at the very bottom only Bigi and his treasure glow are visible */
+const finH = () => document.documentElement.style.setProperty('--finh', Math.max(560, innerHeight - $('footer').offsetHeight) + 'px');
+finH(); addEventListener('resize', finH);
 const pv = $('#pv'), vp = $('#vplay');
 vp.addEventListener('click', () => {
   if (pv.paused) { pv.muted = false; pv.play(); vp.textContent = 'Pause trailer'; vp.setAttribute('aria-pressed', 'true'); }

@@ -76,12 +76,21 @@ h1,h2,h3,.dsp{font-family:'Lilita One',system-ui,sans-serif;font-weight:400;lett
 .vid video{width:100%;height:100%;object-fit:cover}
 .vid h2{font-size:clamp(40px,5vw,76px);line-height:.95;margin-bottom:12px}.vid p{color:var(--mut);max-width:30ch}
 /* final */
-.fin{position:relative;text-align:center;padding:100px 0 70px;overflow:hidden;background:radial-gradient(ellipse at 50% 100%,#6b3c0e 0,#120c06 65%)}
+.fin{position:relative;z-index:25;display:flex;flex-direction:column;min-height:var(--finh,100svh);text-align:center;padding:100px 0 0;overflow:hidden;background:radial-gradient(ellipse at 50% 100%,#6b3c0e 0,#120c06 65%)}
+.fin .in{position:relative;z-index:2}
+/* Bigi with the Google Play sign at the very bottom, lit from behind like a found treasure (the sign is the store link) */
+.fin .tr{flex:1;min-height:300px;position:relative}
+.fin .box{position:absolute;left:50%;bottom:0;translate:-50% 0;height:100%;aspect-ratio:884/1404}
+.fin .box img{position:relative;z-index:2;display:block;width:100%;height:100%;filter:drop-shadow(0 18px 30px rgba(0,0,0,.55))}
+.fin .rays{position:absolute;left:50%;top:44%;width:240%;aspect-ratio:1;translate:-50% -50%;z-index:0;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(255,214,110,.34) 0deg 7deg,rgba(255,214,110,0) 7deg 22deg);-webkit-mask-image:radial-gradient(closest-side,#000 8%,rgba(0,0,0,.5) 40%,transparent 72%);mask-image:radial-gradient(closest-side,#000 8%,rgba(0,0,0,.5) 40%,transparent 72%);mix-blend-mode:screen;animation:rays 70s linear infinite}
+.fin .halo{position:absolute;left:50%;top:48%;width:170%;aspect-ratio:1;translate:-50% -50%;z-index:1;border-radius:50%;background:radial-gradient(closest-side,rgba(255,236,170,.85),rgba(255,196,80,.5) 30%,rgba(255,150,40,.16) 60%,transparent);mix-blend-mode:screen;animation:halo 3.4s ease-in-out infinite}
+@keyframes rays{to{rotate:360deg}}@keyframes halo{50%{opacity:.78;scale:.96}}
+@media(prefers-reduced-motion:reduce){.fin .rays,.fin .halo{animation:none}}
+.fin a.sign{position:absolute;z-index:3;left:15%;top:61%;width:74%;height:23.3%;rotate:-8.5deg;border-radius:14px}
+.fin a.sign:focus-visible{outline:3px solid var(--amb);outline-offset:4px}
+.fin a.sign:hover~img,.fin .box:has(a.sign:hover) img{filter:drop-shadow(0 18px 30px rgba(0,0,0,.55)) brightness(1.06)}
 .fin h2{font-size:clamp(52px,9vw,150px);line-height:.88;margin-bottom:22px}
 .fin h2 span{color:var(--amb)}
-.fin .cta{justify-content:center}
-.fin img.bg{position:absolute;left:50%;bottom:-6%;translate:-50% 0;width:min(360px,60vw);opacity:.95;filter:drop-shadow(0 -10px 40px rgba(255,201,74,.35))}
-.fin .in{position:relative;z-index:2;padding-bottom:240px}
 footer{background:#0b0703;padding:26px 0;color:var(--mut);font-size:15px}footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 @media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.bigi{width:min(80%,330px);order:-1}.hero{padding-top:90px}.step{grid-template-columns:1fr;min-height:auto;gap:22px;padding:40px 0 40px 110px}.step .txt,.step:nth-child(even) .txt{order:0;text-align:left}.step p{margin-left:0}.step .ph,.step:nth-child(even) .ph{justify-self:start;width:min(100%,260px)}.node{display:none}.mus .wrap{grid-template-columns:1fr}.mus .ph{max-width:300px}.hud{display:none}#dark{background:radial-gradient(circle 260px at var(--x,50%) var(--y,40%),rgba(18,12,6,0) 0,rgba(18,12,6,.2) 55%,rgba(18,12,6,.7) 100%)}.s1{left:0}.s2{right:0}.nav{background:#120c06}.nav .btn{padding:9px 14px;font-size:15px}.hero h1{font-size:clamp(46px,15vw,80px)}}
 @media(prefers-reduced-motion:reduce){#dark{display:none}}
@@ -100,8 +109,6 @@ footer a{text-decoration:underline;text-underline-offset:3px}footer a:hover{colo
 footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 @media(max-width:860px){.nav .back span{display:none}.nav .l{gap:8px}.brand{font-size:19px}}
 @media(max-width:420px){.brand span{display:none}}
-.fin .in{padding-bottom:500px}
-@media(max-width:860px){.fin .in{padding-bottom:420px}}
 
 /* ===== cave, rope + bucket, era walls (js/page-pug.js drives them) ===== */
 .cave::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:var(--g,1);background:linear-gradient(90deg,rgba(10,6,4,.86) 0,rgba(10,6,4,.55) 30%,rgba(10,6,4,0) 52%,rgba(10,6,4,.12) 100%),linear-gradient(rgba(10,6,4,.5),transparent 22%,transparent 84%,#120c06)}
@@ -131,8 +138,11 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 #bucket .bk.f{position:absolute;left:0;top:0}
 /* "scroll to dig" hint inside the bucket handle; the bucket is clickable while the page is at the top (.tap set in js) */
 #bucket.tap .sw{pointer-events:auto;cursor:pointer}
-#bucket .dig{position:absolute;left:51.5%;top:21%;translate:-50% 0;z-index:3;display:flex;flex-direction:column;align-items:center;padding:4px 6px;border:0;background:none;color:#ffe3a0;font:800 clamp(9px,calc(var(--bw,160px)*.066),12px)/1.15 Nunito,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;text-align:center;text-shadow:0 1px 2px #000,0 0 10px rgba(0,0,0,.9);cursor:pointer;pointer-events:auto}
+#bucket .dig{position:absolute;left:51.5%;top:21%;translate:-50% 0;z-index:3;display:flex;flex-direction:column;align-items:center;padding:4px 6px;border:0;background:none;color:#ffe3a0;font:800 clamp(9px,calc(var(--bw,160px)*.066),12px)/1.15 Nunito,system-ui,sans-serif;letter-spacing:.12em;white-space:nowrap;text-transform:uppercase;text-align:center;text-shadow:0 1px 2px #000,0 0 10px rgba(0,0,0,.9);cursor:pointer;pointer-events:auto}
 #bucket .dig i{display:block;width:clamp(9px,calc(var(--bw,160px)*.07),13px);aspect-ratio:1;margin-top:5px;border-right:3px solid currentColor;border-bottom:3px solid currentColor;rotate:45deg;filter:drop-shadow(1px 1px 1px #000);animation:digcue 1.3s ease-in-out infinite}
+/* shown above Bigi's head when the click ride has arrived at Level 01, gone again once the visitor scrolls */
+#bucket .dig.more{top:auto;bottom:calc(100% - 9%);margin:0;padding:10px 16px 8px;font-size:clamp(11px,calc(var(--bw,160px)*.085),15px);letter-spacing:.14em;border-radius:14px;background:radial-gradient(closest-side,rgba(10,6,4,.78),rgba(10,6,4,.55) 70%,transparent);white-space:nowrap;pointer-events:none;visibility:hidden;opacity:0;translate:-50% 8px;transition:opacity .45s,translate .45s,visibility 0s .45s}
+#bucket .dig.more.on{visibility:visible;opacity:1;translate:-50% 0;transition:opacity .45s,translate .45s}
 #bucket .dig:focus-visible{outline:2px solid var(--amb);outline-offset:2px;border-radius:8px}
 @keyframes digcue{0%,100%{translate:0 0;opacity:.65}50%{translate:0 6px;opacity:1}}
 @media(prefers-reduced-motion:reduce){#bucket .dig i{animation:none}}
