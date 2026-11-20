@@ -10,7 +10,7 @@ h1,h2,h3,.dsp{font-family:'Lilita One',system-ui,sans-serif;font-weight:400;lett
 #beam{position:fixed;left:0;top:0;width:0;height:0;z-index:21;pointer-events:none;mix-blend-mode:screen;opacity:0;transition:opacity .4s}
 #beam.on{opacity:1}
 #beam .glow{position:absolute;left:-70px;top:-70px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(255,244,205,.95) 0,rgba(255,214,120,.55) 22%,rgba(255,190,70,.18) 52%,transparent 70%);animation:lampPulse 3.2s ease-in-out infinite}
-#beam .cone{position:absolute;left:0;top:-170px;width:var(--len,900px);height:340px;transform-origin:0 50%;rotate:var(--a,0deg);filter:blur(14px)}
+#beam .cone{position:absolute;left:0;top:calc(var(--ch,340px)/-2);width:var(--len,900px);height:var(--ch,340px);transform-origin:0 50%;rotate:var(--a,0deg);filter:blur(14px)}
 #beam .cone::before{content:"";position:absolute;inset:0;clip-path:polygon(0 47%,100% 0,100% 100%,0 53%);background:linear-gradient(90deg,rgba(255,226,150,.46),rgba(255,214,120,.2) 38%,transparent 100%)}
 @keyframes lampPulse{50%{opacity:.78;scale:.92}}
 /* readable copy stays above the darkness; the pug and the scenery sit under it */
@@ -70,14 +70,23 @@ h1,h2,h3,.dsp{font-family:'Lilita One',system-ui,sans-serif;font-weight:400;lett
 .mus .ph{position:relative}.mus .ph img{border-radius:36px;border:6px solid #2b1a05;box-shadow:0 30px 80px rgba(0,0,0,.6)}
 .mus .ph .stk{left:-30px;top:12%}
 /* video */
-.vid{padding:30px 0 80px}
-.vid .wrap{display:flex;gap:clamp(24px,5vw,70px);align-items:center;justify-content:center;flex-wrap:wrap}
+.vid{padding:30px 0 calc(80px + .0786*max(100vw,900px))}   /* room for the cave rocks that hang above the last section */
+/* phone frame left of the hanging bucket, text right of it (the bucket hangs in the middle column) */
+.vid .wrap{display:grid;grid-template-columns:1fr calc(var(--bw,160px)*1.6) 1fr;align-items:center}
+.vid .frame{justify-self:end}
+.vid .wrap>div:last-child{grid-column:3;justify-self:start}
 .vid .frame{width:min(100%,360px);aspect-ratio:460/880;border-radius:44px;border:7px solid #2b1a05;overflow:hidden;box-shadow:0 0 0 2px var(--amb),0 30px 80px rgba(0,0,0,.6);background:#000}
 .vid video{width:100%;height:100%;object-fit:cover}
+/* while the trailer plays Bigi looks at it and his lamp lights the whole screen evenly: the frame rises above the darkness layer */
+.vid .frame.lit{position:relative;z-index:22;box-shadow:0 0 0 2px var(--amb),0 0 90px rgba(255,205,110,.42),0 30px 80px rgba(0,0,0,.6);animation:litup .7s ease-out}
+@keyframes litup{from{filter:brightness(.45)}}
+@media(max-width:860px){.vid .wrap{grid-template-columns:1fr;gap:26px;padding-left:calc(24vw + var(--bw,84px)*.62 + 8px)}.vid .frame,.vid .wrap>div:last-child{grid-column:1;justify-self:start}}
 .vid h2{font-size:clamp(40px,5vw,76px);line-height:.95;margin-bottom:12px}.vid p{color:var(--mut);max-width:30ch}
 /* final */
-.fin{position:relative;z-index:25;display:flex;flex-direction:column;min-height:var(--finh,100svh);text-align:center;padding:100px 0 0;overflow:hidden;background:radial-gradient(ellipse at 50% 100%,#6b3c0e 0,#120c06 65%)}
+.fin{position:relative;z-index:25;display:flex;flex-direction:column;min-height:var(--finh,100svh);text-align:center;padding:100px 0 0;overflow-x:clip;background:radial-gradient(ellipse at 50% 100%,#6b3c0e 0,#120c06 65%)}
 .fin .in{position:relative;z-index:2}
+/* rocky cave overhang (Klein) on top of the last section: the bucket rides down behind it into the dark instead of being cut by a straight edge */
+.fin .cavetop{position:absolute;left:50%;top:0;width:max(100%,900px);max-width:none;height:auto;translate:-50% -62%;z-index:1;pointer-events:none;filter:brightness(.72)}
 /* Bigi with the Google Play sign at the very bottom, lit from behind like a found treasure (the sign is the store link) */
 .fin .tr{flex:1;min-height:300px;position:relative}
 .fin .box{position:absolute;left:50%;bottom:0;translate:-50% 0;height:100%;aspect-ratio:884/1404}

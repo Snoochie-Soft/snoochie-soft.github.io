@@ -62,15 +62,21 @@ ScrollTrigger.create({ trigger: document.body, start: 'top top', end: 'bottom bo
   if (b) setEra(b.dataset.n);
 } });
 
+/* while the trailer plays, Bigi watches it: the light aims at the video frame instead of the cursor */
+let watch = null;
+const ptr = { x: innerWidth * .5, y: innerHeight * .4 };
+addEventListener('pointermove', e => { ptr.x = e.clientX; ptr.y = e.clientY; });
+
 if (!RM) {
   /* aim = where the light points: the cursor, or a slow drift on touch screens */
   const aim = { x: innerWidth * .5, y: innerHeight * .4 };
   const qx = gsap.quickTo(aim, 'x', { duration: .5, ease: 'power3' }),
         qy = gsap.quickTo(aim, 'y', { duration: .5, ease: 'power3' });
-  addEventListener('pointermove', e => { qx(e.clientX); qy(e.clientY); });
+  addEventListener('pointermove', e => { if (!watch) { qx(e.clientX); qy(e.clientY); } });
   if (matchMedia('(pointer:coarse)').matches) {
     const o = { a: 0 };
     gsap.to(o, { a: 6.28, duration: 7, repeat: -1, ease: 'none', onUpdate: () => {
+      if (watch) return;
       qx(innerWidth * (.5 + .34 * Math.cos(o.a)));
       qy(innerHeight * (.42 + .24 * Math.sin(o.a * 1.3)));
     } });
@@ -102,7 +108,7 @@ if (!RM) {
     for (const k of m.expr.slice(0, slow ? 5 : 99)) { const e = await ld(k); if (e) { S.exp[k] = e; S.names.push(k); } }
   }).catch(() => {});
   const startExpr = () => {
-    if (!S.ready || S.mode !== 'follow' || !S.names.length) return;
+    if (!S.ready || S.mode !== 'follow' || !S.names.length || watch) return;
     // never the same face twice in a row, and walk through all of them before repeating one
     if (!S.bag.length) { S.bag = S.names.filter(n => n !== S.last).sort(() => Math.random() - .5); }
     S.last = S.bag.pop(); S.ex = S.exp[S.last]; S.mode = 'center';
@@ -243,11 +249,14 @@ if (!RM) {
   /* bucket sways idly and swings with the scroll speed (a pendulum hanging from far above) */
   gsap.fromTo(sw, { rotation: -1.1 }, { rotation: 1.1, duration: 2.8, ease: 'sine.inOut', yoyo: true, repeat: -1 });
   const rotQ = gsap.quickTo(bk, 'rotation', { duration: .9, ease: 'power3' });
-  gsap.to(bk, { opacity: 0, ease: 'none', scrollTrigger: { trigger: '.fin', start: 'top 85%', end: 'top 40%', scrub: true } });
+  // the bucket rides down behind the rocky overhang on top of the last section and fades while the rocks cover it
+  const rockEdge = () => { const c = $('.fin .cavetop').getBoundingClientRect(), f = $('.fin').getBoundingClientRect(); return c.top + c.height * .294 - f.top; };
+  gsap.to(bk, { opacity: 0, ease: 'none', scrollTrigger: { trigger: '.fin', invalidateOnRefresh: true,
+    start: () => 'top ' + Math.round(restTop + Hb * .97 - rockEdge()) + 'px', end: () => 'top ' + Math.round(restTop + Hb * .2 - rockEdge()) + 'px', scrub: true } });
   gsap.to('.hud', { autoAlpha: 0, ease: 'none', scrollTrigger: { trigger: '.fin', start: 'top 70%', end: 'top 35%', scrub: true } });
 
   /* ---------- per-frame: aim, lamp carrier (hero Bigi or the bucket), darkness mask, beam, glints ---------- */
-  let last = performance.now(), lastSY = scrollY;
+  let last = performance.now(), lastSY = scrollY, wasCh = 0;
   gsap.ticker.add(() => {
     dk.style.setProperty('--x', aim.x + 'px');
     dk.style.setProperty('--y', aim.y + 'px');
@@ -257,6 +266,13 @@ if (!RM) {
     bk.style.setProperty('--rh', Math.max(0, restTop + 3 - Math.max(0, ht + ropeTopRel)).toFixed(0) + 'px');
     rotQ(clamp(-sv / 1600, -3, 3));
     bk.classList.toggle('tap', sy < 40);
+    if (watch) {                                   // look at the playing trailer, light the whole frame
+      const f = watch.getBoundingClientRect();
+      qx(f.left + f.width / 2); qy(f.top + f.height / 2);
+      if (S.mode !== 'follow') S.mode = 'follow';
+      const ch = Math.round(Math.max(340, f.height * 1.15));
+      if (ch !== wasCh) { wasCh = ch; beam.style.setProperty('--ch', ch + 'px'); }
+    } else if (wasCh) { wasCh = 0; beam.style.removeProperty('--ch'); qx(ptr.x); qy(ptr.y); }
     if (moreAt >= 0 && Math.abs(sy - moreAt) > 60) { moreAt = -1; more.classList.remove('on'); }
     dk.style.opacity = (.35 + .65 * clamp(sy / (pinLen * .9), 0, 1)).toFixed(2);   // the hero is lit enough to read, the shaft gets darker as you go down
     const r = fig.getBoundingClientRect();
@@ -320,8 +336,11 @@ if (!RM) {
 /* the last section fills the screen above the footer: at the very bottom only Bigi and his treasure glow are visible */
 const finH = () => document.documentElement.style.setProperty('--finh', Math.max(560, innerHeight - $('footer').offsetHeight) + 'px');
 finH(); addEventListener('resize', finH);
-const pv = $('#pv'), vp = $('#vplay');
-vp.addEventListener('click', () => {
-  if (pv.paused) { pv.muted = false; pv.play(); vp.textContent = 'Pause trailer'; vp.setAttribute('aria-pressed', 'true'); }
-  else { pv.pause(); vp.textContent = 'Play trailer'; vp.setAttribute('aria-pressed', 'false'); }
-});
+const pv = $('#pv'), vp = $('#vplay'), vframe = $('.vid .frame');
+const vstate = on => { vp.textContent = on ? 'Pause trailer' : 'Play trailer'; vp.setAttribute('aria-pressed', on ? 'true' : 'false'); watch = on ? vframe : null; vframe.classList.toggle('lit', on); };
+vp.addEventListener('click', () => { if (pv.paused) { pv.muted = false; pv.play(); } else pv.pause(); });
+pv.addEventListener('play', () => vstate(true));
+pv.addEventListener('pause', () => vstate(false));
+pv.addEventListener('ended', () => { vstate(false); pv.load(); });   // back to the poster after the trailer
+// scrolled away from the trailer: pause it, so Bigi does not stare at an empty spot and the sound stops
+new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting && !pv.paused) pv.pause(); }), { threshold: .2 }).observe(vframe);
