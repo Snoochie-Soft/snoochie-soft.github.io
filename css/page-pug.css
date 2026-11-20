@@ -14,13 +14,13 @@ h1,h2,h3,.dsp{font-family:'Lilita One',system-ui,sans-serif;font-weight:400;lett
 #beam .cone::before{content:"";position:absolute;inset:0;clip-path:polygon(0 47%,100% 0,100% 100%,0 53%);background:linear-gradient(90deg,rgba(255,226,150,.46),rgba(255,214,120,.2) 38%,transparent 100%)}
 @keyframes lampPulse{50%{opacity:.78;scale:.92}}
 /* readable copy stays above the darkness; the pug and the scenery sit under it */
-.hero .wrap>div:first-child,.step .txt,footer{position:relative;z-index:25}
+.hero .wrap>div:first-child,.step .txt,.mus .wrap>div:first-child,.vid .wrap>div:last-child,footer{position:relative;z-index:25}
 /* HUD */
 .nav{position:fixed;inset:0 0 auto 0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:16px clamp(16px,3vw,36px);background:linear-gradient(#120c06,rgba(18,12,6,0))}
 .brand{font-family:'Lilita One';font-size:22px;display:flex;align-items:center;gap:10px}
 .brand img{width:34px;border-radius:9px}
 .btn{display:inline-flex;align-items:center;gap:8px;background:var(--amb);color:#2b1a05;font-weight:800;padding:11px 20px;border-radius:99px;transition:translate .5s var(--ease),background .3s}
-.btn:hover{translate:0 -3px;background:#fff3d9}
+@media(hover:hover){.btn:hover{translate:0 -3px;background:#fff3d9}}
 .hud{position:fixed;right:clamp(14px,2.4vw,34px);top:50%;translate:0 -50%;z-index:30;display:flex;flex-direction:column;align-items:center;gap:8px;font-family:'Lilita One';pointer-events:none}
 .hud b{font-size:30px;line-height:1;color:var(--amb);font-weight:400;min-width:3ch;text-align:center}
 .hud small{font:800 11px 'Nunito';letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
@@ -70,12 +70,12 @@ h1,h2,h3,.dsp{font-family:'Lilita One',system-ui,sans-serif;font-weight:400;lett
 .mus .ph{position:relative}.mus .ph img{border-radius:36px;border:6px solid #2b1a05;box-shadow:0 30px 80px rgba(0,0,0,.6)}
 .mus .ph .stk{left:-30px;top:12%}
 /* video */
-.vid{padding:30px 0 calc(80px + .0786*max(100vw,900px))}   /* room for the cave rocks that hang above the last section */
+.vid{padding:30px 0 calc(140px + .0786*max(100vw,900px))}   /* room for the cave rocks that hang above the last section */
 /* phone frame left of the hanging bucket, text right of it (the bucket hangs in the middle column) */
 .vid .wrap{display:grid;grid-template-columns:1fr calc(var(--bw,160px)*1.6) 1fr;align-items:center}
 .vid .frame{justify-self:end}
 .vid .wrap>div:last-child{grid-column:3;justify-self:start}
-.vid .frame{width:min(100%,360px);aspect-ratio:460/880;border-radius:44px;border:7px solid #2b1a05;overflow:hidden;box-shadow:0 0 0 2px var(--amb),0 30px 80px rgba(0,0,0,.6);background:#000}
+.vid .frame{cursor:pointer;width:min(100%,360px);aspect-ratio:720/1560;border-radius:44px;border:7px solid #2b1a05;overflow:hidden;box-shadow:0 0 0 2px var(--amb),0 30px 80px rgba(0,0,0,.6);background:#000}
 .vid video{width:100%;height:100%;object-fit:cover}
 /* while the trailer plays Bigi looks at it and his lamp lights the whole screen evenly: the frame rises above the darkness layer */
 .vid .frame.lit{position:relative;z-index:22;box-shadow:0 0 0 2px var(--amb),0 0 90px rgba(255,205,110,.42),0 30px 80px rgba(0,0,0,.6);animation:litup .7s ease-out}
@@ -198,8 +198,9 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .burst{position:fixed;z-index:16;width:10px;height:10px;margin:-5px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,#fff,#ffd36a 50%,transparent 72%)}
 @media(max-width:860px){#bucket{margin-left:calc(var(--bw,84px)/-2)}.era .elab{top:4%;font-size:11px;padding:2px 9px}.cave::after{background:linear-gradient(rgba(10,6,4,.7),rgba(10,6,4,.25) 40%,rgba(10,6,4,.85))}}
 @media(prefers-reduced-motion:reduce){#bucket{display:none}.era .p{display:none}}
-/* phones: text on top, the scene fills the lower part (rope on the left third, Bigi on the floor on the right), eras show one cluster at the edge */
-@media(max-width:860px){
+/* phones (portrait): text on top, the scene fills the lower part (rope on the left third, Bigi on the floor on the right), eras show one cluster at the edge;
+   a phone held sideways keeps the wide layout, the scene would not fit under the text */
+@media(max-width:860px) and (orientation:portrait){
 .hero{align-items:start;padding:84px 0 0}
 .hero .wrap{padding-inline:18px}
 .hero .wrap>div:first-child{max-width:min(100%,360px)}
@@ -215,3 +216,64 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .era .cv>img{--mh:linear-gradient(90deg,#000 55%,transparent)}
 .era:nth-child(even) .cv>img{--mh:linear-gradient(270deg,#000 55%,transparent)}
 }
+/* phones: every text block starts right of the hanging bucket (rope at 24% of the width) */
+@media(max-width:860px){.step{padding-left:calc(24vw + var(--bw,84px)*.55 + 6px)}.mus .wrap{padding-left:calc(24vw + var(--bw,84px)*.55 + 6px)}.vid .wrap{padding-left:calc(24vw + var(--bw,84px)*.55 + 6px)}}
+/* phone held sideways: a short screen, so the hero text and Bigi shrink to fit above the fold */
+@media(orientation:landscape) and (max-height:520px){
+.hero .wrap>div:first-child{max-width:46vw}
+.hero h1{font-size:clamp(28px,4.4vw,42px);margin-bottom:8px}
+.hero p{font-size:14px;line-height:1.45;margin-bottom:10px}
+.hero .pl{display:none}
+.cave .bigi{width:calc(15%/var(--k));top:30%}
+.cave .stk{font-size:12px;padding:2px 8px;border-radius:8px}
+}
+/* phone held sideways, 860px wide or less: the bucket hangs in the middle of the screen (not at 24% like in portrait), so the steps, the museum and the trailer use the wide layout again: text and picture on either side of the rope */
+@media(max-width:860px) and (orientation:landscape) and (max-height:520px){
+.step{grid-template-columns:1fr 1fr;min-height:86vh;gap:calc(var(--bw,84px)*1.6);padding:30px 0}
+.step .txt{text-align:right}.step:nth-child(even) .txt{order:2;text-align:left}
+.step p{margin-left:auto}.step:nth-child(even) p{margin-left:0}
+.step .ph{justify-self:start}.step:nth-child(even) .ph{justify-self:end}
+.mus .wrap{grid-template-columns:1fr 1fr;gap:calc(var(--bw,84px)*1.6);padding-left:clamp(18px,4vw,48px)}
+.mus .ph{justify-self:start;max-width:none}
+.vid .wrap{grid-template-columns:1fr calc(var(--bw,84px)*1.6) 1fr;gap:0;padding-left:clamp(18px,4vw,48px)}
+.vid .frame{grid-column:1;justify-self:end}.vid .wrap>div:last-child{grid-column:3;justify-self:start}
+}
+/* phone held sideways (any width): the screen is short, so pictures are sized to it, headings shrink, the depth meter (it overlapped the text) goes and the nav is slimmer and solid */
+@media(orientation:landscape) and (max-height:520px) and (pointer:coarse){
+.hud{display:none}
+.nav{background:#120c06;padding-block:6px}
+.step h2,.mus h2,.vid h2{font-size:clamp(30px,5.4vw,46px);line-height:1}
+.mus .wrap{grid-template-columns:1fr 1fr;gap:calc(var(--bw,84px)*1.6)}
+.step .ph,.mus .ph{width:auto}
+.step .ph img,.mus .ph img{width:auto;height:min(70vh,300px)}
+.vid .frame{width:auto;height:min(76vh,330px)}
+}
+/* touch screens: tap targets of at least 40px (back arrow, logo, footer links) */
+@media(pointer:coarse){
+.nav .back{padding:9px 14px;margin-left:-4px}
+.brand{padding:3px;margin:-3px}
+footer .flinks{gap:0 20px}
+footer .flinks a{padding:10px 0}
+}
+/* phones, portrait: the rope hangs at 24% of the width and ran through the horizontal era stickers (a text column starts right of it), so the sticker stands upright along the left edge, reading bottom to top, in the strip left of the bucket */
+@media(max-width:860px) and (orientation:portrait){
+.era .elab{left:4px;writing-mode:vertical-rl;rotate:177deg;padding:10px 7px;line-height:1.15}
+}
+/* touch screens and narrow windows: "Tap to start!" / "Click to start!" in the bucket handle at 11px or more (it is broken "Tap to / start!" in the JS so both lines fit the narrowing arc) */
+@media(hover:none),(max-width:860px){
+#bucket .dig:not(.more){top:calc(21% + 3px);font-size:clamp(11px,calc(var(--bw,84px)*.125),12px);letter-spacing:.04em}
+}
+/* very short portrait screens (360x640, iPhone SE): tighter hero text so it ends above the crane and the bucket stays in view */
+@media(max-width:860px) and (orientation:portrait) and (max-height:700px){
+.hero .tag{font-size:13px;padding:2px 12px;margin-bottom:10px}
+.hero h1{font-size:clamp(34px,10.6vw,50px);margin-bottom:8px}
+.hero p{font-size:15px;line-height:1.4;margin-bottom:10px}
+.cta{gap:8px 10px}
+.cta .badge{height:46px}
+}
+/* the Polish SEO line is hidden on phones; give it a system font there so hiding it also keeps the Nunito latin-ext file (35 KB) from downloading */
+@media(max-width:860px) and (orientation:portrait),(orientation:landscape) and (max-height:520px){
+.hero .pl{font-family:system-ui,sans-serif}
+}
+
+

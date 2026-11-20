@@ -9,6 +9,16 @@ const bk = $('#bucket'), sw = bk.querySelector('.sw'), pc = $('#pc'), pctx = pc.
 const BJ = { w: 508, h: 970, rope: .5148 };   // bucket sprite size and where the rope hangs (img/bucket.json); Bigi rides in canvas #pc between the back and front layers
 const small = () => innerWidth <= 860;
 
+/* below-the-fold pictures (trailer poster, level screenshots, museum, rock overhang, finale) are fetched about 600px before they scroll into view, so none of them is part of the page load; their width/height attributes reserve the space meanwhile */
+{
+  const lazyEls = $$('[data-src],[data-poster]');
+  const reveal = el => { if (el.dataset.src) el.src = el.dataset.src; if (el.dataset.poster) el.poster = el.dataset.poster; };
+  if ('IntersectionObserver' in window) {
+    const lio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { reveal(e.target); lio.unobserve(e.target); } }), { rootMargin: '600px 0px' });
+    lazyEls.forEach(el => lio.observe(el));
+  } else lazyEls.forEach(reveal);
+}
+
 /* ---------- era walls: glints on the shiny spots + per-era particles ---------- */
 const GL = [];   // every glint: { el, band }
 const bands = $$('.era');
@@ -99,7 +109,9 @@ if (!RM) {
     im.src = base + dir + '/' + String(i).padStart(2, '0') + '.webp';
   })));
   const ok = a => a.every(Boolean);
-  fetch(base + 'manifest.json').then(r => r.json()).then(async m => {
+  // Bigi's frames are about 5 MB: they start only once the page has fired 'load' (and the browser is idle), so on a slow connection they never hold the load event back or compete with the cave, the bucket and the first screenshots. Until the turn frames are in, the static Bigi in the hero stays (S.ready is false).
+  const afterLoad = fn => { const go = () => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 1500 }) : setTimeout(fn, 300)); document.readyState === 'complete' ? go() : addEventListener('load', go, { once: true }); };
+  afterLoad(() => fetch(base + 'manifest.json').then(r => r.json()).then(async m => {
     const [tl, tr] = await Promise.all([load('turnL', m.turnL.n), load('turnR', m.turnR.n)]);
     if (!ok(tr) || !ok(tl)) return;
     S.turn = { f: [...tl.slice().reverse(), ...tr.slice(1)], l: [...m.turnL.lamp.slice().reverse(), ...m.turnR.lamp.slice(1)] };
@@ -114,10 +126,11 @@ if (!RM) {
     Promise.all(['LH', 'LC', 'RH', 'RC'].map(n => one('watch/' + n + '.webp'))).then(([lh, lc, rh, rc]) => { if (lh && lc && rh && rc) S.bl = { L: { H: lh, C: lc }, R: { H: rh, C: rc } }; });
     S.up = await ld('lookUp'); S.down = await ld('lookDown');
     if (navigator.connection && navigator.connection.saveData) return;
-    S.dg = {}; for (const k of ['upL', 'upR', 'dnL', 'dnR']) if (m[k]) S.dg[k] = await ld(k);
+    // diagonal looks only follow a mouse; touch screens skip them (about 2 MB less to download on a phone)
+    S.dg = {}; if (!matchMedia('(pointer:coarse)').matches) for (const k of ['upL', 'upR', 'dnL', 'dnR']) if (m[k]) S.dg[k] = await ld(k);
     const slow = small() || (navigator.connection && /2g|3g/.test(navigator.connection.effectiveType || ''));
-    for (const k of m.expr.slice(0, slow ? 5 : 99)) { const e = await ld(k); if (e) { S.exp[k] = e; S.names.push(k); } }
-  }).catch(() => {});
+    for (const k of m.expr.slice(0, slow ? 3 : 99)) { const e = await ld(k); if (e) { S.exp[k] = e; S.names.push(k); } }
+  }).catch(() => {}));
   const startExpr = () => {
     if (!S.ready || S.mode !== 'follow' || !S.names.length || watch) return;
     // never the same face twice in a row, and walk through all of them before repeating one
@@ -259,7 +272,12 @@ if (!RM) {
         .to({}, { duration: 1.2 }, 5.4);
   };
   build();
-  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { build(); ScrollTrigger.refresh(); }, 250); });
+  // touch screens: the address bar sliding in or out only changes the height a little (resize fires on every toggle); rebuilding the pinned hero then threw the page back up the scroll, so only a real size or rotation change rebuilds
+  let rt, rw = innerWidth, rh = innerHeight; const coarse = matchMedia('(pointer:coarse)').matches;
+  addEventListener('resize', () => {
+    if (coarse && innerWidth === rw && Math.abs(innerHeight - rh) < rh * .2) return;
+    clearTimeout(rt); rt = setTimeout(() => { rw = innerWidth; rh = innerHeight; build(); ScrollTrigger.refresh(); }, 250);
+  });
 
   /* click the bucket (or its "scroll to dig" hint) at the top: ride down slowly, Bigi jumps in on the way, stop at Level 01 */
   const goDig = () => {
@@ -269,10 +287,15 @@ if (!RM) {
     else { scrollTo({ top: to, behavior: 'smooth' }); setTimeout(arrived, 1200); }
   };
   // after the ride: "scroll down to dig deeper" above Bigi's head, hidden as soon as the visitor scrolls on
-  if (matchMedia('(hover: none)').matches) {                 // phones: tap, not click
-    const d = $('#bucket .dig:not(.more)');
-    d.innerHTML = 'Tap<br>to start!<i aria-hidden="true"></i>'; d.setAttribute('aria-label', 'Tap to start: ride the bucket down to Level 01');
-  }
+  // the hint in the bucket handle: "Tap to / start!" on touch screens, "Click to / start!" in a narrow window (the first line has to fit the arc of the handle), "Click / to start!" on a wide one
+  const hintBtn = $('#bucket .dig:not(.more)');
+  const setHint = () => {
+    const touch = matchMedia('(hover: none)').matches, mode = touch ? 'tap' : small() ? 'click-narrow' : 'click';
+    if (hintBtn.dataset.mode === mode) return; hintBtn.dataset.mode = mode;
+    hintBtn.innerHTML = (mode === 'tap' ? 'Tap to<br>start!' : mode === 'click-narrow' ? 'Click to<br>start!' : 'Click<br>to start!') + '<i aria-hidden="true"></i>';
+    hintBtn.setAttribute('aria-label', (touch ? 'Tap' : 'Click') + ' to start: ride the bucket down to Level 01');
+  };
+  setHint(); addEventListener('resize', setHint);
   const more = $('#bucket .dig.more');
   let moreAt = -1;
   const arrived = () => { moreAt = scrollY; more.classList.add('on'); };
@@ -371,6 +394,7 @@ finH(); addEventListener('resize', finH);
 const pv = $('#pv'), vp = $('#vplay'), vframe = $('.vid .frame');
 const vstate = on => { vp.textContent = on ? 'Pause trailer' : 'Play trailer'; vp.setAttribute('aria-pressed', on ? 'true' : 'false'); watch = on ? vframe : null; vframe.classList.toggle('lit', on); };
 vp.addEventListener('click', () => { if (pv.paused) { pv.muted = false; pv.play(); } else pv.pause(); });
+vframe.addEventListener('click', () => vp.click());   // tapping the phone picture itself plays / pauses, not only the button
 pv.addEventListener('play', () => vstate(true));
 pv.addEventListener('pause', () => vstate(false));
 pv.addEventListener('ended', () => { vstate(false); pv.load(); });   // back to the poster after the trailer
