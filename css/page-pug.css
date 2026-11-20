@@ -128,7 +128,17 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 #pc{position:absolute;left:11.81%;top:22.89%;width:75.59%;height:63.34%;visibility:hidden}
 #bucket .rope{position:absolute;left:calc(51.48% - var(--bw,160px)*.015);bottom:calc(100% - 3px);width:calc(var(--bw,160px)*.03);height:var(--rh,120vh);background:repeating-linear-gradient(168deg,#8e6c3f 0,#a98350 4px,#5e4222 8px,#8e6c3f 10px);background-position:0 var(--ry,0px);box-shadow:inset 3px 0 0 rgba(255,236,190,.28),inset -3px 0 0 rgba(0,0,0,.4);border-radius:3px}
 #bucket .rope::before{content:"";position:absolute;inset:0 -9px;background:radial-gradient(ellipse 14px 9px at 50% 24px,#e2bd78,#9a6e34 55%,#4c3216 78%,transparent 82%) 0 var(--ry,0px)/100% 380px repeat-y;filter:drop-shadow(0 3px 0 rgba(0,0,0,.45))}
-.hud .era{margin-top:6px;max-width:9ch;text-align:center;line-height:1.25;color:var(--amb)}
+.hud{width:116px}
+.hud small,.hud b{width:100%;text-align:center}
+.hud .era{margin-top:6px;text-align:center;line-height:1.25;color:var(--amb);text-wrap:balance;padding-left:.16em}
+/* hero cave: dark almost everywhere, a small candle on the well rim is the only light (positions in % of the scene image) */
+.cv>.dk{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 24% 34% at 59.5% 70%,rgba(5,3,2,0) 0,rgba(5,3,2,.14) 40%,rgba(5,3,2,.5) 100%),rgba(5,3,2,.2)}
+.candle{position:absolute;left:59.5%;top:73.2%;width:1.05%;aspect-ratio:1/2.4;z-index:1;translate:-50% -100%;background:linear-gradient(90deg,#c9b88c,#fff1cf 45%,#a8946a);border-radius:3px 3px 1px 1px;box-shadow:0 2px 3px rgba(0,0,0,.6);pointer-events:none}
+.candle .fl{position:absolute;left:50%;bottom:98%;width:84%;aspect-ratio:.58;translate:-50% 0;border-radius:50% 50% 50% 50%/62% 62% 38% 38%;background:radial-gradient(ellipse at 50% 72%,#fff 0,#ffe08a 34%,#ff9a2b 70%,rgba(255,120,30,0) 100%);transform-origin:50% 100%;animation:candle 1.7s ease-in-out infinite}
+.candle .gw{position:absolute;left:50%;bottom:100%;width:2900%;aspect-ratio:1;translate:-50% 56%;background:radial-gradient(circle,rgba(255,196,100,.62) 0,rgba(255,150,60,.26) 26%,rgba(255,120,40,.08) 50%,transparent 68%);mix-blend-mode:screen;animation:candleglow 2.3s ease-in-out infinite}
+@keyframes candle{0%,100%{transform:scale(1,1) rotate(-1.5deg)}30%{transform:scale(.92,1.08) rotate(2deg)}55%{transform:scale(1.05,.94) rotate(-.5deg)}78%{transform:scale(.95,1.05) rotate(1.5deg)}}
+@keyframes candleglow{0%,100%{opacity:.9}35%{opacity:.72}60%{opacity:1}80%{opacity:.8}}
+@media(prefers-reduced-motion:reduce){.candle .fl,.candle .gw{animation:none}}
 /* era walls */
 .descent{position:relative;overflow-x:clip}
 .descent>section{position:relative}
