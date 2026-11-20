@@ -83,10 +83,11 @@ h1,h2,h3,.dsp{font-family:'Lilita One',system-ui,sans-serif;font-weight:400;lett
 @media(max-width:860px){.vid .wrap{grid-template-columns:1fr;gap:26px;padding-left:calc(24vw + var(--bw,84px)*.62 + 8px)}.vid .frame,.vid .wrap>div:last-child{grid-column:1;justify-self:start}}
 .vid h2{font-size:clamp(40px,5vw,76px);line-height:.95;margin-bottom:12px}.vid p{color:var(--mut);max-width:30ch}
 /* final */
-.fin{position:relative;z-index:25;display:flex;flex-direction:column;min-height:var(--finh,100svh);text-align:center;padding:100px 0 0;overflow-x:clip;background:radial-gradient(ellipse at 50% 100%,#6b3c0e 0,#120c06 65%)}
+.fin{position:relative;z-index:25;display:flex;flex-direction:column;min-height:var(--finh,100svh);text-align:center;padding:100px 0 0;overflow:hidden;background:radial-gradient(ellipse at 50% 100%,#6b3c0e 0,#120c06 65%)}
 .fin .in{position:relative;z-index:2}
 /* rocky cave overhang (Klein) on top of the last section: the bucket rides down behind it into the dark instead of being cut by a straight edge */
-.fin .cavetop{position:absolute;left:50%;top:0;width:max(100%,900px);max-width:none;height:auto;translate:-50% -62%;z-index:1;pointer-events:none;filter:brightness(.72)}
+.cavewrap{position:relative;z-index:24;height:0;overflow-x:clip}   /* just under .fin (z 25): only the rocks above its top edge show */
+.cavewrap .cavetop{position:absolute;left:50%;top:0;width:max(100%,900px);max-width:none;height:auto;translate:-50% -62%;pointer-events:none;filter:brightness(.72)}
 /* Bigi with the Google Play sign at the very bottom, lit from behind like a found treasure (the sign is the store link) */
 .fin .tr{flex:1;min-height:300px;position:relative}
 .fin .box{position:absolute;left:50%;bottom:0;translate:-50% 0;height:100%;aspect-ratio:884/1404}

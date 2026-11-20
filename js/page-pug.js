@@ -85,7 +85,13 @@ if (!RM) {
   /* ---------- Bigi on the hero: real head-turn frames (generated clips), expressions on idle / click ---------- */
   const ctx = cv.getContext('2d');
   const paint = im => { ctx.clearRect(0, 0, cv.width, cv.height); ctx.drawImage(im, 0, 0); pctx.clearRect(0, 0, pc.width, pc.height); pctx.drawImage(im, 0, 0, pc.width, pc.height); };
-  const S = { reg: 'h', dg: null, px: 0, py: 0, c: 0, ready: false, mode: 'follow', ex: null, et: 0, next: 0, turn: null, up: null, down: null, exp: {}, names: [], bag: [], last: '' };
+  // dissolve from frame a to frame b (k 0..1): b underneath at full strength, a fading out on top, so Bigi never turns see-through
+  const mix = (a, b, k) => {
+    for (const [c, w, h] of [[ctx, cv.width, cv.height], [pctx, pc.width, pc.height]]) {
+      c.clearRect(0, 0, w, h); c.drawImage(b, 0, 0, w, h); c.globalAlpha = 1 - k; c.drawImage(a, 0, 0, w, h); c.globalAlpha = 1;
+    }
+  };
+  const S = { bl: null, blinkAt: -1, wNext: 0, reg: 'h', dg: null, px: 0, py: 0, c: 0, ready: false, mode: 'follow', ex: null, et: 0, next: 0, turn: null, up: null, down: null, exp: {}, names: [], bag: [], last: '' };
   const base = 'img/bigi/';
   const load = (dir, n) => Promise.all(Array.from({ length: n }, (_, i) => new Promise(res => {
     const im = new Image(); im.decoding = 'async';
@@ -100,7 +106,12 @@ if (!RM) {
     S.c = tl.length - 1; S.px = S.c;
     fig.classList.add('live'); S.ready = true;
     S.next = performance.now() + 3500;
-    const ld = async k => { const a = await load(k, m[k].n); return ok(a) ? { f: a, l: m[k].lamp, fps: m[k].fps || 18 } : null; };
+    // clips that end close to the calm pose just dissolve back; the others hold their last frame a moment first
+    const RET = ['sneeze', 'sleepy', 'wink2', 'blink', 'sniff'];
+    const ld = async k => { const a = await load(k, m[k].n); return ok(a) ? { f: a, l: m[k].lamp, fps: m[k].fps || 18, back: RET.includes(k) ? { hold: 0, fade: .18 } : { hold: .35, fade: .35 } } : null; };
+    // blink frames for the pose he holds while watching the trailer (turn frame 9 to either side, eyes painted in Klein)
+    const one = src => new Promise(res => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = base + src; });
+    Promise.all(['LH', 'LC', 'RH', 'RC'].map(n => one('watch/' + n + '.webp'))).then(([lh, lc, rh, rc]) => { if (lh && lc && rh && rc) S.bl = { L: { H: lh, C: lc }, R: { H: rh, C: rc } }; });
     S.up = await ld('lookUp'); S.down = await ld('lookDown');
     if (navigator.connection && navigator.connection.saveData) return;
     S.dg = {}; for (const k of ['upL', 'upR', 'dnL', 'dnR']) if (m[k]) S.dg[k] = await ld(k);
@@ -130,15 +141,25 @@ if (!RM) {
     // pose = one crisp frame from ONE clip: horizontal turn, vertical look or a diagonal clip; hysteresis keeps it from flickering between clips
     let tp = S.c + nx * S.c, tv = ny;
     if (S.mode !== 'follow') { tp = S.c; tv = 0; }
+    else if (watch) { tp = S.c + (nx < 0 ? -9 : 9); tv = 0; }       // watching the trailer: hold turn frame 9 towards it (the blink frames match it)
     S.px = lerp(S.px, tp, k); S.py = lerp(S.py, tv, k);
-    let frames = null, key;
+    let frames = null, key, mixed = false;
     if (S.mode === 'expr') {
       S.et += dt * S.ex.fps;
-      const n = S.ex.f.length, t = Math.floor(S.et), idx = t < n ? t : 2 * n - 2 - t;
-      if (idx < 0) { S.mode = 'follow'; S.next = now + 4000 + Math.random() * 4000; }
-      else { frames = S.ex.f[idx]; lamp = S.ex.l[idx]; key = 'e' + idx + S.ex.f.length; }
+      const n = S.ex.f.length, t = Math.floor(S.et);
+      if (t < n) { frames = S.ex.f[t]; lamp = S.ex.l[t]; }
+      else {
+        // each clip plays once (running it backwards looked like the same animation twice in a row), then dissolves to the calm pose
+        const b = S.ex.back, k = ((S.et - n) / S.ex.fps - b.hold) / b.fade;
+        if (k >= 1) { S.mode = 'follow'; S.next = now + 4000 + Math.random() * 4000; S.wNext = now + rnd(2500, 5000); }
+        else {
+          const q = clamp(k, 0, 1), la = S.ex.l[n - 1], lb = S.turn.l[S.c];
+          mix(S.ex.f[n - 1], S.turn.f[S.c], q); mixed = true; lastKey = '';
+          lamp = [lerp(la[0], lb[0], q), lerp(la[1], lb[1], q)];
+        }
+      }
     }
-    if (!frames) {
+    if (!frames && !mixed) {
       const p = clamp(S.px, 0, S.turn.f.length - 1), sx = (S.px - S.c) / S.c, sy = S.py, ax = Math.abs(sx), ay = Math.abs(sy), rt = ay / (ax + 1e-4);
       if (S.reg === 'd') { if (rt < .38) S.reg = 'h'; else if (rt > 2.6) S.reg = 'v'; }
       else if (S.reg === 'h') { if (rt > 2.6) S.reg = 'v'; else if (rt > .6) S.reg = 'd'; }
@@ -149,8 +170,20 @@ if (!RM) {
         if (!clip && S.reg !== 'h' && ay > .03) { clip = sy < 0 ? S.up : S.down; if (clip) ci = Math.round(clamp(ay, 0, 1) * (clip.f.length - 1)); }
       }
       const i = Math.round(p);
-      key = clip ? clip.f[ci].src : i;
-      if (key !== lastKey) paint(clip ? clip.f[ci] : S.turn.f[i]);
+      let img = clip ? clip.f[ci] : S.turn.f[i];
+      if (!watch) S.wOn = null;
+      if (watch && S.mode === 'follow' && S.ready) {
+        // while he watches: blink every few seconds, now and then turn to the visitor and wink
+        if (S.wOn !== watch) { S.wOn = watch; S.wNext = now + 1800; }   // first blink a moment after play
+        if (now > S.wNext) {
+          if (S.exp.wink2 && Math.random() < .3) { S.ex = S.exp.wink2; S.last = 'wink2'; S.mode = 'center'; S.wNext = now + rnd(7000, 11000); }
+          else { S.blinkAt = now; S.wNext = now + rnd(2200, 5200); }
+        }
+        const bi = Math.floor((now - S.blinkAt) / 36), side = i === S.c - 9 ? 'L' : i === S.c + 9 ? 'R' : '';
+        if (S.bl && side && !clip && bi >= 0 && bi < 4) img = S.bl[side][bi === 0 || bi === 3 ? 'H' : 'C'];
+      }
+      key = img.src;
+      if (key !== lastKey) paint(img);
       lamp = clip ? clip.l[ci] : S.turn.l[i];
       if (S.mode === 'center' && Math.abs(S.px - S.c) < .6 && Math.abs(S.py) < .06) { S.mode = 'expr'; S.et = 0; }
       else if (S.mode === 'follow' && now > S.next && now - lastMove > 1500) startExpr();
@@ -250,7 +283,7 @@ if (!RM) {
   gsap.fromTo(sw, { rotation: -1.1 }, { rotation: 1.1, duration: 2.8, ease: 'sine.inOut', yoyo: true, repeat: -1 });
   const rotQ = gsap.quickTo(bk, 'rotation', { duration: .9, ease: 'power3' });
   // the bucket rides down behind the rocky overhang on top of the last section and fades while the rocks cover it
-  const rockEdge = () => { const c = $('.fin .cavetop').getBoundingClientRect(), f = $('.fin').getBoundingClientRect(); return c.top + c.height * .294 - f.top; };
+  const rockEdge = () => { const c = $('.cavewrap .cavetop').getBoundingClientRect(), f = $('.fin').getBoundingClientRect(); return c.top + c.height * .294 - f.top; };
   gsap.to(bk, { opacity: 0, ease: 'none', scrollTrigger: { trigger: '.fin', invalidateOnRefresh: true,
     start: () => 'top ' + Math.round(restTop + Hb * .97 - rockEdge()) + 'px', end: () => 'top ' + Math.round(restTop + Hb * .2 - rockEdge()) + 'px', scrub: true } });
   gsap.to('.hud', { autoAlpha: 0, ease: 'none', scrollTrigger: { trigger: '.fin', start: 'top 70%', end: 'top 35%', scrub: true } });
@@ -269,7 +302,6 @@ if (!RM) {
     if (watch) {                                   // look at the playing trailer, light the whole frame
       const f = watch.getBoundingClientRect();
       qx(f.left + f.width / 2); qy(f.top + f.height / 2);
-      if (S.mode !== 'follow') S.mode = 'follow';
       const ch = Math.round(Math.max(340, f.height * 1.15));
       if (ch !== wasCh) { wasCh = ch; beam.style.setProperty('--ch', ch + 'px'); }
     } else if (wasCh) { wasCh = 0; beam.style.removeProperty('--ch'); qx(ptr.x); qy(ptr.y); }
