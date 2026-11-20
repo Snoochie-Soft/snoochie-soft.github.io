@@ -5,8 +5,8 @@ const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const lerp = (a, b, t) => a + (b - a) * t;
 const rnd = (a, b) => a + Math.random() * (b - a);
 const dk = $('#dark'), beam = $('#beam'), fig = $('#fig'), cv = $('#bc'), bigi = $('#bigi');
-const bk = $('#bucket'), sw = bk.querySelector('.sw'), bkF = bk.querySelector('.f'), bkE = bk.querySelector('.e');
-const BJ = { w: 508, h: 970, lamp: [.754, .2717], rope: .5148 };   // bucket sprite: lamp and rope position (from img/bucket.json)
+const bk = $('#bucket'), sw = bk.querySelector('.sw'), pc = $('#pc'), pctx = pc.getContext('2d');
+const BJ = { w: 508, h: 970, rope: .5148 };   // bucket sprite size and where the rope hangs (img/bucket.json); Bigi rides in canvas #pc between the back and front layers
 const small = () => innerWidth <= 860;
 
 /* ---------- era walls: glints on the shiny spots + per-era particles ---------- */
@@ -78,7 +78,8 @@ if (!RM) {
 
   /* ---------- Bigi on the hero: real head-turn frames (generated clips), expressions on idle / click ---------- */
   const ctx = cv.getContext('2d');
-  const S = { reg: 'h', dg: null, px: 0, py: 0, c: 0, ready: false, mode: 'follow', ex: null, et: 0, next: 0, turn: null, up: null, down: null, exp: {}, names: [] };
+  const paint = im => { ctx.clearRect(0, 0, cv.width, cv.height); ctx.drawImage(im, 0, 0); pctx.clearRect(0, 0, pc.width, pc.height); pctx.drawImage(im, 0, 0, pc.width, pc.height); };
+  const S = { reg: 'h', dg: null, px: 0, py: 0, c: 0, ready: false, mode: 'follow', ex: null, et: 0, next: 0, turn: null, up: null, down: null, exp: {}, names: [], bag: [], last: '' };
   const base = 'img/bigi/';
   const load = (dir, n) => Promise.all(Array.from({ length: n }, (_, i) => new Promise(res => {
     const im = new Image(); im.decoding = 'async';
@@ -93,15 +94,18 @@ if (!RM) {
     S.c = tl.length - 1; S.px = S.c;
     fig.classList.add('live'); S.ready = true;
     S.next = performance.now() + 3500;
-    const ld = async k => { const a = await load(k, m[k].n); return ok(a) ? { f: a, l: m[k].lamp } : null; };
+    const ld = async k => { const a = await load(k, m[k].n); return ok(a) ? { f: a, l: m[k].lamp, fps: m[k].fps || 18 } : null; };
     S.up = await ld('lookUp'); S.down = await ld('lookDown');
     if (navigator.connection && navigator.connection.saveData) return;
     S.dg = {}; for (const k of ['upL', 'upR', 'dnL', 'dnR']) if (m[k]) S.dg[k] = await ld(k);
-    for (const k of m.expr) { const e = await ld(k); if (e) { S.exp[k] = e; S.names.push(k); } }
+    const slow = small() || (navigator.connection && /2g|3g/.test(navigator.connection.effectiveType || ''));
+    for (const k of m.expr.slice(0, slow ? 5 : 99)) { const e = await ld(k); if (e) { S.exp[k] = e; S.names.push(k); } }
   }).catch(() => {});
-  const startExpr = name => {
+  const startExpr = () => {
     if (!S.ready || S.mode !== 'follow' || !S.names.length) return;
-    S.ex = S.exp[name || S.names[Math.floor(Math.random() * S.names.length)]]; S.mode = 'center';
+    // never the same face twice in a row, and walk through all of them before repeating one
+    if (!S.bag.length) { S.bag = S.names.filter(n => n !== S.last).sort(() => Math.random() - .5); }
+    S.last = S.bag.pop(); S.ex = S.exp[S.last]; S.mode = 'center';
   };
   fig.addEventListener('pointerdown', () => startExpr());
   fig.style.cursor = 'pointer';
@@ -123,7 +127,7 @@ if (!RM) {
     S.px = lerp(S.px, tp, k); S.py = lerp(S.py, tv, k);
     let frames = null, key;
     if (S.mode === 'expr') {
-      S.et += dt * 18;
+      S.et += dt * S.ex.fps;
       const n = S.ex.f.length, t = Math.floor(S.et), idx = t < n ? t : 2 * n - 2 - t;
       if (idx < 0) { S.mode = 'follow'; S.next = now + 4000 + Math.random() * 4000; }
       else { frames = S.ex.f[idx]; lamp = S.ex.l[idx]; key = 'e' + idx + S.ex.f.length; }
@@ -140,31 +144,40 @@ if (!RM) {
       }
       const i = Math.round(p);
       key = clip ? clip.f[ci].src : i;
-      if (key !== lastKey) { ctx.clearRect(0, 0, cv.width, cv.height); ctx.drawImage(clip ? clip.f[ci] : S.turn.f[i], 0, 0); }
+      if (key !== lastKey) paint(clip ? clip.f[ci] : S.turn.f[i]);
       lamp = clip ? clip.l[ci] : S.turn.l[i];
       if (S.mode === 'center' && Math.abs(S.px - S.c) < .6 && Math.abs(S.py) < .06) { S.mode = 'expr'; S.et = 0; }
       else if (S.mode === 'follow' && now > S.next && now - lastMove > 1500) startExpr();
       else if (S.mode === 'follow' && now > S.next) S.next = now + 1500;
     }
-    if (frames) { ctx.clearRect(0, 0, cv.width, cv.height); ctx.drawImage(frames, 0, 0); lastKey = ''; }
+    if (frames) { paint(frames); lastKey = ''; }
     else lastKey = key;
     return lamp;
   };
 
   /* ---------- rope + bucket: sizes, the jump scene ---------- */
-  let Hb = 300, restTop = 300, xOff = 0;
+  // The bucket hangs in the hero scene on the crane rope (scene art: rope at 50% of the image width, knot at 41%, shaft mouth at 76% of its height).
+  // Bigi rides in canvas #pc, drawn between the back layer and the front layer of the bucket sprite.
+  const PS = { l: .1181, t: .2289, w: .7559, h: .6334 };   // passenger canvas inside the sprite (fractions)
+  const KNOT = 135 / 970;                                    // sprite: y of the rope knot
+  let Hb = 300, Wb = 150, restTop = 300, xOff = 0, ropeTopRel = 0, pinLen = 800;
+  const hero = $('.hero'), scv = $('.hero .cv');
   const layout = () => {
-    const V = innerHeight;
-    Hb = small() ? 170 : clamp(V * .3, 220, 330);
-    const Wb = Hb * BJ.w / BJ.h;
-    restTop = V * (small() ? .3 : .34);
-    xOff = small() ? 56 - innerWidth / 2 - (BJ.rope - .5) * Wb : -(BJ.rope - .5) * Wb;
+    const V = innerHeight, hr = hero.getBoundingClientRect(), r = scv.getBoundingClientRect();
+    const cvTop = r.top - hr.top, cvH = r.height, ropeX = r.left + r.width * .5;
+    Hb = clamp(cvH * .4066, 150, V * .52);
+    Wb = Hb * BJ.w / BJ.h;
+    const knotY = cvTop + cvH * .41;
+    restTop = knotY - KNOT * Hb;
+    ropeTopRel = cvTop + cvH * .24;
+    xOff = ropeX - BJ.rope * Wb - innerWidth / 2 + Wb / 2;
+    document.documentElement.style.setProperty('--bw', Wb.toFixed(1) + 'px');
     bk.style.setProperty('--bw', Wb.toFixed(1) + 'px');
-    gsap.set(bk, { x: xOff, visibility: 'visible', transformOrigin: (BJ.rope * 100) + '% ' + (-V * 1.2) + 'px' });
+    gsap.set(bk, { x: xOff, y: restTop, visibility: 'visible', transformOrigin: (BJ.rope * 100) + '% ' + (-V * 1.2) + 'px' });
     gsap.set(sw, { transformOrigin: (BJ.rope * 100) + '% 0%' });
   };
   const burst = () => {
-    const br = bkF.getBoundingClientRect(), x = br.left + br.width * .5, y = br.top + br.height * .42;
+    const br = pc.getBoundingClientRect(), x = br.left + br.width * .5, y = br.top + br.height * .42;
     for (let i = 0; i < 16; i++) {
       const e = document.createElement('i'); e.className = 'burst'; e.style.left = x + 'px'; e.style.top = y + 'px';
       document.body.appendChild(e);
@@ -175,34 +188,36 @@ if (!RM) {
   let jump = null;
   const build = () => {
     if (jump) { jump.scrollTrigger && jump.scrollTrigger.kill(true); jump.kill(); jump = null; }
-    gsap.set(bigi, { clearProps: 'all' });
-    gsap.set([bkF, bkE], { clearProps: 'opacity' }); gsap.set(sw, { clearProps: 'scale' });
+    gsap.set(bigi, { clearProps: 'all' }); gsap.set(pc, { clearProps: 'all' }); gsap.set(sw, { clearProps: 'scale' });
     $$('.hero .wrap>div:first-child,.scroll,.stk').forEach(e => gsap.set(e, { clearProps: 'all' }));
     layout();
-    const V = innerHeight, hero = $('.hero'), hr = hero.getBoundingClientRect(), br = bigi.getBoundingClientRect();
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;   // no pinned jump: Bigi just sits by the shaft
+    const V = innerHeight, hr = hero.getBoundingClientRect(), br = bigi.getBoundingClientRect();
     const cx = br.left + br.width / 2, cy = br.top - hr.top + br.height / 2;
-    const tx2 = innerWidth / 2 + xOff + (BJ.rope - .5) * (Hb * BJ.w / BJ.h), ty2 = restTop + Hb * .5;
-    const dx = tx2 - cx, dy = ty2 - cy, sEnd = Hb * .62 / br.height, peak = Math.min(0, dy) - 170;
+    const drop = Hb * .3;                                              // Bigi hops to a point above the opening, then falls in
+    const px = innerWidth / 2 + xOff - Wb / 2 + (PS.l + PS.w / 2) * Wb;
+    const py = restTop + (PS.t + PS.h / 2) * Hb - drop;
+    const dx = px - cx, dy = py - cy, sEnd = PS.h * Hb / br.height, peak = Math.min(0, dy) - Hb * .5;
+    pinLen = Math.round(V * 1.05);
     jump = gsap.timeline({
       defaults: { ease: 'none' },
-      scrollTrigger: { trigger: hero, start: 'top top', end: '+=' + Math.round(V * 1.15), pin: true, scrub: .5, anticipatePin: 1, invalidateOnRefresh: true },
+      scrollTrigger: { trigger: hero, start: 'top top', end: '+=' + pinLen, pin: true, scrub: .5, anticipatePin: 1, invalidateOnRefresh: true },
     });
-    jump.to('.hero .wrap>div:first-child', { autoAlpha: 0, x: -90, duration: 1.6 }, 0)
+    jump.to('.hero .wrap>div:first-child', { autoAlpha: 0, x: -90, duration: 1.4 }, 0)
         .to('.scroll', { autoAlpha: 0, duration: .8 }, 0)
-        .to('.cave', { '--g': .25, duration: 2.4 }, 0)
+        .to('.cave', { '--g': .3, duration: 2.4 }, 0)
         .to('.stk', { scale: 0, duration: .8 }, .2)
-        .fromTo(bk, { y: -(Hb + 90) }, { y: restTop, duration: 3, ease: 'power2.out' }, .6)
-        .to(bigi, { x: dx, duration: 3 }, 4.2)
-        .to(bigi, { y: peak, duration: 1.5, ease: 'power2.out' }, 4.2)
-        .to(bigi, { y: dy, duration: 1.5, ease: 'power2.in' }, 5.7)
-        .to(bigi, { scale: sEnd, rotation: -8, duration: 3, ease: 'power1.inOut' }, 4.2)
-        .to(bkF, { opacity: 1, duration: .25 }, 7.2)
-        .to(bkE, { opacity: 0, duration: .25 }, 7.2)
-        .to(bigi, { autoAlpha: 0, duration: .25 }, 7.25)
-        .fromTo(sw, { scale: 1 }, { scale: 1.09, duration: .18, ease: 'power2.out' }, 7.2)
-        .to(sw, { scale: 1, duration: .8, ease: 'elastic.out(1,.45)' }, 7.38)
-        .call(() => { if (jump.scrollTrigger.direction > 0) burst(); }, null, 7.2)
-        .to({}, { duration: 1.2 }, 8.8);
+        .to(bigi, { x: dx, duration: 3 }, 1)
+        .to(bigi, { y: peak, duration: 1.4, ease: 'power2.out' }, 1)
+        .to(bigi, { y: dy, duration: 1.6, ease: 'power2.in' }, 2.4)
+        .to(bigi, { scale: sEnd, rotation: -8, duration: 3, ease: 'power1.inOut' }, 1)
+        .to(bigi, { autoAlpha: 0, duration: .01 }, 4)
+        .fromTo(pc, { autoAlpha: 0, y: -drop, rotation: -8 }, { autoAlpha: 1, y: -drop, rotation: -8, duration: .01, immediateRender: true }, 4)
+        .to(pc, { y: 0, rotation: 0, duration: .55, ease: 'power2.in' }, 4.01)
+        .fromTo(sw, { scale: 1 }, { scale: 1.08, duration: .16, ease: 'power2.out' }, 4.56)
+        .to(sw, { scale: 1, duration: .8, ease: 'elastic.out(1,.45)' }, 4.72)
+        .call(() => { if (jump.scrollTrigger.direction > 0) burst(); }, null, 4.56)
+        .to({}, { duration: 1.2 }, 5.4);
   };
   build();
   let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { build(); ScrollTrigger.refresh(); }, 250); });
@@ -219,18 +234,21 @@ if (!RM) {
     dk.style.setProperty('--y', aim.y + 'px');
     const now = performance.now(), dt = Math.min(.05, (now - last) / 1000); last = now;
     const sy = scrollY, sv = (sy - lastSY) / Math.max(dt, .001); lastSY = sy;
-    bk.style.setProperty('--ry', (-sy) + 'px');
+    bk.style.setProperty('--ry', -Math.max(0, sy - pinLen) + 'px');
+    const ht = hero.getBoundingClientRect().top;
+    bk.style.setProperty('--rh', Math.max(0, restTop + 3 - Math.max(0, ht + ropeTopRel)).toFixed(0) + 'px');
     rotQ(clamp(-sv / 1600, -3, 3));
+    dk.style.opacity = (.35 + .65 * clamp(sy / (pinLen * .9), 0, 1)).toFixed(2);   // the hero is lit enough to read, the shaft gets darker as you go down
     const r = fig.getBoundingClientRect();
     const figOp = +gsap.getProperty(bigi, 'opacity');
     const figVis = r.bottom > 0 && r.top < innerHeight && r.width > 0 && figOp > .05;
-    const bkOp = +gsap.getProperty(bkF, 'opacity') * +gsap.getProperty(bk, 'opacity');
-    const useBk = bkOp > .05 && bkOp >= (figVis ? figOp : 0);
+    const pcOp = getComputedStyle(pc).visibility === 'hidden' ? 0 : +gsap.getProperty(pc, 'opacity') * +gsap.getProperty(bk, 'opacity');
+    const useBk = pcOp > .05 && pcOp >= (figVis ? figOp : 0);
     beam.classList.toggle('on', figVis || useBk);
     let lx = -9999, ly = -9999, yOff = 0;
     if (useBk) {
-      const b = bkF.getBoundingClientRect();
-      lx = b.left + b.width * BJ.lamp[0]; ly = b.top + b.height * BJ.lamp[1]; yOff = b.height * .1;
+      const b = pc.getBoundingClientRect(), l = figTick(b, dt, now);
+      lx = b.left + b.width * l[0]; ly = b.top + b.height * l[1]; yOff = b.height * .17;
     } else if (figVis) {
       const l = figTick(r, dt, now);
       lx = r.left + r.width * l[0]; ly = r.top + r.height * l[1]; yOff = r.height * .17;

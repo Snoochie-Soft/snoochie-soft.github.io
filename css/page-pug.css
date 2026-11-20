@@ -104,12 +104,18 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 @media(max-width:860px){.fin .in{padding-bottom:420px}}
 
 /* ===== cave, rope + bucket, era walls (js/page-pug.js drives them) ===== */
-.cave::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:var(--g,1);background:linear-gradient(90deg,rgba(10,6,4,.92) 0,rgba(10,6,4,.7) 34%,rgba(10,6,4,.12) 70%,rgba(10,6,4,.3) 100%),linear-gradient(rgba(10,6,4,.55),transparent 26%,transparent 80%,#120c06)}
-.hero .wrap{position:relative}
+.cave::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:var(--g,1);background:linear-gradient(90deg,rgba(10,6,4,.86) 0,rgba(10,6,4,.55) 30%,rgba(10,6,4,0) 52%,rgba(10,6,4,.12) 100%),linear-gradient(rgba(10,6,4,.5),transparent 22%,transparent 84%,#120c06)}
+.hero .wrap{position:relative;max-width:none;margin:0;padding-inline:clamp(24px,5vw,96px) 0;grid-template-columns:1fr;pointer-events:none}
+.hero .wrap>div:first-child{max-width:min(36vw,560px);pointer-events:auto;text-shadow:0 2px 18px rgba(8,4,2,.85)}
+.hero h1{font-size:clamp(44px,5.8vw,112px)}
 .cave{position:absolute;inset:0;container-type:size;overflow:hidden}
-.cv{position:absolute;left:50%;top:50%;width:max(100cqw,100cqh*var(--ar,1.7778));aspect-ratio:var(--ar,1.7778);translate:-50% -50%}
+/* no transform here on purpose: .bigi (z 2) has to sit above the .cave::after shade */
+.cv{position:absolute;left:calc(50cqw - max(50cqw,50cqh*var(--ar,1.7778)));top:calc(50cqh - max(50cqh,50cqw/var(--ar,1.7778)));width:max(100cqw,100cqh*var(--ar,1.7778));aspect-ratio:var(--ar,1.7778)}
 .cv>img{display:block;width:100%;height:100%;max-width:none}
 .bigi::before{display:none}
+/* Bigi sits on the floor of the hero scene, right of the shaft with the crane (positions in % of the scene image) */
+.cave .bigi{position:absolute;z-index:2;left:64%;top:39%;width:17.6%}
+.cave .bigi img{filter:drop-shadow(0 18px 22px rgba(0,0,0,.55))}
 /* glints: little stars on gems and gold, they wake up when the lamp or the beam gets near (--k set in js) */
 .gl{position:absolute;width:calc(54px*var(--s,1));height:calc(54px*var(--s,1));margin:calc(-27px*var(--s,1)) 0 0 calc(-27px*var(--s,1));pointer-events:none;mix-blend-mode:screen;opacity:calc(.16 + var(--k,0)*.84);scale:calc(.55 + var(--k,0)*.85);background:radial-gradient(circle,#fff 0,var(--c,#ffe08a) 16%,transparent 52%),linear-gradient(90deg,transparent,var(--c,#ffe08a) 50%,transparent) center/100% 2px no-repeat,linear-gradient(0deg,transparent,var(--c,#ffe08a) 50%,transparent) center/2px 100% no-repeat;animation:glint var(--dd,3s) ease-in-out var(--dl,0s) infinite}
 @keyframes glint{50%{filter:brightness(1.7) saturate(1.2);rotate:20deg}}
@@ -118,16 +124,19 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 #bucket{position:fixed;left:50%;top:0;z-index:15;width:var(--bw,160px);margin-left:calc(var(--bw,160px)/-2);visibility:hidden;pointer-events:none;will-change:transform}
 #bucket .sw{position:relative;will-change:transform}
 #bucket img{display:block;width:100%;height:auto}
-#bucket .bk.f{position:absolute;left:0;top:0;opacity:0}
-#bucket .rope{position:absolute;left:calc(51.5% - 7px);bottom:calc(100% - 3px);width:14px;height:120vh;background:repeating-linear-gradient(168deg,#8e6c3f 0,#a98350 4px,#5e4222 8px,#8e6c3f 10px);background-position:0 var(--ry,0px);box-shadow:inset 3px 0 0 rgba(255,236,190,.28),inset -3px 0 0 rgba(0,0,0,.4);border-radius:3px}
+#bucket .bk.f{position:absolute;left:0;top:0}
+#pc{position:absolute;left:11.81%;top:22.89%;width:75.59%;height:63.34%;visibility:hidden}
+#bucket .rope{position:absolute;left:calc(51.48% - var(--bw,160px)*.015);bottom:calc(100% - 3px);width:calc(var(--bw,160px)*.03);height:var(--rh,120vh);background:repeating-linear-gradient(168deg,#8e6c3f 0,#a98350 4px,#5e4222 8px,#8e6c3f 10px);background-position:0 var(--ry,0px);box-shadow:inset 3px 0 0 rgba(255,236,190,.28),inset -3px 0 0 rgba(0,0,0,.4);border-radius:3px}
 #bucket .rope::before{content:"";position:absolute;inset:0 -9px;background:radial-gradient(ellipse 14px 9px at 50% 24px,#e2bd78,#9a6e34 55%,#4c3216 78%,transparent 82%) 0 var(--ry,0px)/100% 380px repeat-y;filter:drop-shadow(0 3px 0 rgba(0,0,0,.45))}
 .hud .era{margin-top:6px;max-width:9ch;text-align:center;line-height:1.25;color:var(--amb)}
 /* era walls */
 .descent{position:relative;overflow-x:clip}
 .descent>section{position:relative}
 .walls{position:absolute;inset:0;z-index:0;display:grid;grid-template-rows:repeat(7,1fr);pointer-events:none}
-.era{position:relative;container-type:size;--ar:2;-webkit-mask-image:linear-gradient(transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(transparent,#000 12%,#000 88%,transparent)}
-.era .cv>img{-webkit-mask-image:linear-gradient(90deg,#000 0,#000 21%,transparent 36%,transparent 64%,#000 79%,#000 100%);mask-image:linear-gradient(90deg,#000 0,#000 21%,transparent 36%,transparent 64%,#000 79%,#000 100%)}
+.era{position:relative;container-type:size;--ar:2}
+/* each picture is a little taller than its slot and fades out at the top and bottom, so neighbours dissolve into each other */
+.era .cv{left:50%;top:50%;translate:-50% -50%;width:max(90cqw,118cqh*2)}
+.era .cv>img{--mv:linear-gradient(transparent,#000 17%,#000 83%,transparent);--mh:linear-gradient(90deg,transparent,#000 7%,#000 22%,transparent 33%,transparent 67%,#000 78%,#000 93%,transparent);-webkit-mask-image:var(--mv),var(--mh);-webkit-mask-composite:source-in;mask-image:var(--mv),var(--mh);mask-composite:intersect}
 .era .elab{position:absolute;left:clamp(8px,2vw,30px);top:10%;font-family:'Lilita One';font-size:clamp(13px,1.3vw,18px);letter-spacing:.06em;text-transform:uppercase;color:#2b1a05;background:var(--amb);padding:3px 12px;border-radius:99px;rotate:-3deg;box-shadow:0 4px 0 rgba(0,0,0,.4);z-index:3;white-space:nowrap}
 /* era particles */
 .era .p{position:absolute;width:var(--z,5px);height:var(--z,5px);margin:0;border-radius:50%;pointer-events:none;opacity:0;animation:var(--an,rise) var(--d,5s) linear var(--dl,0s) infinite}
@@ -148,3 +157,20 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .burst{position:fixed;z-index:16;width:10px;height:10px;margin:-5px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,#fff,#ffd36a 50%,transparent 72%)}
 @media(max-width:860px){#bucket{margin-left:calc(var(--bw,84px)/-2)}.era .elab{top:4%;font-size:11px;padding:2px 9px}.cave::after{background:linear-gradient(rgba(10,6,4,.7),rgba(10,6,4,.25) 40%,rgba(10,6,4,.85))}}
 @media(prefers-reduced-motion:reduce){#bucket{display:none}.era .p{display:none}}
+/* phones: text on top, the scene fills the lower part (rope on the left third, Bigi on the floor on the right), eras show one cluster at the edge */
+@media(max-width:860px){
+.hero{align-items:start;padding:84px 0 0}
+.hero .wrap{padding-inline:18px}
+.hero .wrap>div:first-child{max-width:min(100%,360px)}
+.hero h1{font-size:clamp(40px,12.5vw,60px);margin-bottom:14px}
+.hero p{font-size:16px;margin-bottom:16px}
+.hero .pl{display:none}
+.cave{top:auto;height:58svh;-webkit-mask-image:linear-gradient(transparent,#000 22%);mask-image:linear-gradient(transparent,#000 22%)}
+.cave .cv{left:calc(24cqw - max(100cqw,100cqh*var(--ar,1.7778))/2)}
+.cave .bigi{left:63%;top:37%;width:19%}
+.era .cv{left:0;top:0;translate:none;width:max(100cqw,100cqh*2);height:100%;opacity:.5}
+.cave .stk{font-size:15px;padding:2px 10px;border-radius:10px}
+.era:nth-child(even) .cv{left:auto;right:0}
+.era .cv>img{--mh:linear-gradient(90deg,#000 55%,transparent)}
+.era:nth-child(even) .cv>img{--mh:linear-gradient(270deg,#000 55%,transparent)}
+}
