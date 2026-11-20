@@ -1,5 +1,5 @@
 /* Pug Bubble Dig page: dark cave, headlamp, Bigi jumps into the bucket and rides the rope down past the eras. */
-initSmooth();
+const lenis = initSmooth();
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const lerp = (a, b, t) => a + (b - a) * t;
@@ -189,7 +189,7 @@ if (!RM) {
   const build = () => {
     if (jump) { jump.scrollTrigger && jump.scrollTrigger.kill(true); jump.kill(); jump = null; }
     gsap.set(bigi, { clearProps: 'all' }); gsap.set(pc, { clearProps: 'all' }); gsap.set(sw, { clearProps: 'scale' });
-    $$('.hero .wrap>div:first-child,.scroll,.stk').forEach(e => gsap.set(e, { clearProps: 'all' }));
+    $$('.hero .wrap>div:first-child,.stk,#bucket .dig').forEach(e => gsap.set(e, { clearProps: 'all' }));
     layout();
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;   // no pinned jump: Bigi just sits by the shaft
     const V = innerHeight, hr = hero.getBoundingClientRect(), br = bigi.getBoundingClientRect();
@@ -204,7 +204,7 @@ if (!RM) {
       scrollTrigger: { trigger: hero, start: 'top top', end: '+=' + pinLen, pin: true, scrub: .5, anticipatePin: 1, invalidateOnRefresh: true },
     });
     jump.to('.hero .wrap>div:first-child', { autoAlpha: 0, x: -90, duration: 1.4 }, 0)
-        .to('.scroll', { autoAlpha: 0, duration: .8 }, 0)
+        .to('#bucket .dig', { autoAlpha: 0, duration: .5 }, 0)
         .to('.cave', { '--g': .3, duration: 2.4 }, 0)
         .to('.stk', { scale: 0, duration: .8 }, .2)
         .to(bigi, { x: dx, duration: 3 }, 1)
@@ -222,6 +222,16 @@ if (!RM) {
   build();
   let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { build(); ScrollTrigger.refresh(); }, 250); });
 
+  /* click the bucket (or its "scroll to dig" hint) at the top: ride down slowly, Bigi jumps in on the way, stop at Level 01 */
+  const goDig = () => {
+    const s = $('.step'), r = s.getBoundingClientRect();
+    const to = Math.round(scrollY + r.top + r.height / 2 - innerHeight / 2);
+    if (lenis) lenis.scrollTo(to, { duration: clamp((to - scrollY) / 420, 4.5, 8), easing: t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2 });
+    else scrollTo({ top: to, behavior: 'smooth' });
+  };
+  sw.addEventListener('click', () => { if (bk.classList.contains('tap')) goDig(); });
+  $('#bucket .dig').addEventListener('click', e => { e.stopPropagation(); goDig(); });
+
   /* bucket sways idly and swings with the scroll speed (a pendulum hanging from far above) */
   gsap.fromTo(sw, { rotation: -1.1 }, { rotation: 1.1, duration: 2.8, ease: 'sine.inOut', yoyo: true, repeat: -1 });
   const rotQ = gsap.quickTo(bk, 'rotation', { duration: .9, ease: 'power3' });
@@ -237,6 +247,7 @@ if (!RM) {
     const ht = hero.getBoundingClientRect().top;
     bk.style.setProperty('--rh', Math.max(0, restTop + 3 - Math.max(0, ht + ropeTopRel)).toFixed(0) + 'px');
     rotQ(clamp(-sv / 1600, -3, 3));
+    bk.classList.toggle('tap', sy < 40);
     dk.style.opacity = (.35 + .65 * clamp(sy / (pinLen * .9), 0, 1)).toFixed(2);   // the hero is lit enough to read, the shaft gets darker as you go down
     const r = fig.getBoundingClientRect();
     const figOp = +gsap.getProperty(bigi, 'opacity');

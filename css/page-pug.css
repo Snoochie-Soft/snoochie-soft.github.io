@@ -48,7 +48,6 @@ h1,h2,h3,.dsp{font-family:'Lilita One',system-ui,sans-serif;font-weight:400;lett
 .s2{right:-32%;top:12%;background:var(--amb);color:#2b1a05;--r:8deg}
 .s3{left:-31%;bottom:4%;background:#fff3d9;color:#2b1a05;--r:-4deg}
 @media(max-width:860px){.s1{left:-2%;top:3%}.s2{right:-6%;top:auto;bottom:34%}.s3{left:-6%;bottom:1%}}
-.scroll{position:absolute;left:50%;bottom:20px;translate:-50% 0;color:var(--mut);font-weight:800;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
 /* shaft */
 .shaft{position:relative;padding:60px 0 40px}
 .step{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(190px,15vw,260px);align-items:center;min-height:86vh;padding:30px 0}
@@ -84,7 +83,7 @@ h1,h2,h3,.dsp{font-family:'Lilita One',system-ui,sans-serif;font-weight:400;lett
 .fin img.bg{position:absolute;left:50%;bottom:-6%;translate:-50% 0;width:min(360px,60vw);opacity:.95;filter:drop-shadow(0 -10px 40px rgba(255,201,74,.35))}
 .fin .in{position:relative;z-index:2;padding-bottom:240px}
 footer{background:#0b0703;padding:26px 0;color:var(--mut);font-size:15px}footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.bigi{width:min(80%,330px);order:-1}.hero{padding-top:90px}.step{grid-template-columns:1fr;min-height:auto;gap:22px;padding:40px 0 40px 110px}.step .txt,.step:nth-child(even) .txt{order:0;text-align:left}.step p{margin-left:0}.step .ph,.step:nth-child(even) .ph{justify-self:start;width:min(100%,260px)}.node{display:none}.mus .wrap{grid-template-columns:1fr}.mus .ph{max-width:300px}.hud{display:none}#dark{background:radial-gradient(circle 260px at var(--x,50%) var(--y,40%),rgba(18,12,6,0) 0,rgba(18,12,6,.2) 55%,rgba(18,12,6,.7) 100%)}.s1{left:0}.s2{right:0}.nav{background:#120c06}.nav .btn{padding:9px 14px;font-size:15px}.hero h1{font-size:clamp(46px,15vw,80px)}.scroll{display:none}}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.bigi{width:min(80%,330px);order:-1}.hero{padding-top:90px}.step{grid-template-columns:1fr;min-height:auto;gap:22px;padding:40px 0 40px 110px}.step .txt,.step:nth-child(even) .txt{order:0;text-align:left}.step p{margin-left:0}.step .ph,.step:nth-child(even) .ph{justify-self:start;width:min(100%,260px)}.node{display:none}.mus .wrap{grid-template-columns:1fr}.mus .ph{max-width:300px}.hud{display:none}#dark{background:radial-gradient(circle 260px at var(--x,50%) var(--y,40%),rgba(18,12,6,0) 0,rgba(18,12,6,.2) 55%,rgba(18,12,6,.7) 100%)}.s1{left:0}.s2{right:0}.nav{background:#120c06}.nav .btn{padding:9px 14px;font-size:15px}.hero h1{font-size:clamp(46px,15vw,80px)}}
 @media(prefers-reduced-motion:reduce){#dark{display:none}}
 
 /* production additions */
@@ -130,18 +129,24 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 #bucket .sw{position:relative;will-change:transform}
 #bucket img{display:block;width:100%;height:auto}
 #bucket .bk.f{position:absolute;left:0;top:0}
+/* "scroll to dig" hint inside the bucket handle; the bucket is clickable while the page is at the top (.tap set in js) */
+#bucket.tap .sw{pointer-events:auto;cursor:pointer}
+#bucket .dig{position:absolute;left:51.5%;top:21%;translate:-50% 0;z-index:3;display:flex;flex-direction:column;align-items:center;padding:4px 6px;border:0;background:none;color:#ffe3a0;font:800 clamp(9px,calc(var(--bw,160px)*.066),12px)/1.15 Nunito,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;text-align:center;text-shadow:0 1px 2px #000,0 0 10px rgba(0,0,0,.9);cursor:pointer;pointer-events:auto}
+#bucket .dig i{display:block;width:clamp(9px,calc(var(--bw,160px)*.07),13px);aspect-ratio:1;margin-top:5px;border-right:3px solid currentColor;border-bottom:3px solid currentColor;rotate:45deg;filter:drop-shadow(1px 1px 1px #000);animation:digcue 1.3s ease-in-out infinite}
+#bucket .dig:focus-visible{outline:2px solid var(--amb);outline-offset:2px;border-radius:8px}
+@keyframes digcue{0%,100%{translate:0 0;opacity:.65}50%{translate:0 6px;opacity:1}}
+@media(prefers-reduced-motion:reduce){#bucket .dig i{animation:none}}
 #pc{position:absolute;left:11.81%;top:22.89%;width:75.59%;height:63.34%;visibility:hidden}
 #bucket .rope{position:absolute;left:calc(51.77% - var(--bw,160px)*.03346);bottom:calc(100% - 1px);width:calc(var(--bw,160px)*.06693);height:var(--rh,120vh);background:url(../pug-bubble-dig/img/rope.webp) left bottom/100% auto repeat-y}
 #bucket .rope::before{content:"";position:absolute;left:0;right:0;top:0;height:calc(var(--bw,160px)*.08);background:linear-gradient(rgba(10,6,4,.75),transparent)}
 .hud{width:116px}
 .hud small,.hud b{width:100%;text-align:center}
 .hud .era{margin-top:6px;text-align:center;line-height:1.25;color:var(--amb);text-wrap:balance;padding-left:.16em}
-/* hero cave: dark almost everywhere, a candle on the left end of the crane beam is the only light (positions in % of the scene image) */
-.cv>.dk{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 22% 30% at 39.6% 23%,rgba(5,3,2,0) 0,rgba(5,3,2,.16) 38%,rgba(5,3,2,.76) 100%),rgba(5,3,2,.34)}
-.candle{position:absolute;left:39.4%;top:24.1%;width:4%;z-index:1;translate:-50% -100%;pointer-events:none}
-.candle img{display:block;width:100%;height:auto;filter:drop-shadow(0 2px 3px rgba(0,0,0,.6)) brightness(.92)}
-.candle .fl{position:absolute;left:42.7%;bottom:96.5%;width:30%;aspect-ratio:.58;translate:-50% 0;border-radius:50% 50% 50% 50%/62% 62% 38% 38%;background:radial-gradient(ellipse at 50% 72%,#fff 0,#ffe08a 34%,#ff9a2b 70%,rgba(255,120,30,0) 100%);transform-origin:50% 100%;animation:candle 1.7s ease-in-out infinite}
-.candle .gw{position:absolute;left:42.7%;bottom:100%;width:750%;aspect-ratio:1;translate:-50% 56%;background:radial-gradient(circle,rgba(255,196,100,.62) 0,rgba(255,150,60,.26) 26%,rgba(255,120,40,.08) 50%,transparent 68%);mix-blend-mode:screen;animation:candleglow 2.3s ease-in-out infinite}
+/* hero cave: dark almost everywhere, a candle painted on the crane beam (scene art) is the only light; the css flame sits on its wick and flickers (positions in % of the scene image) */
+.cv>.dk{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 22% 30% at 40.4% 17%,rgba(5,3,2,0) 0,rgba(5,3,2,.16) 38%,rgba(5,3,2,.76) 100%),rgba(5,3,2,.34)}
+.candle{position:absolute;left:40.43%;top:17.85%;width:.85%;aspect-ratio:.4;z-index:1;translate:-50% -100%;pointer-events:none}
+.candle .fl{position:absolute;inset:0;border-radius:50% 50% 50% 50%/62% 62% 38% 38%;background:radial-gradient(ellipse at 50% 72%,#fff 0,#ffe08a 34%,#ff9a2b 70%,rgba(255,120,30,0) 100%);transform-origin:50% 100%;animation:candle 1.7s ease-in-out infinite}
+.candle .gw{position:absolute;left:50%;top:55%;width:3600%;aspect-ratio:1;translate:-50% -50%;background:radial-gradient(circle,rgba(255,196,100,.62) 0,rgba(255,150,60,.26) 26%,rgba(255,120,40,.08) 50%,transparent 68%);mix-blend-mode:screen;animation:candleglow 2.3s ease-in-out infinite}
 @keyframes candle{0%,100%{transform:scale(1,1) rotate(-1.5deg)}30%{transform:scale(.92,1.08) rotate(2deg)}55%{transform:scale(1.05,.94) rotate(-.5deg)}78%{transform:scale(.95,1.05) rotate(1.5deg)}}
 @keyframes candleglow{0%,100%{opacity:.9}35%{opacity:.72}60%{opacity:1}80%{opacity:.8}}
 @media(prefers-reduced-motion:reduce){.candle .fl,.candle .gw{animation:none}}
