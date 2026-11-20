@@ -1,8 +1,69 @@
-/* Pug Bubble Dig page: headlamp, depth counter, shaft line, step reveals, trailer. */
+/* Pug Bubble Dig page: dark cave, headlamp, Bigi jumps into the bucket and rides the rope down past the eras. */
 initSmooth();
-const dk = document.getElementById('dark');
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const lerp = (a, b, t) => a + (b - a) * t;
+const rnd = (a, b) => a + Math.random() * (b - a);
+const dk = $('#dark'), beam = $('#beam'), fig = $('#fig'), cv = $('#bc'), bigi = $('#bigi');
+const bk = $('#bucket'), sw = bk.querySelector('.sw'), bkF = bk.querySelector('.f'), bkE = bk.querySelector('.e');
+const BJ = { w: 508, h: 970, lamp: [.754, .2717], rope: .5148 };   // bucket sprite: lamp and rope position (from img/bucket.json)
+const small = () => innerWidth <= 860;
+
+/* ---------- era walls: glints on the shiny spots + per-era particles ---------- */
+const GL = [];   // every glint: { el, band }
+const bands = $$('.era');
+const ERA = {
+  beyond:      { c: ['#7ff3ff', '#ff7bf0'], p: [{ n: 14, an: 'rise', z: [3, 7], d: [5, 9], h: [80, 170], dx: [-20, 20], o: .9, pc: ['#5ff3ff', '#ff6bf2'] }] },
+  industrial:  { c: ['#ffd36a'], p: [{ n: 6, an: 'steam', cls: 'st', z: [14, 26], d: [4, 7], h: [110, 210], dx: [-18, 22], o: .32 }, { n: 8, an: 'rise', z: [3, 4], d: [1.6, 3], h: [60, 130], dx: [-26, 26], o: 1 }] },
+  baroque:     { c: ['#ffe08a'], p: [{ n: 14, an: 'drift', z: [3, 6], d: [3, 6], h: [-34, -8], dx: [-16, 16], o: .95 }] },
+  renaissance: { c: ['#ffe3a0'], p: [{ n: 12, an: 'drift', z: [4, 9], d: [7, 12], h: [-50, 30], dx: [-44, 44], o: .55 }] },
+  medieval:    { c: ['#ffb45a'], p: [{ n: 14, an: 'rise', z: [3, 5], d: [3, 6], h: [100, 220], dx: [-34, 34], o: 1 }] },
+  greece:      { c: ['#fff0b8'], p: [{ n: 12, an: 'drift', z: [3, 6], d: [6, 10], h: [-40, 10], dx: [-30, 30], o: .8 }] },
+  egypt:       { c: ['#ffd24a'], p: [{ n: 16, an: 'fall', z: [2, 4], d: [3, 6], h: [90, 230], dx: [-10, 10], o: .85 }] },
+};
+const buildEras = gl => bands.forEach(b => {
+  const k = b.dataset.e, cfg = ERA[k], cvEl = b.querySelector('.cv');
+  (gl[k] || []).forEach(([x, y, s], i) => {
+    const e = document.createElement('i');
+    e.className = 'gl';
+    e.style.cssText = `left:${x * 100}%;top:${y * 100}%;--s:${s};--c:${cfg.c[i % cfg.c.length]};--dl:${(-rnd(0, 3)).toFixed(2)}s;--dd:${rnd(2.4, 4.2).toFixed(2)}s`;
+    cvEl.appendChild(e); GL.push({ el: e, band: b, k: -1 });
+  });
+  const f = small() ? .5 : 1;
+  cfg.p.forEach(pc => {
+    for (let i = 0; i < Math.round(pc.n * f); i++) {
+      const e = document.createElement('i'), side = i % 2 ? 1 : 0;
+      e.className = 'p' + (pc.cls ? ' ' + pc.cls : '');
+      const x = side ? rnd(79, 97) : rnd(3, 21);
+      e.style.cssText = `left:${x.toFixed(1)}%;top:${rnd(8, 92).toFixed(1)}%;--an:${pc.an};--z:${rnd(...pc.z).toFixed(1)}px;--d:${rnd(...pc.d).toFixed(2)}s;--dl:${(-rnd(0, pc.d[1])).toFixed(2)}s;--h:${rnd(...pc.h).toFixed(0)}px;--dx:${rnd(...pc.dx).toFixed(0)}px;--o:${pc.o}` + (pc.pc ? `;--pc:${pc.pc[i % pc.pc.length]}` : '');
+      b.appendChild(e);
+    }
+  });
+});
+$$('.hero .gl').forEach(e => { e.style.setProperty('--dl', (-rnd(0, 3)).toFixed(2) + 's'); e.style.setProperty('--dd', rnd(2.6, 4.6).toFixed(2) + 's'); GL.push({ el: e, band: $('.hero'), k: -1 }); });
+fetch('img/eras/glints.json').then(r => r.json()).then(buildEras).catch(() => {});
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('on', e.isIntersecting)), { rootMargin: '80px 0px' });
+  bands.forEach(b => io.observe(b)); io.observe($('.hero'));
+} else { bands.forEach(b => b.classList.add('on')); $('.hero').classList.add('on'); }
+
+/* ---------- depth meter + current era ---------- */
+const depth = $('#m'), bar = $('#bar'), eraLbl = $('#era');
+let curEra = '';
+const setEra = t => { if (t === curEra) return; curEra = t; eraLbl.textContent = t; if (!RM) gsap.fromTo(eraLbl, { scale: 1.4, opacity: .3 }, { scale: 1, opacity: 1, duration: .5, ease: 'back.out(3)' }); };
+const walls = $('#walls');
+ScrollTrigger.create({ trigger: document.body, start: 'top top', end: 'bottom bottom', onUpdate: s => {
+  depth.textContent = Math.round(s.progress * 5000);
+  bar.style.setProperty('--p', s.progress);
+  const wr = walls.getBoundingClientRect(), mid = innerHeight / 2;
+  if (wr.top > mid) return setEra('Cave');
+  if (wr.bottom < mid) return setEra('Treasure');
+  const b = bands.find(b => { const r = b.getBoundingClientRect(); return r.top <= mid && r.bottom > mid; });
+  if (b) setEra(b.dataset.n);
+} });
+
 if (!RM) {
-  // aim = where the light points: the cursor, or a slow drift on touch screens
+  /* aim = where the light points: the cursor, or a slow drift on touch screens */
   const aim = { x: innerWidth * .5, y: innerHeight * .4 };
   const qx = gsap.quickTo(aim, 'x', { duration: .5, ease: 'power3' }),
         qy = gsap.quickTo(aim, 'y', { duration: .5, ease: 'power3' });
@@ -10,15 +71,13 @@ if (!RM) {
   if (matchMedia('(pointer:coarse)').matches) {
     const o = { a: 0 };
     gsap.to(o, { a: 6.28, duration: 7, repeat: -1, ease: 'none', onUpdate: () => {
-      qx(innerWidth * (.5 + .28 * Math.cos(o.a)));
-      qy(innerHeight * (.42 + .22 * Math.sin(o.a * 1.3)));
+      qx(innerWidth * (.5 + .34 * Math.cos(o.a)));
+      qy(innerHeight * (.42 + .24 * Math.sin(o.a * 1.3)));
     } });
   }
-  // Bigi: real head-turn frames (generated clips), expressions on idle / click. Falls back to the still image.
-  const fig = document.getElementById('fig'), cv = document.getElementById('bc'), beam = document.getElementById('beam');
+
+  /* ---------- Bigi on the hero: real head-turn frames (generated clips), expressions on idle / click ---------- */
   const ctx = cv.getContext('2d');
-  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-  const lerp = (a, b, t) => a + (b - a) * t;
   const S = { reg: 'h', dg: null, px: 0, py: 0, c: 0, ready: false, mode: 'follow', ex: null, et: 0, next: 0, turn: null, up: null, down: null, exp: {}, names: [] };
   const base = 'img/bigi/';
   const load = (dir, n) => Promise.all(Array.from({ length: n }, (_, i) => new Promise(res => {
@@ -27,7 +86,6 @@ if (!RM) {
     im.src = base + dir + '/' + String(i).padStart(2, '0') + '.webp';
   })));
   const ok = a => a.every(Boolean);
-  const lampAt = (arr, p) => { const i = Math.floor(p), j = Math.min(arr.length - 1, i + 1), f = p - i; return [lerp(arr[i][0], arr[j][0], f), lerp(arr[i][1], arr[j][1], f)]; };
   fetch(base + 'manifest.json').then(r => r.json()).then(async m => {
     const [tl, tr] = await Promise.all([load('turnL', m.turnL.n), load('turnR', m.turnR.n)]);
     if (!ok(tr) || !ok(tl)) return;
@@ -41,99 +99,187 @@ if (!RM) {
     S.dg = {}; for (const k of ['upL', 'upR', 'dnL', 'dnR']) if (m[k]) S.dg[k] = await ld(k);
     for (const k of m.expr) { const e = await ld(k); if (e) { S.exp[k] = e; S.names.push(k); } }
   }).catch(() => {});
-  const startExpr = (name) => {
+  const startExpr = name => {
     if (!S.ready || S.mode !== 'follow' || !S.names.length) return;
     S.ex = S.exp[name || S.names[Math.floor(Math.random() * S.names.length)]]; S.mode = 'center';
   };
   fig.addEventListener('pointerdown', () => startExpr());
   fig.style.cursor = 'pointer';
-  let last = performance.now(), lastMove = last, lamp = [.49, .13], lastKey = '';
+  let lamp = [.49, .13], lastKey = '', lastMove = performance.now();
   addEventListener('pointermove', () => { lastMove = performance.now(); });
   gsap.set(fig, { transformPerspective: 900 });
   const tx = gsap.quickTo(fig, 'rotationY', { duration: .7, ease: 'power3' }),
         ty = gsap.quickTo(fig, 'rotationX', { duration: .7, ease: 'power3' });
+  /* returns the lamp position on the hero Bigi as a fraction of his box */
+  const figTick = (r, dt, now) => {
+    const cx = r.left + r.width / 2, cy = r.top + r.height * .4;
+    const nx = clamp((aim.x - cx) / (innerWidth * .4), -1, 1), ny = clamp((aim.y - cy) / (innerHeight * .4), -1, 1);
+    tx(nx * (S.ready ? 4 : 14)); ty(-ny * (S.ready ? 5 : 8));
+    if (!S.ready) return [.493, .127];
+    const k = 1 - Math.exp(-dt * 9);
+    // pose = one crisp frame from ONE clip: horizontal turn, vertical look or a diagonal clip; hysteresis keeps it from flickering between clips
+    let tp = S.c + nx * S.c, tv = ny;
+    if (S.mode !== 'follow') { tp = S.c; tv = 0; }
+    S.px = lerp(S.px, tp, k); S.py = lerp(S.py, tv, k);
+    let frames = null, key;
+    if (S.mode === 'expr') {
+      S.et += dt * 18;
+      const n = S.ex.f.length, t = Math.floor(S.et), idx = t < n ? t : 2 * n - 2 - t;
+      if (idx < 0) { S.mode = 'follow'; S.next = now + 4000 + Math.random() * 4000; }
+      else { frames = S.ex.f[idx]; lamp = S.ex.l[idx]; key = 'e' + idx + S.ex.f.length; }
+    }
+    if (!frames) {
+      const p = clamp(S.px, 0, S.turn.f.length - 1), sx = (S.px - S.c) / S.c, sy = S.py, ax = Math.abs(sx), ay = Math.abs(sy), rt = ay / (ax + 1e-4);
+      if (S.reg === 'd') { if (rt < .38) S.reg = 'h'; else if (rt > 2.6) S.reg = 'v'; }
+      else if (S.reg === 'h') { if (rt > 2.6) S.reg = 'v'; else if (rt > .6) S.reg = 'd'; }
+      else { if (rt < .38) S.reg = 'h'; else if (rt < 1.7) S.reg = 'd'; }
+      let clip = null, ci = 0;
+      if (ay > .03 || ax > .03) {
+        if (S.reg === 'd') { clip = S.dg && S.dg[(sy < 0 ? 'up' : 'dn') + (sx < 0 ? 'L' : 'R')]; if (clip) ci = Math.round(clamp(Math.hypot(ax, ay) / 1.2, 0, 1) * (clip.f.length - 1)); }
+        if (!clip && S.reg !== 'h' && ay > .03) { clip = sy < 0 ? S.up : S.down; if (clip) ci = Math.round(clamp(ay, 0, 1) * (clip.f.length - 1)); }
+      }
+      const i = Math.round(p);
+      key = clip ? clip.f[ci].src : i;
+      if (key !== lastKey) { ctx.clearRect(0, 0, cv.width, cv.height); ctx.drawImage(clip ? clip.f[ci] : S.turn.f[i], 0, 0); }
+      lamp = clip ? clip.l[ci] : S.turn.l[i];
+      if (S.mode === 'center' && Math.abs(S.px - S.c) < .6 && Math.abs(S.py) < .06) { S.mode = 'expr'; S.et = 0; }
+      else if (S.mode === 'follow' && now > S.next && now - lastMove > 1500) startExpr();
+      else if (S.mode === 'follow' && now > S.next) S.next = now + 1500;
+    }
+    if (frames) { ctx.clearRect(0, 0, cv.width, cv.height); ctx.drawImage(frames, 0, 0); lastKey = ''; }
+    else lastKey = key;
+    return lamp;
+  };
+
+  /* ---------- rope + bucket: sizes, the jump scene ---------- */
+  let Hb = 300, restTop = 300, xOff = 0;
+  const layout = () => {
+    const V = innerHeight;
+    Hb = small() ? 170 : clamp(V * .3, 220, 330);
+    const Wb = Hb * BJ.w / BJ.h;
+    restTop = V * (small() ? .3 : .34);
+    xOff = small() ? 56 - innerWidth / 2 - (BJ.rope - .5) * Wb : -(BJ.rope - .5) * Wb;
+    bk.style.setProperty('--bw', Wb.toFixed(1) + 'px');
+    gsap.set(bk, { x: xOff, visibility: 'visible', transformOrigin: (BJ.rope * 100) + '% ' + (-V * 1.2) + 'px' });
+    gsap.set(sw, { transformOrigin: (BJ.rope * 100) + '% 0%' });
+  };
+  const burst = () => {
+    const br = bkF.getBoundingClientRect(), x = br.left + br.width * .5, y = br.top + br.height * .42;
+    for (let i = 0; i < 16; i++) {
+      const e = document.createElement('i'); e.className = 'burst'; e.style.left = x + 'px'; e.style.top = y + 'px';
+      document.body.appendChild(e);
+      const a = rnd(0, 6.28), d = rnd(60, 150);
+      gsap.to(e, { x: Math.cos(a) * d, y: Math.sin(a) * d - 30, scale: rnd(.4, 1.6), opacity: 0, duration: rnd(.6, 1.1), ease: 'power2.out', onComplete: () => e.remove() });
+    }
+  };
+  let jump = null;
+  const build = () => {
+    if (jump) { jump.scrollTrigger && jump.scrollTrigger.kill(true); jump.kill(); jump = null; }
+    gsap.set(bigi, { clearProps: 'all' });
+    gsap.set([bkF, bkE], { clearProps: 'opacity' }); gsap.set(sw, { clearProps: 'scale' });
+    $$('.hero .wrap>div:first-child,.scroll,.stk').forEach(e => gsap.set(e, { clearProps: 'all' }));
+    layout();
+    const V = innerHeight, hero = $('.hero'), hr = hero.getBoundingClientRect(), br = bigi.getBoundingClientRect();
+    const cx = br.left + br.width / 2, cy = br.top - hr.top + br.height / 2;
+    const tx2 = innerWidth / 2 + xOff + (BJ.rope - .5) * (Hb * BJ.w / BJ.h), ty2 = restTop + Hb * .5;
+    const dx = tx2 - cx, dy = ty2 - cy, sEnd = Hb * .62 / br.height, peak = Math.min(0, dy) - 170;
+    jump = gsap.timeline({
+      defaults: { ease: 'none' },
+      scrollTrigger: { trigger: hero, start: 'top top', end: '+=' + Math.round(V * 1.15), pin: true, scrub: .5, anticipatePin: 1, invalidateOnRefresh: true },
+    });
+    jump.to('.hero .wrap>div:first-child', { autoAlpha: 0, x: -90, duration: 1.6 }, 0)
+        .to('.scroll', { autoAlpha: 0, duration: .8 }, 0)
+        .to('.cave', { '--g': .25, duration: 2.4 }, 0)
+        .to('.stk', { scale: 0, duration: .8 }, .2)
+        .fromTo(bk, { y: -(Hb + 90) }, { y: restTop, duration: 3, ease: 'power2.out' }, .6)
+        .to(bigi, { x: dx, duration: 3 }, 4.2)
+        .to(bigi, { y: peak, duration: 1.5, ease: 'power2.out' }, 4.2)
+        .to(bigi, { y: dy, duration: 1.5, ease: 'power2.in' }, 5.7)
+        .to(bigi, { scale: sEnd, rotation: -8, duration: 3, ease: 'power1.inOut' }, 4.2)
+        .to(bkF, { opacity: 1, duration: .25 }, 7.2)
+        .to(bkE, { opacity: 0, duration: .25 }, 7.2)
+        .to(bigi, { autoAlpha: 0, duration: .25 }, 7.25)
+        .fromTo(sw, { scale: 1 }, { scale: 1.09, duration: .18, ease: 'power2.out' }, 7.2)
+        .to(sw, { scale: 1, duration: .8, ease: 'elastic.out(1,.45)' }, 7.38)
+        .call(() => { if (jump.scrollTrigger.direction > 0) burst(); }, null, 7.2)
+        .to({}, { duration: 1.2 }, 8.8);
+  };
+  build();
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { build(); ScrollTrigger.refresh(); }, 250); });
+
+  /* bucket sways idly and swings with the scroll speed (a pendulum hanging from far above) */
+  gsap.fromTo(sw, { rotation: -1.1 }, { rotation: 1.1, duration: 2.8, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+  const rotQ = gsap.quickTo(bk, 'rotation', { duration: .9, ease: 'power3' });
+  gsap.to(bk, { opacity: 0, ease: 'none', scrollTrigger: { trigger: '.fin', start: 'top 85%', end: 'top 40%', scrub: true } });
+
+  /* ---------- per-frame: aim, lamp carrier (hero Bigi or the bucket), darkness mask, beam, glints ---------- */
+  let last = performance.now(), lastSY = scrollY;
   gsap.ticker.add(() => {
     dk.style.setProperty('--x', aim.x + 'px');
     dk.style.setProperty('--y', aim.y + 'px');
     const now = performance.now(), dt = Math.min(.05, (now - last) / 1000); last = now;
+    const sy = scrollY, sv = (sy - lastSY) / Math.max(dt, .001); lastSY = sy;
+    bk.style.setProperty('--ry', (-sy) + 'px');
+    rotQ(clamp(-sv / 1600, -3, 3));
     const r = fig.getBoundingClientRect();
-    const visible = r.bottom > 0 && r.top < innerHeight;
-    beam.classList.toggle('on', visible);
-    if (!visible) { dk.style.setProperty('--ly', '-2000px'); return; }
-    const cx = r.left + r.width / 2, cy = r.top + r.height * .4;
-    const nx = clamp((aim.x - cx) / (innerWidth * .4), -1, 1), ny = clamp((aim.y - cy) / (innerHeight * .4), -1, 1);
-    tx(nx * (S.ready ? 4 : 14)); ty(-ny * (S.ready ? 5 : 8));
-    if (S.ready) {
-      const k = 1 - Math.exp(-dt * 9);
-      // pose = one crisp frame from ONE clip: horizontal turn, vertical look or a diagonal clip; hysteresis keeps it from flickering between clips
-      let tp = S.c + nx * S.c, tv = ny;
-      if (S.mode !== 'follow') { tp = S.c; tv = 0; }
-      S.px = lerp(S.px, tp, k); S.py = lerp(S.py, tv, k);
-      let frames = null, key;
-      if (S.mode === 'expr') {
-        S.et += dt * 18;
-        const n = S.ex.f.length, t = Math.floor(S.et), idx = t < n ? t : 2 * n - 2 - t;
-        if (idx < 0) { S.mode = 'follow'; S.next = now + 4000 + Math.random() * 4000; }
-        else { frames = S.ex.f[idx]; lamp = S.ex.l[idx]; key = 'e' + idx + S.ex.f.length; }
+    const figOp = +gsap.getProperty(bigi, 'opacity');
+    const figVis = r.bottom > 0 && r.top < innerHeight && r.width > 0 && figOp > .05;
+    const bkOp = +gsap.getProperty(bkF, 'opacity') * +gsap.getProperty(bk, 'opacity');
+    const useBk = bkOp > .05 && bkOp >= (figVis ? figOp : 0);
+    beam.classList.toggle('on', figVis || useBk);
+    let lx = -9999, ly = -9999, yOff = 0;
+    if (useBk) {
+      const b = bkF.getBoundingClientRect();
+      lx = b.left + b.width * BJ.lamp[0]; ly = b.top + b.height * BJ.lamp[1]; yOff = b.height * .1;
+    } else if (figVis) {
+      const l = figTick(r, dt, now);
+      lx = r.left + r.width * l[0]; ly = r.top + r.height * l[1]; yOff = r.height * .17;
+    }
+    if (lx < -9000) { dk.style.setProperty('--ly', '-2000px'); }
+    else {
+      dk.style.setProperty('--lx', lx.toFixed(1) + 'px');
+      dk.style.setProperty('--ly', (ly + yOff).toFixed(1) + 'px');
+      const dx = aim.x - lx, dy = aim.y - ly;
+      beam.style.transform = 'translate(' + lx.toFixed(1) + 'px,' + ly.toFixed(1) + 'px)';
+      beam.style.setProperty('--a', Math.atan2(dy, dx) + 'rad');
+      beam.style.setProperty('--len', Math.min(Math.hypot(dx, dy) + 160, 1100) + 'px');
+    }
+    // glints wake up near the cursor light, the lamp and the beam between them
+    const Ra = small() ? 170 : 240, Rl = 200, Rb = 90;
+    const ax = aim.x, ay = aim.y, sx = ax - lx, sy2 = ay - ly, sl = sx * sx + sy2 * sy2;
+    for (const g of GL) {
+      if (!g.band.classList.contains('on')) continue;
+      const q = g.el.getBoundingClientRect();
+      if (q.bottom < -60 || q.top > innerHeight + 60) continue;
+      const px = q.left + q.width / 2, py = q.top + q.height / 2;
+      let k = 1 - Math.hypot(px - ax, py - ay) / Ra;
+      if (lx > -9000) {
+        k = Math.max(k, 1 - Math.hypot(px - lx, py - ly) / Rl);
+        const t = sl ? clamp(((px - lx) * sx + (py - ly) * sy2) / sl, 0, 1) : 0;
+        k = Math.max(k, (1 - Math.hypot(px - (lx + sx * t), py - (ly + sy2 * t)) / Rb) * .95);
       }
-      if (!frames) {
-        const p = clamp(S.px, 0, S.turn.f.length - 1), sx = (S.px - S.c) / S.c, sy = S.py, ax = Math.abs(sx), ay = Math.abs(sy), rt = ay / (ax + 1e-4);
-        if (S.reg === 'd') { if (rt < .38) S.reg = 'h'; else if (rt > 2.6) S.reg = 'v'; }
-        else if (S.reg === 'h') { if (rt > 2.6) S.reg = 'v'; else if (rt > .6) S.reg = 'd'; }
-        else { if (rt < .38) S.reg = 'h'; else if (rt < 1.7) S.reg = 'd'; }
-        let clip = null, ci = 0;
-        if (ay > .03 || ax > .03) {
-          if (S.reg === 'd') { clip = S.dg && S.dg[(sy < 0 ? 'up' : 'dn') + (sx < 0 ? 'L' : 'R')]; if (clip) ci = Math.round(clamp(Math.hypot(ax, ay) / 1.2, 0, 1) * (clip.f.length - 1)); }
-          if (!clip && S.reg !== 'h' && ay > .03) { clip = sy < 0 ? S.up : S.down; if (clip) ci = Math.round(clamp(ay, 0, 1) * (clip.f.length - 1)); }
-        }
-        const i = Math.round(p);
-        key = clip ? clip.f[ci].src : i;
-        if (key !== lastKey) { ctx.clearRect(0, 0, cv.width, cv.height); ctx.drawImage(clip ? clip.f[ci] : S.turn.f[i], 0, 0); }
-        lamp = clip ? clip.l[ci] : S.turn.l[i];
-        if (S.mode === 'center' && Math.abs(S.px - S.c) < .6 && Math.abs(S.py) < .06) { S.mode = 'expr'; S.et = 0; }
-        else if (S.mode === 'follow' && now > S.next && now - lastMove > 1500) startExpr();
-        else if (S.mode === 'follow' && now > S.next) S.next = now + 1500;
-      }
-      if (frames) {
-        ctx.clearRect(0, 0, cv.width, cv.height); ctx.drawImage(frames, 0, 0); lastKey = '';
-      } else lastKey = key;
-    } else lamp = [.493, .127];
-    const lx = r.left + r.width * lamp[0], ly = r.top + r.height * lamp[1];
-    dk.style.setProperty('--lx', lx.toFixed(1) + 'px');
-    dk.style.setProperty('--ly', (ly + r.height * .17).toFixed(1) + 'px');
-    const dx = aim.x - lx, dy = aim.y - ly;
-    beam.style.transform = 'translate(' + lx.toFixed(1) + 'px,' + ly.toFixed(1) + 'px)';
-    beam.style.setProperty('--a', Math.atan2(dy, dx) + 'rad');
-    beam.style.setProperty('--len', Math.min(Math.hypot(dx, dy) + 160, 1100) + 'px');
+      k = clamp(k, 0, 1);
+      if (Math.abs(k - g.k) > .03) { g.k = k; g.el.style.setProperty('--k', k.toFixed(2)); }
+    }
   });
-}
-if (!RM) {
+
   gsap.from('#h1 span', { yPercent: 60, opacity: 0, duration: 1.3, ease: 'expo.out', stagger: .14, delay: .1 });
   gsap.from('.hero p,.hero .cta,.hero .tag', { y: 30, opacity: 0, duration: 1, ease: 'expo.out', stagger: .08, delay: .5 });
   gsap.from('#fig', { y: 120, scale: .8, opacity: 0, duration: 1.6, ease: 'elastic.out(1,.6)', delay: .2 });
   gsap.from('.stk', { scale: 0, rotate: -30, duration: .7, ease: 'back.out(2.4)', stagger: .16, delay: 1 });
   gsap.to('#fig', { y: -14, duration: 2.4, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 1.8 });
-  gsap.to('#bigi', { yPercent: -12, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-}
-const depth = document.getElementById('m'), bar = document.getElementById('bar'), ln = document.getElementById('ln');
-ScrollTrigger.create({ trigger: document.body, start: 'top top', end: 'bottom bottom', onUpdate: s => {
-  depth.textContent = Math.round(s.progress * 5000);
-  bar.style.setProperty('--p', s.progress);
-} });
-if (!RM) {
-  gsap.to(ln, { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '#shaft', start: 'top 60%', end: 'bottom 60%', scrub: .4 } });
+
   document.querySelectorAll('.step').forEach(s => {
     const even = s.matches(':nth-child(even)');
     gsap.from(s.querySelector('.txt'), { x: even ? 60 : -60, opacity: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: s, start: 'top 70%' } });
     gsap.from(s.querySelector('.ph'), { y: 90, rotate: even ? 5 : -5, opacity: 0, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: s, start: 'top 70%' } });
-    gsap.from(s.querySelector('.node'), { scale: 0, duration: .6, ease: 'back.out(3)', scrollTrigger: { trigger: s, start: 'top 55%' } });
   });
   gsap.from('.mus h2,.mus p,.chips', { y: 50, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.mus', start: 'top 65%' } });
   gsap.from('.mus .ph', { x: 80, rotate: 6, opacity: 0, duration: 1.3, ease: 'expo.out', scrollTrigger: { trigger: '.mus', start: 'top 65%' } });
   gsap.from('.fin h2', { y: 80, opacity: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: '.fin', start: 'top 70%' } });
   gsap.from('.fin img.bg', { yPercent: 60, duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: '.fin', start: 'top 60%' } });
 }
-const pv = document.getElementById('pv'), vp = document.getElementById('vplay');
+const pv = $('#pv'), vp = $('#vplay');
 vp.addEventListener('click', () => {
   if (pv.paused) { pv.play(); vp.textContent = 'Pause trailer'; vp.setAttribute('aria-pressed', 'true'); }
   else { pv.pause(); vp.textContent = 'Play trailer'; vp.setAttribute('aria-pressed', 'false'); }
