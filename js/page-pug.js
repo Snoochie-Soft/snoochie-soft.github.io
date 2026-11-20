@@ -169,7 +169,7 @@ if (!RM) {
     Wb = Hb * BJ.w / BJ.h;
     const knotY = cvTop + cvH * .41;
     restTop = knotY - KNOT * Hb;
-    ropeTopRel = cvTop + cvH * .24;
+    ropeTopRel = cvTop + cvH * .299;                        // rope comes out from under the beam (scene art: beam bottom at 29.9%)
     xOff = ropeX - BJ.rope * Wb - innerWidth / 2 + Wb / 2;
     document.documentElement.style.setProperty('--bw', Wb.toFixed(1) + 'px');
     bk.style.setProperty('--bw', Wb.toFixed(1) + 'px');
@@ -234,7 +234,6 @@ if (!RM) {
     dk.style.setProperty('--y', aim.y + 'px');
     const now = performance.now(), dt = Math.min(.05, (now - last) / 1000); last = now;
     const sy = scrollY, sv = (sy - lastSY) / Math.max(dt, .001); lastSY = sy;
-    bk.style.setProperty('--ry', -Math.max(0, sy - pinLen) + 'px');
     const ht = hero.getBoundingClientRect().top;
     bk.style.setProperty('--rh', Math.max(0, restTop + 3 - Math.max(0, ht + ropeTopRel)).toFixed(0) + 'px');
     rotQ(clamp(-sv / 1600, -3, 3));
@@ -299,6 +298,6 @@ if (!RM) {
 }
 const pv = $('#pv'), vp = $('#vplay');
 vp.addEventListener('click', () => {
-  if (pv.paused) { pv.play(); vp.textContent = 'Pause trailer'; vp.setAttribute('aria-pressed', 'true'); }
+  if (pv.paused) { pv.muted = false; pv.play(); vp.textContent = 'Pause trailer'; vp.setAttribute('aria-pressed', 'true'); }
   else { pv.pause(); vp.textContent = 'Play trailer'; vp.setAttribute('aria-pressed', 'false'); }
 });
