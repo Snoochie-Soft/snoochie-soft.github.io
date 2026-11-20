@@ -409,6 +409,11 @@ vp.addEventListener('click', () => { if (pv.paused) { pv.muted = false; pv.play(
 vframe.addEventListener('click', () => vp.click());   // tapping the phone picture itself plays / pauses, not only the button
 pv.addEventListener('play', () => vstate(true));
 pv.addEventListener('pause', () => vstate(false));
-pv.addEventListener('ended', () => { vstate(false); pv.load(); });   // back to the poster after the trailer
+const vend = $('.vend');
+pv.addEventListener('ended', () => { vstate(false); pv.load(); vend.hidden = false; vframe.classList.add('cta'); });   // back to the poster after the trailer, with the call to action over it
+pv.addEventListener('play', () => { vend.hidden = true; vframe.classList.remove('cta'); });
+vend.addEventListener('click', e => e.stopPropagation());   // its buttons must not start the trailer through the frame
+$('.vagain').addEventListener('click', () => { vend.hidden = true; pv.muted = false; pv.play(); });
+$('.vdown').addEventListener('click', () => { const to = $('.fin').getBoundingClientRect().top + scrollY + $('.fin').offsetHeight - innerHeight; if (lenis) lenis.scrollTo(to, { duration: 2.4 }); else scrollTo({ top: to, behavior: 'smooth' }); });
 // scrolled away from the trailer: pause it, so Bigi does not stare at an empty spot and the sound stops
 new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting && !pv.paused) pv.pause(); }), { threshold: .2 }).observe(vframe);

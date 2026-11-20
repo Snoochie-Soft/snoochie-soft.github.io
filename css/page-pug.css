@@ -77,6 +77,20 @@ h1,h2,h3,.dsp{font-family:'Lilita One',system-ui,sans-serif;font-weight:400;lett
 .vid .wrap>div:last-child{grid-column:3;justify-self:start}
 .vid .frame{cursor:pointer;width:min(100%,360px);aspect-ratio:720/1560;border-radius:44px;border:7px solid #2b1a05;overflow:hidden;box-shadow:0 0 0 2px var(--amb),0 30px 80px rgba(0,0,0,.6);background:#000}
 .vid video{width:100%;height:100%;object-fit:cover}
+/* after the trailer: call to action over the poster (Play link, scroll down to the finale, replay) */
+.vid .frame{position:relative}
+.vend{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:18px;text-align:center;cursor:default;background:radial-gradient(ellipse at 50% 45%,rgba(40,24,8,.72),rgba(10,6,3,.9));backdrop-filter:blur(3px);animation:vendin .6s var(--ease) both}
+.vend[hidden]{display:none}
+.vid .frame.cta{z-index:22;box-shadow:0 0 0 2px var(--amb),0 0 70px rgba(255,205,110,.3),0 30px 80px rgba(0,0,0,.6)}
+@keyframes vendin{from{opacity:0;transform:scale(1.04)}}
+.vend .vt{font:400 34px/.95 'Lilita One',sans-serif;color:#fff;margin:0 0 6px;text-shadow:0 4px 0 #2b1a05}.vend .vt span{color:var(--amb)}
+.vend .vgp{font-size:15px;padding:12px 16px;box-shadow:0 5px 0 #8a5a12,0 12px 30px rgba(255,190,70,.35);animation:vgp 1.6s ease-in-out infinite}
+.vend .vgp svg{width:16px;height:16px;flex:none}
+@keyframes vgp{50%{transform:scale(1.05)}}
+.vend button{border:0;background:none;font:inherit;font-weight:800;color:var(--amb);cursor:pointer;padding:8px 10px}
+.vend .vdown i{display:inline-block;font-style:normal;animation:vdn 1.2s ease-in-out infinite}@keyframes vdn{50%{transform:translateY(5px)}}
+.vend .vagain{color:rgba(255,243,217,.75);font-weight:700;font-size:14px}
+@media(prefers-reduced-motion:reduce){.vend,.vend .vgp,.vend .vdown i{animation:none}}
 /* while the trailer plays Bigi looks at it and his lamp lights the whole screen evenly: the frame rises above the darkness layer */
 .vid .frame.lit{position:relative;z-index:22;box-shadow:0 0 0 2px var(--amb),0 0 90px rgba(255,205,110,.42),0 30px 80px rgba(0,0,0,.6);animation:litup .7s ease-out}
 @keyframes litup{from{filter:brightness(.45)}}
