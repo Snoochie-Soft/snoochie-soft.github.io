@@ -10,7 +10,8 @@ h1,h2,h3,.dsp{font-family:'Lilita One',system-ui,sans-serif;font-weight:400;lett
 #beam{position:fixed;left:0;top:0;width:0;height:0;z-index:21;pointer-events:none;mix-blend-mode:screen;opacity:0;transition:opacity .4s}
 #beam.on{opacity:1}
 #beam .glow{position:absolute;left:-70px;top:-70px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(255,244,205,.95) 0,rgba(255,214,120,.55) 22%,rgba(255,190,70,.18) 52%,transparent 70%);animation:lampPulse 3.2s ease-in-out infinite}
-#beam .cone{position:absolute;left:0;top:-170px;width:var(--len,900px);height:340px;transform-origin:0 50%;rotate:var(--a,0deg);background:linear-gradient(90deg,rgba(255,226,150,.5),rgba(255,214,120,.22) 38%,transparent 100%);clip-path:polygon(0 47%,100% 0,100% 100%,0 53%);filter:blur(6px)}
+#beam .cone{position:absolute;left:0;top:-170px;width:var(--len,900px);height:340px;transform-origin:0 50%;rotate:var(--a,0deg);filter:blur(14px)}
+#beam .cone::before{content:"";position:absolute;inset:0;clip-path:polygon(0 47%,100% 0,100% 100%,0 53%);background:linear-gradient(90deg,rgba(255,226,150,.46),rgba(255,214,120,.2) 38%,transparent 100%)}
 @keyframes lampPulse{50%{opacity:.78;scale:.92}}
 /* readable copy stays above the darkness; the pug and the scenery sit under it */
 .hero .wrap>div:first-child,.step .txt,footer{position:relative;z-index:25}
@@ -112,9 +113,13 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 /* no transform here on purpose: .bigi (z 2) has to sit above the .cave::after shade */
 .cv{position:absolute;left:calc(50cqw - max(50cqw,50cqh*var(--ar,1.7778)));top:calc(50cqh - max(50cqh,50cqw/var(--ar,1.7778)));width:max(100cqw,100cqh*var(--ar,1.7778));aspect-ratio:var(--ar,1.7778)}
 .cv>img{display:block;width:100%;height:100%;max-width:none}
+/* hero scene is shown smaller than "cover" (--k) so the crane is smaller; its edges fade into the dark */
+.cave{--k:.8}
+.cave .cv{width:calc(var(--k)*max(100cqw,100cqh*var(--ar,1.7778)));left:calc(50cqw - var(--k)*max(50cqw,50cqh*var(--ar,1.7778)));top:calc(50cqh - var(--k)*max(50cqh,50cqw/var(--ar,1.7778)))}
+.cave .cv>img.sc,.cave .cv>.dk{-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent),linear-gradient(transparent,#000 10%,#000 90%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent),linear-gradient(transparent,#000 10%,#000 90%,transparent);mask-composite:intersect}
 .bigi::before{display:none}
 /* Bigi sits on the floor of the hero scene, right of the shaft with the crane (positions in % of the scene image) */
-.cave .bigi{position:absolute;z-index:2;left:64%;top:39%;width:17.6%}
+.cave .bigi{position:absolute;z-index:2;left:72.5%;top:32.3%;width:calc(17.6%/var(--k))}
 .cave .bigi img{filter:drop-shadow(0 18px 22px rgba(0,0,0,.55))}
 /* glints: little stars on gems and gold, they wake up when the lamp or the beam gets near (--k set in js) */
 .gl{position:absolute;width:calc(54px*var(--s,1));height:calc(54px*var(--s,1));margin:calc(-27px*var(--s,1)) 0 0 calc(-27px*var(--s,1));pointer-events:none;mix-blend-mode:screen;opacity:calc(.16 + var(--k,0)*.84);scale:calc(.55 + var(--k,0)*.85);background:radial-gradient(circle,#fff 0,var(--c,#ffe08a) 16%,transparent 52%),linear-gradient(90deg,transparent,var(--c,#ffe08a) 50%,transparent) center/100% 2px no-repeat,linear-gradient(0deg,transparent,var(--c,#ffe08a) 50%,transparent) center/2px 100% no-repeat;animation:glint var(--dd,3s) ease-in-out var(--dl,0s) infinite}
@@ -132,8 +137,8 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .hud small,.hud b{width:100%;text-align:center}
 .hud .era{margin-top:6px;text-align:center;line-height:1.25;color:var(--amb);text-wrap:balance;padding-left:.16em}
 /* hero cave: dark almost everywhere, a small candle on the well rim is the only light (positions in % of the scene image) */
-.cv>.dk{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 24% 34% at 59.5% 70%,rgba(5,3,2,0) 0,rgba(5,3,2,.14) 40%,rgba(5,3,2,.5) 100%),rgba(5,3,2,.2)}
-.candle{position:absolute;left:59.5%;top:73.2%;width:1.05%;aspect-ratio:1/2.4;z-index:1;translate:-50% -100%;background:linear-gradient(90deg,#c9b88c,#fff1cf 45%,#a8946a);border-radius:3px 3px 1px 1px;box-shadow:0 2px 3px rgba(0,0,0,.6);pointer-events:none}
+.cv>.dk{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 22% 30% at 44% 23%,rgba(5,3,2,0) 0,rgba(5,3,2,.16) 38%,rgba(5,3,2,.76) 100%),rgba(5,3,2,.34)}
+.candle{position:absolute;left:44%;top:23.8%;width:1.05%;aspect-ratio:1/2.4;z-index:1;translate:-50% -100%;background:linear-gradient(90deg,#c9b88c,#fff1cf 45%,#a8946a);border-radius:3px 3px 1px 1px;box-shadow:0 2px 3px rgba(0,0,0,.6);pointer-events:none}
 .candle .fl{position:absolute;left:50%;bottom:98%;width:84%;aspect-ratio:.58;translate:-50% 0;border-radius:50% 50% 50% 50%/62% 62% 38% 38%;background:radial-gradient(ellipse at 50% 72%,#fff 0,#ffe08a 34%,#ff9a2b 70%,rgba(255,120,30,0) 100%);transform-origin:50% 100%;animation:candle 1.7s ease-in-out infinite}
 .candle .gw{position:absolute;left:50%;bottom:100%;width:2900%;aspect-ratio:1;translate:-50% 56%;background:radial-gradient(circle,rgba(255,196,100,.62) 0,rgba(255,150,60,.26) 26%,rgba(255,120,40,.08) 50%,transparent 68%);mix-blend-mode:screen;animation:candleglow 2.3s ease-in-out infinite}
 @keyframes candle{0%,100%{transform:scale(1,1) rotate(-1.5deg)}30%{transform:scale(.92,1.08) rotate(2deg)}55%{transform:scale(1.05,.94) rotate(-.5deg)}78%{transform:scale(.95,1.05) rotate(1.5deg)}}
@@ -176,8 +181,8 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .hero p{font-size:16px;margin-bottom:16px}
 .hero .pl{display:none}
 .cave{top:auto;height:58svh;-webkit-mask-image:linear-gradient(transparent,#000 22%);mask-image:linear-gradient(transparent,#000 22%)}
-.cave .cv{left:calc(24cqw - max(100cqw,100cqh*var(--ar,1.7778))/2)}
-.cave .bigi{left:63%;top:37%;width:19%}
+.cave .cv{left:calc(24cqw - var(--k)*max(100cqw,100cqh*var(--ar,1.7778))/2)}
+.cave .bigi{left:64.5%;top:34%;width:calc(19%/var(--k))}
 .era .cv{left:0;top:0;translate:none;width:max(100cqw,100cqh*2);height:100%;opacity:.5}
 .cave .stk{font-size:15px;padding:2px 10px;border-radius:10px}
 .era:nth-child(even) .cv{left:auto;right:0}
