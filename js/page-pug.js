@@ -119,8 +119,12 @@ if (!RM) {
     fig.classList.add('live'); S.ready = true;
     S.next = performance.now() + 3500;
     // clips that end close to the calm pose just dissolve back; the others hold their last frame a moment first
-    const RET = ['sneeze', 'sleepy', 'wink2', 'blink', 'sniff'];
-    const ld = async k => { const a = await load(k, m[k].n); return ok(a) ? { f: a, l: m[k].lamp, fps: m[k].fps || 18, back: RET.includes(k) ? { hold: 0, fade: .18 } : { hold: .35, fade: .35 } } : null; };
+    // every clip plays only its moving part ([first, last] frame; the near-still frames at the ends read as a freeze), measured frame by frame.
+    // Open-mouthed endings then close: REV runs the clip backwards from a frame that matches the end pose (after the action, so it never replays) down to REV[1].
+    // The last few frames crossfade into the calm pose while they still move, so there is no stop before he is back.
+    const CUT = { yawn: [4, 22], wink2: [5, 22], curious: [0, 30], lick: [0, 29], blink: [0, 30] };
+    const REV = { yawn: [22, 4], bark: [11, 0], joy: [19, 0], pant: [15, 0], lick: [29, 21] };
+    const ld = async k => { const a = await load(k, m[k].n); if (!ok(a)) return null; const c = CUT[k] || [0, a.length - 1]; return { f: a, l: m[k].lamp, fps: m[k].fps || 18, a: c[0], z: c[1], rev: REV[k] }; };
     // blink frames for the pose he holds while watching the trailer (turn frame 9 to either side, eyes painted in Klein)
     const one = src => new Promise(res => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = base + src; });
     Promise.all(['LH', 'LC', 'RH', 'RC'].map(n => one('watch/' + n + '.webp'))).then(([lh, lc, rh, rc]) => { if (lh && lc && rh && rc) S.bl = { L: { H: lh, C: lc }, R: { H: rh, C: rc } }; });
@@ -159,16 +163,24 @@ if (!RM) {
     let frames = null, key, mixed = false;
     if (S.mode === 'expr') {
       S.et += dt * S.ex.fps;
-      const n = S.ex.f.length, t = Math.floor(S.et);
-      if (t < n) { frames = S.ex.f[t]; lamp = S.ex.l[t]; }
+      const X = S.ex, f = X.f, L = X.l, R = X.rev, E = X.z + 1, OV = 4, N = S.turn.f[S.c], NL = S.turn.l[S.c];
+      // draw frame i (lamp li) blended q of the way into the calm pose
+      const show = (i, q) => {
+        q = clamp(q, 0, 1);
+        if (q < .001) { frames = f[i]; lamp = L[i]; return; }
+        mix(f[i], N, q); mixed = true; lastKey = ''; lamp = [lerp(L[i][0], NL[0], q), lerp(L[i][1], NL[1], q)];
+      };
+      const done = () => { S.mode = 'follow'; S.next = now + 4000 + Math.random() * 4000; S.wNext = now + rnd(2500, 5000); };
+      if (S.et < E) show(Math.min(Math.floor(S.et), X.z), R ? 0 : (S.et - (E - OV)) / OV);
+      else if (!R) done();
       else {
-        // each clip plays once (running it backwards looked like the same animation twice in a row), then dissolves to the calm pose
-        const b = S.ex.back, k = ((S.et - n) / S.ex.fps - b.hold) / b.fade;
-        if (k >= 1) { S.mode = 'follow'; S.next = now + 4000 + Math.random() * 4000; S.wNext = now + rnd(2500, 5000); }
+        const BL = R[0] < X.z ? .1 : 0, u = (S.et - E) / X.fps;
+        if (u < BL) { mix(f[X.z], f[R[0]], u / BL); mixed = true; lastKey = ''; lamp = L[R[0]]; }
         else {
-          const q = clamp(k, 0, 1), la = S.ex.l[n - 1], lb = S.turn.l[S.c];
-          mix(S.ex.f[n - 1], S.turn.f[S.c], q); mixed = true; lastKey = '';
-          lamp = [lerp(la[0], lb[0], q), lerp(la[1], lb[1], q)];
+          const pos = R[0] - (u - BL) * X.fps * 1.15;
+          if (pos <= R[1]) done();
+          else if (pos < R[1] + OV) show(Math.round(pos), (R[1] + OV - pos) / OV);
+          else { const fl = Math.floor(pos), A = Math.min(fl + 1, R[0]), w = 1 - (pos - fl); mix(f[A], f[fl], w); mixed = true; lastKey = ''; lamp = L[fl]; }
         }
       }
     }
@@ -198,7 +210,7 @@ if (!RM) {
       key = img.src;
       if (key !== lastKey) paint(img);
       lamp = clip ? clip.l[ci] : S.turn.l[i];
-      if (S.mode === 'center' && Math.abs(S.px - S.c) < .6 && Math.abs(S.py) < .06) { S.mode = 'expr'; S.et = 0; }
+      if (S.mode === 'center' && Math.abs(S.px - S.c) < .6 && Math.abs(S.py) < .06) { S.mode = 'expr'; S.et = S.ex.a; }
       else if (S.mode === 'follow' && now > S.next && now - lastMove > 1500) startExpr();
       else if (S.mode === 'follow' && now > S.next) S.next = now + 1500;
     }
