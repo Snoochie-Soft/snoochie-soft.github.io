@@ -32,7 +32,8 @@ if (!RM) {
 
 const lines = [...document.querySelectorAll('.line')], mos = [...document.querySelectorAll('#moBig img')],
       dots = [...document.querySelectorAll('#count i')], blob = document.getElementById('blob');
-const cols = ['#46205c', '#1f5a2b', '#5a2a1c', '#1c3a5a', '#3a2a5c'];
+// blob colours come from the current theme (--b1..--b5 in page-mossy.css)
+const blobCol = i => getComputedStyle(document.documentElement).getPropertyValue('--b' + (i + 1)).trim();
 let cur = -1;
 function show(i) {
   if (i === cur) return;
@@ -40,7 +41,7 @@ function show(i) {
   lines.forEach((l, k) => gsap.to(l, { opacity: k === i ? 1 : 0, y: k === i ? 0 : (k < i ? -40 : 40), duration: .7, ease: 'expo.out' }));
   mos.forEach((m, k) => gsap.to(m, { opacity: k === i ? 1 : 0, scale: k === i ? 1 : .85, rotate: k === i ? 0 : (k < i ? -8 : 8), duration: .7, ease: 'expo.out' }));
   dots.forEach((d, k) => d.classList.toggle('on', k <= i));
-  gsap.to(blob, { backgroundColor: cols[i], duration: .8 });
+  gsap.to(blob, { backgroundColor: blobCol(i), duration: .8 });
 }
 if (RM) {
   // layout handled in CSS (prefers-reduced-motion block)
@@ -53,7 +54,7 @@ if (RM) {
 
 if (!RM) {
   gsap.from('.shelf h2,.shelf p', { y: 50, opacity: 0, duration: 1, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.shelf', start: 'top 75%' } });
-  gsap.from('.jar img', { y: 120, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .05, clearProps: 'all', scrollTrigger: { trigger: '#board', start: 'top 85%' } });
+  gsap.from('.jar .pot', { y: 120, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .05, clearProps: 'all', scrollTrigger: { trigger: '#board', start: 'top 85%' } });
   gsap.from('.phones h2,.phones p', { y: 50, opacity: 0, duration: 1, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.phones', start: 'top 75%' } });
   gsap.from('.ph', { y: 110, opacity: 0, duration: 1.2, ease: 'expo.out', stagger: .12, scrollTrigger: { trigger: '#row', start: 'top 85%' } });
   gsap.from('.know h2,.know .cols > div', { y: 50, opacity: 0, duration: 1, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.know', start: 'top 75%' } });
@@ -67,5 +68,19 @@ if (matchMedia('(hover: none)').matches) {
   document.addEventListener('click', e => {
     const j = e.target.closest && e.target.closest('.jar');
     jars.forEach(x => x.classList.toggle('on', x === j && !x.classList.contains('on')));
+  });
+}
+
+// the shelf grows while it scrolls into view: sprout -> half -> full plant, like in the app
+if (!RM) {
+  document.querySelectorAll('.board').forEach(board => {
+    const js = [...board.querySelectorAll('.jar')];
+    const grow = p => js.forEach((j, k) => {
+      const v = p * 1.3 - k * .04;
+      const g = v < .34 ? 0 : v < .67 ? 1 : 2;
+      if (j.dataset.g !== String(g)) j.dataset.g = g;
+    });
+    grow(0);
+    ScrollTrigger.create({ trigger: board, start: 'top 85%', end: 'bottom 45%', onUpdate: s => grow(s.progress), onRefresh: s => grow(s.progress), onLeave: () => grow(1) });
   });
 }
