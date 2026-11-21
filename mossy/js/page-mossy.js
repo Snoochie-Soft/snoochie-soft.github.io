@@ -35,12 +35,23 @@ const lines = [...document.querySelectorAll('.line')], mos = [...document.queryS
 // blob colours come from the current theme (--b1..--b5 in page-mossy.css)
 const blobCol = i => getComputedStyle(document.documentElement).getPropertyValue('--b' + (i + 1)).trim();
 let cur = -1;
+// each Mo pose is a still first; its animated clip (about 1 MB) loads when that step or the one before it is shown
+const hi = document.querySelector('#moBig .hi');
+let near = false;
+const wake = i => {
+  clip(i); clip(i + 1);
+  gsap.killTweensOf(hi);
+  if (i === 0) gsap.fromTo(hi, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: .55, ease: 'back.out(3)', delay: 1.6 });
+  else gsap.to(hi, { scale: 0, opacity: 0, duration: .25 });
+};
+const clip = k => { const m = mos[k]; if (!m || !m.dataset.clip) return; const im = new Image(); im.onload = () => { m.src = im.src; }; im.src = m.dataset.clip; delete m.dataset.clip; };
 function show(i) {
   if (i === cur) return;
   cur = i;
   lines.forEach((l, k) => gsap.to(l, { opacity: k === i ? 1 : 0, y: k === i ? 0 : (k < i ? -40 : 40), duration: .7, ease: 'expo.out' }));
   mos.forEach((m, k) => gsap.to(m, { opacity: k === i ? 1 : 0, scale: k === i ? 1 : .85, rotate: k === i ? 0 : (k < i ? -8 : 8), duration: .7, ease: 'expo.out' }));
   dots.forEach((d, k) => d.classList.toggle('on', k <= i));
+  if (near) wake(i);
   gsap.to(blob, { backgroundColor: blobCol(i), duration: .8 });
 }
 if (RM) {
@@ -49,6 +60,8 @@ if (RM) {
   ScrollTrigger.create({ trigger: '#story', start: 'top top', end: 'bottom bottom', onUpdate: s => show(Math.min(4, Math.floor(s.progress * 5))) });
   gsap.set(lines, { opacity: 0 });
   show(0);
+  // clips and the "Hi!" bubble start only when the story is about to be on screen
+  ScrollTrigger.create({ trigger: '#story', start: 'top 35%', once: true, onEnter: () => { near = true; wake(cur); } });
   gsap.to('#blob', { rotation: 90, scale: 1.08, ease: 'none', scrollTrigger: { trigger: '#story', start: 'top top', end: 'bottom bottom', scrub: true } });
 }
 
