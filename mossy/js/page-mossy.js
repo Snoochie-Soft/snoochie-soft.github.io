@@ -1,5 +1,5 @@
 /* Mossy page: orbiting plants, spinning ring, pinned story, reveals. */
-initSmooth();
+const lenis = initSmooth();
 const orbit = document.getElementById('orbit');
 const items = [...orbit.querySelectorAll('img')].map((im, i, all) => ({
   im, a: i / all.length * Math.PI * 2, r: .35 + (i % 2) * .05, sp: .1 + (i % 3) * .03
@@ -36,20 +36,22 @@ const lines = [...document.querySelectorAll('.line')], mos = [...document.queryS
 const blobCol = i => getComputedStyle(document.documentElement).getPropertyValue('--b' + (i + 1)).trim();
 let cur = -1;
 // each Mo pose is a still first; its animated clip (about 1 MB) loads when that step or the one before it is shown
-const hi = document.querySelector('#moBig .hi');
+const says = [...document.querySelectorAll('#moBig .say')];
 let near = false;
 const wake = i => {
   clip(i); clip(i + 1);
-  gsap.killTweensOf(hi);
-  if (i === 0) gsap.fromTo(hi, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: .55, ease: 'back.out(3)', delay: 1.6 });
-  else gsap.to(hi, { scale: 0, opacity: 0, duration: .25 });
+  says.forEach(b => {
+    gsap.killTweensOf(b);
+    if (b.classList.contains('s' + i)) gsap.fromTo(b, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: .55, ease: 'back.out(3)', delay: i ? .9 : 1.6 });
+    else gsap.to(b, { scale: 0, opacity: 0, duration: .2 });
+  });
 };
 const clip = k => { const m = mos[k]; if (!m || !m.dataset.clip) return; const im = new Image(); im.onload = () => { m.src = im.src; }; im.src = m.dataset.clip; delete m.dataset.clip; };
 function show(i) {
   if (i === cur) return;
   cur = i;
-  lines.forEach((l, k) => gsap.to(l, { opacity: k === i ? 1 : 0, y: k === i ? 0 : (k < i ? -40 : 40), duration: .7, ease: 'expo.out' }));
-  mos.forEach((m, k) => gsap.to(m, { opacity: k === i ? 1 : 0, scale: k === i ? 1 : .85, rotate: k === i ? 0 : (k < i ? -8 : 8), duration: .7, ease: 'expo.out' }));
+  lines.forEach((l, k) => gsap.to(l, { opacity: k === i ? 1 : 0, y: k === i ? 0 : (k < i ? -40 : 40), duration: .45, ease: 'power3.out' }));
+  mos.forEach((m, k) => gsap.to(m, { opacity: k === i ? 1 : 0, scale: k === i ? 1 : .85, rotate: k === i ? 0 : (k < i ? -8 : 8), duration: .5, ease: 'back.out(1.7)' }));
   dots.forEach((d, k) => d.classList.toggle('on', k <= i));
   if (near) wake(i);
   gsap.to(blob, { backgroundColor: blobCol(i), duration: .8 });
@@ -57,7 +59,20 @@ function show(i) {
 if (RM) {
   // layout handled in CSS (prefers-reduced-motion block)
 } else {
-  ScrollTrigger.create({ trigger: '#story', start: 'top top', end: 'bottom bottom', onUpdate: s => show(Math.min(4, Math.floor(s.progress * 5))) });
+  // five scenes at progress 0, .25, .5, .75, 1: the scroll settles on the nearest one, so Mo never freezes between two scenes
+  const story = ScrollTrigger.create({ trigger: '#story', start: 'top top', end: 'bottom bottom', onUpdate: s => show(Math.round(s.progress * 4)) });
+  // when the scroll comes to rest inside the story, glide to the nearest scene (Lenis drives the scroll, so ScrollTrigger's own snap does not fire)
+  let rest;
+  addEventListener('scroll', () => {
+    clearTimeout(rest);
+    rest = setTimeout(() => {
+      const y = scrollY, a = story.start, b = story.end;
+      if (y <= a + 1 || y >= b - 1) return;
+      const to = a + Math.round((y - a) / (b - a) * 4) / 4 * (b - a);
+      if (Math.abs(to - y) < 2) return;
+      if (lenis) lenis.scrollTo(to, { duration: .6, easing: t => 1 - Math.pow(1 - t, 3) }); else scrollTo({ top: to, behavior: 'smooth' });
+    }, 150);
+  }, { passive: true });
   gsap.set(lines, { opacity: 0 });
   show(0);
   // clips and the "Hi!" bubble start only when the story is about to be on screen
@@ -68,8 +83,6 @@ if (RM) {
 if (!RM) {
   gsap.from('.shelf h2,.shelf p', { y: 50, opacity: 0, duration: 1, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.shelf', start: 'top 75%' } });
   gsap.from('.jar .pot', { y: 120, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .05, clearProps: 'all', scrollTrigger: { trigger: '#board', start: 'top 85%' } });
-  gsap.from('.phones h2,.phones p', { y: 50, opacity: 0, duration: 1, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.phones', start: 'top 75%' } });
-  gsap.from('.ph', { y: 110, opacity: 0, duration: 1.2, ease: 'expo.out', stagger: .12, scrollTrigger: { trigger: '#row', start: 'top 85%' } });
   gsap.from('.know h2,.know .cols > div', { y: 50, opacity: 0, duration: 1, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.know', start: 'top 75%' } });
   gsap.from('.fin h2,.fin .cta', { y: 60, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.fin', start: 'top 80%' } });
   gsap.from('.fin .wave', { yPercent: 40, opacity: 0, duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: '.fin', start: 'top 60%' } });
@@ -77,10 +90,33 @@ if (!RM) {
 
 // touch screens have no hover: a tap shows the jar's name, a tap elsewhere hides it
 const jars = [...document.querySelectorAll('.jar')];
+// a small phone pops up above the jar and loops a few seconds of that game (img/games/<plant>.mp4)
+const peek = document.getElementById('peek'), pv = peek.querySelector('video'), shelfWrap = peek.parentElement;
+const peekOn = j => {
+  const slug = j.querySelector('.g2').getAttribute('src').split('/').pop().replace('.webp', '');
+  if (pv.dataset.s !== slug) { pv.dataset.s = slug; pv.poster = `img/games/${slug}.webp`; pv.src = `img/games/${slug}.mp4`; }
+  // beside the jar (right if it fits, else left), kept inside the screen below the header
+  const r = j.querySelector('.pot').getBoundingClientRect(), w = shelfWrap.getBoundingClientRect(), pw = peek.offsetWidth, ph = peek.offsetHeight;
+  const right = r.right + 12 + pw <= innerWidth - 8;
+  let x = right ? r.right + 12 : r.left - 12 - pw;
+  x = Math.max(8, Math.min(innerWidth - pw - 8, x));
+  const y = Math.max(76, Math.min(innerHeight - ph - 12, r.top + r.height / 2 - ph / 2));
+  peek.style.left = (x - w.left) + 'px'; peek.style.top = (y - w.top) + 'px';
+  peek.style.transformOrigin = right ? '0 50%' : '100% 50%';
+  peek.classList.add('on');
+  if (!RM) pv.play().catch(() => {});
+};
+const peekOff = () => { peek.classList.remove('on'); pv.pause(); };
 if (matchMedia('(hover: none)').matches) {
   document.addEventListener('click', e => {
     const j = e.target.closest && e.target.closest('.jar');
     jars.forEach(x => x.classList.toggle('on', x === j && !x.classList.contains('on')));
+    if (j && j.classList.contains('on')) peekOn(j); else peekOff();
+  });
+} else {
+  jars.forEach(j => {
+    j.addEventListener('mouseenter', () => peekOn(j)); j.addEventListener('mouseleave', peekOff);
+    j.addEventListener('focus', () => peekOn(j)); j.addEventListener('blur', peekOff);
   });
 }
 

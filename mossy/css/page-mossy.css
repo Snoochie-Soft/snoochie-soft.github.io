@@ -40,9 +40,10 @@ h1.big{position:absolute;left:0;right:0;bottom:clamp(88px,13vh,128px);text-align
 /* the propeller clip also floats up and down (translate, so it does not fight GSAP's transform) */
 .pin .moBig img.fly{animation:hover 2.6s ease-in-out infinite}
 @keyframes hover{0%,100%{translate:0 3%}50%{translate:0 -5%}}
-/* comic speech bubble Mo says after his first wave */
-.pin .hi{position:absolute;left:60%;top:13%;z-index:2;padding:.28em .62em .34em;font:400 clamp(26px,3.6vh,40px)/1 'Young Serif',serif;color:#1f2b25;background:#fffdf6;border:3px solid #1f2b25;border-radius:50% 50% 50% 50%/58% 58% 42% 42%;rotate:8deg;opacity:0;scale:0;transform-origin:15% 100%;pointer-events:none}
-.pin .hi::after{content:"";position:absolute;left:14%;bottom:-17px;width:22px;height:22px;background:#fffdf6;border:3px solid #1f2b25;border-top:0;border-left:0;clip-path:polygon(0 0,100% 0,100% 100%);transform:skewX(28deg) rotate(8deg)}
+/* comic speech bubbles: "Hi, nice to meet you!" after the wave, "But a lot of fun!" while he flies */
+.pin .say{position:absolute;left:60%;top:13%;text-align:center;white-space:nowrap;z-index:2;padding:.28em .62em .34em;font:400 clamp(19px,3vh,32px)/1.08 'Young Serif',serif;color:#1f2b25;background:#fffdf6;border:3px solid #1f2b25;border-radius:50% 50% 50% 50%/58% 58% 42% 42%;rotate:8deg;opacity:0;scale:0;transform-origin:15% 100%;pointer-events:none}
+.pin .say.s2{left:62%;top:22%}
+.pin .say::after{content:"";position:absolute;left:14%;bottom:-17px;width:22px;height:22px;background:#fffdf6;border:3px solid #1f2b25;border-top:0;border-left:0;clip-path:polygon(0 0,100% 0,100% 100%);transform:skewX(28deg) rotate(8deg)}
 .blob{position:absolute;left:50%;top:50%;width:min(86vh,92vw);aspect-ratio:1;translate:-50% -50%;border-radius:46% 54% 52% 48%/52% 46% 54% 48%;background:var(--b1);transition:background .6s}
 .line{position:absolute;z-index:2;font:400 clamp(38px,5.4vw,88px)/.95 'Young Serif',serif;letter-spacing:-.03em;max-width:9ch;opacity:0}
 .line:nth-of-type(odd){left:clamp(16px,5vw,90px)}.line:nth-of-type(even){right:clamp(16px,5vw,90px);text-align:right}
@@ -78,6 +79,11 @@ h1.big{position:absolute;left:0;right:0;bottom:clamp(88px,13vh,128px);text-align
 .jar:is(:hover,:focus-visible,.on){z-index:3}.jar span{--x:-50%;position:absolute;bottom:-4px;left:50%;translate:var(--x) 100%;background:var(--btn);color:var(--btn-ink);font-weight:800;font-size:13px;padding:3px 11px;border-radius:99px;white-space:nowrap;opacity:0;transition:opacity .3s,translate .5s var(--ease);pointer-events:none;z-index:2}
 .jar:is(:hover,:focus-visible,.on) span{opacity:1;translate:var(--x) 130%}
 .jar:first-child span{left:0;--x:0%}.jar:last-child span{left:auto;right:0;--x:0%}
+/* phone-shaped peek: a few looping seconds of the jar's game */
+.shelf .wrap{position:relative}
+.peek{position:absolute;left:0;top:0;z-index:6;width:clamp(132px,13vw,188px);aspect-ratio:720/1490;border:6px solid #1b1510;border-radius:24px;overflow:hidden;background:#1b1510;box-shadow:0 24px 50px var(--drop);opacity:0;scale:.86;transition:opacity .22s,scale .35s var(--ease),translate .35s var(--ease);pointer-events:none}
+.peek.on{opacity:1;scale:1}
+.peek video{display:block;width:100%;height:100%;object-fit:cover}
 .tp{display:none}@media(hover:none){.tp{display:inline}.hv{display:none}.jar{cursor:pointer}}
 /* phones */
 .phones{padding:clamp(40px,6vw,90px) 0 clamp(60px,9vw,120px);background:linear-gradient(var(--bg),var(--bg2))}
@@ -132,7 +138,7 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .pin .line{position:static;opacity:1;grid-column:1;max-width:none;text-align:left;font-size:clamp(32px,4vw,60px)}
 .pin .moBig{position:relative;left:auto;top:auto;translate:none;grid-column:2;grid-row:1/span 5;width:min(100%,460px);justify-self:center}
 .pin .moBig img:first-child{opacity:0}.pin .moBig img:nth-child(2){opacity:1}
-.blob,.count,.pin .hi{display:none}
+.blob,.count,.pin .say{display:none}
 }
 @media(prefers-reduced-motion:reduce) and (max-width:860px){
 .pin{grid-template-columns:1fr}
