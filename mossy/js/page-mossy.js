@@ -85,7 +85,7 @@ if (!RM) {
   gsap.from('.jar .pot', { y: 120, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .05, clearProps: 'all', scrollTrigger: { trigger: '#board', start: 'top 85%' } });
   gsap.from('.know h2,.know .cols > div', { y: 50, opacity: 0, duration: 1, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.know', start: 'top 75%' } });
   gsap.from('.fin h2,.fin .cta', { y: 60, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.fin', start: 'top 80%' } });
-  gsap.from('.fin .wave', { yPercent: 40, opacity: 0, duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: '.fin', start: 'top 60%' } });
+  gsap.from('.fin .box', { yPercent: 40, opacity: 0, duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: '.fin', start: 'top 60%' } });
 }
 
 // touch screens have no hover: a tap shows the jar's name, a tap elsewhere hides it
@@ -153,3 +153,10 @@ if (mv) {
 // the closing section fills the screen above the footer, so Mo stands as tall as the space allows
 const finH = () => document.documentElement.style.setProperty('--finh', Math.max(560, innerHeight - document.querySelector('footer').offsetHeight) + 'px');
 finH(); addEventListener('resize', finH);
+
+// Mo with the sign blinks every few seconds (a quick eyes-closed frame), not under reduced motion
+const signBox = document.querySelector('.fin .box');
+if (signBox && !RM) {
+  const blink = () => { signBox.classList.add('blink'); setTimeout(() => signBox.classList.remove('blink'), 150); setTimeout(blink, 2600 + Math.random() * 4200); };
+  setTimeout(blink, 2500);
+}
