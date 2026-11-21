@@ -59,7 +59,7 @@ if (!RM) {
   gsap.from('.ph', { y: 110, opacity: 0, duration: 1.2, ease: 'expo.out', stagger: .12, scrollTrigger: { trigger: '#row', start: 'top 85%' } });
   gsap.from('.know h2,.know .cols > div', { y: 50, opacity: 0, duration: 1, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.know', start: 'top 75%' } });
   gsap.from('.fin h2,.fin .cta', { y: 60, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.fin', start: 'top 80%' } });
-  gsap.from('.fin .wave', { y: 200, rotate: -10, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: '.fin .wave', start: 'top 100%' } });
+  gsap.from('.fin .wave', { yPercent: 40, opacity: 0, duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: '.fin', start: 'top 60%' } });
 }
 
 // touch screens have no hover: a tap shows the jar's name, a tap elsewhere hides it
@@ -100,3 +100,7 @@ if (mv) {
   hot.addEventListener('click', () => mv.pause());
   new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting && !mv.paused) mv.pause(); }), { threshold: .2 }).observe(frame);
 }
+
+// the closing section fills the screen above the footer, so Mo stands as tall as the space allows
+const finH = () => document.documentElement.style.setProperty('--finh', Math.max(560, innerHeight - document.querySelector('footer').offsetHeight) + 'px');
+finH(); addEventListener('resize', finH);
