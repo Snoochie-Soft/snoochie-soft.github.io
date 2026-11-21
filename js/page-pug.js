@@ -406,13 +406,15 @@ finH(); addEventListener('resize', finH);
 const pv = $('#pv'), vp = $('#vplay'), vframe = $('.vid .frame');
 const vstate = on => { vp.textContent = on ? 'Pause trailer' : 'Play trailer'; vp.setAttribute('aria-pressed', on ? 'true' : 'false'); watch = on ? vframe : null; vframe.classList.toggle('lit', on); };
 vp.addEventListener('click', () => { if (pv.paused) { pv.muted = false; pv.play(); } else pv.pause(); });
-vframe.addEventListener('click', () => vp.click());   // tapping the phone picture itself plays / pauses, not only the button
+vframe.addEventListener('click', e => { if (!e.target.closest('.vend,.vhot')) vp.click(); });   // tapping the phone picture itself plays / pauses, not only the button
 pv.addEventListener('play', () => vstate(true));
 pv.addEventListener('pause', () => vstate(false));
 const vend = $('.vend');
-pv.addEventListener('ended', () => { vstate(false); pv.load(); vend.hidden = false; vframe.classList.add('cta'); });   // back to the poster after the trailer, with the call to action over it
+pv.addEventListener('ended', () => { vstate(false); pv.load(); vhot.hidden = true; vend.hidden = false; vframe.classList.add('cta'); });   // back to the poster after the trailer, with the call to action over it
 pv.addEventListener('play', () => { vend.hidden = true; vframe.classList.remove('cta'); });
-vend.addEventListener('click', e => e.stopPropagation());   // its buttons must not start the trailer through the frame
+const vhot = $('.vhot');
+pv.addEventListener('timeupdate', () => { vhot.hidden = !(pv.currentTime > 27.4 && !pv.ended); });   // the badge pops in the trailer's outro at 27.4 s
+vhot.addEventListener('click', () => pv.pause());   // the frame's own click ignores the overlay and the hotspot (the Play-link analytics still sees the click)
 $('.vagain').addEventListener('click', () => { vend.hidden = true; pv.muted = false; pv.play(); });
 $('.vdown').addEventListener('click', () => { const to = $('.fin').getBoundingClientRect().top + scrollY + $('.fin').offsetHeight - innerHeight; if (lenis) lenis.scrollTo(to, { duration: 2.4 }); else scrollTo({ top: to, behavior: 'smooth' }); });
 // scrolled away from the trailer: pause it, so Bigi does not stare at an empty spot and the sound stops

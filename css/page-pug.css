@@ -84,8 +84,10 @@ h1,h2,h3,.dsp{font-family:'Lilita One',system-ui,sans-serif;font-weight:400;lett
 .vid .frame.cta{z-index:22;box-shadow:0 0 0 2px var(--amb),0 0 70px rgba(255,205,110,.3),0 30px 80px rgba(0,0,0,.6)}
 @keyframes vendin{from{opacity:0;transform:scale(1.04)}}
 .vend .vt{font:400 34px/.95 'Lilita One',sans-serif;color:#fff;margin:0 0 6px;text-shadow:0 4px 0 #2b1a05}.vend .vt span{color:var(--amb)}
-.vend .vgp{font-size:15px;padding:12px 16px;box-shadow:0 5px 0 #8a5a12,0 12px 30px rgba(255,190,70,.35);animation:vgp 1.6s ease-in-out infinite}
-.vend .vgp svg{width:16px;height:16px;flex:none}
+.vend .vgp{display:block;width:min(86%,210px);animation:vgp 1.6s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(255,200,90,.4)) drop-shadow(0 8px 16px rgba(0,0,0,.6))}
+.vend .vgp img{display:block;width:100%;height:auto;border-radius:9px}
+/* the Google Play badge drawn at the end of the trailer is clickable while it is on screen */
+.vhot{position:absolute;left:19%;top:88.6%;width:62%;height:9.2%;border-radius:10px;cursor:pointer;z-index:2}.vhot[hidden]{display:none}
 @keyframes vgp{50%{transform:scale(1.05)}}
 .vend button{border:0;background:none;font:inherit;font-weight:800;color:var(--amb);cursor:pointer;padding:8px 10px}
 .vend .vdown i{display:inline-block;font-style:normal;animation:vdn 1.2s ease-in-out infinite}@keyframes vdn{50%{transform:translateY(5px)}}
