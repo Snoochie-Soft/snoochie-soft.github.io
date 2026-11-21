@@ -2,7 +2,7 @@
 initSmooth();
 const orbit = document.getElementById('orbit');
 const items = [...orbit.querySelectorAll('img')].map((im, i, all) => ({
-  im, a: i / all.length * Math.PI * 2, r: .5 + (i % 2) * .06, sp: .1 + (i % 3) * .03
+  im, a: i / all.length * Math.PI * 2, r: .35 + (i % 2) * .05, sp: .1 + (i % 3) * .03
 }));
 function place(time) {
   items.forEach(o => {
@@ -43,8 +43,7 @@ function show(i) {
   gsap.to(blob, { backgroundColor: cols[i], duration: .8 });
 }
 if (RM) {
-  lines.forEach(l => { l.style.opacity = 1; l.style.position = 'relative'; });
-  document.getElementById('story').style.height = 'auto';
+  // layout handled in CSS (prefers-reduced-motion block)
 } else {
   ScrollTrigger.create({ trigger: '#story', start: 'top top', end: 'bottom bottom', onUpdate: s => show(Math.min(4, Math.floor(s.progress * 5))) });
   gsap.set(lines, { opacity: 0 });
@@ -54,10 +53,19 @@ if (RM) {
 
 if (!RM) {
   gsap.from('.shelf h2,.shelf p', { y: 50, opacity: 0, duration: 1, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.shelf', start: 'top 75%' } });
-  gsap.from('.jar img', { y: 120, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .05, scrollTrigger: { trigger: '#board', start: 'top 85%' } });
+  gsap.from('.jar img', { y: 120, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .05, clearProps: 'all', scrollTrigger: { trigger: '#board', start: 'top 85%' } });
   gsap.from('.phones h2,.phones p', { y: 50, opacity: 0, duration: 1, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.phones', start: 'top 75%' } });
   gsap.from('.ph', { y: 110, opacity: 0, duration: 1.2, ease: 'expo.out', stagger: .12, scrollTrigger: { trigger: '#row', start: 'top 85%' } });
   gsap.from('.know h2,.know .cols > div', { y: 50, opacity: 0, duration: 1, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.know', start: 'top 75%' } });
   gsap.from('.fin h2,.fin .cta', { y: 60, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.fin', start: 'top 80%' } });
   gsap.from('.fin .wave', { y: 200, rotate: -10, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: '.fin .wave', start: 'top 100%' } });
+}
+
+// touch screens have no hover: a tap shows the jar's name, a tap elsewhere hides it
+const jars = [...document.querySelectorAll('.jar')];
+if (matchMedia('(hover: none)').matches) {
+  document.addEventListener('click', e => {
+    const j = e.target.closest && e.target.closest('.jar');
+    jars.forEach(x => x.classList.toggle('on', x === j && !x.classList.contains('on')));
+  });
 }

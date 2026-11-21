@@ -1,0 +1,39 @@
+/* Mossy privacy + terms: same dark look as the Mossy page */
+:root{--bg:#1c0f27;--bg2:#2a1438;--card:#241232;--grn:#8fd34a;--ink:#f3eefa;--mut:#b8a9c9;--line:rgba(255,255,255,.12)}
+*{box-sizing:border-box;margin:0}
+html{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:500 17px/1.65 'Figtree',system-ui,sans-serif}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+.skip{position:fixed;left:12px;top:-60px;z-index:100;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:99px;font-weight:800;text-decoration:none}.skip:focus{top:12px}
+a:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:8px}
+
+.nav{position:sticky;top:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:16px clamp(16px,3.4vw,48px) 26px;background:linear-gradient(var(--bg) 62%,rgba(28,15,39,0))}
+.nav .l{display:flex;align-items:center;gap:18px}
+.nav a{text-decoration:none}
+.nav .brand{display:flex;align-items:center;gap:10px;font-weight:800}.nav .brand img{width:30px;border-radius:24%}
+.nav .back{font-weight:700;font-size:15px;color:var(--mut);padding:6px 4px}.nav .back:hover{color:var(--ink)}
+.pillbtn{background:var(--grn);color:#14240a;font-weight:800;border-radius:99px;padding:10px 20px}
+
+.doc{position:relative;max-width:760px;margin:0 auto;padding:clamp(30px,5vw,60px) clamp(18px,4vw,24px) clamp(60px,8vw,100px)}
+.doc .mo{position:absolute;right:clamp(10px,4vw,30px);top:clamp(-6px,1vw,14px);width:clamp(110px,18vw,170px);pointer-events:none}
+.doc h1{font:400 clamp(40px,7vw,72px)/1 'Young Serif',Georgia,serif;letter-spacing:-.03em;margin:0 0 18px;max-width:11ch}
+.doc .date{display:inline-block;border:1.5px solid rgba(255,255,255,.3);border-radius:99px;padding:2px 14px;font-size:14px;color:var(--mut);margin-bottom:28px}
+.doc h2{font:400 clamp(24px,3vw,30px)/1.15 'Young Serif',Georgia,serif;letter-spacing:-.01em;margin:44px 0 12px;scroll-margin-top:90px}
+.doc p,.doc ul{margin-bottom:14px;color:#e4dcf0}
+.doc strong{color:var(--ink);font-weight:800}
+.doc ul{list-style:none;padding:0;display:grid;gap:8px}
+.doc li{padding-left:22px;position:relative}
+.doc li::before{content:"";position:absolute;left:0;top:.66em;width:9px;height:9px;border-radius:50%;background:var(--grn)}
+.doc a{color:var(--grn);text-underline-offset:3px;overflow-wrap:anywhere}
+.doc hr{border:0;border-top:1px dashed var(--line);margin:36px 0}
+.doc code{font:600 .92em ui-monospace,Consolas,monospace;background:var(--card);padding:1px 6px;border-radius:6px}
+
+footer{background:var(--bg2);border-top:1px solid var(--line);padding:20px 0;color:var(--mut);font-size:14.5px}
+footer .wrap{max-width:1300px;margin:0 auto;padding-inline:clamp(18px,4vw,48px);display:flex;flex-direction:column;gap:14px}
+footer .flinks{display:flex;gap:6px 22px;flex-wrap:wrap}
+footer a{text-decoration:underline;text-underline-offset:3px}footer a:hover{color:var(--ink)}
+footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media(max-width:860px){.nav .back{font-size:14px;padding:10px 4px}.nav .l{gap:10px}.doc h1{padding-right:110px}}
+@media(max-width:420px){.nav .brand span{display:none}}
