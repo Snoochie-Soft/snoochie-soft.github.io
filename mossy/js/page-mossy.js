@@ -138,13 +138,13 @@ if (!RM) {
 const mv = document.getElementById('mv');
 if (mv) {
   const frame = mv.closest('.frame'), btn = document.getElementById('vplay'), hot = frame.querySelector('.vhot');
-  const state = on => { frame.classList.toggle('playing', on); btn.textContent = on ? 'Pause' : 'Play with sound'; btn.setAttribute('aria-pressed', on); };
+  const state = on => { frame.classList.toggle('playing', on); btn.textContent = T(on ? 'Pause' : 'Play with sound'); btn.setAttribute('aria-pressed', on); };
   const toggle = () => { if (mv.paused) { mv.muted = false; mv.play(); } else mv.pause(); };
   btn.addEventListener('click', toggle);
   frame.addEventListener('click', e => { if (!e.target.closest('.vhot')) toggle(); });
   mv.addEventListener('play', () => state(true));
   mv.addEventListener('pause', () => state(false));
-  mv.addEventListener('ended', () => { state(false); hot.hidden = true; mv.load(); btn.textContent = 'Watch again'; });
+  mv.addEventListener('ended', () => { state(false); hot.hidden = true; mv.load(); btn.textContent = T('Watch again'); });
   mv.addEventListener('timeupdate', () => { hot.hidden = !(mv.currentTime > 26.2 && !mv.ended); });   // the badge is on screen in the end card from ~26 s
   hot.addEventListener('click', () => mv.pause());
   new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting && !mv.paused) mv.pause(); }), { threshold: .2 }).observe(frame);

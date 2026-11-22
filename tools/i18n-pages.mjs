@@ -32,7 +32,7 @@ export const PAGES = [
   { id: "pug", src: "pug-bubble-dig/index.html", js: [
     "Tap to<br>start!", "Click to<br>start!", "Click<br>to start!", "Tap to start: ride the bucket down to Level 01",
     "Click to start: ride the bucket down to Level 01", "Pause trailer", "Play trailer"] },
-  // { id: "mossy", src: "mossy/index.html" },   // owner is still working on the Mossy page (2026-11-21)
+  { id: "mossy", src: "mossy/index.html", js: ["Pause", "Play with sound", "Watch again"] },
   { id: "legal", src: "legal/index.html" },
   { id: "mossy-privacy", src: "mossy/privacy/index.html", legal: true },
   { id: "mossy-terms", src: "mossy/terms/index.html", legal: true },
