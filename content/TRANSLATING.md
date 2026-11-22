@@ -1,24 +1,37 @@
 # Translating the Snoochie Soft site
 
-All visible copy lives in `content/en.json`. A translation is a copy of that file saved as
-`content/<lang>.json` with every string translated. Facts, links and colours live in
-`content/catalogue.json` and are never translated.
+The copy lives in two places:
+
+1. `content/en.json`: the generated pages (Fake Chat, Loopclass, Audio Transcriber, Christian Pray
+   app pages and the shared header and footer). A translation is a copy saved as `content/<lang>.json`.
+2. `content/pages/en/*.json`: the hand-made pages (home, Szybciej Się Nie Da, Pug Bubble Dig, /legal/)
+   and every privacy policy and terms page, cut into strings by `tools/i18n-pages.mjs extract`.
+   A translation is a copy saved as `content/pages/<lang>/<same name>.json` (see "Hand-made pages" below).
+
+Facts, links and colours live in `content/catalogue.json` and are never translated.
 
 ## Languages
 
-English is the master. Target languages: EN, PL, DE, ES, JA, PT-BR, FR, KO, ID.
+English is the master. Target languages (the biggest Google Play markets, Russian excluded):
 
-| Code | File | Output folder |
-|---|---|---|
-| `en` | `en.json` | site root `/` |
-| `pl` | `pl.json` | `/pl/` |
-| `de` | `de.json` | `/de/` |
-| `es` | `es.json` | `/es/` |
-| `ja` | `ja.json` | `/ja/` |
-| `pt-BR` | `pt-BR.json` | `/pt-br/` |
-| `fr` | `fr.json` | `/fr/` |
-| `ko` | `ko.json` | `/ko/` |
-| `id` | `id.json` | `/id/` |
+| Code | File | Output folder | `meta.ogLocale` | `meta.short` |
+|---|---|---|---|---|
+| `en` | `en.json` | site root `/` | `en_US` | `EN` |
+| `pl` | `pl.json` | `/pl/` | `pl_PL` | `PL` |
+| `de` | `de.json` | `/de/` | `de_DE` | `DE` |
+| `fr` | `fr.json` | `/fr/` | `fr_FR` | `FR` |
+| `es` | `es.json` | `/es/` | `es_ES` | `ES` |
+| `es-MX` | `es-MX.json` | `/es-mx/` | `es_MX` | `ES-MX` |
+| `pt-BR` | `pt-BR.json` | `/pt-br/` | `pt_BR` | `PT` |
+| `it` | `it.json` | `/it/` | `it_IT` | `IT` |
+| `cs` | `cs.json` | `/cs/` | `cs_CZ` | `CS` |
+| `tr` | `tr.json` | `/tr/` | `tr_TR` | `TR` |
+| `ja` | `ja.json` | `/ja/` | `ja_JP` | `JA` |
+| `ko` | `ko.json` | `/ko/` | `ko_KR` | `KO` |
+| `id` | `id.json` | `/id/` | `id_ID` | `ID` |
+
+`es` is Spanish for Spain (tú, vosotros, "móvil", "aplicación"). `es-MX` is Mexican / Latin American
+Spanish (tú, ustedes never vosotros, "celular", "app"). `pt-BR` is Brazilian Portuguese (você, "celular").
 
 **Never Russian.** No `ru.json`, no Russian strings anywhere. The build refuses it.
 
@@ -90,12 +103,38 @@ into instructions, headings or screen-reader labels.
 
 Internal names in the code (crate, desk, sleeve) are not visitor copy and are not translated.
 
+## Hand-made pages (content/pages/)
+
+Each file in `content/pages/en/` is one page: `{ "<key>": "<English string>" }` in page order.
+Keys are a hash of the English text: never change them. Translate only the values.
+
+- Inline markup is shown as numbered placeholders: `<em1>made properly.</em1>`, `<a1>Privacy & terms</a1>`,
+  `<br1/>`, `<i2></i2>`. Keep every placeholder exactly once, with the same number; you may move
+  them where the grammar needs them. Do not add HTML of your own.
+- Strings used by page scripts may contain a real `<br>` (keep it) or `{n}` (a number, keep it).
+- Write plain characters, not HTML entities (`&`, not `&amp;`).
+- `_common.json`: `language` is the label of the language list in the footer; `legalNote` appears under
+  the heading of every translated privacy policy and terms page.
+- Privacy policies and terms: translate precisely and completely, no shortening, no softening, no
+  added promises. Keep section numbers, dates, company names, e-mail addresses, product names,
+  law names (GDPR, COPPA ...) and quoted UI labels as they are (a UI label may get a translation
+  in brackets after it).
+- A string that is already in another language than English on the English page (for example the
+  Polish paragraph on the Pug Bubble Dig page, or Polish app names) stays exactly as it is.
+- Szybciej Się Nie Da teaches English to Polish speakers. Its page says so; keep that meaning
+  (do not turn it into "for speakers of <your language>").
+
+`node tools/i18n-pages.mjs check <lang>` reports missing keys, placeholder mismatches and empty strings.
+After the English pages change, `node tools/i18n-pages.mjs extract` updates `content/pages/en/`;
+strings whose English changed get new keys and show up as missing in every language.
+
 ## Adding a language
 
 1. Copy `content/en.json` to `content/<lang>.json` and translate it.
 2. `node tools/check-lang.mjs <lang>` until it says OK.
-3. Add the code to `LANGS_BUILT` in `tools/build-langs.mjs`.
-4. `node tools/build.mjs` then `node tools/og.mjs`.
+3. Copy `content/pages/en/` to `content/pages/<lang>/`, translate it, `node tools/i18n-pages.mjs check <lang>` until OK.
+4. Add the code to `LANGS_BUILT` in `tools/build-langs.mjs`.
+5. `node tools/build.mjs`, then `node tools/i18n-pages.mjs build`. (`node tools/og.mjs` regenerates OG cards, but it also overwrites the hand-made `img/og/home-en.jpg`; restore that file from git after running it.)
 
 The pages appear under `/<lang>/`, every page gets hreflang links, sitemap entries are added,
 and the language switcher appears in the header and footer as soon as two languages are built.

@@ -1,0 +1,341 @@
+{
+  "meta": {
+    "lang": "ko",
+    "ogLocale": "ko_KR",
+    "nameNative": "한국어",
+    "short": "KO"
+  },
+  "site": {
+    "studio": "Snoochie Soft",
+    "brandSub": "독립 Android 스튜디오",
+    "tagline": "작지만 제대로 만든 앱.",
+    "homeLabel": "Snoochie Soft 홈",
+    "skip": "본문으로 건너뛰기",
+    "navLabel": "주 메뉴",
+    "nav": { "catalogue": "카탈로그", "rules": "운영 원칙", "contact": "문의" },
+    "langButton": "언어",
+    "langMenu": "언어 선택",
+    "theme": { "auto": "테마: 자동 (기기 설정에 따름)", "light": "테마: 라이트", "dark": "테마: 다크", "autoShort": "자동", "lightShort": "라이트", "darkShort": "다크" },
+    "playAlt": "Google Play에서 {name} 받기",
+    "appPage": "앱 페이지",
+    "appPageLabel": "{name}, 앱 페이지",
+    "inPolish": "폴란드어",
+    "footer": {
+      "releases": "법적 고지",
+      "releasesLabel": "개인정보 처리방침과 이용약관",
+      "legalAll": "모든 앱의 개인정보 처리방침 및 이용약관",
+      "language": "언어",
+      "contact": "문의",
+      "place": "Bydgoszcz, 폴란드",
+      "copyright": "© 2026 Snoochie Soft",
+      "line": "Google Play의 Android 앱"
+    },
+    "legal": {
+      "privacy": "개인정보 처리방침",
+      "terms": "이용약관",
+      "regulamin": "Google Sites의 이용약관",
+      "deletion": "계정 및 데이터 삭제",
+      "support": "지원",
+      "licenses": "라이선스"
+    }
+  },
+  "home": {
+    "title": "Snoochie Soft: 작지만 제대로 만든 Android 앱",
+    "description": "Snoochie Soft는 Android 앱을 만드는 아주 작은 독립 스튜디오입니다. 영어 단어, ADHD 게임, 가짜 채팅 메이커, 학교 플래너, 음성 받아쓰기, 매일 기도 앱이 있습니다.",
+    "ogAlt": "Snoochie Soft: 작지만 제대로 만든 앱. 연두색 바탕 위에 놓인 앱 표지 여섯 개.",
+    "h1": "작지만 제대로 만든 앱.",
+    "lede": "Google Play에 Android 앱을 한 번에 하나씩, 번호를 붙여 내놓는 작은 독립 스튜디오입니다.",
+    "deskLabel": "선택한 앱",
+    "flipToCover": "표지 보기",
+    "flipToScreens": "화면 보기",
+    "sideA": "A면 · 하는 일",
+    "sideB": "B면 · 동작 방식",
+    "tracksLabel": "목록",
+    "credits": "{no} · Android · Google Play",
+    "madeBy": "Snoochie Soft 제작",
+    "crateTitle": "모든 앱",
+    "crateHint": "앱을 선택하면 화면을 볼 수 있습니다. 방향키로 목록을 이동합니다.",
+    "sleeveLabel": "{no}, {name}. 화면 보기",
+    "onDesk": "선택됨",
+    "deskStatus": "{no}, {name}, 선택됨",
+    "rackLabel": "모든 앱",
+    "ribbonLabel": "카탈로그 번호",
+    "ribbonTitle": "카탈로그",
+    "prev": "먼저 나온 앱으로 스크롤",
+    "next": "나중에 나온 앱으로 스크롤",
+    "nextSlotTitle": "다음 출시",
+    "nextSlotText": "번호 예약됨",
+    "nextSlotLabel": "{no}, 다음 출시를 위해 예약됨",
+    "catTitle": "카탈로그",
+    "catSub": "앱마다 다음 번호를 받고, 그 번호를 계속 씁니다. 출시가 늘어날 때마다 목록도 길어지며, 다음 줄은 이미 그어져 있습니다.",
+    "catCols": { "no": "번호", "release": "출시", "kind": "소개", "links": "링크" },
+    "catOpen": "다음 출시를 위해 예약됨.",
+    "rulesTitle": "운영 원칙",
+    "rulesSub": "모든 출시작에 담는 세 가지 약속입니다. 각 앱 페이지에는 그 앱이 지키는 약속이 해당 앱의 표현으로 적혀 있습니다.",
+    "rules": [
+      { "h": "계정 없음", "p": "앱을 열면 바로 쓸 수 있습니다. 가입을 강요하지 않으며, 로그인은 언제나 선택 사항입니다." },
+      { "h": "오프라인 작동", "p": "대부분의 앱은 비행기나 기차 안에서, 또는 Wi-Fi를 끈 상태에서도 계속 작동합니다. 인터넷 연결이 필요한 기능은 각 앱 페이지에 적혀 있습니다." },
+      { "h": "정직한 가격", "p": "앱의 가격은 결제 전에 보여 드립니다. 갑작스러운 유료 벽도, 죄책감을 자극하는 문구도, 망신 주기도 없습니다." }
+    ],
+    "contactTitle": "스튜디오에 연락하기",
+    "contactText": "버그 신고, 제휴, 보도, 아쉬운 기능 제안까지. 앱을 만드는 사람들이 직접 읽는 하나의 받은편지함입니다.",
+    "contactAddressLabel": "이메일 주소",
+    "contactMailto": "이메일 쓰기",
+    "contactCopy": "주소 복사",
+    "contactCopied": "주소를 복사했습니다.",
+    "contactPlace": "Snoochie Soft, Bydgoszcz, 폴란드"
+  },
+  "app": {
+    "sideA": "A면",
+    "sideAName": "하는 일",
+    "sideB": "B면",
+    "sideBName": "동작 방식",
+    "sideAHeading": "A면: 하는 일",
+    "sideBHeading": "B면: 동작 방식",
+    "privacyNear": "개인정보 처리방침 읽기",
+    "screensTitle": "앱 화면 세 장",
+    "notesTitle": "노트",
+    "smallPrint": "유의 사항",
+    "creditsTitle": "앱 정보",
+    "creditRows": { "no": "카탈로그 번호", "platform": "플랫폼", "package": "패키지", "studio": "스튜디오", "languages": "앱 언어" },
+    "platform": "Android (Google Play)",
+    "legalTitle": "법적 고지 및 지원",
+    "legalNone": "개인정보 처리방침과 이용약관은 Google Play 스토어 등록정보에 링크되어 있습니다. 이곳에서 호스팅되면 이 페이지에도 추가됩니다.",
+    "otherLanguages": "이 페이지는 다음 언어로도 제공됩니다",
+    "relatedTitle": "스튜디오의 다른 앱",
+    "relatedLabel": "다른 앱",
+    "stampsLabel": "이 앱의 특징",
+    "backToCatalogue": "카탈로그로 돌아가기"
+  },
+  "apps": {
+    "ssnd": {
+      "name": "Szybciej Się Nie Da",
+      "short": "Szybciej",
+      "spine": "Szybciej",
+      "storeName": "Angielski bez gramatyki 50 dni",
+      "kind": "폴란드어 사용자를 위한 영어 단어",
+      "line": "폴란드어 사용자를 위한 문법 없는 영어: 가장 많이 쓰는 단어 500개를 50일 동안 하루 10개씩.",
+      "title": "Szybciej Się Nie Da: 50일 만에 영어 단어 500개",
+      "description": "폴란드어 사용자에게 가장 흔한 영어 단어 500개를 50일 동안 하루 10개씩 가르쳐 주는 Android 앱입니다. 문법 규칙도, 계정도 없고 오프라인에서 작동합니다.",
+      "languageNote": "앱은 폴란드어로 제공됩니다. 영어를 배우는 폴란드어 사용자를 위해 만든 앱입니다.",
+      "appLanguage": "폴란드어",
+      "sticker": "계정 없음",
+      "stamps": ["계정 없음", "오프라인 작동", "광고 없는 14일"],
+      "sideA": [
+        "가장 많이 쓰는 영어 단어 500개, 50일 동안 하루 새 단어 10개",
+        "모든 단어에 녹음된 음성과 예문 수록",
+        "단어를 막 잊어 갈 즈음 복습이 돌아옴",
+        "연습 방법 여섯 가지: 플래시카드, 퀴즈, 짝 맞추기, 듣기, 입력, 손을 쓰지 않는 음성 모드",
+        "유예일이 하루 있는 연속 학습 기록, XP, 레벨, 배지"
+      ],
+      "sideB": [
+        "계정이 필요 없음. 기기 간 동기화를 원할 때만 Google 로그인",
+        "오프라인 작동",
+        "처음 14일은 광고 없음, 이후에는 동의한 경우에만 광고 표시",
+        "단어 500개 모두 무료. Premium은 학습 속도(하루 20개 또는 30개), 더 넓은 사전, 광고 제거를 추가",
+        "다크 모드, 큰 글씨, 화면 낭독기 지원, 보조 신호로서의 진동"
+      ],
+      "notes": [
+        "왜 500개일까: 영화와 TV 대사 7억 3,500만 단어를 집계하면, 가장 흔한 500개 단어가 말의 79.5%를 차지합니다. 상위 100개만으로도 64%를 차지합니다.",
+        "출처와 방법은 앱 안의 별도 화면에 나와 있습니다."
+      ],
+      "fine": "가격은 구매 전에 Google Play에 표시됩니다. 월간 및 연간 Premium은 7일 무료로 시작하며, 일회성 구매도 있습니다.",
+      "screens": [
+        { "caption": "플래시카드", "alt": "앱의 플래시카드: 영어 단어 “of”가 폴란드어로 전치사라고 표시되어 있고, 듣기 버튼이 있습니다." },
+        { "caption": "퀴즈", "alt": "퀴즈: 영어 단어 “be”와 고를 수 있는 폴란드어 번역 네 개. 정답 “być”가 표시되고 10 XP를 얻습니다." },
+        { "caption": "진행 상황", "alt": "통계 화면: 이미 알아듣는 일상 대화의 비율, 레벨과 XP, 연속 학습 일수, 익힌 단어 수." }
+      ]
+    },
+    "mossy": {
+      "name": "Mossy",
+      "short": "Mossy",
+      "storeName": "Mossy: ADHD Games for Adults",
+      "kind": "집중과 평온을 위한 아늑한 게임",
+      "line": "뇌가 고장 난 게 아닙니다. 탭이 47개 열려 있을 뿐입니다. ADHD가 있는 성인을 위한 아늑한 미니 게임 16개, 한 판에 1~3분.",
+      "title": "Mossy: 성인을 위한 아늑한 ADHD 게임. 오프라인, 광고 없음",
+      "description": "집중과 평온을 위한 작고 아늑한 게임 16개, 성인 ADHD의 뇌를 위해 만들었습니다. 한 판에 1~3분, 6개 게임은 영구 무료, 오프라인, 광고 없음, 구독 없음.",
+      "appLanguage": "영어",
+      "sticker": "오프라인 · 광고 없음",
+      "stamps": ["오프라인 작동", "광고 없음", "계정 없음"],
+      "sideA": [
+        "작은 게임 16개, 한 판에 1~3분",
+        "어떤 게임이든 약 10초면 방법을 익힘",
+        "게임이 조용히 난이도를 맞춰 알맞게 도전적인 상태를 유지",
+        "Today's Mix: 매일 골라 주는 게임 세 개",
+        "플레이하는 동안 생성되는 음악, 같은 음 열 개가 반복되지 않음",
+        "플레이할수록 자라나는 작은 숲 정원"
+      ],
+      "sideB": [
+        "6개 게임은 영구 무료. 잠긴 게임도 한 번씩은 무료로 체험",
+        "Full Unlock: 한 번의 결제로 16개 게임 전체, 구독 없음",
+        "오프라인 작동. 광고, 계정, 추적 없음",
+        "잃어버릴 연속 기록도, 창피를 주는 화면도 없음",
+        "움직임 줄이기, 색각 이상 모드, 조절 가능한 햅틱"
+      ],
+      "notes": [
+        "이끼는 잊어버려도 죽지 않습니다. 그저 기다릴 뿐입니다. 올 수 있을 때 오세요. 정원은 그대로 있을 것입니다.",
+        "점수, 배지, 정원은 휴대전화에만 저장됩니다. 외부 업체는 Full Unlock 결제를 처리하는 Google Play뿐입니다."
+      ],
+      "fine": "Mossy는 집중과 휴식을 위한 게임 모음입니다. 의료기기가 아니며 어떠한 질환도 진단, 치료 또는 완치하지 않습니다.",
+      "screens": [
+        { "caption": "숲", "alt": "Mossy 홈 화면: 밤의 숲에서 Mo가 나무 선반 두 개 위에 떠 있습니다. 각 선반에는 Tab Storm, Time Blind, Pour Decisions, Impulse Gate, Squirrel!, Where Did I Put It? 라벨이 붙은 화분이 놓여 있습니다." },
+        { "caption": "Time Blind", "alt": "Time Blind: Hold for 3 s. 둥근 구슬을 누르고 있는 동안 파란색으로 차오르며 1.7 s를 표시합니다." },
+        { "caption": "Brain Dump Sorter", "alt": "Brain Dump Sorter: Feed the cat, Doctor at 3, Reply today 같은 떠다니는 생각들이 Now, Later, Let go 세 서랍으로 내려갑니다." }
+      ]
+    },
+    "fakechat": {
+      "name": "Fake Chat Maker & Text Message",
+      "short": "Fake Chat Maker",
+      "spine": "Fake Chat",
+      "storeName": "Fake Chat Maker & Text Message",
+      "kind": "농담과 이야기를 위한 가짜 채팅",
+      "line": "농담이나 이야기를 위한 가짜 문자 대화를 작성하고, 스타일을 입혀 이미지로 저장합니다. 오직 재미를 위해 만들었습니다.",
+      "title": "Fake Chat Maker: 농담용 가짜 문자 메시지",
+      "description": "가짜 문자 대화를 만들고 스타일을 입혀 이미지로 저장합니다. 채팅 스타일 세 가지, 원하는 배경, 계정 없음, 오프라인 작동. 재미 용도 전용입니다.",
+      "appLanguage": "영어",
+      "sticker": "계정 없음 · 오프라인 작동",
+      "stamps": ["계정 없음", "오프라인 작동", "메시지 수 제한 없음"],
+      "sideA": [
+        "채팅의 양쪽 대사를 모두 작성. 말풍선을 탭하면 수정, 길게 누르면 보낸 사람 전환",
+        "시간과 전송 완료·읽음 표시 변경",
+        "드래그로 메시지 순서 변경, 모든 변경 실행 취소와 다시 실행",
+        "채팅 스타일 세 가지와 원하는 배경: 색상, 그라데이션 또는 사진",
+        "채팅을 이미지로 저장해 공유하거나, 파일로 백업"
+      ],
+      "sideB": [
+        "계정 없음, 로그인 없음, 오프라인 작동",
+        "무료 버전에서도 채팅과 메시지 수 제한 없음",
+        "입력하거나 편집하는 동안에는 광고가 나타나지 않음",
+        "작은 결제 한 번으로 광고와 워터마크를 영구 제거",
+        "실제 메시지를 보내지 않으며 어떤 메시지 서비스에도 연결되지 않음"
+      ],
+      "notes": [
+        "친구들에게 장난을 치거나, 스토리 게시물, 영상·학교 과제·발표용 목업을 만들 때 좋습니다."
+      ],
+      "fine": "재미와 창작 스토리텔링 용도로만 제공됩니다. 어떤 메신저 앱이나 회사와도 제휴, 보증, 연결 관계가 없습니다. 스크린샷을 남을 속이거나 괴롭히거나 해치는 데 사용하지 마세요.",
+      "screens": [
+        { "caption": "작성", "alt": "Mom과의 대화가 열린 채팅 편집기: Mom의 메시지는 보라색, 답장은 주황색이며 Me와 Them 버튼, 하단에 메시지 입력란이 있습니다." },
+        { "caption": "스타일", "alt": "스타일 패널: Ink, Riso, Mono 세 가지 채팅 스타일, 배경색 격자, 아바타 색상 한 줄." },
+        { "caption": "내 채팅", "alt": "Your fakes: 저장된 채팅 네 개가 Mom, Sam, Coach Dana, Landlord 카드로 표시되고, 하단에 New fake 버튼이 있습니다." }
+      ]
+    },
+    "loopclass": {
+      "name": "Loopclass",
+      "short": "Loopclass",
+      "storeName": "Loopclass: Class Schedule App",
+      "kind": "학교 시간표, 숙제, 성적",
+      "line": "시간표, 숙제, 시험, 성적을 하나의 플래너에서 관리하며 위젯과 알림도 있습니다. 계정 없이, 인터넷 없이 작동합니다.",
+      "title": "Loopclass: 수업 시간표와 숙제 플래너",
+      "description": "학교 시간표, 숙제, 시험, 성적을 위젯과 알림이 있는 하나의 플래너로. 계정 없음, 오프라인 작동, 내 Google Drive에 백업.",
+      "appLanguage": "47개 언어",
+      "sticker": "계정 없음 · 오프라인",
+      "stamps": ["계정 없음", "오프라인 작동", "구독 없음"],
+      "sideA": [
+        "교실, 선생님, A/B주를 지원하는 주간 시간표",
+        "각각 알림을 여러 개 설정할 수 있는 숙제와 시험",
+        "가중치, 평균, GPA를 지원하는 성적: 백분율, A–F 등급 또는 폴란드식 1–6 척도",
+        "홈 화면 위젯: 카운트다운이 있는 다음 수업, 그리고 남은 할 일",
+        "오늘 마감인 할 일을 모두 끝내면 오늘의 링이 닫힘"
+      ],
+      "sideB": [
+        "계정도 인터넷도 필요 없음",
+        "내 개인 Google Drive 폴더로 선택적 백업",
+        "자체 서버 없음: 플래너는 기기에 그대로 남음",
+        "모든 플래너 기능은 무료이며 작은 배너 광고 하나가 있음",
+        "Premium 일회성 결제로 광고 제거. 구독 없음"
+      ],
+      "notes": [
+        "기한이 지난 할 일에는 빨간 숫자 대신 차분한 라벨이 붙습니다. 모든 효과에는 각각 스위치가 있으며, 최소와 최대 프리셋도 있습니다.",
+        "알림은 재시작 후 다시 예약되며, 시간대를 바꿔도 수업 시간은 그대로 유지됩니다."
+      ],
+      "fine": "고등학생과 대학생(13세 이상)을 위해 만들었습니다. 광고는 Google AdMob이 제공합니다.",
+      "screens": [
+        { "caption": "주간", "alt": "10월 13일 화요일의 주간 보기: Mathematics는 완료, Biology는 Now로 표시, 이어서 History와 English가 시간 및 교실과 함께 표시되고, 오후 6시 마감인 Problem set 4 할 일이 있습니다." },
+        { "caption": "오늘, 다크 테마", "alt": "다크 테마의 오늘 화면: 진행 중인 Biology 수업, 다음 수업들, 이틀 지난 에세이가 있는 Due soon 목록." },
+        { "caption": "할 일", "alt": "Tasks: 밀린 에세이와, 3일 뒤 우선순위가 높은 물리 시험을 포함한 예정 항목." }
+      ]
+    },
+    "transcriber": {
+      "name": "Offline Audio Transcriber",
+      "short": "Audio Transcriber",
+      "spine": "Audio",
+      "storeName": "Offline Audio Transcriber",
+      "kind": "휴대전화에서 음성을 텍스트로",
+      "line": "음성 메모, 강의, 인터뷰와 모든 MP3 또는 동영상 파일을 Android 휴대전화에서 텍스트로 바꿉니다. 업로드되는 것은 없습니다.",
+      "title": "AI Dictation: 오프라인으로 오디오를 텍스트로 변환",
+      "description": "녹음, MP3, 동영상 파일을 Android 휴대전화에서 텍스트로 바꿉니다. 24개 언어 오프라인 받아쓰기, 계정 없음, 업로드 없음.",
+      "appLanguage": "영어 및 기타 언어",
+      "sticker": "오프라인 · 업로드 없음",
+      "stamps": ["계정 없음", "업로드 없음", "오프라인 작동"],
+      "sideA": [
+        "녹음하거나 MP3, M4A, WAV, OGG, MP4 등 오디오·동영상 파일 가져오기",
+        "오디오를 따라가는 타임스탬프 스크립트. 단어를 탭하면 그 위치로 이동",
+        "오류 수정, 텍스트 검색, 녹음을 폴더별로 정리",
+        "TXT, SRT, VTT로 내보내기, 복사 또는 공유",
+        "기본 모델로 유럽 언어 24개, 선택 사항인 두 번째 모델로 더 많은 언어 추가"
+      ],
+      "sideB": [
+        "계정 없음, 자체 서버 없음",
+        "음성 모델 671 MB가 휴대전화에 설치되면 오프라인 작동",
+        "모델 다운로드, 광고, Google Play 결제 때만 인터넷에 연결",
+        "모든 녹음의 처음 2분은 무료이며, 짧은 광고를 보면 3분이 추가됨",
+        "분 단위 팩은 만료되지 않으며, Pro는 무제한 분량 제공"
+      ],
+      "notes": [
+        "자체 테스트에서 Samsung Galaxy S23 Ultra로 1시간 분량의 녹음을 처리하는 데 약 8분이 걸렸습니다. 오래되었거나 저렴한 휴대전화는 더 느리며, 긴 작업은 백그라운드에서 계속 실행됩니다.",
+        "분석 도구도, 충돌 보고도 없으며, 판매하는 것도 없습니다."
+      ],
+      "fine": "정확도는 오디오 품질, 억양, 배경 소음에 따라 달라집니다. 중요한 스크립트는 의존하기 전에 확인하세요.",
+      "screens": [
+        { "caption": "스크립트", "alt": "스크립트 화면: 타임스탬프가 붙은 줄, 재생 중인 단어는 강조 표시, 하단에 플레이어 컨트롤." },
+        { "caption": "녹음기", "alt": "녹음기: 경과 시간, 실시간 파형, 남은 무료 분량." },
+        { "caption": "녹음 목록", "alt": "검색, 폴더, 길이, 각 스크립트의 첫 줄이 표시된 녹음 목록." }
+      ]
+    },
+    "christianpray": {
+      "name": "Christian Pray Everyday",
+      "short": "Christian Pray",
+      "spine": "Pray",
+      "storeName": "Christian Pray Everyday: Bible",
+      "kind": "매일의 성경 구절과 기도",
+      "line": "소리 내어 읽어 주는 매일의 성경 구절, 녹음된 기도 25개, 성경 이야기 215편. 하루를 시작하고 마무리하는 고요한 자리입니다.",
+      "title": "Christian Pray Everyday: 성경 구절과 기도",
+      "description": "소리 내어 읽어 주는 매일의 성경 구절, 녹음된 기도 25개, 성경 이야기 215편, 교회력과 홈 화면 위젯. Snoochie Soft의 Android 앱입니다.",
+      "appLanguage": "영어",
+      "sticker": "광고 없음",
+      "stamps": ["광고 없음", "오늘의 구절 무료"],
+      "sideA": [
+        "하루에 구절 하나, 소리 내어 읽어 주며 뒤에는 그려진 그림이 함께 나옴",
+        "13,000개 이상의 구절과 자연스러운 음성 네 가지 중 선택",
+        "녹음된 기도 25개: 재생을 누르고 함께 기도",
+        "창조부터 바울의 마지막 여정까지, 성경 이야기 215편",
+        "슬픔에서 은혜까지, 1,100개가 넘는 주제의 성경 말씀",
+        "절기별 교회력(미국 달력 기준)과 구절 위젯"
+      ],
+      "sideB": [
+        "오늘의 구절은 구독 없이 무료로 들을 수 있음",
+        "이야기 66편은 무료로 읽을 수 있고, 세 편은 무료로 들을 수 있음",
+        "Premium: 주간, 월간 또는 연간. Google Play에서 해지할 때까지 갱신됨",
+        "저장한 구절, 기도, 연속 기록은 우리 서버가 아니라 내 Google 계정 백업에 저장됨",
+        "광고 없음"
+      ],
+      "notes": [
+        "모든 것이 하늘에 걸린 하나의 고요한 책 안에 한 페이지씩 담겨 있습니다.",
+        "Premium 회원은 하루에 기도 제목 하나를 나눌 수 있습니다. 모든 기도 제목은 다른 사람에게 공개되기 전에 사람이 직접 읽습니다."
+      ],
+      "fine": "Premium은 모든 음성, 모든 이야기, 모든 주제를 열어 줍니다. 구독은 기간 종료 최소 24시간 전에 해지하지 않으면 자동으로 갱신됩니다.",
+      "screens": [
+        { "caption": "오늘", "alt": "9월 25일 금요일의 오늘 화면: 쏟아진 곡식 항아리를 그린 그림 위에 Matthew 13:24 구절이 있고, Listen, 저장, 공유 버튼이 있습니다." },
+        { "caption": "구절", "alt": "13,111개 중 4번째 구절: Proverbs 31:25, “Strength and dignity are her clothing”, 해 질 녘의 도시 위에 Previous, 공유, Next 버튼이 있습니다." },
+        { "caption": "기도", "alt": "Pray 화면: 소리 내어 읽어 주는 기도 25개, 기도 5회와 기도 시간 3분이 표시된 주간 기록, Our Father, Hail Mary, Glory Be, Apostles Creed 카드." }
+      ]
+    }
+  },
+  "notFound": {
+    "title": "페이지를 찾을 수 없음 · Snoochie Soft",
+    "h1": "이 페이지는 카탈로그에 없습니다.",
+    "p": "찾으시는 페이지가 없거나 이동했습니다. 카탈로그에 모든 출시작이 있습니다.",
+    "home": "카탈로그로 이동",
+    "listTitle": "출시작"
+  }
+}

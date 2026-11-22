@@ -304,8 +304,8 @@ if (!RM) {
   const setHint = () => {
     const touch = matchMedia('(hover: none)').matches, mode = touch ? 'tap' : small() ? 'click-narrow' : 'click';
     if (hintBtn.dataset.mode === mode) return; hintBtn.dataset.mode = mode;
-    hintBtn.innerHTML = (mode === 'tap' ? 'Tap to<br>start!' : mode === 'click-narrow' ? 'Click to<br>start!' : 'Click<br>to start!') + '<i aria-hidden="true"></i>';
-    hintBtn.setAttribute('aria-label', (touch ? 'Tap' : 'Click') + ' to start: ride the bucket down to Level 01');
+    hintBtn.innerHTML = T(mode === 'tap' ? 'Tap to<br>start!' : mode === 'click-narrow' ? 'Click to<br>start!' : 'Click<br>to start!') + '<i aria-hidden="true"></i>';
+    hintBtn.setAttribute('aria-label', T(touch ? 'Tap to start: ride the bucket down to Level 01' : 'Click to start: ride the bucket down to Level 01'));
   };
   setHint(); addEventListener('resize', setHint);
   const more = $('#bucket .dig.more');
@@ -404,7 +404,7 @@ if (!RM) {
 const finH = () => document.documentElement.style.setProperty('--finh', Math.max(560, innerHeight - $('footer').offsetHeight) + 'px');
 finH(); addEventListener('resize', finH);
 const pv = $('#pv'), vp = $('#vplay'), vframe = $('.vid .frame');
-const vstate = on => { vp.textContent = on ? 'Pause trailer' : 'Play trailer'; vp.setAttribute('aria-pressed', on ? 'true' : 'false'); watch = on ? vframe : null; vframe.classList.toggle('lit', on); };
+const vstate = on => { vp.textContent = T(on ? 'Pause trailer' : 'Play trailer'); vp.setAttribute('aria-pressed', on ? 'true' : 'false'); watch = on ? vframe : null; vframe.classList.toggle('lit', on); };
 vp.addEventListener('click', () => { if (pv.paused) { pv.muted = false; pv.play(); } else pv.pause(); });
 vframe.addEventListener('click', e => { if (!e.target.closest('.vend,.vhot')) vp.click(); });   // tapping the phone picture itself plays / pauses, not only the button
 pv.addEventListener('play', () => vstate(true));

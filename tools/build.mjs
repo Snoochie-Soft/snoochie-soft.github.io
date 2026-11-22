@@ -44,8 +44,11 @@ for (const l of LANGS_BUILT) for (const a of cat.apps) {
 const written = [];
 // Hand-ported pages (static HTML in the repo, not produced by templates.mjs). The build must never overwrite them.
 const HANDMADE = new Set(["index.html", "mossy/index.html", "szybciej-sie-nie-da/index.html", "pug-bubble-dig/index.html"]);
+// Translations of the hand-made pages (/<lang>/index.html, /<lang>/mossy/index.html ...) come from tools/i18n-pages.mjs.
+const LANG_DIRS = Object.values(cat.languages).map((l) => l.dir).filter(Boolean);
+const stripLang = (rel) => { const d = LANG_DIRS.find((x) => rel.startsWith(x + "/")); return d ? rel.slice(d.length + 1) : rel; };
 function write(rel, html) {
-  if (HANDMADE.has(rel)) { console.log("skip (hand-made): " + rel); return; }
+  if (HANDMADE.has(stripLang(rel))) { console.log("skip (hand-made): " + rel); return; }
   const out = resolve(OUT, rel);
   mkdirSync(dirname(out), { recursive: true });
   writeFileSync(out, html);
@@ -60,11 +63,12 @@ for (const lang of LANGS_BUILT) {
   const base = { lang, ogLang, t: langs[lang], langs, cat, built: LANGS_BUILT };
   const homeDir = pageDir(cat, lang, "home");
   write(homeDir + "index.html", homePage({ ...base, key: "home", dir: homeDir, root: rootFor(homeDir) }));
-  pageUrls.push(homeDir);
+  if (!HANDMADE.has(stripLang(homeDir + "index.html")) || existsSync(resolve(OUT, homeDir, "index.html"))) pageUrls.push(homeDir);
   for (const app of cat.apps) {
     const dir = pageDir(cat, lang, app.id);
     write(dir + "index.html", appPage({ ...base, key: app.id, dir, root: rootFor(dir) }, app));
-    pageUrls.push(dir);
+    // a hand-made page in another language exists only once tools/i18n-pages.mjs has written it
+    if (!HANDMADE.has(stripLang(dir + "index.html")) || existsSync(resolve(OUT, dir, "index.html"))) pageUrls.push(dir);
   }
 }
 

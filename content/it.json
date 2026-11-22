@@ -1,0 +1,341 @@
+{
+  "meta": {
+    "lang": "it",
+    "ogLocale": "it_IT",
+    "nameNative": "Italiano",
+    "short": "IT"
+  },
+  "site": {
+    "studio": "Snoochie Soft",
+    "brandSub": "Studio Android indipendente",
+    "tagline": "App piccole, fatte per bene.",
+    "homeLabel": "Snoochie Soft, pagina iniziale",
+    "skip": "Vai al contenuto",
+    "navLabel": "Principale",
+    "nav": { "catalogue": "Catalogo", "rules": "Regole di casa", "contact": "Contatti" },
+    "langButton": "Lingua",
+    "langMenu": "Scegli una lingua",
+    "theme": { "auto": "Tema: automatico (segue il dispositivo)", "light": "Tema: chiaro", "dark": "Tema: scuro", "autoShort": "Auto", "lightShort": "Chiaro", "darkShort": "Scuro" },
+    "playAlt": "Scarica {name} su Google Play",
+    "appPage": "Pagina dell'app",
+    "appPageLabel": "{name}, pagina dell'app",
+    "inPolish": "in polacco",
+    "footer": {
+      "releases": "Note legali",
+      "releasesLabel": "Informativa sulla privacy e termini",
+      "legalAll": "Privacy e termini di tutte le app",
+      "language": "Lingua",
+      "contact": "Contatti",
+      "place": "Bydgoszcz, Polonia",
+      "copyright": "© 2026 Snoochie Soft",
+      "line": "App Android su Google Play"
+    },
+    "legal": {
+      "privacy": "Privacy",
+      "terms": "Termini",
+      "regulamin": "Termini su Google Sites",
+      "deletion": "Elimina account e dati",
+      "support": "Assistenza",
+      "licenses": "Licenze"
+    }
+  },
+  "home": {
+    "title": "Snoochie Soft: piccole app Android, fatte per bene",
+    "description": "Snoochie Soft è un piccolo studio indipendente che realizza app Android: parole inglesi, giochi per l'ADHD, un creatore di chat finte, un'agenda scolastica, trascrizione e preghiera quotidiana.",
+    "ogAlt": "Snoochie Soft: app piccole, fatte per bene. Sei copertine di app su uno sfondo giallo-verde.",
+    "h1": "App piccole, fatte per bene.",
+    "lede": "Un piccolo studio indipendente che pubblica app Android su Google Play, una uscita numerata alla volta.",
+    "deskLabel": "App selezionata",
+    "flipToCover": "Mostra la copertina",
+    "flipToScreens": "Mostra le schermate",
+    "sideA": "Lato A · cosa fa",
+    "sideB": "Lato B · come si comporta",
+    "tracksLabel": "Elenco delle tracce",
+    "credits": "{no} · Android · Google Play",
+    "madeBy": "Fatta da Snoochie Soft",
+    "crateTitle": "Tutte le app",
+    "crateHint": "Scegli un'app per vedere le sue schermate. I tasti freccia scorrono l'elenco.",
+    "sleeveLabel": "{no}, {name}. Mostra le sue schermate",
+    "onDesk": "Selezionata",
+    "deskStatus": "{no}, {name}, selezionata",
+    "rackLabel": "Tutte le app",
+    "ribbonLabel": "Numeri di catalogo",
+    "ribbonTitle": "Catalogo",
+    "prev": "Scorri alle app precedenti",
+    "next": "Scorri alle app successive",
+    "nextSlotTitle": "Prossima uscita",
+    "nextSlotText": "Numero riservato",
+    "nextSlotLabel": "{no}, riservato alla prossima uscita",
+    "catTitle": "Il catalogo",
+    "catSub": "Ogni app riceve il numero successivo e lo tiene. Il foglio cresce a ogni uscita, e la riga seguente è già tracciata.",
+    "catCols": { "no": "N.", "release": "Uscita", "kind": "Che cos'è", "links": "Link" },
+    "catOpen": "Riservato alla prossima uscita.",
+    "rulesTitle": "Regole di casa",
+    "rulesSub": "Tre promesse che imprimiamo nelle nostre uscite. Ogni pagina app elenca quelle che rispetta, con parole sue.",
+    "rules": [
+      { "h": "Senza account", "p": "Apri l'app e usala. Nessun muro di registrazione. Accedere è sempre e solo facoltativo." },
+      { "h": "Funziona offline", "p": "La maggior parte delle nostre app continua a funzionare in aereo, in treno o con il Wi-Fi spento. Ogni pagina app indica cosa richiede una connessione." },
+      { "h": "Prezzi onesti", "p": "Quanto costa un'app si vede prima di pagare. Nessun muro a sorpresa, nessun senso di colpa, nessuna colpevolizzazione." }
+    ],
+    "contactTitle": "Scrivi allo studio",
+    "contactText": "Segnalazioni di bug, collaborazioni, stampa, o una funzione che ti manca. Una sola casella, letta da chi costruisce le app.",
+    "contactAddressLabel": "Indirizzo e-mail",
+    "contactMailto": "Scrivi un'e-mail",
+    "contactCopy": "Copia indirizzo",
+    "contactCopied": "Indirizzo copiato.",
+    "contactPlace": "Snoochie Soft, Bydgoszcz, Polonia"
+  },
+  "app": {
+    "sideA": "Lato A",
+    "sideAName": "Cosa fa",
+    "sideB": "Lato B",
+    "sideBName": "Come si comporta",
+    "sideAHeading": "Lato A: cosa fa",
+    "sideBHeading": "Lato B: come si comporta",
+    "privacyNear": "Leggi l'informativa sulla privacy",
+    "screensTitle": "Tre schermate dell'app",
+    "notesTitle": "Note",
+    "smallPrint": "In piccolo",
+    "creditsTitle": "Crediti",
+    "creditRows": { "no": "N. di catalogo", "platform": "Piattaforma", "package": "Pacchetto", "studio": "Studio", "languages": "Lingua dell'app" },
+    "platform": "Android, su Google Play",
+    "legalTitle": "Note legali e assistenza",
+    "legalNone": "L'informativa sulla privacy e i termini sono collegati nella scheda di Google Play. Verranno aggiunti a questa pagina quando saranno ospitati qui.",
+    "otherLanguages": "Questa pagina è disponibile anche in",
+    "relatedTitle": "Altre app dello studio",
+    "relatedLabel": "Altre uscite",
+    "stampsLabel": "Impresso in questa uscita",
+    "backToCatalogue": "Torna al catalogo"
+  },
+  "apps": {
+    "ssnd": {
+      "name": "Szybciej Się Nie Da",
+      "short": "Szybciej",
+      "spine": "Szybciej",
+      "storeName": "Angielski bez gramatyki 50 dni",
+      "kind": "Inglese per chi parla polacco",
+      "line": "Inglese senza grammatica per chi parla polacco: le 500 parole più comuni in 50 giorni, 10 al giorno.",
+      "title": "Szybciej Się Nie Da: 500 parole inglesi in 50 giorni",
+      "description": "App Android che insegna a chi parla polacco le 500 parole inglesi più comuni, 10 al giorno per 50 giorni. Senza regole di grammatica, senza account, funziona offline.",
+      "languageNote": "L'app è in polacco: è fatta per chi parla polacco e impara l'inglese.",
+      "appLanguage": "Polacco",
+      "sticker": "Senza account",
+      "stamps": ["Senza account", "Funziona offline", "14 gg senza pubblicità"],
+      "sideA": [
+        "Le 500 parole inglesi più comuni, 10 nuove al giorno per 50 giorni",
+        "Ogni parola con una voce registrata e una frase d'esempio",
+        "I ripassi tornano proprio quando inizi a dimenticare una parola",
+        "Sei modi per esercitarsi: flashcard, quiz, coppie da abbinare, ascolto, scrittura e una modalità vocale a mani libere",
+        "Una serie di giorni consecutivi con un giorno di grazia, XP, livelli e badge"
+      ],
+      "sideB": [
+        "Non serve un account. Accesso con Google solo se vuoi sincronizzare i dispositivi",
+        "Funziona offline",
+        "Niente pubblicità per i primi 14 giorni, poi pubblicità solo con il tuo consenso",
+        "Tutte le 500 parole sono gratuite. Premium aggiunge ritmo (20 o 30 al giorno), il dizionario più ampio e niente pubblicità",
+        "Tema scuro, testo più grande, supporto per lo screen reader e vibrazione come segnale in più"
+      ],
+      "notes": [
+        "Perché 500 parole: contate su 735 milioni di parole di dialoghi di film e TV, le 500 parole più comuni costituiscono il 79,5% di ciò che si dice. Le prime 100 da sole ne coprono il 64%.",
+        "Le fonti e il metodo sono nell'app, in una schermata a parte."
+      ],
+      "fine": "I prezzi sono mostrati in Google Play prima dell'acquisto. Premium mensile e annuale partono con 7 giorni gratuiti; esiste anche un acquisto una tantum.",
+      "screens": [
+        { "caption": "Flashcard", "alt": "Flashcard nell'app: la parola inglese “of”, indicata come preposizione in polacco, con un pulsante Ascolta." },
+        { "caption": "Quiz", "alt": "Quiz: la parola inglese “be” con quattro traduzioni polacche tra cui scegliere; quella corretta, “być”, è contrassegnata e fa guadagnare 10 XP." },
+        { "caption": "Progressi", "alt": "Schermata delle statistiche: la quota di parlato quotidiano che già riconosci, livello e XP, la serie di giorni consecutivi e il numero di parole imparate." }
+      ]
+    },
+    "mossy": {
+      "name": "Mossy",
+      "short": "Mossy",
+      "storeName": "Mossy: ADHD Games for Adults",
+      "kind": "Giochi rilassanti per focus e calma",
+      "line": "Il tuo cervello non è rotto. Ha solo 47 schede aperte. Sedici mini-giochi rilassanti per adulti con ADHD, da 1 a 3 minuti a partita.",
+      "title": "Mossy: giochi rilassanti per adulti con ADHD. Offline, senza pubblicità",
+      "description": "16 piccoli giochi rilassanti per concentrazione e calma, per adulti con ADHD. Da 1 a 3 minuti a partita, 6 gratis per sempre, offline, senza pubblicità né abbonamento.",
+      "appLanguage": "Inglese",
+      "sticker": "Offline · senza pubblicità",
+      "stamps": ["Funziona offline", "Senza pubblicità", "Senza account"],
+      "sideA": [
+        "16 piccoli giochi, da 1 a 3 minuti a partita",
+        "Impari ogni gioco in circa 10 secondi",
+        "I giochi si adattano in silenzio, così restano sempre abbastanza impegnativi",
+        "Mix di oggi: tre giochi scelti per te ogni giorno",
+        "Musica generata mentre giochi, così non ripete mai le stesse dieci note",
+        "Un piccolo giardino nel bosco cresce mentre giochi"
+      ],
+      "sideB": [
+        "6 giochi gratis, per sempre. Prova gratis una volta ogni gioco bloccato",
+        "Sblocco completo: tutti i 16 giochi con un solo pagamento, senza abbonamento",
+        "Funziona offline. Niente pubblicità, niente account, niente tracciamento",
+        "Nessuna serie da perdere e nessuna schermata che fa vergognare",
+        "Movimento ridotto, modalità per daltonici e vibrazione regolabile"
+      ],
+      "notes": [
+        "Il muschio non muore se lo dimentichi. Aspetta e basta. Torna quando puoi; il tuo giardino ci sarà ancora.",
+        "I tuoi punteggi, i badge e il giardino sono salvati solo sul tuo telefono. L'unica parte esterna è Google Play, che gestisce l'acquisto dello Sblocco completo."
+      ],
+      "fine": "Mossy è un insieme di giochi per la concentrazione e il relax. Non è un dispositivo medico e non diagnostica, non tratta e non cura alcuna condizione.",
+      "screens": [
+        { "caption": "Il bosco", "alt": "Schermata iniziale di Mossy: Mo fluttua sopra due mensole di legno in un bosco di notte. Ogni mensola regge piante in vaso con le etichette Tab Storm, Time Blind, Pour Decisions, Impulse Gate, Squirrel! e Where Did I Put It?" },
+        { "caption": "Time Blind", "alt": "Time Blind: Hold for 3 s. Una sfera rotonda si riempie di blu mentre la tieni premuta e mostra 1,7 s." },
+        { "caption": "Brain Dump Sorter", "alt": "Brain Dump Sorter: pensieri fluttuanti come Feed the cat, Doctor at 3 e Reply today scendono verso tre cassetti: Now, Later e Let go." }
+      ]
+    },
+    "fakechat": {
+      "name": "Fake Chat Maker & Text Message",
+      "short": "Fake Chat Maker",
+      "spine": "Fake Chat",
+      "storeName": "Fake Chat Maker & Text Message",
+      "kind": "Chat finte per scherzi e storie",
+      "line": "Scrivi una finta conversazione di messaggi per uno scherzo o una storia, dalle uno stile e salvala come immagine. Solo per divertimento.",
+      "title": "Fake Chat Maker: finti messaggi di testo per scherzi",
+      "description": "Crea una finta conversazione di messaggi, dalle uno stile e salvala come immagine. Tre stili di chat, sfondo personalizzato, senza account, funziona offline. Solo per divertimento.",
+      "appLanguage": "Inglese",
+      "sticker": "Senza account · offline",
+      "stamps": ["Senza account", "Funziona offline", "Messaggi senza limiti"],
+      "sideA": [
+        "Scrivi entrambe le parti di una chat. Tocca un fumetto per modificarlo, tieni premuto per cambiare il mittente",
+        "Cambia l'orario e le spunte di consegna o di lettura",
+        "Trascina per riordinare i messaggi, annulla e ripristina qualsiasi modifica",
+        "Tre stili di chat e uno sfondo tutto tuo: colore, sfumatura o una foto",
+        "Salva la chat come immagine e condividila, oppure fanne un backup in un file"
+      ],
+      "sideB": [
+        "Nessun account, nessun accesso, funziona offline",
+        "Nessun limite a chat o messaggi nella versione gratuita",
+        "La pubblicità non compare mai mentre scrivi o modifichi",
+        "Un piccolo acquisto elimina per sempre la pubblicità e la filigrana",
+        "Non invia messaggi reali e non si collega ad alcun servizio di messaggistica"
+      ],
+      "notes": [
+        "Utile per uno scherzo agli amici, un post con una storia o un mock-up per un video, un progetto scolastico o una presentazione."
+      ],
+      "fine": "Solo per divertimento e racconti creativi. Non affiliata a, approvata da né collegata ad alcuna app o azienda di messaggistica. Per favore non usare gli screenshot per ingannare, molestare o danneggiare nessuno.",
+      "screens": [
+        { "caption": "Scrivi", "alt": "Editor di chat con una conversazione con Mom: i suoi messaggi in viola, le risposte in arancione, i pulsanti Me e Them e un campo messaggio in basso." },
+        { "caption": "Stile", "alt": "Pannello dello stile: tre stili di chat, Ink, Riso e Mono, una griglia di colori di sfondo e una fila di colori per l'avatar." },
+        { "caption": "Le tue chat", "alt": "Your fakes: quattro chat salvate mostrate come schede, Mom, Sam, Coach Dana e Landlord, con un pulsante New fake in basso." }
+      ]
+    },
+    "loopclass": {
+      "name": "Loopclass",
+      "short": "Loopclass",
+      "storeName": "Loopclass: Class Schedule App",
+      "kind": "Orario scolastico, compiti e voti",
+      "line": "Orario, compiti, esami e voti in un unico planner, con widget e promemoria. Funziona senza account e senza internet.",
+      "title": "Loopclass: planner di orario scolastico e compiti",
+      "description": "Orario scolastico, compiti, esami e voti in un unico planner, con widget e promemoria. Senza account, funziona offline, backup sul tuo Google Drive.",
+      "appLanguage": "47 lingue",
+      "sticker": "Senza account · offline",
+      "stamps": ["Senza account", "Funziona offline", "Senza abbonamento"],
+      "sideA": [
+        "Un orario settimanale con aule, insegnanti e settimane A/B",
+        "Compiti ed esami, ciascuno con più promemoria",
+        "Voti con pesi, medie e GPA: percentuale, lettere A–F o la scala polacca 1–6",
+        "Widget per la schermata iniziale: la tua prossima lezione con il conto alla rovescia e le tue attività aperte",
+        "L'anello di oggi si chiude quando ogni attività in scadenza oggi è completata"
+      ],
+      "sideB": [
+        "Non servono né un account né internet",
+        "Backup facoltativo nella tua cartella privata su Google Drive",
+        "Nessun nostro server: il tuo planner resta sul tuo dispositivo",
+        "Tutte le funzioni del planner sono gratuite, con un piccolo banner pubblicitario",
+        "Un acquisto Premium una tantum elimina la pubblicità. Nessun abbonamento"
+      ],
+      "notes": [
+        "Le attività in ritardo ricevono un'etichetta pacata, mai un contatore rosso. Ogni effetto ha il suo interruttore, più i preset Minimo e Massimo.",
+        "I promemoria vengono pianificati di nuovo dopo un riavvio, e gli orari delle lezioni restano fermi quando cambi fuso orario."
+      ],
+      "fine": "Pensata per studenti delle scuole superiori e universitari (13+). La pubblicità è fornita da Google AdMob.",
+      "screens": [
+        { "caption": "Settimana", "alt": "Vista settimanale di martedì 13 ottobre: Mathematics completata, Biology contrassegnata Now, poi History ed English con orari e aule, e un'attività Problem set 4 in scadenza alle 6 PM." },
+        { "caption": "Oggi, tema scuro", "alt": "Oggi nel tema scuro: la lezione di Biology in corso, le prossime lezioni e un elenco Due soon con un saggio in ritardo di due giorni." },
+        { "caption": "Attività", "alt": "Attività: un saggio da recuperare e le scadenze imminenti, tra cui un esame di fisica ad alta priorità tra 3 giorni." }
+      ]
+    },
+    "transcriber": {
+      "name": "Offline Audio Transcriber",
+      "short": "Audio Transcriber",
+      "spine": "Audio",
+      "storeName": "Offline Audio Transcriber",
+      "kind": "Dal parlato al testo sul telefono",
+      "line": "Trasforma note vocali, lezioni, interviste e qualsiasi file MP3 o video in testo sul tuo telefono Android. Nulla viene caricato.",
+      "title": "AI Dictation: trascrivi audio in testo offline",
+      "description": "Trasforma registrazioni, file MP3 e video in testo sul tuo telefono Android. Trascrizione offline in 24 lingue, senza account, nulla viene caricato.",
+      "appLanguage": "Inglese e altre lingue",
+      "sticker": "Offline · nulla caricato",
+      "stamps": ["Senza account", "Nulla viene caricato", "Funziona offline"],
+      "sideA": [
+        "Registra, oppure importa MP3, M4A, WAV, OGG, MP4 e altri file audio e video",
+        "Una trascrizione con marcatori temporali che segue l'audio. Tocca una parola per saltare lì",
+        "Correggi gli errori, cerca nel testo e ordina le registrazioni in cartelle",
+        "Esporta TXT, SRT o VTT, copia o condividi",
+        "24 lingue europee con il modello principale; un secondo modello facoltativo ne aggiunge altre"
+      ],
+      "sideB": [
+        "Nessun account e nessun nostro server",
+        "Funziona offline una volta che il modello vocale da 671 MB è sul telefono",
+        "Va online solo per il download del modello, la pubblicità e gli acquisti su Google Play",
+        "I primi 2 minuti di ogni registrazione sono gratuiti; un breve annuncio ne aggiunge 3",
+        "I pacchetti di minuti non scadono mai; Pro offre minuti illimitati"
+      ],
+      "notes": [
+        "Su un Samsung Galaxy S23 Ultra una registrazione di un'ora ha richiesto circa 8 minuti nel nostro test. I telefoni più vecchi ed economici sono più lenti, e i lavori lunghi continuano in background.",
+        "Nessuno strumento di analisi, nessuna segnalazione dei crash, nulla viene venduto."
+      ],
+      "fine": "La precisione dipende dalla qualità dell'audio, dagli accenti e dal rumore di fondo. Controlla le trascrizioni importanti prima di farci affidamento.",
+      "screens": [
+        { "caption": "Trascrizione", "alt": "La schermata della trascrizione: righe con marcatori temporali, la parola in riproduzione è evidenziata, i controlli del player in basso." },
+        { "caption": "Registratore", "alt": "Il registratore: tempo trascorso, forma d'onda dal vivo e quanto resta della parte gratuita." },
+        { "caption": "Registrazioni", "alt": "L'elenco delle registrazioni con ricerca, cartelle, durate e la prima riga di ogni trascrizione." }
+      ]
+    },
+    "christianpray": {
+      "name": "Christian Pray Everyday",
+      "short": "Christian Pray",
+      "spine": "Pray",
+      "storeName": "Christian Pray Everyday: Bible",
+      "kind": "Versetto biblico e preghiera del giorno",
+      "line": "Un versetto biblico al giorno letto ad alta voce, 25 preghiere registrate e 215 storie della Bibbia. Un luogo tranquillo dove iniziare e finire la giornata.",
+      "title": "Christian Pray Everyday: versetto biblico e preghiere",
+      "description": "Un versetto biblico al giorno letto ad alta voce, 25 preghiere registrate e 215 storie della Bibbia, con l'anno liturgico e un widget. App Android di Snoochie Soft.",
+      "appLanguage": "Inglese",
+      "sticker": "Senza pubblicità",
+      "stamps": ["Senza pubblicità", "Versetto d'oggi gratis"],
+      "sideA": [
+        "Un versetto al giorno, letto ad alta voce, con un'immagine dipinta sullo sfondo",
+        "Più di 13.000 versetti e quattro voci naturali tra cui scegliere",
+        "25 preghiere registrate: premi play e prega insieme",
+        "215 storie della Bibbia, dalla Creazione all'ultimo viaggio di Paolo",
+        "Le Scritture per più di 1.100 temi, dal lutto alla grazia",
+        "L'anno liturgico, festa per festa (calendario USA), e un widget con il versetto"
+      ],
+      "sideB": [
+        "Il versetto del giorno si ascolta gratis, senza abbonamento",
+        "66 storie gratuite da leggere, tre gratuite da ascoltare",
+        "Premium: settimanale, mensile o annuale, con rinnovo fino a quando lo annulli su Google Play",
+        "I versetti salvati, le preghiere e la tua serie di giorni stanno nel backup del tuo account Google, non sui nostri server",
+        "Senza pubblicità"
+      ],
+      "notes": [
+        "Tutto è composto in un unico libro tranquillo che sta sospeso nel cielo, pagina dopo pagina.",
+        "I membri Premium possono condividere un'intenzione di preghiera al giorno. Ogni intenzione viene letta da una persona prima che chiunque altro la veda."
+      ],
+      "fine": "Premium apre ogni voce, ogni storia e ogni tema. Gli abbonamenti si rinnovano automaticamente a meno che non vengano annullati almeno 24 ore prima della fine del periodo.",
+      "screens": [
+        { "caption": "Oggi", "alt": "Schermata Today di venerdì 25 settembre: un'immagine dipinta di una giara di argilla rovesciata con del grano sopra il versetto Matteo 13:24, con i pulsanti Ascolta, salva e condividi." },
+        { "caption": "Versetti", "alt": "Versetto 4 di 13.111: Proverbi 31:25, “Strength and dignity are her clothing”, sopra una città al tramonto, con i pulsanti Precedente, condividi e Successivo." },
+        { "caption": "Preghiere", "alt": "Schermata Pray: 25 preghiere lette ad alta voce, un tracker settimanale con 5 preghiere dette e 3 minuti in preghiera, e schede per Our Father, Hail Mary, Glory Be e Apostles Creed." }
+      ]
+    }
+  },
+  "notFound": {
+    "title": "Pagina non trovata · Snoochie Soft",
+    "h1": "Questa pagina non è nel catalogo.",
+    "p": "La pagina che cerchi non esiste o è stata spostata. Il catalogo contiene tutte le uscite.",
+    "home": "Vai al catalogo",
+    "listTitle": "Uscite"
+  }
+}

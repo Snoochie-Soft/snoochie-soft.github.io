@@ -43,7 +43,7 @@ function update(p) {
   const day = Math.max(1, Math.min(50, Math.ceil(p * 50)));
   if (day !== lastDay) {
     lastDay = day;
-    dayEl.textContent = 'Day ' + day;
+    dayEl.textContent = T('Day {n}').replace('{n}', day);
     wordsEl.textContent = day * 10;
     ticks.forEach((tk, i) => tk.classList.toggle('on', i < day));
   }
@@ -53,8 +53,8 @@ function update(p) {
     imgs.forEach((im, k) => gsap.to(im, { opacity: k === i ? 1 : 0, scale: k === i ? 1 : 1.06, duration: .5, ease: 'power2.out' }));
     dots.forEach((d, k) => d.classList.toggle('on', k <= i));
     gsap.fromTo('.cap', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .5 });
-    capT.textContent = CAP[i][0];
-    capS.textContent = CAP[i][1];
+    capT.textContent = T(CAP[i][0]);
+    capS.textContent = T(CAP[i][1]);
   }
 }
 if (RM) {

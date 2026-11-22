@@ -1,0 +1,341 @@
+{
+  "meta": {
+    "lang": "id",
+    "ogLocale": "id_ID",
+    "nameNative": "Bahasa Indonesia",
+    "short": "ID"
+  },
+  "site": {
+    "studio": "Snoochie Soft",
+    "brandSub": "Studio Android independen",
+    "tagline": "Aplikasi kecil, dibuat dengan benar.",
+    "homeLabel": "Snoochie Soft, beranda",
+    "skip": "Lewati ke konten",
+    "navLabel": "Utama",
+    "nav": { "catalogue": "Katalog", "rules": "Aturan studio", "contact": "Kontak" },
+    "langButton": "Bahasa",
+    "langMenu": "Pilih bahasa",
+    "theme": { "auto": "Tema: otomatis (mengikuti perangkat Anda)", "light": "Tema: terang", "dark": "Tema: gelap", "autoShort": "Auto", "lightShort": "Terang", "darkShort": "Gelap" },
+    "playAlt": "Dapatkan {name} di Google Play",
+    "appPage": "Halaman aplikasi",
+    "appPageLabel": "{name}, halaman aplikasi",
+    "inPolish": "dalam bahasa Polandia",
+    "footer": {
+      "releases": "Legal",
+      "releasesLabel": "Kebijakan privasi dan ketentuan",
+      "legalAll": "Privasi & ketentuan untuk semua aplikasi",
+      "language": "Bahasa",
+      "contact": "Kontak",
+      "place": "Bydgoszcz, Polandia",
+      "copyright": "© 2026 Snoochie Soft",
+      "line": "Aplikasi Android di Google Play"
+    },
+    "legal": {
+      "privacy": "Privasi",
+      "terms": "Ketentuan",
+      "regulamin": "Ketentuan di Google Sites",
+      "deletion": "Hapus akun dan data",
+      "support": "Dukungan",
+      "licenses": "Lisensi"
+    }
+  },
+  "home": {
+    "title": "Snoochie Soft: aplikasi Android kecil, dibuat dengan benar",
+    "description": "Snoochie Soft adalah studio independen kecil pembuat aplikasi Android: kosakata Inggris, game ADHD, pembuat chat palsu, perencana sekolah, transkripsi, dan doa harian.",
+    "ogAlt": "Snoochie Soft: aplikasi kecil, dibuat dengan benar. Enam sampul aplikasi di atas latar hijau kekuningan.",
+    "h1": "Aplikasi kecil, dibuat benar.",
+    "lede": "Studio independen kecil yang merilis aplikasi Android di Google Play, satu rilis bernomor demi satu rilis.",
+    "deskLabel": "Aplikasi terpilih",
+    "flipToCover": "Tampilkan sampul",
+    "flipToScreens": "Tampilkan layar",
+    "sideA": "Sisi A · apa fungsinya",
+    "sideB": "Sisi B · cara kerjanya",
+    "tracksLabel": "Daftar trek",
+    "credits": "{no} · Android · Google Play",
+    "madeBy": "Dibuat oleh Snoochie Soft",
+    "crateTitle": "Semua aplikasi",
+    "crateHint": "Pilih aplikasi untuk melihat layarnya. Tombol panah berpindah di dalam daftar.",
+    "sleeveLabel": "{no}, {name}. Tampilkan layarnya",
+    "onDesk": "Dipilih",
+    "deskStatus": "{no}, {name}, dipilih",
+    "rackLabel": "Semua aplikasi",
+    "ribbonLabel": "Nomor katalog",
+    "ribbonTitle": "Katalog",
+    "prev": "Gulir ke aplikasi sebelumnya",
+    "next": "Gulir ke aplikasi berikutnya",
+    "nextSlotTitle": "Rilis berikutnya",
+    "nextSlotText": "Nomor dicadangkan",
+    "nextSlotLabel": "{no}, dicadangkan untuk rilis berikutnya",
+    "catTitle": "Katalog",
+    "catSub": "Setiap aplikasi mendapat nomor berikutnya dan tetap memakainya. Daftar ini bertambah seiring rilis baru, dan baris berikutnya sudah disiapkan.",
+    "catCols": { "no": "No.", "release": "Rilis", "kind": "Jenisnya", "links": "Tautan" },
+    "catOpen": "Dicadangkan untuk rilis berikutnya.",
+    "rulesTitle": "Aturan studio",
+    "rulesSub": "Tiga janji yang kami tanamkan pada setiap rilis. Halaman setiap aplikasi mencantumkan janji yang ditepatinya, dengan kata-katanya sendiri.",
+    "rules": [
+      { "h": "Tanpa akun", "p": "Buka aplikasinya dan langsung pakai. Tanpa halaman wajib daftar. Masuk dengan akun hanya opsional, tidak pernah wajib." },
+      { "h": "Berfungsi offline", "p": "Sebagian besar aplikasi kami tetap berfungsi di pesawat, di kereta, atau saat Wi-Fi dimatikan. Setiap halaman aplikasi menyebutkan apa saja yang memerlukan koneksi." },
+      { "h": "Harga yang jujur", "p": "Biaya sebuah aplikasi ditampilkan sebelum Anda membayar. Tanpa paywall yang muncul tiba-tiba, tanpa membuat Anda merasa bersalah, tanpa mempermalukan." }
+    ],
+    "contactTitle": "Tulis ke studio",
+    "contactText": "Laporan bug, kerja sama, pers, atau fitur yang belum ada. Satu kotak masuk, dibaca oleh orang-orang yang membuat aplikasinya.",
+    "contactAddressLabel": "Alamat e-mail",
+    "contactMailto": "Tulis e-mail",
+    "contactCopy": "Salin alamat",
+    "contactCopied": "Alamat disalin.",
+    "contactPlace": "Snoochie Soft, Bydgoszcz, Polandia"
+  },
+  "app": {
+    "sideA": "Sisi A",
+    "sideAName": "Apa fungsinya",
+    "sideB": "Sisi B",
+    "sideBName": "Cara kerjanya",
+    "sideAHeading": "Sisi A: apa fungsinya",
+    "sideBHeading": "Sisi B: cara kerjanya",
+    "privacyNear": "Baca kebijakan privasi",
+    "screensTitle": "Tiga layar dari aplikasi",
+    "notesTitle": "Catatan",
+    "smallPrint": "Keterangan tambahan",
+    "creditsTitle": "Kredit",
+    "creditRows": { "no": "No. katalog", "platform": "Platform", "package": "Paket", "studio": "Studio", "languages": "Bahasa aplikasi" },
+    "platform": "Android, di Google Play",
+    "legalTitle": "Legal dan dukungan",
+    "legalNone": "Kebijakan privasi dan ketentuan ditautkan di halaman Google Play aplikasi ini. Keduanya akan ditambahkan ke halaman ini setelah tersedia di sini.",
+    "otherLanguages": "Halaman ini juga tersedia dalam",
+    "relatedTitle": "Aplikasi lain dari studio",
+    "relatedLabel": "Rilis lainnya",
+    "stampsLabel": "Tertanam dalam rilis ini",
+    "backToCatalogue": "Kembali ke katalog"
+  },
+  "apps": {
+    "ssnd": {
+      "name": "Szybciej Się Nie Da",
+      "short": "Szybciej",
+      "spine": "Szybciej",
+      "storeName": "Angielski bez gramatyki 50 dni",
+      "kind": "Kosakata Inggris untuk penutur Polandia",
+      "line": "Bahasa Inggris tanpa tata bahasa untuk penutur bahasa Polandia: 500 kata paling umum dalam 50 hari, 10 kata sehari.",
+      "title": "Szybciej Się Nie Da: 500 kata Inggris dalam 50 hari",
+      "description": "Aplikasi Android yang mengajarkan 500 kata Inggris paling umum kepada penutur bahasa Polandia, 10 kata sehari selama 50 hari. Tanpa tata bahasa, tanpa akun, bisa offline.",
+      "languageNote": "Aplikasinya berbahasa Polandia: dibuat untuk penutur bahasa Polandia yang belajar bahasa Inggris.",
+      "appLanguage": "Polandia",
+      "sticker": "Tanpa akun",
+      "stamps": ["Tanpa akun", "Bisa offline", "14 hari tanpa iklan"],
+      "sideA": [
+        "500 kata Inggris paling umum, 10 kata baru sehari selama 50 hari",
+        "Setiap kata dilengkapi suara rekaman dan contoh kalimat",
+        "Kata diulang kembali tepat saat Anda mulai melupakannya",
+        "Enam cara berlatih: flashcard, kuis, mencocokkan pasangan, mendengarkan, mengetik, dan mode suara bebas tangan",
+        "Streak harian dengan satu hari toleransi, XP, level, dan lencana"
+      ],
+      "sideB": [
+        "Tidak perlu akun. Masuk dengan Google hanya jika Anda ingin menyinkronkan perangkat",
+        "Berfungsi offline",
+        "Tanpa iklan selama 14 hari pertama, setelah itu iklan hanya dengan persetujuan Anda",
+        "Ke-500 kata gratis. Premium menambah kecepatan (20 atau 30 kata sehari), kamus yang lebih luas, dan tanpa iklan",
+        "Mode gelap, teks lebih besar, dukungan pembaca layar, dan getaran sebagai isyarat tambahan"
+      ],
+      "notes": [
+        "Mengapa 500 kata: dihitung dari 735 juta kata dialog film dan TV, 500 kata paling umum membentuk 79,5% dari apa yang diucapkan. 100 kata pertama saja sudah mencakup 64%.",
+        "Sumber dan metodenya ada di dalam aplikasi, di layar tersendiri."
+      ],
+      "fine": "Harga ditampilkan di Google Play sebelum Anda membeli. Premium bulanan dan tahunan dimulai dengan 7 hari gratis; tersedia juga pembelian satu kali.",
+      "screens": [
+        { "caption": "Flashcard", "alt": "Flashcard di aplikasi: kata Inggris “of”, diberi label preposisi dalam bahasa Polandia, dengan tombol Dengarkan." },
+        { "caption": "Kuis", "alt": "Kuis: kata Inggris “be” dengan empat terjemahan bahasa Polandia untuk dipilih; jawaban yang benar, “być”, ditandai dan mendapat 10 XP." },
+        { "caption": "Kemajuan", "alt": "Layar statistik: persentase ucapan sehari-hari yang sudah Anda kenali, level dan XP, rangkaian hari berturut-turut, dan jumlah kata yang sudah dipelajari." }
+      ]
+    },
+    "mossy": {
+      "name": "Mossy",
+      "short": "Mossy",
+      "storeName": "Mossy: ADHD Games for Adults",
+      "kind": "Game nyaman untuk fokus dan ketenangan",
+      "line": "Otak Anda tidak rusak. Hanya saja ada 47 tab yang terbuka. Enam belas mini game nyaman untuk orang dewasa dengan ADHD, 1 sampai 3 menit per ronde.",
+      "title": "Mossy: game ADHD yang nyaman untuk dewasa. Offline, tanpa iklan",
+      "description": "16 game mungil yang nyaman untuk fokus dan ketenangan, dibuat untuk otak ADHD orang dewasa. 1 sampai 3 menit per ronde, 6 game gratis selamanya, offline, tanpa iklan.",
+      "appLanguage": "Inggris",
+      "sticker": "Offline · tanpa iklan",
+      "stamps": ["Berfungsi offline", "Tanpa iklan", "Tanpa akun"],
+      "sideA": [
+        "16 game mungil, 1 sampai 3 menit per ronde",
+        "Pelajari game apa pun dalam sekitar 10 detik",
+        "Game menyesuaikan diri secara diam-diam, sehingga tetap menantang secukupnya",
+        "Today's Mix: tiga game yang dipilihkan untuk Anda setiap hari",
+        "Musik dihasilkan saat Anda bermain, jadi tidak pernah mengulang sepuluh nada yang sama",
+        "Taman hutan kecil tumbuh seiring Anda bermain"
+      ],
+      "sideB": [
+        "6 game gratis, selamanya. Coba setiap game yang terkunci satu kali, gratis",
+        "Full Unlock: semua 16 game dengan sekali bayar, tanpa langganan",
+        "Berfungsi offline. Tanpa iklan, tanpa akun, tanpa pelacakan",
+        "Tidak ada streak yang bisa hilang dan tidak ada layar yang mempermalukan",
+        "Pengurangan gerakan, mode buta warna, dan haptik yang bisa diatur"
+      ],
+      "notes": [
+        "Lumut tidak mati saat Anda melupakannya. Ia hanya menunggu. Datanglah kapan pun Anda bisa; taman Anda akan tetap ada.",
+        "Skor, lencana, dan taman Anda hanya disimpan di ponsel Anda. Satu-satunya pihak luar adalah Google Play, yang menangani pembelian Full Unlock."
+      ],
+      "fine": "Mossy adalah kumpulan game untuk fokus dan relaksasi. Aplikasi ini bukan perangkat medis dan tidak mendiagnosis, mengobati, atau menyembuhkan kondisi apa pun.",
+      "screens": [
+        { "caption": "Hutan", "alt": "Layar beranda Mossy: Mo melayang di atas dua rak kayu di hutan malam. Setiap rak berisi tanaman pot berlabel Tab Storm, Time Blind, Pour Decisions, Impulse Gate, Squirrel! dan Where Did I Put It?" },
+        { "caption": "Time Blind", "alt": "Time Blind: Hold for 3 s. Sebuah bola bundar terisi warna biru saat Anda menahannya, menampilkan 1.7 s." },
+        { "caption": "Brain Dump Sorter", "alt": "Brain Dump Sorter: pikiran-pikiran yang melayang seperti Feed the cat, Doctor at 3 dan Reply today turun ke tiga laci: Now, Later dan Let go." }
+      ]
+    },
+    "fakechat": {
+      "name": "Fake Chat Maker & Text Message",
+      "short": "Fake Chat Maker",
+      "spine": "Fake Chat",
+      "storeName": "Fake Chat Maker & Text Message",
+      "kind": "Chat palsu untuk lelucon dan cerita",
+      "line": "Tulis percakapan teks palsu untuk lelucon atau cerita, atur gayanya, lalu simpan sebagai gambar. Dibuat hanya untuk bersenang-senang.",
+      "title": "Fake Chat Maker: pesan teks palsu untuk lelucon",
+      "description": "Buat percakapan teks palsu, atur gayanya, dan simpan sebagai gambar. Tiga gaya chat, latar belakang sendiri, tanpa akun, berfungsi offline. Hanya untuk bersenang-senang.",
+      "appLanguage": "Inggris",
+      "sticker": "Tanpa akun · bisa offline",
+      "stamps": ["Tanpa akun", "Bisa offline", "Tanpa batas pesan"],
+      "sideA": [
+        "Tulis kedua sisi chat. Ketuk balon untuk mengeditnya, tekan lama untuk berganti pengirim",
+        "Ubah waktu serta tanda terkirim atau terbaca",
+        "Seret untuk mengurutkan ulang pesan, batalkan dan ulangi perubahan apa pun",
+        "Tiga gaya chat dan latar belakang sendiri: warna, gradasi, atau foto",
+        "Simpan chat sebagai gambar lalu bagikan, atau cadangkan ke sebuah file"
+      ],
+      "sideB": [
+        "Tanpa akun, tanpa masuk, berfungsi offline",
+        "Tanpa batas jumlah chat atau pesan di versi gratis",
+        "Iklan tidak pernah muncul saat Anda mengetik atau mengedit",
+        "Satu pembelian kecil menghapus iklan dan watermark selamanya",
+        "Tidak mengirim pesan sungguhan dan tidak terhubung ke layanan pesan apa pun"
+      ],
+      "notes": [
+        "Cocok untuk mengerjai teman, unggahan cerita, atau mock-up untuk video, tugas sekolah, atau presentasi."
+      ],
+      "fine": "Hanya untuk hiburan dan bercerita secara kreatif. Tidak berafiliasi dengan, tidak didukung oleh, dan tidak terhubung dengan aplikasi atau perusahaan pesan mana pun. Mohon jangan gunakan tangkapan layar untuk menipu, melecehkan, atau merugikan siapa pun.",
+      "screens": [
+        { "caption": "Tulis", "alt": "Editor chat dengan percakapan bersama Mom: pesannya berwarna ungu, balasannya berwarna oranye, tombol Me dan Them, serta kolom pesan di bagian bawah." },
+        { "caption": "Gaya", "alt": "Panel gaya: tiga gaya chat, Ink, Riso dan Mono, kisi warna latar belakang, dan deretan warna avatar." },
+        { "caption": "Chat Anda", "alt": "Your fakes: empat chat tersimpan yang ditampilkan sebagai kartu, Mom, Sam, Coach Dana dan Landlord, dengan tombol New fake di bagian bawah." }
+      ]
+    },
+    "loopclass": {
+      "name": "Loopclass",
+      "short": "Loopclass",
+      "storeName": "Loopclass: Class Schedule App",
+      "kind": "Jadwal pelajaran, PR, dan nilai",
+      "line": "Jadwal, PR, ujian, dan nilai Anda dalam satu perencana, lengkap dengan widget dan pengingat. Bisa dipakai tanpa akun dan tanpa internet.",
+      "title": "Loopclass: jadwal pelajaran dan perencana PR",
+      "description": "Jadwal sekolah, PR, ujian, dan nilai Anda dalam satu perencana, dengan widget dan pengingat. Tanpa akun, bisa offline, cadangan ke Google Drive Anda.",
+      "appLanguage": "47 bahasa",
+      "sticker": "Tanpa akun · offline",
+      "stamps": ["Tanpa akun", "Bisa offline", "Tanpa langganan"],
+      "sideA": [
+        "Jadwal mingguan dengan ruangan, guru, dan minggu A/B",
+        "PR dan ujian, masing-masing dengan beberapa pengingat",
+        "Nilai dengan bobot, rata-rata, dan GPA: persen, huruf A–F, atau skala 1–6 ala Polandia",
+        "Widget layar utama: kelas berikutnya dengan hitung mundur, dan tugas Anda yang masih terbuka",
+        "Cincin hari ini tertutup saat semua tugas yang jatuh tempo hari ini selesai"
+      ],
+      "sideB": [
+        "Tidak perlu akun dan tidak perlu internet",
+        "Cadangan opsional ke folder Google Drive pribadi Anda sendiri",
+        "Tanpa server milik kami: perencana Anda tetap ada di perangkat Anda",
+        "Semua fitur perencana gratis, dengan satu iklan banner kecil",
+        "Pembelian Premium satu kali menghapus iklan. Tanpa langganan"
+      ],
+      "notes": [
+        "Tugas yang terlambat mendapat label yang tenang, bukan penghitung merah. Setiap efek punya sakelarnya sendiri, ditambah preset Minimum dan Maksimum.",
+        "Pengingat dijadwalkan ulang setelah perangkat dihidupkan ulang, dan jam kelas tetap sama saat Anda berganti zona waktu."
+      ],
+      "fine": "Dibuat untuk siswa SMA dan mahasiswa (13+). Iklan ditayangkan oleh Google AdMob.",
+      "screens": [
+        { "caption": "Minggu", "alt": "Tampilan minggu untuk Selasa 13 Oktober: Mathematics selesai, Biology ditandai Now, lalu History dan English dengan jam dan ruangan, serta tugas Problem set 4 yang jatuh tempo pukul 6 PM." },
+        { "caption": "Hari ini, tema gelap", "alt": "Hari ini dalam tema gelap: kelas Biology yang sedang berlangsung, kelas-kelas berikutnya, dan daftar Due soon dengan esai yang terlambat dua hari." },
+        { "caption": "Tugas", "alt": "Tugas: sebuah esai yang perlu dikejar dan item mendatang, termasuk ujian fisika berprioritas tinggi dalam 3 hari." }
+      ]
+    },
+    "transcriber": {
+      "name": "Offline Audio Transcriber",
+      "short": "Audio Transcriber",
+      "spine": "Audio",
+      "storeName": "Offline Audio Transcriber",
+      "kind": "Suara jadi teks di ponsel Anda",
+      "line": "Ubah catatan suara, kuliah, wawancara, dan file MP3 atau video apa pun menjadi teks di ponsel Android Anda. Tidak ada yang diunggah.",
+      "title": "AI Dictation: ubah audio jadi teks secara offline",
+      "description": "Ubah rekaman serta file MP3 dan video menjadi teks di ponsel Android Anda. Transkripsi offline dalam 24 bahasa, tanpa akun, tidak ada yang diunggah.",
+      "appLanguage": "Inggris dan bahasa lain",
+      "sticker": "Offline · tidak diunggah",
+      "stamps": ["Tanpa akun", "Tak ada yang diunggah", "Bisa offline"],
+      "sideA": [
+        "Rekam, atau impor file audio dan video MP3, M4A, WAV, OGG, MP4, dan lainnya",
+        "Transkrip dengan cap waktu yang mengikuti audio. Ketuk sebuah kata untuk melompat ke sana",
+        "Perbaiki kesalahan, cari di dalam teks, dan kelompokkan rekaman ke dalam folder",
+        "Ekspor TXT, SRT, atau VTT, salin, atau bagikan",
+        "24 bahasa Eropa dengan model utama; model kedua yang opsional menambah lebih banyak"
+      ],
+      "sideB": [
+        "Tanpa akun dan tanpa server milik kami",
+        "Berfungsi offline setelah model suara 671 MB ada di ponsel",
+        "Online hanya untuk mengunduh model, iklan, dan pembelian di Google Play",
+        "2 menit pertama setiap rekaman gratis; iklan singkat menambah 3 menit",
+        "Paket menit tidak pernah kedaluwarsa; Pro memberi menit tanpa batas"
+      ],
+      "notes": [
+        "Di Samsung Galaxy S23 Ultra, rekaman satu jam memerlukan sekitar 8 menit dalam pengujian kami sendiri. Ponsel yang lebih lama dan lebih murah lebih lambat, dan pekerjaan yang panjang tetap berjalan di latar belakang.",
+        "Tanpa analitik, tanpa pelaporan crash, tidak ada yang dijual."
+      ],
+      "fine": "Akurasi bergantung pada kualitas audio, aksen, dan kebisingan latar. Periksa transkrip yang penting sebelum Anda mengandalkannya.",
+      "screens": [
+        { "caption": "Transkrip", "alt": "Layar transkrip: baris-baris dengan cap waktu, kata yang sedang diputar disorot, kontrol pemutar di bagian bawah." },
+        { "caption": "Perekam", "alt": "Perekam: waktu berjalan, gelombang suara langsung, dan sisa bagian gratis." },
+        { "caption": "Rekaman", "alt": "Daftar rekaman dengan pencarian, folder, durasi, dan baris pertama setiap transkrip." }
+      ]
+    },
+    "christianpray": {
+      "name": "Christian Pray Everyday",
+      "short": "Christian Pray",
+      "spine": "Pray",
+      "storeName": "Christian Pray Everyday: Bible",
+      "kind": "Ayat Alkitab harian dan doa",
+      "line": "Satu ayat Alkitab setiap hari yang dibacakan, 25 doa rekaman, dan 215 kisah Alkitab. Tempat yang tenang untuk memulai dan mengakhiri hari Anda.",
+      "title": "Christian Pray Everyday: ayat Alkitab dan doa",
+      "description": "Ayat Alkitab harian yang dibacakan, 25 doa rekaman, dan 215 kisah Alkitab, dengan tahun gerejawi dan widget layar utama. Aplikasi Android dari Snoochie Soft.",
+      "appLanguage": "Inggris",
+      "sticker": "Tanpa iklan",
+      "stamps": ["Tanpa iklan", "Ayat harian gratis"],
+      "sideA": [
+        "Satu ayat setiap hari, dibacakan, dengan gambar lukisan di baliknya",
+        "Lebih dari 13.000 ayat dan empat suara alami untuk dipilih",
+        "25 doa rekaman: tekan putar dan berdoalah bersama",
+        "215 kisah Alkitab, dari Penciptaan hingga perjalanan terakhir Paulus",
+        "Ayat Alkitab untuk lebih dari 1.100 topik, dari dukacita hingga anugerah",
+        "Tahun gerejawi, perayaan demi perayaan (kalender AS), dan widget ayat"
+      ],
+      "sideB": [
+        "Ayat harian gratis untuk didengarkan, tanpa perlu berlangganan",
+        "66 kisah gratis dibaca, tiga gratis didengarkan",
+        "Premium: mingguan, bulanan, atau tahunan, diperpanjang sampai Anda membatalkannya di Google Play",
+        "Ayat tersimpan, doa, dan streak Anda berada di cadangan akun Google Anda sendiri, bukan di server kami",
+        "Tanpa iklan"
+      ],
+      "notes": [
+        "Semuanya tersusun dalam satu buku yang tenang dan menggantung di langit, halaman demi halaman.",
+        "Anggota Premium dapat membagikan satu pokok doa per hari. Setiap pokok doa dibaca oleh seorang manusia sebelum orang lain melihatnya."
+      ],
+      "fine": "Premium membuka setiap suara, setiap kisah, dan setiap topik. Langganan diperpanjang secara otomatis kecuali dibatalkan paling lambat 24 jam sebelum periode berakhir.",
+      "screens": [
+        { "caption": "Hari ini", "alt": "Layar Hari ini untuk Jumat, 25 September: lukisan guci tanah liat berisi gandum yang tumpah di atas ayat Matthew 13:24, dengan tombol Listen, save dan share." },
+        { "caption": "Ayat", "alt": "Ayat 4 dari 13.111: Proverbs 31:25, “Strength and dignity are her clothing”, di atas kota saat senja, dengan tombol Previous, share dan Next." },
+        { "caption": "Doa", "alt": "Layar Pray: 25 doa yang dibacakan, pelacak mingguan dengan 5 doa yang diucapkan dan 3 menit berdoa, serta kartu untuk Our Father, Hail Mary, Glory Be dan Apostles Creed." }
+      ]
+    }
+  },
+  "notFound": {
+    "title": "Halaman tidak ditemukan · Snoochie Soft",
+    "h1": "Halaman ini tidak ada di katalog.",
+    "p": "Halaman yang Anda cari tidak ada atau sudah dipindahkan. Katalog memuat semua rilis.",
+    "home": "Ke katalog",
+    "listTitle": "Rilis"
+  }
+}

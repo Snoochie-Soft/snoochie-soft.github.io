@@ -21,25 +21,45 @@
       "dir": "de",
       "native": "Deutsch"
     },
+    "fr": {
+      "hreflang": "fr",
+      "dir": "fr",
+      "native": "Français"
+    },
     "es": {
       "hreflang": "es",
       "dir": "es",
       "native": "Español"
     },
-    "ja": {
-      "hreflang": "ja",
-      "dir": "ja",
-      "native": "日本語"
+    "es-MX": {
+      "hreflang": "es-MX",
+      "dir": "es-mx",
+      "native": "Español (México)"
     },
     "pt-BR": {
       "hreflang": "pt-BR",
       "dir": "pt-br",
       "native": "Português (Brasil)"
     },
-    "fr": {
-      "hreflang": "fr",
-      "dir": "fr",
-      "native": "Français"
+    "it": {
+      "hreflang": "it",
+      "dir": "it",
+      "native": "Italiano"
+    },
+    "cs": {
+      "hreflang": "cs",
+      "dir": "cs",
+      "native": "Čeština"
+    },
+    "tr": {
+      "hreflang": "tr",
+      "dir": "tr",
+      "native": "Türkçe"
+    },
+    "ja": {
+      "hreflang": "ja",
+      "dir": "ja",
+      "native": "日本語"
     },
     "ko": {
       "hreflang": "ko",
@@ -56,9 +76,16 @@
     "en": "img/badges/play-en.png",
     "pl": "img/badges/play-pl.png",
     "de": "img/badges/play-de.png",
-    "es": "img/badges/play-es-419.png",
     "fr": "img/badges/play-fr.png",
-    "pt-BR": "img/badges/play-pt-br.png"
+    "es": "img/badges/play-es.png",
+    "es-MX": "img/badges/play-es-419.png",
+    "pt-BR": "img/badges/play-pt-br.png",
+    "it": "img/badges/play-it.png",
+    "cs": "img/badges/play-cs.png",
+    "tr": "img/badges/play-tr.png",
+    "ja": "img/badges/play-ja.png",
+    "ko": "img/badges/play-ko.png",
+    "id": "img/badges/play-id.png"
   },
   "apps": [
     {
@@ -102,8 +129,7 @@
         },
         {
           "key": "terms",
-          "href": "szybciej-sie-nie-da/terms/",
-          "hreflang": "pl"
+          "href": "szybciej-sie-nie-da/terms/"
         },
         {
           "key": "regulamin",

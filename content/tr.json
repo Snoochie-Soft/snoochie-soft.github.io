@@ -1,0 +1,341 @@
+{
+  "meta": {
+    "lang": "tr",
+    "ogLocale": "tr_TR",
+    "nameNative": "Türkçe",
+    "short": "TR"
+  },
+  "site": {
+    "studio": "Snoochie Soft",
+    "brandSub": "Bağımsız Android stüdyosu",
+    "tagline": "Küçük ve özenli uygulamalar.",
+    "homeLabel": "Snoochie Soft, ana sayfa",
+    "skip": "İçeriğe geç",
+    "navLabel": "Ana menü",
+    "nav": { "catalogue": "Katalog", "rules": "Ev kuralları", "contact": "İletişim" },
+    "langButton": "Dil",
+    "langMenu": "Bir dil seçin",
+    "theme": { "auto": "Tema: otomatik (cihazınızı izler)", "light": "Tema: açık", "dark": "Tema: koyu", "autoShort": "Otomatik", "lightShort": "Açık", "darkShort": "Koyu" },
+    "playAlt": "{name} uygulamasını Google Play'den edinin",
+    "appPage": "Uygulama sayfası",
+    "appPageLabel": "{name}, uygulama sayfası",
+    "inPolish": "Lehçe",
+    "footer": {
+      "releases": "Yasal",
+      "releasesLabel": "Gizlilik politikası ve şartlar",
+      "legalAll": "Tüm uygulamalar için gizlilik ve şartlar",
+      "language": "Dil",
+      "contact": "İletişim",
+      "place": "Bydgoszcz, Polonya",
+      "copyright": "© 2026 Snoochie Soft",
+      "line": "Google Play'de Android uygulamaları"
+    },
+    "legal": {
+      "privacy": "Gizlilik",
+      "terms": "Şartlar",
+      "regulamin": "Google Sites'ta şartlar",
+      "deletion": "Hesabı ve verileri sil",
+      "support": "Destek",
+      "licenses": "Lisanslar"
+    }
+  },
+  "home": {
+    "title": "Snoochie Soft: küçük ve özenli Android uygulamaları",
+    "description": "Snoochie Soft, Android uygulamaları yapan küçük bir bağımsız stüdyodur: İngilizce kelimeler, DEHB oyunları, sahte sohbet oluşturucu, okul planlayıcısı, ses yazıya çevirme ve günlük dua.",
+    "ogAlt": "Snoochie Soft: küçük ve özenli uygulamalar. Yeşilimsi sarı bir zemin üzerinde altı uygulama kapağı.",
+    "h1": "Küçük ve özenli uygulamalar.",
+    "lede": "Android uygulamalarını Google Play'de, her seferinde numaralı tek bir sürümle yayımlayan küçük bir bağımsız stüdyo.",
+    "deskLabel": "Seçili uygulama",
+    "flipToCover": "Kapağı göster",
+    "flipToScreens": "Ekranları göster",
+    "sideA": "A Yüzü · ne yapar",
+    "sideB": "B Yüzü · nasıl davranır",
+    "tracksLabel": "Parça listesi",
+    "credits": "{no} · Android · Google Play",
+    "madeBy": "Snoochie Soft yaptı",
+    "crateTitle": "Tüm uygulamalar",
+    "crateHint": "Ekranlarını görmek için bir uygulama seçin. Listede ok tuşlarıyla gezinebilirsiniz.",
+    "sleeveLabel": "{no}, {name}. Ekranlarını göster",
+    "onDesk": "Seçili",
+    "deskStatus": "{no}, {name}, seçili",
+    "rackLabel": "Tüm uygulamalar",
+    "ribbonLabel": "Katalog numaraları",
+    "ribbonTitle": "Katalog",
+    "prev": "Önceki uygulamalara kaydır",
+    "next": "Sonraki uygulamalara kaydır",
+    "nextSlotTitle": "Sonraki sürüm",
+    "nextSlotText": "Numara ayrıldı",
+    "nextSlotLabel": "{no}, sonraki sürüm için ayrıldı",
+    "catTitle": "Katalog",
+    "catSub": "Her uygulama sıradaki numarayı alır ve onu korur. Liste, sürümler çıktıkça uzar ve sıradaki satır şimdiden çizilmiş durumda.",
+    "catCols": { "no": "No.", "release": "Sürüm", "kind": "Nedir", "links": "Bağlantılar" },
+    "catOpen": "Sonraki sürüm için ayrıldı.",
+    "rulesTitle": "Ev kuralları",
+    "rulesSub": "Sürümlerimize işlediğimiz üç söz. Her uygulama sayfası, hangilerini tuttuğunu kendi cümleleriyle listeler.",
+    "rules": [
+      { "h": "Hesap yok", "p": "Uygulamayı açın ve kullanın. Kayıt zorunluluğu yok. Giriş yapmak her zaman yalnızca isteğe bağlıdır." },
+      { "h": "Çevrimdışı çalışır", "p": "Uygulamalarımızın çoğu uçakta, trende ya da Wi-Fi kapalıyken de çalışmaya devam eder. Her uygulama sayfası, neyin bağlantı gerektirdiğini belirtir." },
+      { "h": "Dürüst fiyatlandırma", "p": "Bir uygulamanın maliyeti, ödeme yapmadan önce gösterilir. Ani engeller, vicdan azabı ya da utandırma yok." }
+    ],
+    "contactTitle": "Stüdyoya yazın",
+    "contactText": "Hata bildirimleri, ortaklıklar, basın ya da eksikliğini hissettiğiniz bir özellik. Uygulamaları yapan kişilerin okuduğu tek bir gelen kutusu.",
+    "contactAddressLabel": "E-posta adresi",
+    "contactMailto": "E-posta yaz",
+    "contactCopy": "Adresi kopyala",
+    "contactCopied": "Adres kopyalandı.",
+    "contactPlace": "Snoochie Soft, Bydgoszcz, Polonya"
+  },
+  "app": {
+    "sideA": "A Yüzü",
+    "sideAName": "Ne yapar",
+    "sideB": "B Yüzü",
+    "sideBName": "Nasıl davranır",
+    "sideAHeading": "A Yüzü: ne yapar",
+    "sideBHeading": "B Yüzü: nasıl davranır",
+    "privacyNear": "Gizlilik politikasını okuyun",
+    "screensTitle": "Uygulamadan üç ekran",
+    "notesTitle": "Notlar",
+    "smallPrint": "Küçük yazılar",
+    "creditsTitle": "Künye",
+    "creditRows": { "no": "Katalog no.", "platform": "Platform", "package": "Paket", "studio": "Stüdyo", "languages": "Uygulama dili" },
+    "platform": "Android, Google Play'de",
+    "legalTitle": "Yasal bilgiler ve destek",
+    "legalNone": "Gizlilik politikası ve şartlar Google Play sayfasında bağlantı olarak verilmiştir. Burada barındırıldıklarında bu sayfaya eklenecektir.",
+    "otherLanguages": "Bu sayfa şu dillerde de mevcut",
+    "relatedTitle": "Stüdyodan daha fazla uygulama",
+    "relatedLabel": "Diğer sürümler",
+    "stampsLabel": "Bu sürüme işlenenler",
+    "backToCatalogue": "Kataloğa dön"
+  },
+  "apps": {
+    "ssnd": {
+      "name": "Szybciej Się Nie Da",
+      "short": "Szybciej",
+      "spine": "Szybciej",
+      "storeName": "Angielski bez gramatyki 50 dni",
+      "kind": "Lehçe konuşanlara İngilizce kelimeler",
+      "line": "Lehçe konuşanlar için dilbilgisi olmadan İngilizce: en yaygın 500 kelime, 50 günde, günde 10 kelime.",
+      "title": "Szybciej Się Nie Da: 50 günde 500 İngilizce kelime",
+      "description": "Lehçe konuşanlara en yaygın 500 İngilizce kelimeyi 50 gün boyunca günde 10 kelimeyle öğreten bir Android uygulaması. Dilbilgisi kuralı yok, hesap yok, çevrimdışı çalışır.",
+      "languageNote": "Uygulama Lehçedir: İngilizce öğrenen Lehçe konuşanlar için yapılmıştır.",
+      "appLanguage": "Lehçe",
+      "sticker": "Hesap yok",
+      "stamps": ["Hesap yok", "Çevrimdışı çalışır", "14 gün reklamsız"],
+      "sideA": [
+        "En yaygın 500 İngilizce kelime, 50 gün boyunca günde 10 yeni kelime",
+        "Her kelime için kayıtlı bir ses ve örnek bir cümle",
+        "Tekrarlar, bir kelimeyi unutmaya başladığınız anda geri gelir",
+        "Çalışmanın altı yolu: bilgi kartları, test, eşleştirme, dinleme, yazma ve eller serbest sesli mod",
+        "Bir tolerans günü tanıyan seri, XP, seviyeler ve rozetler"
+      ],
+      "sideB": [
+        "Hesap gerekmez. Google ile giriş yalnızca cihazlarınızı eşitlemek isterseniz",
+        "Çevrimdışı çalışır",
+        "İlk 14 gün reklam yok, sonrasında reklamlar yalnızca onayınızla",
+        "500 kelimenin tamamı ücretsizdir. Premium; hızı (günde 20 veya 30), daha geniş sözlüğü ve reklamsız kullanımı ekler",
+        "Koyu mod, daha büyük yazı, ekran okuyucu desteği ve ek bir ipucu olarak titreşim"
+      ],
+      "notes": [
+        "Neden 500 kelime: 735 milyon kelimelik film ve dizi diyaloğu üzerinden sayıldığında, en yaygın 500 kelime konuşulanların %79,5'ini oluşturuyor. İlk 100 kelime tek başına %64'ünü kapsıyor.",
+        "Kaynaklar ve yöntem uygulamanın içinde, ayrı bir ekranda yer alır."
+      ],
+      "fine": "Fiyatlar, satın almadan önce Google Play'de gösterilir. Aylık ve yıllık Premium 7 gün ücretsiz başlar; tek seferlik bir satın alma seçeneği de vardır.",
+      "screens": [
+        { "caption": "Bilgi kartı", "alt": "Uygulamada bir bilgi kartı: İngilizce “of” kelimesi, Lehçe olarak edat diye etiketlenmiş, yanında bir Dinle düğmesi." },
+        { "caption": "Test", "alt": "Test: İngilizce “be” kelimesi ve aralarından seçilecek dört Lehçe karşılık; doğru olan “być” işaretlenmiş ve 10 XP kazandırıyor." },
+        { "caption": "İlerleme", "alt": "İstatistik ekranı: günlük konuşmanın ne kadarını tanıdığınız, seviye ve XP, art arda gün serisi ve öğrenilen kelime sayısı." }
+      ]
+    },
+    "mossy": {
+      "name": "Mossy",
+      "short": "Mossy",
+      "storeName": "Mossy: ADHD Games for Adults",
+      "kind": "Odak ve sakinlik için huzurlu oyunlar",
+      "line": "Beyniniz bozuk değil. Sadece 47 sekme açık. DEHB'li yetişkinler için on altı huzurlu mini oyun, tur başına 1 ila 3 dakika.",
+      "title": "Mossy: yetişkinler için huzurlu DEHB oyunları. Çevrimdışı, reklamsız",
+      "description": "Odak ve sakinlik için 16 küçük, huzurlu oyun; yetişkin DEHB beyinleri için yapıldı. Tur başına 1 ila 3 dakika, 6 oyun sonsuza dek ücretsiz, çevrimdışı, reklamsız, abonelik yok.",
+      "appLanguage": "İngilizce",
+      "sticker": "Çevrimdışı · reklamsız",
+      "stamps": ["Çevrimdışı çalışır", "Reklam yok", "Hesap yok"],
+      "sideA": [
+        "16 küçük oyun, tur başına 1 ila 3 dakika",
+        "Herhangi bir oyunu yaklaşık 10 saniyede öğrenin",
+        "Oyunlar sessizce uyum sağlar, böylece hep tam yeterince zorlayıcı kalır",
+        "Bugünün Karışımı: her gün sizin için seçilen üç oyun",
+        "Siz oynarken üretilen müzik, bu yüzden aynı on notayı hiç döngüye sokmaz",
+        "Oynadıkça küçük bir orman bahçesi büyür"
+      ],
+      "sideB": [
+        "6 oyun sonsuza dek ücretsiz. Kilitli her oyunu bir kez ücretsiz deneyin",
+        "Full Unlock: 16 oyunun tamamı tek ödemeyle, abonelik yok",
+        "Çevrimdışı çalışır. Reklam yok, hesap yok, izleme yok",
+        "Kaybedilecek seri yok, utandıran ekran yok",
+        "Azaltılmış hareket, renk körlüğü modu ve ayarlanabilir dokunsal geri bildirim"
+      ],
+      "notes": [
+        "Yosun, onu unuttuğunuzda ölmez. Sadece bekler. Elinizden geldiğinde gelin; bahçeniz hâlâ orada olacak.",
+        "Puanlarınız, rozetleriniz ve bahçeniz yalnızca telefonunuzda saklanır. Tek dış taraf, Full Unlock satın alımını yürüten Google Play'dir."
+      ],
+      "fine": "Mossy, odaklanma ve rahatlama için bir oyun setidir. Tıbbi bir cihaz değildir; hiçbir rahatsızlığı teşhis etmez, tedavi etmez ya da iyileştirmez.",
+      "screens": [
+        { "caption": "Orman", "alt": "Mossy ana ekranı: Mo, geceleyin bir ormanda iki tahta rafın üzerinde süzülüyor. Her rafta Tab Storm, Time Blind, Pour Decisions, Impulse Gate, Squirrel! ve Where Did I Put It? etiketli saksı bitkileri duruyor." },
+        { "caption": "Time Blind", "alt": "Time Blind: “Hold for 3 s”. Yuvarlak bir küre, basılı tuttukça maviyle doluyor ve 1.7 s gösteriyor." },
+        { "caption": "Brain Dump Sorter", "alt": "Brain Dump Sorter: Feed the cat, Doctor at 3 ve Reply today gibi süzülen düşünceler, Now, Later ve Let go adlı üç çekmeceye doğru iniyor." }
+      ]
+    },
+    "fakechat": {
+      "name": "Fake Chat Maker & Text Message",
+      "short": "Fake Chat Maker",
+      "spine": "Fake Chat",
+      "storeName": "Fake Chat Maker & Text Message",
+      "kind": "Şaka ve hikâye için sahte sohbetler",
+      "line": "Bir şaka ya da hikâye için sahte bir yazışma yazın, biçimlendirin ve resim olarak kaydedin. Yalnızca eğlence amaçlıdır.",
+      "title": "Fake Chat Maker: şakalar için sahte mesajlar",
+      "description": "Sahte bir yazışma oluşturun, biçimlendirin ve resim olarak kaydedin. Üç sohbet stili, kendi arka planınız, hesap yok, çevrimdışı çalışır. Yalnızca eğlence için.",
+      "appLanguage": "İngilizce",
+      "sticker": "Hesap yok · çevrimdışı",
+      "stamps": ["Hesap yok", "Çevrimdışı çalışır", "Mesaj sınırı yok"],
+      "sideA": [
+        "Sohbetin her iki tarafını da yazın. Düzenlemek için bir balona dokunun, göndereni değiştirmek için uzun basın",
+        "Saati ve iletildi ya da okundu işaretlerini değiştirin",
+        "Mesajları sıralamak için sürükleyin, her değişikliği geri alın ve yineleyin",
+        "Üç sohbet stili ve kendi arka planınız: renk, gradyan ya da fotoğraf",
+        "Sohbeti resim olarak kaydedip paylaşın ya da bir dosyaya yedekleyin"
+      ],
+      "sideB": [
+        "Hesap yok, giriş yok, çevrimdışı çalışır",
+        "Ücretsiz sürümde sohbet ya da mesaj sayısında sınır yok",
+        "Yazarken ya da düzenlerken reklam hiçbir zaman görünmez",
+        "Küçük bir satın alma, reklamları ve filigranı kalıcı olarak kaldırır",
+        "Gerçek mesaj göndermez ve hiçbir mesajlaşma hizmetine bağlanmaz"
+      ],
+      "notes": [
+        "Arkadaşlarınıza yapılacak bir şaka, bir hikâye paylaşımı ya da bir video, okul projesi veya sunum için örnek taslak hazırlamak için iyidir."
+      ],
+      "fine": "Yalnızca eğlence ve yaratıcı hikâye anlatımı içindir. Hiçbir mesajlaşma uygulaması ya da şirketle bağlantılı değildir, onlar tarafından onaylanmamıştır. Lütfen ekran görüntülerini kimseyi aldatmak, taciz etmek veya kimseye zarar vermek için kullanmayın.",
+      "screens": [
+        { "caption": "Yaz", "alt": "Mom ile bir yazışmanın açık olduğu sohbet düzenleyicisi: onun mesajları mor, yanıtlar turuncu, Me ve Them düğmeleri ve altta bir mesaj alanı." },
+        { "caption": "Stil", "alt": "Stil paneli: Ink, Riso ve Mono adlı üç sohbet stili, bir arka plan renkleri ızgarası ve bir avatar renkleri sırası." },
+        { "caption": "Sohbetleriniz", "alt": "Your fakes: Mom, Sam, Coach Dana ve Landlord adlı dört kayıtlı sohbet kartlar halinde gösteriliyor, altta bir New fake düğmesi var." }
+      ]
+    },
+    "loopclass": {
+      "name": "Loopclass",
+      "short": "Loopclass",
+      "storeName": "Loopclass: Class Schedule App",
+      "kind": "Okul programı, ödev ve notlar",
+      "line": "Ders programınız, ödevleriniz, sınavlarınız ve notlarınız tek bir planlayıcıda; widget'lar ve hatırlatıcılarla. Hesapsız ve internetsiz çalışır.",
+      "title": "Loopclass: ders programı ve ödev planlayıcısı",
+      "description": "Okul ders programınız, ödevleriniz, sınavlarınız ve notlarınız tek bir planlayıcıda; widget'lar ve hatırlatıcılarla. Hesap yok, çevrimdışı çalışır, Google Drive'ınıza yedekleme.",
+      "appLanguage": "47 dil",
+      "sticker": "Hesap yok · çevrimdışı",
+      "stamps": ["Hesap yok", "Çevrimdışı çalışır", "Abonelik yok"],
+      "sideA": [
+        "Oda, öğretmen ve A/B haftalarıyla haftalık ders programı",
+        "Her biri için birkaç hatırlatıcıyla ödevler ve sınavlar",
+        "Ağırlıklı notlar, ortalamalar ve GPA: yüzde, A–F harfleri ya da Polonya 1–6 ölçeği",
+        "Ana ekran widget'ları: geri sayımlı sıradaki dersiniz ve açık görevleriniz",
+        "Bugünün halkası, bugün teslimi olan her görev bittiğinde kapanır"
+      ],
+      "sideB": [
+        "Hesap ve internet gerekmez",
+        "Kendi özel Google Drive klasörünüze isteğe bağlı yedekleme",
+        "Bize ait sunucu yok: planlayıcınız cihazınızda kalır",
+        "Tüm planlayıcı özellikleri ücretsizdir; tek bir küçük banner reklam var",
+        "Tek seferlik Premium satın alma reklamı kaldırır. Abonelik yok"
+      ],
+      "notes": [
+        "Gecikmiş görevlere sakin bir etiket verilir, asla kırmızı bir sayaç değil. Her efektin kendi anahtarı vardır, ayrıca Minimum ve Maksimum ön ayarları bulunur.",
+        "Hatırlatıcılar yeniden başlatmadan sonra yeniden zamanlanır ve saat dilimini değiştirdiğinizde ders saatleri yerinde kalır."
+      ],
+      "fine": "Lise ve üniversite öğrencileri (13+) için yapılmıştır. Reklamları Google AdMob sunar.",
+      "screens": [
+        { "caption": "Hafta", "alt": "13 Ekim Salı günü için hafta görünümü: Mathematics tamamlanmış, Biology “Now” olarak işaretli, ardından saatleri ve odalarıyla History ile English ve 6 PM'de teslim edilecek “Problem set 4” görevi." },
+        { "caption": "Bugün, koyu tema", "alt": "Koyu temada Today ekranı: şu anki Biology dersi, sonraki dersler ve iki gün gecikmiş bir kompozisyonun yer aldığı bir “Due soon” listesi." },
+        { "caption": "Görevler", "alt": "Tasks ekranı: yetişilmesi gereken bir kompozisyon ve 3 gün içindeki yüksek öncelikli bir fizik sınavı dahil yaklaşan öğeler." }
+      ]
+    },
+    "transcriber": {
+      "name": "Offline Audio Transcriber",
+      "short": "Audio Transcriber",
+      "spine": "Audio",
+      "storeName": "Offline Audio Transcriber",
+      "kind": "Telefonunuzda konuşmayı yazıya çevirme",
+      "line": "Sesli notları, dersleri, röportajları ve her türlü MP3 ya da video dosyasını Android telefonunuzda metne dönüştürün. Hiçbir şey yüklenmez.",
+      "title": "AI Dictation: sesi çevrimdışı metne dönüştürün",
+      "description": "Kayıtları, MP3 ve video dosyalarını Android telefonunuzda metne dönüştürün. 24 dilde çevrimdışı yazıya dökme, hesap yok, hiçbir şey yüklenmez.",
+      "appLanguage": "İngilizce ve diğer diller",
+      "sticker": "Çevrimdışı · yükleme yok",
+      "stamps": ["Hesap yok", "Hiçbir şey yüklenmez", "Çevrimdışı çalışır"],
+      "sideA": [
+        "Kaydedin ya da MP3, M4A, WAV, OGG, MP4 ve diğer ses ve video dosyalarını içe aktarın",
+        "Sesi izleyen, zaman damgalı bir döküm. Bir kelimeye dokunarak oraya atlayın",
+        "Hataları düzeltin, metinde arama yapın ve kayıtları klasörlere ayırın",
+        "TXT, SRT veya VTT olarak dışa aktarın, kopyalayın ya da paylaşın",
+        "Ana modelle 24 Avrupa dili; isteğe bağlı ikinci model daha fazlasını ekler"
+      ],
+      "sideB": [
+        "Hesap yok ve bize ait sunucu yok",
+        "671 MB'lık konuşma modeli telefona indirildikten sonra çevrimdışı çalışır",
+        "Yalnızca model indirme, reklamlar ve Google Play satın alımları için çevrimiçi olur",
+        "Her kaydın ilk 2 dakikası ücretsizdir; kısa bir reklam 3 dakika ekler",
+        "Dakika paketlerinin süresi dolmaz; Pro sınırsız dakika verir"
+      ],
+      "notes": [
+        "Samsung Galaxy S23 Ultra'da bir saatlik kayıt, kendi testimizde yaklaşık 8 dakika sürdü. Eski ve daha ucuz telefonlar daha yavaştır ve uzun işler arka planda çalışmaya devam eder.",
+        "Analitik yok, çökme raporlaması yok, hiçbir şey satılmaz."
+      ],
+      "fine": "Doğruluk; ses kalitesine, aksanlara ve arka plan gürültüsüne bağlıdır. Önemli dökümlere güvenmeden önce kontrol edin.",
+      "screens": [
+        { "caption": "Döküm", "alt": "Döküm ekranı: zaman damgalı satırlar, çalan kelime vurgulanmış, altta oynatıcı denetimleri." },
+        { "caption": "Kaydedici", "alt": "Kaydedici: geçen süre, canlı dalga biçimi ve ücretsiz bölümden ne kadarının kaldığı." },
+        { "caption": "Kayıtlar", "alt": "Arama, klasörler, süreler ve her dökümün ilk satırıyla birlikte kayıt listesi." }
+      ]
+    },
+    "christianpray": {
+      "name": "Christian Pray Everyday",
+      "short": "Christian Pray",
+      "spine": "Pray",
+      "storeName": "Christian Pray Everyday: Bible",
+      "kind": "Günlük Kutsal Kitap ayeti ve dua",
+      "line": "Sesli okunan günlük bir Kutsal Kitap ayeti, 25 kayıtlı dua ve 215 Kutsal Kitap hikâyesi. Gününüze başlamak ve onu bitirmek için sakin bir yer.",
+      "title": "Christian Pray Everyday: Kutsal Kitap ayeti ve dualar",
+      "description": "Sesli okunan günlük bir Kutsal Kitap ayeti, 25 kayıtlı dua ve 215 Kutsal Kitap hikâyesi; kilise yılı ve ana ekran widget'ı ile. Snoochie Soft'tan Android uygulaması.",
+      "appLanguage": "İngilizce",
+      "sticker": "Reklam yok",
+      "stamps": ["Reklam yok", "Günün ayeti ücretsiz"],
+      "sideA": [
+        "Her gün bir ayet, sesli okunur, arkasında resmedilmiş bir görselle",
+        "13.000'den fazla ayet ve aralarından seçebileceğiniz dört doğal ses",
+        "25 kayıtlı dua: oynata basın ve birlikte dua edin",
+        "Yaratılış'tan Pavlus'un son yolculuğuna kadar 215 Kutsal Kitap hikâyesi",
+        "Yastan lütfa kadar 1.100'den fazla konuda Kutsal Yazılar",
+        "Kilise yılı, bayram bayram (ABD takvimi) ve bir ayet widget'ı"
+      ],
+      "sideB": [
+        "Günün ayetini dinlemek ücretsizdir, abonelik gerekmez",
+        "66 hikâyeyi okumak ücretsiz, üçünü dinlemek ücretsiz",
+        "Premium: haftalık, aylık ya da yıllık; siz Google Play'de iptal edene kadar yenilenir",
+        "Kayıtlı ayetleriniz, dualarınız ve seriniz bizim sunucularımızda değil, kendi Google hesabı yedeğinizde durur",
+        "Reklam yok"
+      ],
+      "notes": [
+        "Her şey, gökyüzünde asılı duran, sayfa sayfa açılan tek ve sakin bir kitapta yer alır.",
+        "Premium üyeler günde bir dua niyeti paylaşabilir. Her niyet, başkası görmeden önce bir kişi tarafından okunur."
+      ],
+      "fine": "Premium her sesi, her hikâyeyi ve her konuyu açar. Abonelikler, dönem bitiminden en az 24 saat önce iptal edilmedikçe otomatik olarak yenilenir.",
+      "screens": [
+        { "caption": "Bugün", "alt": "25 Eylül Cuma için Bugün ekranı: Matthew 13:24 ayetinin üzerinde, devrilmiş bir kil tahıl küpünün resmedilmiş görseli; Dinle, kaydet ve paylaş düğmeleri." },
+        { "caption": "Ayetler", "alt": "13,111 ayetten 4. ayet: Proverbs 31:25, “Strength and dignity are her clothing”, alacakaranlıkta bir şehrin üzerinde; Önceki, paylaş ve Sonraki düğmeleriyle." },
+        { "caption": "Dualar", "alt": "Dua ekranı: sesli okunan 25 dua, 5 okunan dua ve 3 dakikalık duayla haftalık bir takip kartı ve Our Father, Hail Mary, Glory Be ile Apostles Creed kartları." }
+      ]
+    }
+  },
+  "notFound": {
+    "title": "Sayfa bulunamadı · Snoochie Soft",
+    "h1": "Bu sayfa katalogda yok.",
+    "p": "Aradığınız sayfa yok ya da taşınmış. Katalogda tüm sürümler yer alıyor.",
+    "home": "Kataloğa git",
+    "listTitle": "Sürümler"
+  }
+}

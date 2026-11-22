@@ -1,0 +1,341 @@
+{
+  "meta": {
+    "lang": "cs",
+    "ogLocale": "cs_CZ",
+    "nameNative": "Čeština",
+    "short": "CS"
+  },
+  "site": {
+    "studio": "Snoochie Soft",
+    "brandSub": "Nezávislé studio pro Android",
+    "tagline": "Malé aplikace, udělané pořádně.",
+    "homeLabel": "Snoochie Soft, domů",
+    "skip": "Přejít na obsah",
+    "navLabel": "Hlavní",
+    "nav": { "catalogue": "Katalog", "rules": "Naše pravidla", "contact": "Kontakt" },
+    "langButton": "Jazyk",
+    "langMenu": "Vyberte jazyk",
+    "theme": { "auto": "Motiv: automatický (podle vašeho zařízení)", "light": "Motiv: světlý", "dark": "Motiv: tmavý", "autoShort": "Auto", "lightShort": "Světlý", "darkShort": "Tmavý" },
+    "playAlt": "Stáhnout {name} z Google Play",
+    "appPage": "Stránka aplikace",
+    "appPageLabel": "{name}, stránka aplikace",
+    "inPolish": "v polštině",
+    "footer": {
+      "releases": "Právní informace",
+      "releasesLabel": "Zásady ochrany soukromí a podmínky",
+      "legalAll": "Soukromí a podmínky všech aplikací",
+      "language": "Jazyk",
+      "contact": "Kontakt",
+      "place": "Bydgoszcz, Polsko",
+      "copyright": "© 2026 Snoochie Soft",
+      "line": "Aplikace pro Android v Google Play"
+    },
+    "legal": {
+      "privacy": "Soukromí",
+      "terms": "Podmínky",
+      "regulamin": "Podmínky na Google Sites",
+      "deletion": "Smazání účtu a dat",
+      "support": "Podpora",
+      "licenses": "Licence"
+    }
+  },
+  "home": {
+    "title": "Snoochie Soft: malé aplikace pro Android, udělané pořádně",
+    "description": "Snoochie Soft je malé nezávislé studio, které vyrábí aplikace pro Android: anglická slova, hry pro ADHD, tvůrce falešných chatů, školní plánovač, přepis řeči a denní modlitbu.",
+    "ogAlt": "Snoochie Soft: malé aplikace, udělané pořádně. Šest obalů aplikací na žlutozeleném pozadí.",
+    "h1": "Malé aplikace, udělané pořádně.",
+    "lede": "Malé nezávislé studio, které vydává aplikace pro Android v Google Play, jedno očíslované vydání po druhém.",
+    "deskLabel": "Vybraná aplikace",
+    "flipToCover": "Zobrazit obal",
+    "flipToScreens": "Zobrazit obrazovky",
+    "sideA": "Strana A · co umí",
+    "sideB": "Strana B · jak se chová",
+    "tracksLabel": "Seznam funkcí",
+    "credits": "{no} · Android · Google Play",
+    "madeBy": "Vytvořilo Snoochie Soft",
+    "crateTitle": "Všechny aplikace",
+    "crateHint": "Vyberte aplikaci a zobrazí se její obrazovky. Mezi položkami se pohybujete šipkami.",
+    "sleeveLabel": "{no}, {name}. Zobrazit její obrazovky",
+    "onDesk": "Vybráno",
+    "deskStatus": "{no}, {name}, vybráno",
+    "rackLabel": "Všechny aplikace",
+    "ribbonLabel": "Čísla katalogu",
+    "ribbonTitle": "Katalog",
+    "prev": "Posunout na dřívější aplikace",
+    "next": "Posunout na pozdější aplikace",
+    "nextSlotTitle": "Další vydání",
+    "nextSlotText": "Číslo rezervováno",
+    "nextSlotLabel": "{no}, rezervováno pro příští vydání",
+    "catTitle": "Katalog",
+    "catSub": "Každá aplikace dostane další číslo a ponechá si ho. Tabulka roste s novými vydáními a další řádek je už nalinkovaný.",
+    "catCols": { "no": "Č.", "release": "Vydání", "kind": "Co to je", "links": "Odkazy" },
+    "catOpen": "Rezervováno pro příští vydání.",
+    "rulesTitle": "Naše pravidla",
+    "rulesSub": "Tři sliby, které vtiskáváme do svých vydání. Stránka každé aplikace uvádí ty, které dodržuje, vlastními slovy.",
+    "rules": [
+      { "h": "Bez účtu", "p": "Otevřete aplikaci a používejte ji. Žádná zeď s registrací. Přihlášení je vždy jen volitelné." },
+      { "h": "Funguje offline", "p": "Většina našich aplikací funguje dál v letadle, ve vlaku nebo s vypnutou Wi-Fi. Stránka každé aplikace uvádí, co připojení potřebuje." },
+      { "h": "Poctivé ceny", "p": "Cena aplikace je vidět dřív, než zaplatíte. Žádné nečekané zdi, žádné vyvolávání viny, žádné zahanbování." }
+    ],
+    "contactTitle": "Napište studiu",
+    "contactText": "Hlášení chyb, spolupráce, tisk nebo funkce, která vám chybí. Jedna schránka, kterou čtou lidé, kteří aplikace vytvářejí.",
+    "contactAddressLabel": "E-mailová adresa",
+    "contactMailto": "Napsat e-mail",
+    "contactCopy": "Kopírovat adresu",
+    "contactCopied": "Adresa zkopírována.",
+    "contactPlace": "Snoochie Soft, Bydgoszcz, Polsko"
+  },
+  "app": {
+    "sideA": "Strana A",
+    "sideAName": "Co umí",
+    "sideB": "Strana B",
+    "sideBName": "Jak se chová",
+    "sideAHeading": "Strana A: co umí",
+    "sideBHeading": "Strana B: jak se chová",
+    "privacyNear": "Přečtěte si zásady ochrany soukromí",
+    "screensTitle": "Tři obrazovky z aplikace",
+    "notesTitle": "Poznámky",
+    "smallPrint": "Drobné písmo",
+    "creditsTitle": "Údaje",
+    "creditRows": { "no": "Číslo v katalogu", "platform": "Platforma", "package": "Balíček", "studio": "Studio", "languages": "Jazyk aplikace" },
+    "platform": "Android, v Google Play",
+    "legalTitle": "Právní informace a podpora",
+    "legalNone": "Zásady ochrany soukromí a podmínky jsou odkazovány v nabídce v Google Play. Doplní se na tuto stránku, až budou zveřejněny zde.",
+    "otherLanguages": "Tato stránka je dostupná také v jazycích",
+    "relatedTitle": "Další aplikace studia",
+    "relatedLabel": "Další vydání",
+    "stampsLabel": "Vlastnosti tohoto vydání",
+    "backToCatalogue": "Zpět do katalogu"
+  },
+  "apps": {
+    "ssnd": {
+      "name": "Szybciej Się Nie Da",
+      "short": "Szybciej",
+      "spine": "Szybciej",
+      "storeName": "Angielski bez gramatyki 50 dni",
+      "kind": "Anglická slova pro polsky mluvící",
+      "line": "Angličtina bez gramatiky pro polsky mluvící: 500 nejběžnějších slov za 50 dní, 10 denně.",
+      "title": "Szybciej Się Nie Da: 500 anglických slov za 50 dní",
+      "description": "Aplikace pro Android, která učí polsky mluvící 500 nejběžnějších anglických slov, 10 denně po dobu 50 dní. Bez gramatických pravidel, bez účtu, funguje offline.",
+      "languageNote": "Aplikace je v polštině: je určena polsky mluvícím, kteří se učí anglicky.",
+      "appLanguage": "Polština",
+      "sticker": "Bez účtu",
+      "stamps": ["Bez účtu", "Funguje offline", "14 dní bez reklam"],
+      "sideA": [
+        "500 nejběžnějších anglických slov, 10 nových denně po dobu 50 dní",
+        "U každého slova nahraný hlas a ukázková věta",
+        "Opakování se vrací ve chvíli, kdy začínáte slovo zapomínat",
+        "Šest způsobů procvičování: kartičky, kvíz, hledání dvojic, poslech, psaní a hlasový režim bez použití rukou",
+        "Série dní, která vydrží jeden vynechaný den, XP, úrovně a odznaky"
+      ],
+      "sideB": [
+        "Účet není potřeba. Přihlášení přes Google jen tehdy, když chcete synchronizovat zařízení",
+        "Funguje offline",
+        "Prvních 14 dní bez reklam, potom reklamy jen s vaším souhlasem",
+        "Všech 500 slov je zdarma. Premium přidává tempo (20 nebo 30 slov denně), širší slovník a žádné reklamy",
+        "Tmavý režim, větší text, podpora čtečky obrazovky a vibrace jako doplňkový signál"
+      ],
+      "notes": [
+        "Proč 500 slov: podle 735 milionů slov z filmových a televizních dialogů tvoří 500 nejběžnějších slov 79,5 % všeho, co se říká. Samotných prvních 100 pokrývá 64 %.",
+        "Zdroje a metoda jsou v aplikaci, na samostatné obrazovce."
+      ],
+      "fine": "Ceny se zobrazí v Google Play před nákupem. Měsíční a roční Premium nabízí prvních 7 dní zdarma; k dispozici je také jednorázový nákup.",
+      "screens": [
+        { "caption": "Kartička", "alt": "Kartička v aplikaci: anglické slovo „of“, v polštině označené jako předložka, s tlačítkem pro poslech." },
+        { "caption": "Kvíz", "alt": "Kvíz: anglické slovo „be“ se čtyřmi polskými překlady na výběr; správný, „być“, je označen a získává 10 XP." },
+        { "caption": "Pokrok", "alt": "Obrazovka statistik: podíl běžné řeči, kterému už rozumíte, úroveň a XP, série dní v řadě a počet naučených slov." }
+      ]
+    },
+    "mossy": {
+      "name": "Mossy",
+      "short": "Mossy",
+      "storeName": "Mossy: ADHD Games for Adults",
+      "kind": "Útulné hry pro soustředění a klid",
+      "line": "Váš mozek není rozbitý. Jen má otevřených 47 karet. Šestnáct útulných miniher pro dospělé s ADHD, 1 až 3 minuty na kolo.",
+      "title": "Mossy: útulné hry pro dospělé s ADHD. Offline, bez reklam",
+      "description": "16 malých, útulných her pro soustředění a klid, vytvořených pro dospělé mozky s ADHD. 1 až 3 minuty na kolo, 6 her navždy zdarma, offline, bez reklam a předplatného.",
+      "appLanguage": "Angličtina",
+      "sticker": "Offline · bez reklam",
+      "stamps": ["Funguje offline", "Bez reklam", "Bez účtu"],
+      "sideA": [
+        "16 malých her, 1 až 3 minuty na kolo",
+        "Každou hru se naučíte asi za 10 sekund",
+        "Hry se tiše přizpůsobují, takže zůstávají právě tak náročné, jak mají",
+        "Today's Mix: tři hry vybrané pro vás každý den",
+        "Hudba vzniká za hraní, takže se nikdy nezacyklí na stejných deseti tónech",
+        "Při hraní roste malá lesní zahrada"
+      ],
+      "sideB": [
+        "6 her zdarma navždy. Každou zamčenou hru můžete jednou vyzkoušet zdarma",
+        "Full Unlock: všech 16 her za jednu platbu, bez předplatného",
+        "Funguje offline. Žádné reklamy, žádný účet, žádné sledování",
+        "Žádné série, o které byste mohli přijít, a žádné obrazovky, které vás zahanbují",
+        "Omezený pohyb, režim pro barvoslepé a nastavitelná haptická odezva"
+      ],
+      "notes": [
+        "Mech neumírá, když na něj zapomenete. Jen čeká. Přijďte, až budete moct; vaše zahrada tu pořád bude.",
+        "Vaše skóre, odznaky a zahrada se ukládají jen ve vašem telefonu. Jedinou další stranou je Google Play, který zpracovává nákup Full Unlock."
+      ],
+      "fine": "Mossy je soubor her pro soustředění a uvolnění. Není to zdravotnický prostředek a nediagnostikuje, neléčí ani nevyléčí žádný stav.",
+      "screens": [
+        { "caption": "Les", "alt": "Domovská obrazovka Mossy: Mo se vznáší nad dvěma dřevěnými policemi v nočním lese. Na každé polici stojí květináče s rostlinami popsanými Tab Storm, Time Blind, Pour Decisions, Impulse Gate, Squirrel! a Where Did I Put It?" },
+        { "caption": "Time Blind", "alt": "Time Blind: Hold for 3 s. Kulatá koule se při držení plní modrou barvou a ukazuje 1.7 s." },
+        { "caption": "Brain Dump Sorter", "alt": "Brain Dump Sorter: plovoucí myšlenky jako Feed the cat, Doctor at 3 a Reply today klesají ke třem zásuvkám: Now, Later a Let go." }
+      ]
+    },
+    "fakechat": {
+      "name": "Fake Chat Maker & Text Message",
+      "short": "Fake Chat Maker",
+      "spine": "Fake Chat",
+      "storeName": "Fake Chat Maker & Text Message",
+      "kind": "Falešné chaty pro vtipy a příběhy",
+      "line": "Napište falešnou textovou konverzaci pro vtip nebo příběh, upravte její vzhled a uložte ji jako obrázek. Jen pro zábavu.",
+      "title": "Fake Chat Maker: falešné textové zprávy pro vtipy",
+      "description": "Vytvořte falešnou textovou konverzaci, upravte její vzhled a uložte ji jako obrázek. Tři styly chatu, vlastní pozadí, bez účtu, funguje offline. Jen pro zábavu.",
+      "appLanguage": "Angličtina",
+      "sticker": "Bez účtu · offline",
+      "stamps": ["Bez účtu", "Funguje offline", "Bez limitu zpráv"],
+      "sideA": [
+        "Napište obě strany konverzace. Klepnutím na bublinu ji upravíte, dlouhým stisknutím změníte odesílatele",
+        "Změňte čas a značky doručeno nebo přečteno",
+        "Přetažením změníte pořadí zpráv, libovolnou změnu vrátíte zpět nebo znovu provedete",
+        "Tři styly chatu a vlastní pozadí: barva, přechod nebo fotka",
+        "Uložte chat jako obrázek a sdílejte ho, nebo ho zálohujte do souboru"
+      ],
+      "sideB": [
+        "Bez účtu, bez přihlášení, funguje offline",
+        "Bezplatná verze nemá žádné omezení počtu chatů ani zpráv",
+        "Reklamy se nikdy nezobrazí při psaní ani úpravách",
+        "Jeden malý nákup navždy odstraní reklamy a vodoznak",
+        "Neodesílá žádné skutečné zprávy a nepřipojuje se k žádné komunikační službě"
+      ],
+      "notes": [
+        "Hodí se na žert pro přátele, příspěvek s příběhem nebo ukázku pro video, školní projekt či prezentaci."
+      ],
+      "fine": "Pouze pro zábavu a tvůrčí vyprávění. Aplikace nemá žádný vztah k žádné komunikační aplikaci ani společnosti, není jimi podporována ani s nimi nijak spojena. Nepoužívejte prosím snímky obrazovky k oklamání, obtěžování ani poškození kohokoli.",
+      "screens": [
+        { "caption": "Psaní", "alt": "Editor chatu s konverzací s Mom: její zprávy fialově, odpovědi oranžově, tlačítka Me a Them a pole pro zprávu dole." },
+        { "caption": "Styl", "alt": "Panel stylu: tři styly chatu, Ink, Riso a Mono, mřížka barev pozadí a řada barev avatarů." },
+        { "caption": "Vaše chaty", "alt": "Your fakes: čtyři uložené chaty zobrazené jako karty, Mom, Sam, Coach Dana a Landlord, s tlačítkem New fake dole." }
+      ]
+    },
+    "loopclass": {
+      "name": "Loopclass",
+      "short": "Loopclass",
+      "storeName": "Loopclass: Class Schedule App",
+      "kind": "Školní rozvrh, úkoly a známky",
+      "line": "Rozvrh, úkoly, zkoušky a známky v jednom plánovači, s widgety a připomínkami. Funguje bez účtu a bez internetu.",
+      "title": "Loopclass: školní rozvrh a plánovač úkolů",
+      "description": "Školní rozvrh, úkoly, zkoušky a známky v jednom plánovači, s widgety a připomínkami. Bez účtu, funguje offline, záloha na váš Google Drive.",
+      "appLanguage": "47 jazyků",
+      "sticker": "Bez účtu · offline",
+      "stamps": ["Bez účtu", "Funguje offline", "Bez předplatného"],
+      "sideA": [
+        "Týdenní rozvrh s učebnami, učiteli a týdny A/B",
+        "Úkoly a zkoušky, každý s několika připomínkami",
+        "Známky s váhami, průměry a GPA: procenta, písmena A–F nebo polská stupnice 1–6",
+        "Widgety na domovské obrazovce: další hodina s odpočtem a vaše otevřené úkoly",
+        "Dnešní kruh se uzavře, když je hotový každý úkol na dnešek"
+      ],
+      "sideB": [
+        "Není potřeba účet ani internet",
+        "Volitelná záloha do vaší vlastní soukromé složky na Google Drive",
+        "Žádný náš server: váš plánovač zůstává ve vašem zařízení",
+        "Všechny funkce plánovače jsou zdarma, s jedním malým reklamním bannerem",
+        "Jednorázový nákup Premium reklamu odstraní. Bez předplatného"
+      ],
+      "notes": [
+        "Úkoly po termínu dostanou klidný štítek, nikdy červené počítadlo. Každý efekt má vlastní přepínač a k dispozici jsou předvolby Minimum a Maximum.",
+        "Po restartu se připomínky naplánují znovu a časy hodin zůstanou na místě, i když změníte časové pásmo."
+      ],
+      "fine": "Určeno pro středoškoláky a vysokoškoláky (13+). Reklamy zobrazuje Google AdMob.",
+      "screens": [
+        { "caption": "Týden", "alt": "Týdenní přehled pro úterý 13. října: Mathematics hotová, Biology označená Now, dále History a English s časy a učebnami a úkol Problem set 4 s termínem v 18:00." },
+        { "caption": "Dnes, tmavý motiv", "alt": "Dnešek v tmavém motivu: aktuální hodina Biology, další hodiny a seznam Due soon s esejí po termínu o dva dny." },
+        { "caption": "Úkoly", "alt": "Úkoly: esej k dohnání a nadcházející položky, včetně fyzikální zkoušky s vysokou prioritou za 3 dny." }
+      ]
+    },
+    "transcriber": {
+      "name": "Offline Audio Transcriber",
+      "short": "Audio Transcriber",
+      "spine": "Audio",
+      "storeName": "Offline Audio Transcriber",
+      "kind": "Řeč na text ve vašem telefonu",
+      "line": "Převeďte hlasové poznámky, přednášky, rozhovory a libovolný soubor MP3 nebo video na text ve svém telefonu s Androidem. Nic se nenahrává.",
+      "title": "AI Dictation: přepis zvuku na text offline",
+      "description": "Převeďte nahrávky, MP3 a videosoubory na text ve svém telefonu s Androidem. Přepis offline ve 24 jazycích, bez účtu, nic se nenahrává.",
+      "appLanguage": "Angličtina a další jazyky",
+      "sticker": "Offline · nic se nenahrává",
+      "stamps": ["Bez účtu", "Nic se nenahrává", "Funguje offline"],
+      "sideA": [
+        "Nahrávejte, nebo importujte MP3, M4A, WAV, OGG, MP4 a další zvukové a video soubory",
+        "Přepis s časovými značkami, který sleduje zvuk. Klepnutím na slovo se tam přesunete",
+        "Opravujte chyby, prohledávejte text a třiďte nahrávky do složek",
+        "Export do TXT, SRT nebo VTT, kopírování nebo sdílení",
+        "24 evropských jazyků s hlavním modelem; volitelný druhý model přidává další"
+      ],
+      "sideB": [
+        "Bez účtu a bez našeho serveru",
+        "Funguje offline, jakmile je v telefonu model rozpoznávání řeči o velikosti 671 MB",
+        "Online jde jen kvůli stažení modelu, reklamám a nákupům v Google Play",
+        "Prvních 2 minuty každé nahrávky je zdarma; krátká reklama přidá 3 minuty",
+        "Balíčky minut nikdy nevyprší; Pro dává neomezený počet minut"
+      ],
+      "notes": [
+        "Na Samsungu Galaxy S23 Ultra trvala hodinová nahrávka v našem vlastním testu zhruba 8 minut. Starší a levnější telefony jsou pomalejší a dlouhé úlohy běží dál na pozadí.",
+        "Žádná analytika, žádné hlášení pádů, nic se neprodává."
+      ],
+      "fine": "Přesnost závisí na kvalitě zvuku, přízvucích a hluku na pozadí. Důležité přepisy zkontrolujte, než se na ně spolehnete.",
+      "screens": [
+        { "caption": "Přepis", "alt": "Obrazovka přepisu: řádky s časovými značkami, přehrávané slovo je zvýrazněné, ovládání přehrávače dole." },
+        { "caption": "Nahrávání", "alt": "Nahrávání: uplynulý čas, živá vlna zvuku a kolik zbývá z bezplatné části." },
+        { "caption": "Nahrávky", "alt": "Seznam nahrávek s hledáním, složkami, délkami a prvním řádkem každého přepisu." }
+      ]
+    },
+    "christianpray": {
+      "name": "Christian Pray Everyday",
+      "short": "Christian Pray",
+      "spine": "Pray",
+      "storeName": "Christian Pray Everyday: Bible",
+      "kind": "Biblický verš dne a modlitba",
+      "line": "Denní biblický verš přečtený nahlas, 25 namluvených modliteb a 215 biblických příběhů. Klidné místo, kde začít a ukončit den.",
+      "title": "Christian Pray Everyday: biblický verš a modlitby",
+      "description": "Denní biblický verš přečtený nahlas, 25 namluvených modliteb a 215 biblických příběhů, s církevním rokem a widgetem. Aplikace pro Android od Snoochie Soft.",
+      "appLanguage": "Angličtina",
+      "sticker": "Bez reklam",
+      "stamps": ["Bez reklam", "Verš dne zdarma"],
+      "sideA": [
+        "Každý den jeden verš, přečtený nahlas, s malovaným obrázkem v pozadí",
+        "Více než 13 000 veršů a čtyři přirozené hlasy na výběr",
+        "25 namluvených modliteb: stiskněte přehrát a modlete se spolu",
+        "215 biblických příběhů, od stvoření světa po poslední cestu Pavla",
+        "Písmo k více než 1 100 tématům, od zármutku po milost",
+        "Církevní rok, svátek po svátku (americký kalendář), a widget s veršem"
+      ],
+      "sideB": [
+        "Verš dne si můžete poslechnout zdarma, předplatné není potřeba",
+        "66 příběhů zdarma ke čtení, tři zdarma k poslechu",
+        "Premium: týdenní, měsíční nebo roční, obnovuje se, dokud ho v Google Play nezrušíte",
+        "Uložené verše, modlitby a vaše série žijí v záloze vašeho vlastního účtu Google, ne na našich serverech",
+        "Bez reklam"
+      ],
+      "notes": [
+        "Všechno je sepsáno v jedné klidné knize, která visí na nebi, stránku po stránce.",
+        "Členové Premium mohou denně sdílet jeden úmysl modlitby. Každý úmysl si přečte člověk, než ho uvidí kdokoli jiný."
+      ],
+      "fine": "Premium odemyká všechny hlasy, všechny příběhy a všechna témata. Předplatné se automaticky obnovuje, pokud ho nezrušíte alespoň 24 hodin před koncem období.",
+      "screens": [
+        { "caption": "Dnes", "alt": "Obrazovka Today pro pátek 25. září: malovaný obrázek rozsypaného hliněného džbánu s obilím nad veršem Matthew 13:24, s tlačítky pro poslech, uložení a sdílení." },
+        { "caption": "Verše", "alt": "Verš 4 z 13 111: Proverbs 31:25, „Strength and dignity are her clothing“, nad městem za soumraku, s tlačítky Previous, sdílení a Next." },
+        { "caption": "Modlitby", "alt": "Obrazovka Pray: 25 modliteb čtených nahlas, týdenní přehled s 5 pronesenými modlitbami a 3 minutami v modlitbě a karty Our Father, Hail Mary, Glory Be a Apostles Creed." }
+      ]
+    }
+  },
+  "notFound": {
+    "title": "Stránka nenalezena · Snoochie Soft",
+    "h1": "Tato stránka není v katalogu.",
+    "p": "Stránka, kterou hledáte, neexistuje nebo byla přesunuta. Katalog obsahuje všechna vydání.",
+    "home": "Přejít do katalogu",
+    "listTitle": "Vydání"
+  }
+}
