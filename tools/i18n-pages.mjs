@@ -45,14 +45,12 @@ export const PAGES = [
   { id: "pug-terms", src: "pug-bubble-dig/terms/index.html", legal: true },
   { id: "transcriber-privacy", src: "audio-transcriber/privacy/index.html", legal: true },
   { id: "transcriber-terms", src: "audio-transcriber/terms/index.html", legal: true },
-  { id: "dofcalc-privacy", src: "dofcalc/privacy/index.html", legal: true },
-  { id: "dofcalc-terms", src: "dofcalc/terms/index.html", legal: true },
 ];
 
 // Text that is never translated (names and addresses). A segment equal to one of these is skipped.
 const FROZEN = new Set(["Snoochie Soft", "Snoochie", "Soft", "SnoochieSoft@proton.me", "Google Play", "Android",
   "Pug Bubble Dig", "Szybciej Się Nie Da", "Mossy", "Fake Chat Maker & Text Message", "Loopclass",
-  "Offline Audio Transcriber", "Christian Pray Everyday", "Bigi", "Mo", "DofCalc"]);
+  "Offline Audio Transcriber", "Christian Pray Everyday", "Bigi", "Mo"]);
 
 // ---------------------------------------------------------------- HTML parsing
 const VOID = new Set("area base br col embed hr img input link meta source track wbr".split(" "));
