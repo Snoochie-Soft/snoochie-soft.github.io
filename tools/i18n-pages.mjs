@@ -294,6 +294,8 @@ function render(html, page, l, tr, langsWithPage) {
     for (const a of el.attrs) {
       if (a.vs < 0) continue;
       let v = a.value;
+      // language-switch links (hreflang) already name their target language: keep them as written
+      if (l !== "en" && a.name === "href" && el.tag === "a" && el.attrs.some((x) => x.name === "hreflang")) continue;
       if (l !== "en" && a.name === "href" && el.tag === "a") v = mapHref(decode(v), srcDir, l, dirs);
       else if (a.name === "src" && /img\/badges\/play-en\.png$/.test(v)) v = v.replace("play-en.png", `play-${badgeFor(l)}.png`);
       else if (segAttrs.some((x) => x.start === a.vs)) v = escAttr(T(decode(v)));
