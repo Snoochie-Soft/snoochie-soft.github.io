@@ -45,6 +45,8 @@ export const PAGES = [
   { id: "pug-terms", src: "pug-bubble-dig/terms/index.html", legal: true },
   { id: "transcriber-privacy", src: "audio-transcriber/privacy/index.html", legal: true },
   { id: "transcriber-terms", src: "audio-transcriber/terms/index.html", legal: true },
+  { id: "transcriber-support", src: "audio-transcriber/support/index.html" },
+  { id: "transcriber-licenses", src: "audio-transcriber/licenses/index.html" },
 ];
 
 // Text that is never translated (names and addresses). A segment equal to one of these is skipped.
@@ -186,14 +188,15 @@ function segments(html) {
       } else visit(c);
     }
   };
-  // JSON-LD: translate "description" values in place
+  // JSON-LD: translate "description" values in place, and the questions and answers of a FAQPage
   const ldjson = (el) => {
     const c = el.children[0], src = html.slice(c.start, c.end);
-    const re = /"description"\s*:\s*"((?:[^"\\]|\\.)*)"/g;
-    let m;
-    while ((m = re.exec(src))) {
-      const vs = c.start + m.index + m[0].length - m[1].length - 1;
-      out.push({ kind: "ld", start: vs, end: vs + m[1].length, text: JSON.parse(`"${m[1]}"`) });
+    for (const re of [/"description"\s*:\s*"((?:[^"\\]|\\.)*)"/g, /"@type"\s*:\s*"(?:Question|Answer)"\s*,\s*"(?:name|text)"\s*:\s*"((?:[^"\\]|\\.)*)"/g]) {
+      let m;
+      while ((m = re.exec(src))) {
+        const vs = c.start + m.index + m[0].length - m[1].length - 1;
+        out.push({ kind: "ld", start: vs, end: vs + m[1].length, text: JSON.parse(`"${m[1]}"`) });
+      }
     }
   };
   visit(root);
