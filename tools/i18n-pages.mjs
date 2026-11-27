@@ -258,6 +258,48 @@ function langNav(src, l, langsWithPage) {
   }).join("");
   return `<!--i18n-langs--><div class="i18n-langs" role="navigation" aria-label="${escAttr(c.language)}"><span class="i18n-l">${escText(c.language)}</span>${items}</div><!--/i18n-langs-->`;
 }
+// Where the language bar goes. Inside the page's own wrapper, so it lines up with the content instead of sitting at
+// the window edge: the footer's <div class="wrap"> when that div is all the footer holds, else the last top-level
+// <div class="wrap"> of a page without a footer. Anything else: just before </footer> or </body>.
+function divTags(s) {
+  const re = /<(\/?)div\b[^>]*>/g, a = [];
+  let m;
+  while ((m = re.exec(s))) a.push({ close: !!m[1], at: m.index, tag: m[0] });
+  return a;
+}
+// the first tag opens a div and the last tag is the one that closes it
+function onlyDiv(tags) {
+  if (!tags.length || tags[0].close) return false;
+  let d = 0;
+  for (let i = 0; i < tags.length; i++) {
+    d += tags[i].close ? -1 : 1;
+    if (d < 0 || (d === 0 && i < tags.length - 1)) return false;
+  }
+  return d === 0;
+}
+function placeBar(html, nav) {
+  const f = html.lastIndexOf("</footer>");
+  if (f >= 0) {
+    const s = html.lastIndexOf("<footer", f), inner = html.slice(s, f);
+    const body = inner.replace(/^<footer[^>]*>\s*/, "");
+    const tags = divTags(body);
+    if (/^<div class="wrap"[^>]*>/.test(body) && /<\/div>\s*$/.test(body) && onlyDiv(tags)) {
+      const at = s + (inner.length - body.length) + tags[tags.length - 1].at;
+      return html.slice(0, at) + nav + "\n" + html.slice(at);
+    }
+    return html.slice(0, f) + nav + "\n" + html.slice(f);
+  }
+  const b = html.lastIndexOf("</body>");
+  const head = html.slice(0, b), tail = head.search(/<body\b[^>]*>/);
+  const tags = divTags(head.slice(tail));
+  let top = -1, d = 0;
+  tags.forEach((t, i) => { if (!t.close && d === 0) top = i; d += t.close ? -1 : 1; });
+  if (top >= 0 && d === 0 && /^<div class="wrap"/.test(tags[top].tag) && /<\/div>\s*$/.test(head)) {
+    const at = tail + tags[tags.length - 1].at;
+    return html.slice(0, at) + nav + "\n" + html.slice(at);
+  }
+  return html.slice(0, b) + nav + "\n" + html.slice(b);
+}
 // Drop-down language menu for the page header (no dependencies; closes on outside click and Escape).
 const GLOBE = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm-8.5 9h17M12 3c2.4 2.5 3.6 5.5 3.6 9s-1.2 6.5-3.6 9c-2.4-2.5-3.6-5.5-3.6-9S9.6 5.5 12 3Z"/></svg>';
 const CARET = '<svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.4" d="m6 9 6 6 6-6"/></svg>';
@@ -358,9 +400,7 @@ function render(html, page, l, tr, langsWithPage) {
   else out = out.replace(/(<\/title>)/, `$1\n${block}`);
   out = out.replace(/<!--i18n-langs-->[\s\S]*?<!--\/i18n-langs-->\n?/g, "").replace(/\n?<link rel="stylesheet" href="\/css\/i18n\.css">/g, "");
   out = out.replace(/(<\/head>)/, `<link rel="stylesheet" href="/css/i18n.css">\n$1`);
-  const nav = langNav(page.src, l, langsWithPage);
-  if (/<\/footer>/.test(out)) out = out.replace(/(<\/footer>)(?![\s\S]*<\/footer>)/, `${nav}\n$1`);
-  else out = out.replace(/(<\/body>)/, `${nav}\n$1`);
+  out = placeBar(out, langNav(page.src, l, langsWithPage));
   out = placeMenu(out, page.src, l, langsWithPage);
   if (l !== "en") {
     out = out.replace(/(<meta charset="utf-8">)/i, `$1\n<base href="/${srcDir}">`);
