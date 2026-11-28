@@ -318,14 +318,7 @@
           "key": "licenses",
           "href": "audio-transcriber/licenses/"
         }
-      ],
-      "legacyAlternates": {
-        "pl": "audio-transcriber/pl/",
-        "de": "audio-transcriber/de/",
-        "fr": "audio-transcriber/fr/",
-        "es": "audio-transcriber/es/",
-        "pt-BR": "audio-transcriber/pt-br/"
-      }
+      ]
     },
     {
       "id": "christianpray",
